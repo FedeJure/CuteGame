@@ -14,6 +14,7 @@ namespace Modules.Actor.Tests.Presentation
 
         private ISubject<Unit> caressEvent = new Subject<Unit>();
         private ISubject<Unit> notHappyEvent = new Subject<Unit>();
+        private ISubject<Unit> happyEvent = new Subject<Unit>();
         
         [SetUp]
         public void SetUp()
@@ -23,6 +24,7 @@ namespace Modules.Actor.Tests.Presentation
 
             eventBus.OnCaressEvent().Returns(caressEvent);
             eventBus.OnNotHappyEvent().Returns(notHappyEvent);
+            eventBus.OnHappyEvent().Returns(happyEvent);
             new ActorPresenter(view, eventBus);
         }
 
@@ -40,6 +42,14 @@ namespace Modules.Actor.Tests.Presentation
             GivenViewIsPresented();
             WhenCaressEventRaised();
             ThenCaressFeedbackShowed();
+        }
+
+        [Test]
+        public void OnHappyEvent()
+        {
+            GivenViewIsPresented();
+            WhenHappyEventRaised();
+            ThenHappyFeedbackShowed();
         }
 
         private void GivenViewIsPresented()
@@ -65,6 +75,16 @@ namespace Modules.Actor.Tests.Presentation
         private void ThenShowNotHappyFeedback()
         {
             view.Received(1).ShowNotHappyFeedback();
+        }
+
+        private void WhenHappyEventRaised()
+        {
+            happyEvent.OnNext(Unit.Default);
+        }
+
+        private void ThenHappyFeedbackShowed()
+        {
+            view.Received(1).ShowHappyFeedback();
         }
     }
 }

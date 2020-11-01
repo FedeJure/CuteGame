@@ -9,5 +9,6 @@ namespace Modules.Actor.Scripts.Presentation
         event Action OnViewDisable;
         void ShowCaredFeedback();
         void ShowNotHappyFeedback();
+        void ShowHappyFeedback();
     }
 }

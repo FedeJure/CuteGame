@@ -32,6 +32,11 @@ public class ActorPresenter
             .Do(_ => view.ShowNotHappyFeedback())
             .Subscribe()
             .AddTo(disposables);
+        
+        eventBus.OnHappyEvent()
+            .Do(_ => view.ShowHappyFeedback())
+            .Subscribe()
+            .AddTo(disposables);
     }
 
     void Remove()

@@ -7,6 +7,7 @@ namespace Modules.Actor.Scripts.Core
     {
         ISubject<Unit> caressSubject = new Subject<Unit>();
         ISubject<Unit> notHappySubject = new Subject<Unit>();
+        ISubject<Unit> happySubject = new Subject<Unit>();
         
         public EventBus() { }
 
@@ -28,6 +29,11 @@ namespace Modules.Actor.Scripts.Core
         public virtual void EmitNotHappyEvent()
         {
             notHappySubject.OnNext(Unit.Default);
+        }
+
+        public virtual IObservable<Unit> OnHappyEvent()
+        {
+            return happySubject;
         }
     }
 }
