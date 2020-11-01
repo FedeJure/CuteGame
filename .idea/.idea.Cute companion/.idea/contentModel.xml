@@ -7,12 +7,16 @@
       <e p="ActorASM.csproj" t="IncludeRecursive" />
       <e p="ActorASMTest.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="DependencyProvider" t="Include">
+          <e p="DependencyProvider.cs" t="Include" />
+        </e>
         <e p="Modules" t="Include">
           <e p="Actor" t="Include">
             <e p="Scripts" t="Include">
               <e p="Core" t="Include">
                 <e p="EventBus.cs" t="Include" />
               </e>
+              <e p="ModuleProvider.cs" t="Include" />
               <e p="Presentation" t="Include">
                 <e p="ActorPresenter.cs" t="Include" />
                 <e p="ActorView.cs" t="Include" />
@@ -21,6 +25,9 @@
                 </e>
                 <e p="TouchHelperPresenter.cs" t="Include" />
                 <e p="TouchHelperView.cs" t="Include" />
+              </e>
+              <e p="UnityDelivery" t="Include">
+                <e p="UnityActorView.cs" t="Include" />
               </e>
             </e>
             <e p="Tests" t="Include">
@@ -296,6 +303,7 @@
         </e>
       </e>
       <e p="Cute companion.sln" t="IncludeFlat" />
+      <e p="DependencyProviderASM.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />

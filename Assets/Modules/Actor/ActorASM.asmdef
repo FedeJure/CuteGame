@@ -1,7 +1,8 @@
 {
     "name": "ActorASM",
     "references": [
-        "GUID:560b04d1a97f54a4e82edc0cbbb69285"
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:63c8eb923771fba4c8975bb081400aab"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
