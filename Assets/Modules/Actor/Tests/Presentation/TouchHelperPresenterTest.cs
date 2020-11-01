@@ -1,5 +1,5 @@
 ﻿using System;
-using Modules.Actor.Scripts.Core;
+using Modules.Actor.Scripts.Core.Domain.Action;
 using Modules.Actor.Scripts.Presentation;
 using Modules.Actor.Scripts.Presentation.Events;
 using NSubstitute;
@@ -10,14 +10,14 @@ namespace Modules.Actor.Tests.Presentation
     public class TouchHelperPresenterTest
     {
         private TouchHelperView view;
-        private EventBus eventBus;
+        private ProcessDirectionAction processDirectionAction;
         [SetUp]
         public void SetUp()
         {
             view = Substitute.For<TouchHelperView>();
-            eventBus = Substitute.For<EventBus>();
+            processDirectionAction = Substitute.For<ProcessDirectionAction>();
             
-            new TouchHelperPresenter(view, eventBus);
+            new TouchHelperPresenter(view, processDirectionAction);
         }
 
         [Test]
@@ -30,16 +30,17 @@ namespace Modules.Actor.Tests.Presentation
 
         private void GivenTouchHelperWasPresented()
         {
-            view.OnEnabled += Raise.Event<Action>();
+            view.OnViewEnabled += Raise.Event<Action>();
         }
 
         private void WhenTouchActionRaised()
         {
-            view.OnSwipeAction += Raise.Event<Action<SwipeAction>>(new SwipeAction());
+            view.OnSwipeAction += Raise.Event<Action<TouchDirection>>(TouchDirection.Down);
         }
 
         private void ThenProcessTouchActionExecuted()
         {
+            processDirectionAction.Received(1).Execute(Arg.Any<TouchDirection>());
         }
     }
 }

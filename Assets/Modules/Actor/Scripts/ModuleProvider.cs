@@ -1,10 +1,11 @@
 ﻿using Modules.Actor.Scripts.Core;
 using Modules.Actor.Scripts.Presentation;
 using DependencyProviderNamespace;
+using Modules.Actor.Scripts.Core.Domain.Action;
 
 namespace Modules.Actor.Scripts
 {
-    public class ModuleProvider
+    public static class ModuleProvider
     {
         public static void ProvidePresenterFor(ActorView view)
         {
@@ -18,7 +19,12 @@ namespace Modules.Actor.Scripts
 
         public static void ProvidePresenterFor(TouchHelperView view)
         {
-            new TouchHelperPresenter(view, ProvideEventBus());
+            new TouchHelperPresenter(view, ProvideProcessDirectionAction());
+        }
+
+        private static ProcessDirectionAction ProvideProcessDirectionAction()
+        {
+            return DependencyProvider.GetOrInstanciate(() => new ProcessDirectionAction(ProvideEventBus()));
         }
     }
 }

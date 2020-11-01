@@ -17,6 +17,11 @@
           <e p="Actor" t="Include">
             <e p="Scripts" t="Include">
               <e p="Core" t="Include">
+                <e p="Domain" t="Include">
+                  <e p="Action" t="Include">
+                    <e p="ProcessDirectionAction.cs" t="Include" />
+                  </e>
+                </e>
                 <e p="EventBus.cs" t="Include" />
               </e>
               <e p="ModuleProvider.cs" t="Include" />

@@ -11,86 +11,111 @@ namespace Modules.Actor.Scripts.UnityDelivery
 {
     public class UnityTouchHelperView: MonoBehaviour, TouchHelperView
     {
-        public event Action OnEnabled = () => { };
-        public event Action<SwipeAction> OnSwipeAction = action => { };
+        public event Action OnViewEnabled = () => { };
+        public event Action<TouchDirection> OnSwipeAction = direction => { };
 
         private void Awake()
         {
             ModuleProvider.ProvidePresenterFor(this);
         }
+
+        private void OnEnable()
+        {
+            OnViewEnabled();
+        }
+
         private Vector2 fingerDown;
         private Vector2 fingerUp; 
         public bool detectSwipeOnlyAfterRelease = false;
 
         public float SWIPE_THRESHOLD = 20f;
 
-        // Update is called once per frame
         void Update()
         {
             foreach (Touch touch in Input.touches)
             {
-                if (touch.phase == TouchPhase.Began)
+                switch (touch.phase)
                 {
-                    fingerUp = touch.position;
-                    fingerDown = touch.position;
-                }
-
-                //Detects Swipe while finger is still moving
-                if (touch.phase == TouchPhase.Moved)
-                {
-                    if (!detectSwipeOnlyAfterRelease)
+                    case TouchPhase.Began:
+                        fingerUp = touch.position;
+                        fingerDown = touch.position;
+                        break;
+                    case TouchPhase.Moved:
                     {
+                        if (!detectSwipeOnlyAfterRelease)
+                        {
+                            fingerDown = touch.position;
+                            checkSwipe();
+                        }
+                        break;
+                    }
+                    case TouchPhase.Ended:
                         fingerDown = touch.position;
                         checkSwipe();
-                    }
-                }
-
-                //Detects swipe after finger is released
-                if (touch.phase == TouchPhase.Ended)
-                {
-                    fingerDown = touch.position;
-                    checkSwipe();
+                        break;
                 }
             }
         }
 
         void checkSwipe()
         {
-            //Check if Vertical swipe
-            if (verticalMove() > SWIPE_THRESHOLD && verticalMove() > horizontalValMove())
+            var isVertical = verticalMove() > SWIPE_THRESHOLD;
+            var isHorizontal = horizontalValMove() > SWIPE_THRESHOLD;
+            var isDiagonal = isVertical && isHorizontal;
+            var up = fingerDown.y - fingerUp.y > 0;
+            var down = fingerDown.y - fingerUp.y < 0;
+            var left = fingerDown.x - fingerUp.x < 0;
+            var right = fingerDown.x - fingerUp.x > 0;
+
+            if (isDiagonal && up && left)
             {
-                //Debug.Log("Vertical");
-                if (fingerDown.y - fingerUp.y > 0)//up swipe
-                {
-                    OnSwipeUp();
-                }
-                else if (fingerDown.y - fingerUp.y < 0)//Down swipe
-                {
-                    OnSwipeDown();
-                }
-                fingerUp = fingerDown;
+                OnSwipeAction(TouchDirection.UpLeft);
+                return;
             }
 
-            //Check if Horizontal swipe
-            else if (horizontalValMove() > SWIPE_THRESHOLD && horizontalValMove() > verticalMove())
+            if (isDiagonal && up && right)
             {
-                //Debug.Log("Horizontal");
-                if (fingerDown.x - fingerUp.x > 0)//Right swipe
-                {
-                    OnSwipeRight();
-                }
-                else if (fingerDown.x - fingerUp.x < 0)//Left swipe
-                {
-                    OnSwipeLeft();
-                }
-                fingerUp = fingerDown;
+                OnSwipeAction(TouchDirection.UpRight);
+                return;
             }
 
-            //No Movement at-all
-            else
+            if (isDiagonal && down && left)
             {
-                //Debug.Log("No Swipe!");
+                OnSwipeAction(TouchDirection.DownLeft);
+                return;
             }
+
+            if (isDiagonal && down && right)
+            {
+                OnSwipeAction(TouchDirection.DownRight);
+                return;
+            }
+
+            if (isVertical && up)
+            {
+                OnSwipeAction(TouchDirection.Up);
+                return;
+            }
+
+            if (isVertical && down)
+            {
+                OnSwipeAction(TouchDirection.Down);
+                return;
+            }
+
+            if (isHorizontal && right)
+            {
+                OnSwipeAction(TouchDirection.Right);
+                return;
+            }
+
+            if (isHorizontal && left)
+            {
+                OnSwipeAction(TouchDirection.Left);
+                return;
+            }
+            
+            fingerUp = fingerDown;
         }
 
         float verticalMove()
@@ -101,27 +126,6 @@ namespace Modules.Actor.Scripts.UnityDelivery
         float horizontalValMove()
         {
             return Mathf.Abs(fingerDown.x - fingerUp.x);
-        }
-
-        //////////////////////////////////CALLBACK FUNCTIONS/////////////////////////////
-        void OnSwipeUp()
-        {
-            Debug.Log("Swipe UP");
-        }
-
-        void OnSwipeDown()
-        {
-            Debug.Log("Swipe Down");
-        }
-
-        void OnSwipeLeft()
-        {
-            Debug.Log("Swipe Left");
-        }
-
-        void OnSwipeRight()
-        {
-            Debug.Log("Swipe Right");
         }
     }
 }

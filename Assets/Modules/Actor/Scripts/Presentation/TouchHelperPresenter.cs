@@ -1,16 +1,30 @@
 ﻿using Modules.Actor.Scripts.Core;
+using Modules.Actor.Scripts.Core.Domain.Action;
+using Modules.Actor.Scripts.Presentation.Events;
 
 namespace Modules.Actor.Scripts.Presentation
 {
     public class TouchHelperPresenter
     {
         readonly TouchHelperView view;
-        readonly EventBus eventBus;
+        readonly ProcessDirectionAction processDirectionAction;
 
-        public TouchHelperPresenter(TouchHelperView view, EventBus eventBus)
+        public TouchHelperPresenter(TouchHelperView view, ProcessDirectionAction processDirectionAction)
         {
             this.view = view;
-            this.eventBus = eventBus;
+            this.processDirectionAction = processDirectionAction;
+
+            this.view.OnViewEnabled += Present;
+        }
+
+        void Present()
+        {
+            view.OnSwipeAction += OnSwipeAction;
+        }
+
+        void OnSwipeAction(TouchDirection direction)
+        {
+            processDirectionAction.Execute(direction);    
         }
     }
 }
