@@ -16,11 +16,17 @@
               <e p="Presentation" t="Include">
                 <e p="ActorPresenter.cs" t="Include" />
                 <e p="ActorView.cs" t="Include" />
+                <e p="Events" t="Include">
+                  <e p="SwipeAction.cs" t="Include" />
+                </e>
+                <e p="TouchHelperPresenter.cs" t="Include" />
+                <e p="TouchHelperView.cs" t="Include" />
               </e>
             </e>
             <e p="Tests" t="Include">
               <e p="Presentation" t="Include">
                 <e p="ActorPresenterTest.cs" t="Include" />
+                <e p="TouchHelperPresenterTest.cs" t="Include" />
               </e>
             </e>
           </e>
