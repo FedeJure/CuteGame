@@ -10,6 +10,9 @@
         <e p="DependencyProvider" t="Include">
           <e p="DependencyProvider.cs" t="Include" />
         </e>
+        <e p="InputWrapper" t="Include">
+          <e p="InputWrapper.cs" t="Include" />
+        </e>
         <e p="Modules" t="Include">
           <e p="Actor" t="Include">
             <e p="Scripts" t="Include">
@@ -28,6 +31,7 @@
               </e>
               <e p="UnityDelivery" t="Include">
                 <e p="UnityActorView.cs" t="Include" />
+                <e p="UnityTouchHelperView.cs" t="Include" />
               </e>
             </e>
             <e p="Tests" t="Include">
@@ -304,6 +308,7 @@
       </e>
       <e p="Cute companion.sln" t="IncludeFlat" />
       <e p="DependencyProviderASM.csproj" t="IncludeRecursive" />
+      <e p="InputWrapperASM.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />

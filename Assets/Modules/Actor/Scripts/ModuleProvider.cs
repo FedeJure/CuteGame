@@ -6,14 +6,19 @@ namespace Modules.Actor.Scripts
 {
     public class ModuleProvider
     {
-        public static ActorPresenter ProvidePresenterFor(ActorView view)
+        public static void ProvidePresenterFor(ActorView view)
         {
-            return new ActorPresenter(view, ProvideEventBus());
+            new ActorPresenter(view, ProvideEventBus());
         }
 
-        public static EventBus ProvideEventBus()
+        private static EventBus ProvideEventBus()
         {
             return DependencyProvider.GetOrInstanciate(() => new EventBus());
+        }
+
+        public static void ProvidePresenterFor(TouchHelperView view)
+        {
+            new TouchHelperPresenter(view, ProvideEventBus());
         }
     }
 }

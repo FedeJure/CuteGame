@@ -6,8 +6,8 @@ namespace Modules.Actor.Scripts.UnityDelivery
 {
     public class UnityActorView : MonoBehaviour, ActorView
     {
-        public event Action OnViewEnable;
-        public event Action OnViewDisable;
+        public event Action OnViewEnable = () => { };
+        public event Action OnViewDisable = () => { };
 
         private void Awake()
         {
