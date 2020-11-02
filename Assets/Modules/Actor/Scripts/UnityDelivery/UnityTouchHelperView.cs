@@ -16,16 +16,17 @@ namespace Modules.Actor.Scripts.UnityDelivery
 
         private Vector2 fingerDown;
         private Vector2 fingerUp;
-        [SerializeField] Transform target;
+        [SerializeField] GameObject target;
         [SerializeField] Camera camera;
-        
-        bool detectSwipeOnlyAfterRelease = true;
+
+        bool hitTarget;
         float SWIPE_THRESHOLD = 20f;
 
         private void Awake()
         {
             ModuleProvider.ProvidePresenterFor(this);
         }
+        
 
         private void OnEnable()
         {
@@ -41,25 +42,36 @@ namespace Modules.Actor.Scripts.UnityDelivery
                     case TouchPhase.Began:
                         fingerUp = touch.position;
                         fingerDown = touch.position;
+                        hitTarget = false;
                         break;
                     case TouchPhase.Moved:
                     {
-                        if (!detectSwipeOnlyAfterRelease)
-                        {
-                            fingerDown = touch.position;
-                            checkSwipe();
-                        }
+                        CheckRaycasting(touch);
                         break;
                     }
                     case TouchPhase.Ended:
                         fingerDown = touch.position;
                         checkSwipe();
+                        hitTarget = false;
                         break;
                 }
             }
         }
+
+        private void CheckRaycasting(Touch touch)
+        {
+            if (hitTarget) return;
+            Ray raycast = camera.ScreenPointToRay(touch.position);
+            RaycastHit raycastHit;
+            if (Physics.Raycast(raycast, out raycastHit) && raycastHit.transform.gameObject.Equals(target))
+            {
+                hitTarget = true;
+            }
+        }
+
         void checkSwipe()
         {
+            if (!hitTarget) return;
             var isVertical = verticalMove() > SWIPE_THRESHOLD;
             var isHorizontal = horizontalValMove() > SWIPE_THRESHOLD;
             var isDiagonal = isVertical && isHorizontal;
