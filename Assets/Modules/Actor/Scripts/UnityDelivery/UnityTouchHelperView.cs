@@ -14,6 +14,14 @@ namespace Modules.Actor.Scripts.UnityDelivery
         public event Action OnViewEnabled = () => { };
         public event Action<TouchDirection> OnSwipeAction = direction => { };
 
+        private Vector2 fingerDown;
+        private Vector2 fingerUp;
+        [SerializeField] Transform target;
+        [SerializeField] Camera camera;
+        
+        bool detectSwipeOnlyAfterRelease = true;
+        float SWIPE_THRESHOLD = 20f;
+
         private void Awake()
         {
             ModuleProvider.ProvidePresenterFor(this);
@@ -23,12 +31,6 @@ namespace Modules.Actor.Scripts.UnityDelivery
         {
             OnViewEnabled();
         }
-
-        private Vector2 fingerDown;
-        private Vector2 fingerUp; 
-        public bool detectSwipeOnlyAfterRelease = false;
-
-        public float SWIPE_THRESHOLD = 20f;
 
         void Update()
         {
@@ -56,7 +58,6 @@ namespace Modules.Actor.Scripts.UnityDelivery
                 }
             }
         }
-
         void checkSwipe()
         {
             var isVertical = verticalMove() > SWIPE_THRESHOLD;
