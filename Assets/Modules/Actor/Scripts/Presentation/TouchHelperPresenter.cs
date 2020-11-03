@@ -1,5 +1,4 @@
-﻿using Modules.Actor.Scripts.Core;
-using Modules.Actor.Scripts.Core.Domain.Action;
+﻿using Modules.Actor.Scripts.Core.Domain.Action;
 using Modules.Actor.Scripts.Presentation.Events;
 
 namespace Modules.Actor.Scripts.Presentation
@@ -19,12 +18,12 @@ namespace Modules.Actor.Scripts.Presentation
 
         void Present()
         {
-            view.OnSwipeAction += OnSwipeAction;
+            view.OnActorInteraction += direction => OnActorInteraction(direction);
         }
 
-        void OnSwipeAction(TouchDirection direction)
+        void OnActorInteraction(ActorInteraction interaction)
         {
-            processDirectionAction.Execute(direction);    
+            processDirectionAction.Execute(interaction);    
         }
     }
 }

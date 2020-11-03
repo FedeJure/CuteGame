@@ -2,6 +2,7 @@
 using Modules.Actor.Scripts.Presentation;
 using DependencyProviderNamespace;
 using Modules.Actor.Scripts.Core.Domain.Action;
+using Modules.Actor.Scripts.UnityDelivery;
 
 namespace Modules.Actor.Scripts
 {
@@ -25,6 +26,11 @@ namespace Modules.Actor.Scripts
         private static ProcessDirectionAction ProvideProcessDirectionAction()
         {
             return DependencyProvider.GetOrInstanciate(() => new ProcessDirectionAction(ProvideEventBus()));
+        }
+
+        public static HitTargetRepository ProvideHitTargetRepository()
+        {
+            return DependencyProvider.GetOrInstanciate(() => new HitTargetRepository());
         }
     }
 }

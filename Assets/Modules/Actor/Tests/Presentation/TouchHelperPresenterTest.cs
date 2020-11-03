@@ -35,12 +35,12 @@ namespace Modules.Actor.Tests.Presentation
 
         private void WhenTouchActionRaised()
         {
-            view.OnSwipeAction += Raise.Event<Action<TouchDirection>>(TouchDirection.Down);
+            view.OnActorInteraction += Raise.Event<Action<ActorInteraction>>(Arg.Any<ActorInteraction>());
         }
 
         private void ThenProcessTouchActionExecuted()
         {
-            processDirectionAction.Received(1).Execute(Arg.Any<TouchDirection>());
+            processDirectionAction.Received(1).Execute(Arg.Any<ActorInteraction>());
         }
     }
 }

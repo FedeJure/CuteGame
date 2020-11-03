@@ -6,6 +6,6 @@ namespace Modules.Actor.Scripts.Presentation
     public interface TouchHelperView
     {
         event Action OnViewEnabled;
-        event Action<TouchDirection> OnSwipeAction;
+        event Action<ActorInteraction> OnActorInteraction;
     }
 }

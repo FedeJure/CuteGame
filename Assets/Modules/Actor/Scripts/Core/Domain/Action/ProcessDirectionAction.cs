@@ -13,9 +13,9 @@ namespace Modules.Actor.Scripts.Core.Domain.Action
             this.eventBus = eventBus;
         }
         
-        public virtual void Execute(TouchDirection direction)
+        public virtual void Execute(ActorInteraction interaction)
         {
-            Debug.LogWarning(direction);
+            Debug.LogWarning(interaction);
         }
     }
 }

@@ -12,14 +12,14 @@ namespace Modules.Actor.Scripts.UnityDelivery
     public class UnityTouchHelperView: MonoBehaviour, TouchHelperView
     {
         public event Action OnViewEnabled = () => { };
-        public event Action<TouchDirection> OnSwipeAction = direction => { };
+        public event Action<ActorInteraction> OnActorInteraction = interaction => { };
 
         private Vector2 fingerDown;
         private Vector2 fingerUp;
-        [SerializeField] GameObject target;
         [SerializeField] Camera camera;
-
-        bool hitTarget;
+        [SerializeField] TouchAction touchAction;
+        
+        HitTargetRepository hitTargetRepository;
         float SWIPE_THRESHOLD = 20f;
 
         private void Awake()
@@ -31,10 +31,12 @@ namespace Modules.Actor.Scripts.UnityDelivery
         private void OnEnable()
         {
             OnViewEnabled();
+            hitTargetRepository = ModuleProvider.ProvideHitTargetRepository();
         }
 
         void Update()
         {
+           
             foreach (Touch touch in Input.touches)
             {
                 switch (touch.phase)
@@ -42,7 +44,6 @@ namespace Modules.Actor.Scripts.UnityDelivery
                     case TouchPhase.Began:
                         fingerUp = touch.position;
                         fingerDown = touch.position;
-                        hitTarget = false;
                         break;
                     case TouchPhase.Moved:
                     {
@@ -52,93 +53,97 @@ namespace Modules.Actor.Scripts.UnityDelivery
                     case TouchPhase.Ended:
                         fingerDown = touch.position;
                         checkSwipe();
-                        hitTarget = false;
+                        hitTargetRepository.ClearHit(GetInstanceID());
                         break;
                 }
             }
         }
 
-        private void CheckRaycasting(Touch touch)
+        void CheckRaycasting(Touch touch)
         {
-            if (hitTarget) return;
+            if (hitTargetRepository.TargetHitted()) return;
             Ray raycast = camera.ScreenPointToRay(touch.position);
             RaycastHit raycastHit;
-            if (Physics.Raycast(raycast, out raycastHit) && raycastHit.transform.gameObject.Equals(target))
+            if (Physics.Raycast(raycast, out raycastHit) && raycastHit.collider.gameObject.GetInstanceID().Equals(gameObject.GetInstanceID()))
             {
-                hitTarget = true;
+                hitTargetRepository.HitTarget(GetInstanceID());
             }
         }
 
         void checkSwipe()
         {
-            if (!hitTarget) return;
-            var isVertical = verticalMove() > SWIPE_THRESHOLD;
-            var isHorizontal = horizontalValMove() > SWIPE_THRESHOLD;
-            var isDiagonal = isVertical && isHorizontal;
+            if (!hitTargetRepository.TargetHitted()) return;
+            var isVertical = VerticalMove() > SWIPE_THRESHOLD && HorizontalValMove() <= SWIPE_THRESHOLD;
+            var isHorizontal = HorizontalValMove() > SWIPE_THRESHOLD &&  VerticalMove() <= SWIPE_THRESHOLD;
+            var isDiagonal = HorizontalValMove() > SWIPE_THRESHOLD && VerticalMove() > SWIPE_THRESHOLD;
             var up = fingerDown.y - fingerUp.y > 0;
             var down = fingerDown.y - fingerUp.y < 0;
             var left = fingerDown.x - fingerUp.x < 0;
             var right = fingerDown.x - fingerUp.x > 0;
-
-            if (isDiagonal && up && left)
+            if (IsDirection(TouchDirection.UpLeft) && isDiagonal && up && left)
             {
-                OnSwipeAction(TouchDirection.UpLeft);
+                OnActorInteraction(touchAction.interactionResult);
                 return;
             }
 
-            if (isDiagonal && up && right)
+            if (IsDirection(TouchDirection.UpRight) && isDiagonal && up && right)
             {
-                OnSwipeAction(TouchDirection.UpRight);
+                OnActorInteraction(touchAction.interactionResult);
                 return;
             }
 
-            if (isDiagonal && down && left)
+            if (IsDirection(TouchDirection.DownLeft) && isDiagonal && down && left)
             {
-                OnSwipeAction(TouchDirection.DownLeft);
+                OnActorInteraction(touchAction.interactionResult);
                 return;
             }
 
-            if (isDiagonal && down && right)
+            if (IsDirection(TouchDirection.DownRight) && isDiagonal && down && right)
             {
-                OnSwipeAction(TouchDirection.DownRight);
+                OnActorInteraction(touchAction.interactionResult);
                 return;
             }
 
-            if (isVertical && up)
+            if (IsDirection(TouchDirection.Up) && !isDiagonal && isVertical && up)
             {
-                OnSwipeAction(TouchDirection.Up);
+                OnActorInteraction(touchAction.interactionResult);
                 return;
             }
 
-            if (isVertical && down)
+            if (IsDirection(TouchDirection.Down) && !isDiagonal && isVertical && down)
             {
-                OnSwipeAction(TouchDirection.Down);
+                OnActorInteraction(touchAction.interactionResult);
                 return;
             }
 
-            if (isHorizontal && right)
+            if (IsDirection(TouchDirection.Right) && !isDiagonal && isHorizontal && right)
             {
-                OnSwipeAction(TouchDirection.Right);
+                OnActorInteraction(touchAction.interactionResult);
                 return;
             }
 
-            if (isHorizontal && left)
+            if (IsDirection(TouchDirection.Left) && !isDiagonal && isHorizontal && left)
             {
-                OnSwipeAction(TouchDirection.Left);
+                OnActorInteraction(touchAction.interactionResult);
                 return;
             }
             
             fingerUp = fingerDown;
         }
 
-        float verticalMove()
+        float VerticalMove()
         {
             return Mathf.Abs(fingerDown.y - fingerUp.y);
         }
 
-        float horizontalValMove()
+        float HorizontalValMove()
         {
             return Mathf.Abs(fingerDown.x - fingerUp.x);
+        }
+
+        bool IsDirection(TouchDirection direction)
+        {
+            return touchAction.workOnDirections.Contains(direction);
         }
     }
 }

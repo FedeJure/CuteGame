@@ -29,12 +29,15 @@
                 <e p="ActorPresenter.cs" t="Include" />
                 <e p="ActorView.cs" t="Include" />
                 <e p="Events" t="Include">
+                  <e p="ActorInteraction.cs" t="Include" />
                   <e p="SwipeAction.cs" t="Include" />
                 </e>
                 <e p="TouchHelperPresenter.cs" t="Include" />
                 <e p="TouchHelperView.cs" t="Include" />
               </e>
               <e p="UnityDelivery" t="Include">
+                <e p="HitTargetRepository.cs" t="Include" />
+                <e p="TouchAction.cs" t="Include" />
                 <e p="UnityActorView.cs" t="Include" />
                 <e p="UnityTouchHelperView.cs" t="Include" />
               </e>
