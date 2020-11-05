@@ -7,8 +7,9 @@ namespace Modules.Actor.Scripts.Presentation
     {
         event Action OnViewEnable;
         event Action OnViewDisable;
-        void ShowCaredFeedback();
         void ShowNotHappyFeedback();
         void ShowHappyFeedback();
+        void ShowRigthCaredFeedback();
+        void ShowLeftCaredFeedback();
     }
 }

@@ -82,49 +82,49 @@ namespace Modules.Actor.Scripts.UnityDelivery
             var right = fingerDown.x - fingerUp.x > 0;
             if (IsDirection(TouchDirection.UpLeft) && isDiagonal && up && left)
             {
-                OnActorInteraction(touchAction.interactionResult);
+                SendInteraction(touchAction.interactionResult);
                 return;
             }
 
             if (IsDirection(TouchDirection.UpRight) && isDiagonal && up && right)
             {
-                OnActorInteraction(touchAction.interactionResult);
+                SendInteraction(touchAction.interactionResult);
                 return;
             }
 
             if (IsDirection(TouchDirection.DownLeft) && isDiagonal && down && left)
             {
-                OnActorInteraction(touchAction.interactionResult);
+                SendInteraction(touchAction.interactionResult);
                 return;
             }
 
             if (IsDirection(TouchDirection.DownRight) && isDiagonal && down && right)
             {
-                OnActorInteraction(touchAction.interactionResult);
+                SendInteraction(touchAction.interactionResult);
                 return;
             }
 
             if (IsDirection(TouchDirection.Up) && !isDiagonal && isVertical && up)
             {
-                OnActorInteraction(touchAction.interactionResult);
+                SendInteraction(touchAction.interactionResult);
                 return;
             }
 
             if (IsDirection(TouchDirection.Down) && !isDiagonal && isVertical && down)
             {
-                OnActorInteraction(touchAction.interactionResult);
+                SendInteraction(touchAction.interactionResult);
                 return;
             }
 
             if (IsDirection(TouchDirection.Right) && !isDiagonal && isHorizontal && right)
             {
-                OnActorInteraction(touchAction.interactionResult);
+                SendInteraction(touchAction.interactionResult);
                 return;
             }
 
             if (IsDirection(TouchDirection.Left) && !isDiagonal && isHorizontal && left)
             {
-                OnActorInteraction(touchAction.interactionResult);
+                SendInteraction(touchAction.interactionResult);
                 return;
             }
             
@@ -144,6 +144,11 @@ namespace Modules.Actor.Scripts.UnityDelivery
         bool IsDirection(TouchDirection direction)
         {
             return touchAction.workOnDirections.Contains(direction);
+        }
+
+        void SendInteraction(ActorInteraction interaction)
+        {
+            OnActorInteraction(interaction);
         }
     }
 }

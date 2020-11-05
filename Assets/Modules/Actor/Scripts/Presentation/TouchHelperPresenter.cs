@@ -6,24 +6,24 @@ namespace Modules.Actor.Scripts.Presentation
     public class TouchHelperPresenter
     {
         readonly TouchHelperView view;
-        readonly ProcessDirectionAction processDirectionAction;
+        readonly ProcessInteraction _processInteraction;
 
-        public TouchHelperPresenter(TouchHelperView view, ProcessDirectionAction processDirectionAction)
+        public TouchHelperPresenter(TouchHelperView view, ProcessInteraction processInteraction)
         {
             this.view = view;
-            this.processDirectionAction = processDirectionAction;
+            this._processInteraction = processInteraction;
 
             this.view.OnViewEnabled += Present;
         }
 
         void Present()
         {
-            view.OnActorInteraction += direction => OnActorInteraction(direction);
+            view.OnActorInteraction += interaction => OnActorInteraction(interaction);
         }
 
         void OnActorInteraction(ActorInteraction interaction)
         {
-            processDirectionAction.Execute(interaction);    
+            _processInteraction.Execute(interaction);    
         }
     }
 }

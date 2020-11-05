@@ -23,9 +23,9 @@ namespace Modules.Actor.Scripts
             new TouchHelperPresenter(view, ProvideProcessDirectionAction());
         }
 
-        private static ProcessDirectionAction ProvideProcessDirectionAction()
+        private static ProcessInteraction ProvideProcessDirectionAction()
         {
-            return DependencyProvider.GetOrInstanciate(() => new ProcessDirectionAction(ProvideEventBus()));
+            return DependencyProvider.GetOrInstanciate(() => new ProcessInteraction(ProvideEventBus()));
         }
 
         public static HitTargetRepository ProvideHitTargetRepository()

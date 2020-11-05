@@ -1,39 +1,39 @@
 ﻿using System;
+using System.Collections.Generic;
+using Modules.Actor.Scripts.Core.Domain.Events;
 using UniRx;
+using UnityEngine;
 
 namespace Modules.Actor.Scripts.Core
 {
     public class EventBus
     {
-        ISubject<Unit> caressSubject = new Subject<Unit>();
-        ISubject<Unit> notHappySubject = new Subject<Unit>();
-        ISubject<Unit> happySubject = new Subject<Unit>();
+        Dictionary<Type, ISubject<Unit>> events = new Dictionary<Type, ISubject<Unit>>();
+
+        public EventBus()
+        {
+            events.Add(typeof(LeftCaressInteractionEvent), new Subject<Unit>());
+            events.Add(typeof(RigthCaressInteractionEvent), new Subject<Unit>());
+            events.Add(typeof(HappyEvent), new Subject<Unit>());
+            events.Add(typeof(NotHappyEvent), new Subject<Unit>());
+        }
+
+        public virtual IObservable<Unit> OnEvent<T>()
+        {
+            CheckEvent<T>();
+            Debug.LogWarning($"subscribe on {typeof(T)}");
+            return events[typeof(T)];
+        }
+
+        public virtual void EmitEvent<T>()
+        {
+            CheckEvent<T>();
+            events[typeof(T)].OnNext(Unit.Default);
+        }
         
-        public EventBus() { }
-
-        public virtual IObservable<Unit> OnCaressEvent()
+        private void CheckEvent<T>()
         {
-            return caressSubject;
-        }
-
-        public virtual void EmitOnCaressEvent()
-        {
-            caressSubject.OnNext(Unit.Default);
-        }
-
-        public virtual IObservable<Unit> OnNotHappyEvent()
-        {
-            return notHappySubject;
-        }
-
-        public virtual void EmitNotHappyEvent()
-        {
-            notHappySubject.OnNext(Unit.Default);
-        }
-
-        public virtual IObservable<Unit> OnHappyEvent()
-        {
-            return happySubject;
+            if (!events.ContainsKey(typeof(T)))  throw new Exception($"Event of type {typeof(T)} not registered on EventBus");
         }
     }
 }

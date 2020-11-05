@@ -9,14 +9,24 @@ namespace Modules.Actor.Scripts.UnityDelivery
         public event Action OnViewEnable = () => { };
         public event Action OnViewDisable = () => { };
 
+        [SerializeField] Animator animator;
+
+        readonly int leftCaredKey = Animator.StringToHash("leftCaress");
+        readonly int rigthCaredKey = Animator.StringToHash("rigthCaress");
+
         private void Awake()
         {
             ModuleProvider.ProvidePresenterFor(this);
         }
 
-        public void ShowCaredFeedback()
+        private void OnEnable()
         {
-            Debug.LogWarning("Show cared Feedback");
+            OnViewEnable();
+        }
+
+        private void OnDisable()
+        {
+            OnViewDisable();
         }
 
         public void ShowNotHappyFeedback()
@@ -27,6 +37,16 @@ namespace Modules.Actor.Scripts.UnityDelivery
         public void ShowHappyFeedback()
         {
             Debug.LogWarning("Show happy Feedback");
+        }
+
+        public void ShowRigthCaredFeedback()
+        {
+            animator.SetTrigger(rigthCaredKey);
+        }
+
+        public void ShowLeftCaredFeedback()
+        {
+            animator.SetTrigger(leftCaredKey);
         }
     }
 }

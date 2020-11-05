@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Modules.Actor.Scripts.Core;
+using Modules.Actor.Scripts.Core.Domain.Events;
 using Modules.Actor.Scripts.Presentation;
 using UniRx;
-using UnityEditor.SceneManagement;
 
 
 public class ActorPresenter
@@ -23,18 +23,23 @@ public class ActorPresenter
 
     void Present()
     {
-        eventBus.OnCaressEvent()
-            .Do(_ => view.ShowCaredFeedback())
+        eventBus.OnEvent<LeftCaressInteractionEvent>()
+            .Do(_ => view.ShowLeftCaredFeedback())
             .Subscribe()
             .AddTo(disposables);
         
-        eventBus.OnNotHappyEvent()
-            .Do(_ => view.ShowNotHappyFeedback())
+        eventBus.OnEvent<RigthCaressInteractionEvent>()
+            .Do(_ => view.ShowRigthCaredFeedback())
             .Subscribe()
             .AddTo(disposables);
         
-        eventBus.OnHappyEvent()
+        eventBus.OnEvent<HappyEvent>()
             .Do(_ => view.ShowHappyFeedback())
+            .Subscribe()
+            .AddTo(disposables);
+        
+        eventBus.OnEvent<NotHappyEvent>()
+            .Do(_ => view.ShowNotHappyFeedback())
             .Subscribe()
             .AddTo(disposables);
     }

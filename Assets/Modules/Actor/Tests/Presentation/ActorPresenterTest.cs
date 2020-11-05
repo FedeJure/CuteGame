@@ -1,5 +1,6 @@
 ﻿using System;
 using Modules.Actor.Scripts.Core;
+using Modules.Actor.Scripts.Core.Domain.Events;
 using Modules.Actor.Scripts.Presentation;
 using NSubstitute;
 using NUnit.Framework;
@@ -12,7 +13,8 @@ namespace Modules.Actor.Tests.Presentation
         private ActorView view;
         private EventBus eventBus;
 
-        private ISubject<Unit> caressEvent = new Subject<Unit>();
+        private ISubject<Unit> leftCaressEvent = new Subject<Unit>();
+        private ISubject<Unit> rigthCaressEvent = new Subject<Unit>();
         private ISubject<Unit> notHappyEvent = new Subject<Unit>();
         private ISubject<Unit> happyEvent = new Subject<Unit>();
         
@@ -22,9 +24,10 @@ namespace Modules.Actor.Tests.Presentation
             view = Substitute.For<ActorView>();
             eventBus = Substitute.For<EventBus>();
 
-            eventBus.OnCaressEvent().Returns(caressEvent);
-            eventBus.OnNotHappyEvent().Returns(notHappyEvent);
-            eventBus.OnHappyEvent().Returns(happyEvent);
+            eventBus.OnEvent<LeftCaressInteractionEvent>().Returns(leftCaressEvent);
+            eventBus.OnEvent<RigthCaressInteractionEvent>().Returns(rigthCaressEvent);
+            eventBus.OnEvent<NotHappyEvent>().Returns(notHappyEvent);
+            eventBus.OnEvent<HappyEvent>().Returns(happyEvent);
             new ActorPresenter(view, eventBus);
         }
 
@@ -37,11 +40,19 @@ namespace Modules.Actor.Tests.Presentation
         }
         
         [Test]
-        public void OnCaressActorEvent()
+        public void OnLeftCaressActorEvent()
         {
             GivenViewIsPresented();
-            WhenCaressEventRaised();
-            ThenCaressFeedbackShowed();
+            WhenLeftCaressEventRaised();
+            ThenLeftCaressFeedbackShowed();
+        }
+        
+        [Test]
+        public void OnRigthCaressActorEvent()
+        {
+            GivenViewIsPresented();
+            WhenRigthCaressEventRaised();
+            ThenRigthCaressFeedbackShowed();
         }
 
         [Test]
@@ -62,15 +73,26 @@ namespace Modules.Actor.Tests.Presentation
             notHappyEvent.OnNext(Unit.Default);
         }
 
-        private void ThenCaressFeedbackShowed()
+        private void ThenLeftCaressFeedbackShowed()
         {
-            view.Received(1).ShowCaredFeedback();
+            view.Received(1).ShowLeftCaredFeedback();
         }
 
-        private void WhenCaressEventRaised()
+        private void WhenLeftCaressEventRaised()
         {
-            caressEvent.OnNext(Unit.Default);
+            leftCaressEvent.OnNext(Unit.Default);
         }
+        
+        private void ThenRigthCaressFeedbackShowed()
+        {
+            view.Received(1).ShowRigthCaredFeedback();
+        }
+
+        private void WhenRigthCaressEventRaised()
+        {
+            rigthCaressEvent.OnNext(Unit.Default);
+        }
+
 
         private void ThenShowNotHappyFeedback()
         {

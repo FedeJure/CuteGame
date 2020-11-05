@@ -10,14 +10,14 @@ namespace Modules.Actor.Tests.Presentation
     public class TouchHelperPresenterTest
     {
         private TouchHelperView view;
-        private ProcessDirectionAction processDirectionAction;
+        private ProcessInteraction _processInteraction;
         [SetUp]
         public void SetUp()
         {
             view = Substitute.For<TouchHelperView>();
-            processDirectionAction = Substitute.For<ProcessDirectionAction>();
+            _processInteraction = Substitute.For<ProcessInteraction>();
             
-            new TouchHelperPresenter(view, processDirectionAction);
+            new TouchHelperPresenter(view, _processInteraction);
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace Modules.Actor.Tests.Presentation
 
         private void ThenProcessTouchActionExecuted()
         {
-            processDirectionAction.Received(1).Execute(Arg.Any<ActorInteraction>());
+            _processInteraction.Received(1).Execute(Arg.Any<ActorInteraction>());
         }
     }
 }

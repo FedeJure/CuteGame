@@ -19,8 +19,16 @@
               <e p="Core" t="Include">
                 <e p="Domain" t="Include">
                   <e p="Action" t="Include">
-                    <e p="ProcessDirectionAction.cs" t="Include" />
+                    <e p="ProcessInteraction.cs" t="Include" />
                   </e>
+                  <e p="Events" t="Include">
+                    <e p="HappyEvent.cs" t="Include" />
+                    <e p="LeftCaressInteractionEvent.cs" t="Include" />
+                    <e p="NotHappyEvent.cs" t="Include" />
+                    <e p="RigthCaressInteractionEvent.cs" t="Include" />
+                  </e>
+                  <e p="InteractionEvent.cs" t="Include" />
+                  <e p="ReactionEvent.cs" t="Include" />
                 </e>
                 <e p="EventBus.cs" t="Include" />
               </e>
