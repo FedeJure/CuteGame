@@ -21,7 +21,6 @@ namespace Modules.Actor.Scripts.Core
         public virtual IObservable<Unit> OnEvent<T>()
         {
             CheckEvent<T>();
-            Debug.LogWarning($"subscribe on {typeof(T)}");
             return events[typeof(T)];
         }
 

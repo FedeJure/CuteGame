@@ -21,6 +21,7 @@
                   <e p="Action" t="Include">
                     <e p="ProcessInteraction.cs" t="Include" />
                   </e>
+                  <e p="ActorState.cs" t="Include" />
                   <e p="Events" t="Include">
                     <e p="HappyEvent.cs" t="Include" />
                     <e p="LeftCaressInteractionEvent.cs" t="Include" />
@@ -29,8 +30,15 @@
                   </e>
                   <e p="InteractionEvent.cs" t="Include" />
                   <e p="ReactionEvent.cs" t="Include" />
+                  <e p="Services" t="Include">
+                    <e p="HumorStateService.cs" t="Include" />
+                  </e>
                 </e>
                 <e p="EventBus.cs" t="Include" />
+              </e>
+              <e p="Infrastructure" t="Include">
+                <e p="ActorStateRepository.cs" t="Include" />
+                <e p="InMemoryStateRepository.cs" t="Include" />
               </e>
               <e p="ModuleProvider.cs" t="Include" />
               <e p="Presentation" t="Include">

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Modules.Actor.Scripts.Presentation;
 using Modules.Actor.Scripts.Presentation.Events;
+using UniRx;
 using UnityEngine;
 #if UNITY_EDITOR
 using Input = InputWrapper.Input;
@@ -16,11 +18,12 @@ namespace Modules.Actor.Scripts.UnityDelivery
 
         private Vector2 fingerDown;
         private Vector2 fingerUp;
+        private bool canProcess;
         [SerializeField] Camera camera;
-        [SerializeField] TouchAction touchAction;
+        [SerializeField] List<TouchAction> touchAction;
         
         HitTargetRepository hitTargetRepository;
-        float SWIPE_THRESHOLD = 20f;
+        float SWIPE_THRESHOLD = 10f;
 
         private void Awake()
         {
@@ -32,6 +35,7 @@ namespace Modules.Actor.Scripts.UnityDelivery
         {
             OnViewEnabled();
             hitTargetRepository = ModuleProvider.ProvideHitTargetRepository();
+            canProcess = true;
         }
 
         void Update()
@@ -44,10 +48,13 @@ namespace Modules.Actor.Scripts.UnityDelivery
                     case TouchPhase.Began:
                         fingerUp = touch.position;
                         fingerDown = touch.position;
+                        canProcess = true;
                         break;
                     case TouchPhase.Moved:
                     {
                         CheckRaycasting(touch);
+                        checkSwipe();
+                        fingerDown = touch.position;
                         break;
                     }
                     case TouchPhase.Ended:
@@ -72,7 +79,7 @@ namespace Modules.Actor.Scripts.UnityDelivery
 
         void checkSwipe()
         {
-            if (!hitTargetRepository.TargetHitted()) return;
+            if (!hitTargetRepository.ImOwner(GetInstanceID()) || !canProcess) return;
             var isVertical = VerticalMove() > SWIPE_THRESHOLD && HorizontalValMove() <= SWIPE_THRESHOLD;
             var isHorizontal = HorizontalValMove() > SWIPE_THRESHOLD &&  VerticalMove() <= SWIPE_THRESHOLD;
             var isDiagonal = HorizontalValMove() > SWIPE_THRESHOLD && VerticalMove() > SWIPE_THRESHOLD;
@@ -80,51 +87,53 @@ namespace Modules.Actor.Scripts.UnityDelivery
             var down = fingerDown.y - fingerUp.y < 0;
             var left = fingerDown.x - fingerUp.x < 0;
             var right = fingerDown.x - fingerUp.x > 0;
+            
+            // Debug.LogWarning($"isVertical: {isVertical}, isHorizontal:{isHorizontal}, isDiagonal:{isDiagonal}, up:{up}, down:{down}, left:{left}, rigth:{right}");
             if (IsDirection(TouchDirection.UpLeft) && isDiagonal && up && left)
             {
-                SendInteraction(touchAction.interactionResult);
+                SendInteraction(GetAction(TouchDirection.UpLeft));
                 return;
             }
 
             if (IsDirection(TouchDirection.UpRight) && isDiagonal && up && right)
             {
-                SendInteraction(touchAction.interactionResult);
+                SendInteraction(GetAction(TouchDirection.UpRight));
                 return;
             }
 
             if (IsDirection(TouchDirection.DownLeft) && isDiagonal && down && left)
             {
-                SendInteraction(touchAction.interactionResult);
+                SendInteraction(GetAction(TouchDirection.DownLeft));
                 return;
             }
 
             if (IsDirection(TouchDirection.DownRight) && isDiagonal && down && right)
             {
-                SendInteraction(touchAction.interactionResult);
+                SendInteraction(GetAction(TouchDirection.DownRight));
                 return;
             }
 
             if (IsDirection(TouchDirection.Up) && !isDiagonal && isVertical && up)
             {
-                SendInteraction(touchAction.interactionResult);
+                SendInteraction(GetAction(TouchDirection.Up));
                 return;
             }
 
             if (IsDirection(TouchDirection.Down) && !isDiagonal && isVertical && down)
             {
-                SendInteraction(touchAction.interactionResult);
+                SendInteraction(GetAction(TouchDirection.Down));
                 return;
             }
 
             if (IsDirection(TouchDirection.Right) && !isDiagonal && isHorizontal && right)
             {
-                SendInteraction(touchAction.interactionResult);
+                SendInteraction(GetAction(TouchDirection.Right));
                 return;
             }
 
             if (IsDirection(TouchDirection.Left) && !isDiagonal && isHorizontal && left)
             {
-                SendInteraction(touchAction.interactionResult);
+                SendInteraction(GetAction(TouchDirection.Left));
                 return;
             }
             
@@ -143,12 +152,18 @@ namespace Modules.Actor.Scripts.UnityDelivery
 
         bool IsDirection(TouchDirection direction)
         {
-            return touchAction.workOnDirections.Contains(direction);
+            return touchAction.Exists(action => action.workOnDirections.Contains(direction));
+        }
+        
+        ActorInteraction GetAction(TouchDirection direction)
+        {
+            return touchAction.Find(action => action.workOnDirections.Contains(direction)).interactionResult;
         }
 
         void SendInteraction(ActorInteraction interaction)
         {
             OnActorInteraction(interaction);
+            canProcess = false;
         }
     }
 }

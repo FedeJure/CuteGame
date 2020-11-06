@@ -9,6 +9,10 @@
             return targetHitted;
         }
 
+        public bool ImOwner(int ownerId)
+        {
+            return ownerId == this.ownerId;
+        }
         public void HitTarget(int ownerId)
         {
             if (this.ownerId != 0) return;

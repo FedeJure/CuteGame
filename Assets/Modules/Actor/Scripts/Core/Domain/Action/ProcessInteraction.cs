@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Modules.Actor.Scripts.Core.Domain.Events;
+using Modules.Actor.Scripts.Core.Domain.Services;
+using Modules.Actor.Scripts.Infrastructure;
 using Modules.Actor.Scripts.Presentation.Events;
 
 namespace Modules.Actor.Scripts.Core.Domain.Action
@@ -9,12 +11,18 @@ namespace Modules.Actor.Scripts.Core.Domain.Action
     public class ProcessInteraction
     {
         readonly EventBus eventBus;
+        private readonly ActorStateRepository actorStateRepository;
+        private readonly HumorStateService humorStateService;
         readonly Dictionary<ActorInteraction, SimpleAction> eventMapper = new Dictionary<ActorInteraction, SimpleAction>();
 
         public ProcessInteraction() { }
-        public ProcessInteraction(EventBus eventBus)
+        public ProcessInteraction(EventBus eventBus,
+                                ActorStateRepository actorStateRepository,
+                                HumorStateService humorStateService)
         {
             this.eventBus = eventBus;
+            this.actorStateRepository = actorStateRepository;
+            this.humorStateService = humorStateService;
 
             eventMapper[ActorInteraction.LeftCaress] = eventBus.EmitEvent<LeftCaressInteractionEvent>;
             eventMapper[ActorInteraction.RigthCaress] = eventBus.EmitEvent<RigthCaressInteractionEvent>;
@@ -23,8 +31,14 @@ namespace Modules.Actor.Scripts.Core.Domain.Action
         
         public virtual void Execute(ActorInteraction interaction)
         {
+            UpdateState(interaction);
             if (!eventMapper.ContainsKey(interaction)) return;
             eventMapper[interaction].Invoke();
+        }
+
+        private void UpdateState(ActorInteraction interaction)
+        {
+            
         }
     }
 }
