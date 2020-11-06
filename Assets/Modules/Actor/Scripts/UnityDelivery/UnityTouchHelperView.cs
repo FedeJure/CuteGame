@@ -23,7 +23,7 @@ namespace Modules.Actor.Scripts.UnityDelivery
         [SerializeField] List<TouchAction> touchAction;
         
         HitTargetRepository hitTargetRepository;
-        float SWIPE_THRESHOLD = 10f;
+        float SWIPE_THRESHOLD = 5f;
 
         private void Awake()
         {

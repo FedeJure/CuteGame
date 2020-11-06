@@ -1,8 +1,8 @@
 ﻿using Modules.Actor.Scripts.Core;
 using Modules.Actor.Scripts.Presentation;
 using DependencyProviderNamespace;
+using Modules.Actor.Scripts.Core.Domain;
 using Modules.Actor.Scripts.Core.Domain.Action;
-using Modules.Actor.Scripts.Core.Domain.Services;
 using Modules.Actor.Scripts.Infrastructure;
 using Modules.Actor.Scripts.UnityDelivery;
 
@@ -27,17 +27,17 @@ namespace Modules.Actor.Scripts
 
         private static ProcessInteraction ProvideProcessDirectionAction()
         {
-            return DependencyProvider.GetOrInstanciate(() => new ProcessInteraction(ProvideEventBus(), ProvideActorStateRepository(), ProvideHumorStateService()));
+            return DependencyProvider.GetOrInstanciate(() => new ProcessInteraction(ProvideEventBus(), ProvideHumorStateRepository(), ProvideHumorStateService()));
         }
 
         private static HumorStateService ProvideHumorStateService()
         {
-            return DependencyProvider.GetOrInstanciate(() => new HumorStateService());
+            return DependencyProvider.GetOrInstanciate(() => new HumorStateService(ProvideHumorStateRepository()));
         }
 
-        private static ActorStateRepository ProvideActorStateRepository()
+        private static HumorStateRepository ProvideHumorStateRepository()
         {
-            return DependencyProvider.GetOrInstanciate(() => new InMemoryStateRepository());
+            return DependencyProvider.GetOrInstanciate(() => new InMemoryHumorStateRepository());
         }
 
         public static HitTargetRepository ProvideHitTargetRepository()

@@ -16,6 +16,7 @@ namespace Modules.Actor.Scripts.Core
             events.Add(typeof(RigthCaressInteractionEvent), new Subject<Unit>());
             events.Add(typeof(HappyEvent), new Subject<Unit>());
             events.Add(typeof(NotHappyEvent), new Subject<Unit>());
+            events.Add(typeof(HumorChangesEvent), new Subject<Unit>());
         }
 
         public virtual IObservable<Unit> OnEvent<T>()

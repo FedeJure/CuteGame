@@ -2,9 +2,9 @@
 
 namespace Modules.Actor.Scripts.Infrastructure
 {
-    public interface ActorStateRepository
+    public interface HumorStateRepository
     {
-        void Save(ActorState state);
-        ActorState Get();
+        void Save(HumorState state);
+        HumorState Get();
     }
 }

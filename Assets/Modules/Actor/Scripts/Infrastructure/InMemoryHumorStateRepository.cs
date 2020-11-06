@@ -2,15 +2,15 @@
 
 namespace Modules.Actor.Scripts.Infrastructure
 {
-    public class InMemoryStateRepository: ActorStateRepository
+    public class InMemoryHumorStateRepository: HumorStateRepository
     {
-        ActorState state;
-        public void Save(ActorState state)
+        HumorState state;
+        public void Save(HumorState state)
         {
             this.state = state;
         }
 
-        public  ActorState Get()
+        public HumorState Get()
         {
             return state;
         }

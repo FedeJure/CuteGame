@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Modules.Actor.Scripts.Core.Domain.Events;
-using Modules.Actor.Scripts.Core.Domain.Services;
 using Modules.Actor.Scripts.Infrastructure;
 using Modules.Actor.Scripts.Presentation.Events;
 
@@ -11,17 +11,17 @@ namespace Modules.Actor.Scripts.Core.Domain.Action
     public class ProcessInteraction
     {
         readonly EventBus eventBus;
-        private readonly ActorStateRepository actorStateRepository;
+        private readonly HumorStateRepository humorStateRepository;
         private readonly HumorStateService humorStateService;
         readonly Dictionary<ActorInteraction, SimpleAction> eventMapper = new Dictionary<ActorInteraction, SimpleAction>();
 
         public ProcessInteraction() { }
         public ProcessInteraction(EventBus eventBus,
-                                ActorStateRepository actorStateRepository,
+                                HumorStateRepository humorStateRepository,
                                 HumorStateService humorStateService)
         {
             this.eventBus = eventBus;
-            this.actorStateRepository = actorStateRepository;
+            this.humorStateRepository = humorStateRepository;
             this.humorStateService = humorStateService;
 
             eventMapper[ActorInteraction.LeftCaress] = eventBus.EmitEvent<LeftCaressInteractionEvent>;
@@ -38,6 +38,19 @@ namespace Modules.Actor.Scripts.Core.Domain.Action
 
         private void UpdateState(ActorInteraction interaction)
         {
+            var nextHumor = humorStateService.ReceiveInteraction(interaction);
+            humorStateRepository.Save(nextHumor);
+            
+            eventBus.EmitEvent<HumorChangesEvent>();
+
+            if (nextHumor.lastHumorChange > 0)
+            {
+                eventBus.EmitEvent<HappyEvent>();
+            }
+            else
+            {
+                eventBus.EmitEvent<NotHappyEvent>();
+            }
             
         }
     }
