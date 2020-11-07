@@ -11,5 +11,8 @@ namespace Modules.Actor.Scripts.Presentation
         void ShowHappyFeedback();
         void ShowRigthCaredFeedback();
         void ShowLeftCaredFeedback();
+        void ShowNormalIdle();
+        void ShowHappyIdle();
+        void ShowNotHappyIdle();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Modules.Actor.Scripts.Core;
+using Modules.Actor.Scripts.Core.Domain.Action;
 using Modules.Actor.Scripts.Core.Domain.Events;
 using Modules.Actor.Scripts.Presentation;
 using NSubstitute;
@@ -12,23 +13,25 @@ namespace Modules.Actor.Tests.Presentation
     {
         private ActorView view;
         private EventBus eventBus;
+        private RetrieveActorHumor retrieveActorHumor;
 
         private ISubject<Unit> leftCaressEvent = new Subject<Unit>();
         private ISubject<Unit> rigthCaressEvent = new Subject<Unit>();
         private ISubject<Unit> notHappyEvent = new Subject<Unit>();
         private ISubject<Unit> happyEvent = new Subject<Unit>();
-        
+
         [SetUp]
         public void SetUp()
         {
             view = Substitute.For<ActorView>();
             eventBus = Substitute.For<EventBus>();
+            retrieveActorHumor = Substitute.For<RetrieveActorHumor>();
 
             eventBus.OnEvent<LeftCaressInteractionEvent>().Returns(leftCaressEvent);
             eventBus.OnEvent<RigthCaressInteractionEvent>().Returns(rigthCaressEvent);
             eventBus.OnEvent<NotHappyEvent>().Returns(notHappyEvent);
             eventBus.OnEvent<HappyEvent>().Returns(happyEvent);
-            new ActorPresenter(view, eventBus);
+            new ActorPresenter(view, eventBus, retrieveActorHumor);
         }
 
         [Test]

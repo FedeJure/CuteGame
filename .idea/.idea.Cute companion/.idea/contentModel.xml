@@ -20,6 +20,7 @@
                 <e p="Domain" t="Include">
                   <e p="Action" t="Include">
                     <e p="ProcessInteraction.cs" t="Include" />
+                    <e p="RetrieveActorHumor.cs" t="Include" />
                   </e>
                   <e p="Events" t="Include">
                     <e p="HappyEvent.cs" t="Include" />

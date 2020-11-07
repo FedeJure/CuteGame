@@ -24,7 +24,7 @@ namespace Modules.Actor.Tests.Core.Domain.Action
             humorStateRepository = Substitute.For<HumorStateRepository>();
             humorStateService = Substitute.For<HumorStateService>();
 
-            humorStateRepository.Get().Returns(new HumorState(50, 0));
+            humorStateRepository.Get().Returns(new HumorState(50, 0, Humor.Normal));
             action = new ProcessInteraction(eventBus, humorStateRepository, humorStateService);
         }
         
@@ -75,7 +75,7 @@ namespace Modules.Actor.Tests.Core.Domain.Action
 
         private void GivenInteractionNoChangeHumor()
         {
-            humorStateService.ReceiveInteraction(Arg.Any<ActorInteraction>()).Returns(new HumorState(100, 0));
+            humorStateService.ReceiveInteraction(Arg.Any<ActorInteraction>()).Returns(new HumorState(100, 0, Humor.Normal));
         }
 
         private void ThenNoEventEmited()
@@ -85,7 +85,7 @@ namespace Modules.Actor.Tests.Core.Domain.Action
 
         private void GivenInteractionDecreaseHumor()
         {
-            humorStateService.ReceiveInteraction(Arg.Any<ActorInteraction>()).Returns(new HumorState(100, -1));
+            humorStateService.ReceiveInteraction(Arg.Any<ActorInteraction>()).Returns(new HumorState(100, -1, Humor.Normal));
         }
 
         private void ThenNotHappyEventEmited()
@@ -95,7 +95,7 @@ namespace Modules.Actor.Tests.Core.Domain.Action
 
         private void GivenInteractionIncreaseHumor()
         {
-            humorStateService.ReceiveInteraction(Arg.Any<ActorInteraction>()).Returns(new HumorState(100, 1));
+            humorStateService.ReceiveInteraction(Arg.Any<ActorInteraction>()).Returns(new HumorState(100, 1, Humor.Normal));
         }
 
         private void WhenActionCalled()

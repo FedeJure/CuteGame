@@ -12,7 +12,12 @@ namespace Modules.Actor.Scripts
     {
         public static void ProvidePresenterFor(ActorView view)
         {
-            new ActorPresenter(view, ProvideEventBus());
+            new ActorPresenter(view, ProvideEventBus(), ProvideRetrieveHumorAction());
+        }
+
+        private static RetrieveActorHumor ProvideRetrieveHumorAction()
+        {
+            return DependencyProvider.GetOrInstanciate(() => new RetrieveActorHumor(ProvideHumorStateRepository()));
         }
 
         private static EventBus ProvideEventBus()
