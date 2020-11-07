@@ -13,6 +13,8 @@ namespace Modules.Actor.Scripts.UnityDelivery
 
         readonly int leftCaredKey = Animator.StringToHash("leftCaress");
         readonly int rigthCaredKey = Animator.StringToHash("rigthCaress");
+        readonly int happyKey = Animator.StringToHash("happy");
+        readonly int notHappyKey = Animator.StringToHash("notHappy");
 
         private void Awake()
         {
@@ -31,12 +33,12 @@ namespace Modules.Actor.Scripts.UnityDelivery
 
         public void ShowNotHappyFeedback()
         {
-            Debug.LogWarning("Show not happy Feedback");
+            animator.SetTrigger(notHappyKey);
         }
 
         public void ShowHappyFeedback()
         {
-            Debug.LogWarning("Show happy Feedback");
+            animator.SetTrigger(happyKey);
         }
 
         public void ShowRigthCaredFeedback()
