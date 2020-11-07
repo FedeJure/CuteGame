@@ -5,12 +5,12 @@ namespace Modules.Actor.Scripts.Infrastructure
     public class InMemoryHumorStateRepository: HumorStateRepository
     {
         HumorState state;
-        public void Save(HumorState state)
+        public virtual void Save(HumorState state)
         {
             this.state = state;
         }
 
-        public HumorState Get()
+        public virtual HumorState Get()
         {
             return state;
         }

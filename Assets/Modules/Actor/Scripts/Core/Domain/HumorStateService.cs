@@ -13,6 +13,8 @@ namespace Modules.Actor.Scripts.Core.Domain
         private int currentHumor;
         private ImmutableList<List<HumorTransitionConfig>> humorTransitionConfig;
         private int currentHumorIndex = 0;
+        
+        public HumorStateService() { }
         public HumorStateService(HumorStateRepository humorRepository)
         {
             this.humorRepository = humorRepository;
@@ -51,7 +53,7 @@ namespace Modules.Actor.Scripts.Core.Domain
 
             });
         }
-        public HumorState ReceiveInteraction(ActorInteraction interaction)
+        public virtual HumorState ReceiveInteraction(ActorInteraction interaction)
         {
             var savedHumor = humorRepository.Get();
             var nextTransitions = GetNextTransition(interaction);

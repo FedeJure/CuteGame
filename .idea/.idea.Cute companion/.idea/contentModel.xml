@@ -57,6 +57,13 @@
               </e>
             </e>
             <e p="Tests" t="Include">
+              <e p="Core" t="Include">
+                <e p="Domain" t="Include">
+                  <e p="Action" t="Include">
+                    <e p="ProcessInteractionTest.cs" t="Include" />
+                  </e>
+                </e>
+              </e>
               <e p="Presentation" t="Include">
                 <e p="ActorPresenterTest.cs" t="Include" />
                 <e p="TouchHelperPresenterTest.cs" t="Include" />
