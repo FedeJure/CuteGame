@@ -27,6 +27,14 @@ namespace Modules.Actor.Tests.Core.Domain.Action
             humorStateRepository.Get().Returns(new HumorState(50, 0));
             action = new ProcessInteraction(eventBus, humorStateRepository, humorStateService);
         }
+        
+        [Test]
+        public void save_new_state()
+        {
+            GivenInteractionDecreaseHumor();
+            WhenActionCalled();
+            ThenNewStateSaved();
+        }
 
         [Test]
         public void emit_happy_on_increase_humor()
@@ -35,7 +43,7 @@ namespace Modules.Actor.Tests.Core.Domain.Action
             WhenActionCalled();
             ThenHappyEventEmited();
         }
-        
+
         [Test]
         public void emit_not_happy_on_increase_humor()
         {
@@ -50,6 +58,19 @@ namespace Modules.Actor.Tests.Core.Domain.Action
             GivenInteractionNoChangeHumor();
             WhenActionCalled();
             ThenNoEventEmited();   
+        }
+        
+        [Test]
+        public void emit_humor_changes_event_on_humor_changes()
+        {
+            GivenInteractionDecreaseHumor();
+            WhenActionCalled();
+            ThenHumorChangesEventEmited();   
+        }
+
+        private void ThenHumorChangesEventEmited()
+        {
+            eventBus.Received(1).EmitEvent<HumorChangesEvent>();
         }
 
         private void GivenInteractionNoChangeHumor()
@@ -85,6 +106,11 @@ namespace Modules.Actor.Tests.Core.Domain.Action
         private void ThenHappyEventEmited()
         {
             eventBus.Received(1).EmitEvent<HappyEvent>();
+        }
+
+        private void ThenNewStateSaved()
+        {
+            humorStateRepository.Received(1).Save(Arg.Any<HumorState>());
         }
     }
 }

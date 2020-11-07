@@ -41,6 +41,7 @@ namespace Modules.Actor.Scripts.Core.Domain.Action
             var nextHumor = humorStateService.ReceiveInteraction(interaction);
             humorStateRepository.Save(nextHumor);
             
+            if (nextHumor.lastHumorChange == 0) return;
             eventBus.EmitEvent<HumorChangesEvent>();
 
             if (nextHumor.lastHumorChange > 0)
