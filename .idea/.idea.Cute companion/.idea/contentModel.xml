@@ -7,12 +7,6 @@
       <e p="ActorASM.csproj" t="IncludeRecursive" />
       <e p="ActorASMTest.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="DependencyProvider" t="Include">
-          <e p="DependencyProvider.cs" t="Include" />
-        </e>
-        <e p="InputWrapper" t="Include">
-          <e p="InputWrapper.cs" t="Include" />
-        </e>
         <e p="Modules" t="Include">
           <e p="Actor" t="Include">
             <e p="Scripts" t="Include">
@@ -74,12 +68,18 @@
               </e>
             </e>
           </e>
+          <e p="DependencyProvider" t="Include">
+            <e p="DependencyProvider.cs" t="Include" />
+          </e>
           <e p="Donut" t="Include">
             <e p="UnityDelivery" t="Include">
               <e p="UnityDonutDestructor.cs" t="Include" />
               <e p="UnityDonutGenerator.cs" t="Include" />
               <e p="UnityDonutView.cs" t="Include" />
             </e>
+          </e>
+          <e p="InputWrapper" t="Include">
+            <e p="InputWrapper.cs" t="Include" />
           </e>
         </e>
         <e p="Plugins" t="Include">

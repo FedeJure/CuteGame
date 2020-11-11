@@ -11,7 +11,7 @@ namespace Modules.Actor.Scripts.Core.Domain.Action
         {
             this.humorStateRepository = humorStateRepository;
         }
-        public HumorState Execute()
+        public virtual HumorState Execute()
         {
             return humorStateRepository.Get();
         }

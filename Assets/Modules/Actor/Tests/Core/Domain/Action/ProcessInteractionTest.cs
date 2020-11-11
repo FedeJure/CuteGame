@@ -80,7 +80,7 @@ namespace Modules.Actor.Tests.Core.Domain.Action
 
         private void ThenNoEventEmited()
         {
-            eventBus.Received(0).EmitEvent<Object>();
+            eventBus.Received(0).EmitEvent<HumorChangesEvent>();
         }
 
         private void GivenInteractionDecreaseHumor()

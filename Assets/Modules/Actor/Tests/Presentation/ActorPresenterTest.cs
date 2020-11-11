@@ -1,5 +1,6 @@
 ﻿using System;
 using Modules.Actor.Scripts.Core;
+using Modules.Actor.Scripts.Core.Domain;
 using Modules.Actor.Scripts.Core.Domain.Action;
 using Modules.Actor.Scripts.Core.Domain.Events;
 using Modules.Actor.Scripts.Presentation;
@@ -27,6 +28,7 @@ namespace Modules.Actor.Tests.Presentation
             eventBus = Substitute.For<EventBus>();
             retrieveActorHumor = Substitute.For<RetrieveActorHumor>();
 
+            retrieveActorHumor.Execute().Returns(new HumorState(50, 1, Humor.Happy));
             eventBus.OnEvent<LeftCaressInteractionEvent>().Returns(leftCaressEvent);
             eventBus.OnEvent<RigthCaressInteractionEvent>().Returns(rigthCaressEvent);
             eventBus.OnEvent<NotHappyEvent>().Returns(notHappyEvent);
