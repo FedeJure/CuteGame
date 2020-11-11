@@ -6,9 +6,13 @@
     <e p="F:\Users\Fede\Documents\Proyectos\Proyectos Unity 3d\Cute companion" t="IncludeRecursive">
       <e p="ActorASM.csproj" t="IncludeRecursive" />
       <e p="ActorASMTest.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="DependencyProvider" t="Include">
           <e p="DependencyProvider.cs" t="Include" />
+        </e>
+        <e p="Fantasy Skybox FREE" t="Include">
+          <e p="Readme.txt" t="Include" />
         </e>
         <e p="InputWrapper" t="Include">
           <e p="InputWrapper.cs" t="Include" />
@@ -69,6 +73,11 @@
                 <e p="ActorPresenterTest.cs" t="Include" />
                 <e p="TouchHelperPresenterTest.cs" t="Include" />
               </e>
+            </e>
+          </e>
+          <e p="Camera" t="Include">
+            <e p="UnityDelivery" t="Include">
+              <e p="UnityCameraView.cs" t="Include" />
             </e>
           </e>
           <e p="Donut" t="Include">
