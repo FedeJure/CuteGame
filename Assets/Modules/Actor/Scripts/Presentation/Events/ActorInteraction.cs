@@ -2,7 +2,8 @@
 {
     public enum ActorInteraction
     {
-        Tickle, //Cosquillas
+        LeftTickle, //Cosquillas
+        RigthTickle, //Cosquillas
         LeftCaress, //Caricia
         RigthCaress, //Caricia
         Joke, //Broma / Molestia

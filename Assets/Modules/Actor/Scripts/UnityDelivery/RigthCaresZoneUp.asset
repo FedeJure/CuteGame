@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RigthCaresZoneUp
   m_EditorClassIdentifier: 
   workOnDirections: 0100000002000000
-  interactionResult: 1
+  interactionResult: 2

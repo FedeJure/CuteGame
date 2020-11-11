@@ -29,21 +29,32 @@ namespace Modules.Actor.Scripts.Core.Domain
                 {
                     new HumorTransitionConfig(ActorInteraction.LeftCaress, 1),
                     new HumorTransitionConfig(ActorInteraction.RigthCaress, -1),
+                    new HumorTransitionConfig(ActorInteraction.Consent, -1),
+                    new HumorTransitionConfig(ActorInteraction.RigthTickle, 1),
+                    new HumorTransitionConfig(ActorInteraction.LeftTickle, 1),
                 }),
                 new List<HumorTransitionConfig>(new []
                 {
                     new HumorTransitionConfig(ActorInteraction.LeftCaress, -1),
                     new HumorTransitionConfig(ActorInteraction.RigthCaress, 1),
+                    new HumorTransitionConfig(ActorInteraction.Consent, 1),
+                    new HumorTransitionConfig(ActorInteraction.RigthTickle, -1),
+                    new HumorTransitionConfig(ActorInteraction.LeftTickle, -1),
                 }),
                 new List<HumorTransitionConfig>(new []
                 {
                     new HumorTransitionConfig(ActorInteraction.LeftCaress, 1),
                     new HumorTransitionConfig(ActorInteraction.RigthCaress, -1),
+                    new HumorTransitionConfig(ActorInteraction.Consent, -1),
+                    new HumorTransitionConfig(ActorInteraction.RigthTickle, 1),
+                    new HumorTransitionConfig(ActorInteraction.LeftTickle, 1),
                 }),
                 new List<HumorTransitionConfig>(new []
                 {
                     new HumorTransitionConfig(ActorInteraction.LeftCaress, -1),
                     new HumorTransitionConfig(ActorInteraction.RigthCaress, 1),
+                    new HumorTransitionConfig(ActorInteraction.Consent, -1),
+                    new HumorTransitionConfig(ActorInteraction.RigthTickle, 1),
                 }),
                 new List<HumorTransitionConfig>(new []
                 {

@@ -51,6 +51,21 @@ public class ActorPresenter
             .Do(_ => HandleHumorChange())
             .Subscribe()
             .AddTo(disposables);
+        
+        eventBus.OnEvent<LeftTickleInteractionEvent>()
+            .Do(_ => view.ShowLeftTickleFeedback())
+            .Subscribe()
+            .AddTo(disposables);
+        
+        eventBus.OnEvent<RightTickleInteractionEvent>()
+            .Do(_ => view.ShowRightTickleFeedback())
+            .Subscribe()
+            .AddTo(disposables);
+        
+        eventBus.OnEvent<MiddleConsentEvent>()
+            .Do(_ => view.ShowMiddleConsentEvent())
+            .Subscribe()
+            .AddTo(disposables);
     }
 
     private void HandleHumorChange()

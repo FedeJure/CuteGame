@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MiddleConsentZone
   m_EditorClassIdentifier: 
   workOnDirections: 0000000001000000
-  interactionResult: 3
+  interactionResult: 5

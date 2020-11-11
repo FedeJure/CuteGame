@@ -26,7 +26,9 @@ namespace Modules.Actor.Scripts.Core.Domain.Action
 
             eventMapper[ActorInteraction.LeftCaress] = eventBus.EmitEvent<LeftCaressInteractionEvent>;
             eventMapper[ActorInteraction.RigthCaress] = eventBus.EmitEvent<RigthCaressInteractionEvent>;
-            
+            eventMapper[ActorInteraction.LeftTickle] = eventBus.EmitEvent<LeftTickleInteractionEvent>;
+            eventMapper[ActorInteraction.RigthTickle] = eventBus.EmitEvent<RightTickleInteractionEvent>;
+            eventMapper[ActorInteraction.Consent] = eventBus.EmitEvent<MiddleConsentEvent>;
         }
         
         public virtual void Execute(ActorInteraction interaction)

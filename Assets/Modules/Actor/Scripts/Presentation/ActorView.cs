@@ -14,5 +14,8 @@ namespace Modules.Actor.Scripts.Presentation
         void ShowNormalIdle();
         void ShowHappyIdle();
         void ShowNotHappyIdle();
+        void ShowLeftTickleFeedback();
+        void ShowRightTickleFeedback();
+        void ShowMiddleConsentEvent();
     }
 }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: LeftCaressZoneUp
   m_EditorClassIdentifier: 
   workOnDirections: 0300000001000000
-  interactionResult: 2
+  interactionResult: 3

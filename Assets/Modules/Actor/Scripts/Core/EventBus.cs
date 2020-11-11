@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Modules.Actor.Scripts.Core.Domain.Events;
 using UniRx;
-using UnityEngine;
 
 namespace Modules.Actor.Scripts.Core
 {
@@ -14,6 +13,9 @@ namespace Modules.Actor.Scripts.Core
         {
             events.Add(typeof(LeftCaressInteractionEvent), new Subject<Unit>());
             events.Add(typeof(RigthCaressInteractionEvent), new Subject<Unit>());
+            events.Add(typeof(LeftTickleInteractionEvent), new Subject<Unit>());
+            events.Add(typeof(RightTickleInteractionEvent), new Subject<Unit>());
+            events.Add(typeof(MiddleConsentEvent), new Subject<Unit>());
             events.Add(typeof(HappyEvent), new Subject<Unit>());
             events.Add(typeof(NotHappyEvent), new Subject<Unit>());
             events.Add(typeof(HumorChangesEvent), new Subject<Unit>());

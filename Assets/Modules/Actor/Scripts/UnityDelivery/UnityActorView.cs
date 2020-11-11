@@ -18,6 +18,9 @@ namespace Modules.Actor.Scripts.UnityDelivery
         readonly int normalHumorKey = Animator.StringToHash("normalHumor");
         readonly int notHappyHumorKey = Animator.StringToHash("notHappyHumor");
         readonly int happyHumorKey = Animator.StringToHash("happyHumor");
+        readonly int leftTickleKey = Animator.StringToHash("leftTickle");
+        readonly int rightTickleKey = Animator.StringToHash("rightTickle");
+        readonly int middleConsentKey = Animator.StringToHash("middleConsent");
 
         private void Awake()
         {
@@ -68,6 +71,21 @@ namespace Modules.Actor.Scripts.UnityDelivery
         {
             animator.SetTrigger(notHappyHumorKey);
 
+        }
+
+        public void ShowLeftTickleFeedback()
+        {
+            animator.SetTrigger(leftTickleKey);
+        }
+
+        public void ShowRightTickleFeedback()
+        {
+            animator.SetTrigger(rightTickleKey);
+        }
+
+        public void ShowMiddleConsentEvent()
+        {
+            animator.SetTrigger(middleConsentKey);
         }
     }
 }

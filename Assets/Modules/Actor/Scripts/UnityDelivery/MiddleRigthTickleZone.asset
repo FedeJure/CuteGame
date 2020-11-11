@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ac495ec23804a84a65d4f666ddd54aa, type: 3}
-  m_Name: LeftCaressZoneDown
+  m_Name: MiddleRigthTickleZone
   m_EditorClassIdentifier: 
-  workOnDirections: 0000000004000000
-  interactionResult: 2
+  workOnDirections: 0000000001000000
+  interactionResult: 1
