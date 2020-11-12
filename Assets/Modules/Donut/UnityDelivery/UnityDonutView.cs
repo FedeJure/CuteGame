@@ -5,32 +5,40 @@ using Random = UnityEngine.Random;
 
 public class UnityDonutView : MonoBehaviour
 {
+    public ISubject<Unit> OnDonutRecicle = new Subject<Unit>(); 
     [SerializeField] private Transform transform;
 
     private Vector3 rotationAxis;
-    private float minfallVelocity = 10;
-    private float minRotationVelocity = 50;
-    private float maxfallVelocity = 50;
-    private float maxRotationVelocity = 100;
+    [SerializeField]private float minfallVelocity = 10;
+    [SerializeField]private float minRotationVelocity = 50;
+    [SerializeField]private float maxfallVelocity = 50;
+    [SerializeField]private float maxRotationVelocity = 100;
 
     private float fallVelocity;
     private float rotationVelocity;
-    private float lifeSeconds = 20;
 
     private IDisposable disposer;
-    private void Start()
+    private void OnEnable()
     {
         rotationAxis = new Vector3(Random.Range(1f, 90f), Random.Range(1f, 90f), Random.Range(1f, 90f));
         fallVelocity = Random.Range(minfallVelocity, maxfallVelocity);
         rotationVelocity = Random.Range(minRotationVelocity, maxRotationVelocity);
-        disposer = Observable.Timer(TimeSpan.FromSeconds(20))
-            .Do(_ => Destroy(gameObject))
+
+        var life =Math.Floor(Math.Abs(transform.position.y * 1.2) / fallVelocity);
+        disposer = Observable.Timer(TimeSpan.FromSeconds(life))
+            .Do(_ => RecicleDonut())
             .Subscribe();
     }
 
     private void OnDisable()
     {
         disposer.Dispose();
+    }
+
+    private void RecicleDonut()
+    {
+        disposer.Dispose();
+        OnDonutRecicle.OnNext(Unit.Default);
     }
 
     private void Update()
