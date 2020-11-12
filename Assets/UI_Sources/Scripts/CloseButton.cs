@@ -7,13 +7,12 @@ using UnityEngine.UI;
 
 namespace UI_Sources.Scripts
 {
-    public class SimpleMenuButton : MonoBehaviour
+    public class CloseButton : MonoBehaviour
     {
-        [SerializeField] Button button;
-        [SerializeField] GameObject menu;
         [SerializeField] private Animator animator;
-
-        private int openKey = Animator.StringToHash("open");
+        [SerializeField] private GameObject content;
+        [SerializeField] private Button button;
+    
         private int closeKey = Animator.StringToHash("close");
 
         private List<IDisposable> disposer = new List<IDisposable>();
@@ -24,11 +23,10 @@ namespace UI_Sources.Scripts
 
         private void OnEnable()
         {
-            menu.SetActive(false);
             animator.GetBehaviour<ObservableStateMachineTrigger>()
                 .OnStateMachineExitAsObservable()
                 .AsUnitObservable()
-                .Do(_ => menu.SetActive(false))
+                .Do(_ => content.SetActive(false))
                 .Subscribe()
                 .AddTo(disposer);
         }
@@ -38,15 +36,9 @@ namespace UI_Sources.Scripts
             disposer.ForEach(d => d.Dispose());
         }
 
-        public void OnClick()
+        private void OnClick()
         {
-            if (menu.activeSelf)
-            {
-                animator.SetTrigger(closeKey);
-                return;
-            }
-            menu.SetActive(true);
-            animator.SetTrigger(openKey);
+            animator.SetTrigger(closeKey);
         }
     }
 }
