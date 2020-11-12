@@ -387,6 +387,11 @@
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
+        <e p="UI_Sources" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="SimpleMenuButton.cs" t="Include" />
+          </e>
+        </e>
       </e>
       <e p="Cute companion.sln" t="IncludeFlat" />
       <e p="DependencyProviderASM.csproj" t="IncludeRecursive" />
