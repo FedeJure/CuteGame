@@ -678,12 +678,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b2ba1aadd21575745b46d185bfb13ad3, type: 2}
+      objectReference: {fileID: 2100000, guid: 6ba60fe368da0fe4f8e7f2b7b83f14dd, type: 2}
     - target: {fileID: -7878029018604925902, guid: 019ede8f3741bb84ebcff7613d137bc8,
         type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7878029018604925902, guid: 019ede8f3741bb84ebcff7613d137bc8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6077a8b8959e56a45829f329ef5f8598, type: 2}
     - target: {fileID: -6718001666977791076, guid: 019ede8f3741bb84ebcff7613d137bc8,
         type: 3}
       propertyPath: m_LocalRotation.x

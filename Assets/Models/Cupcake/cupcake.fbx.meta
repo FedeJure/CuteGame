@@ -48,7 +48,62 @@ ModelImporter:
   - first:
       74: 2270780638339461749
     second: Cupcake|RigthCaress
+  - first:
+      74: -1813792007311761800
+    second: Cupcake|Cupcake|Cupcake|CreamAction|Cupcake|CreamAction
+  - first:
+      74: -7855742976961868064
+    second: Cupcake|Cupcake|Cupcake|Face_1Action|Cupcake|Face_1Action
+  - first:
+      74: 1441421398568145521
+    second: Cupcake|Cupcake|Cupcake|IdleWithRotation|Cupcake|IdleWithRotation
+  - first:
+      74: 4017069630911843067
+    second: Cupcake|Cupcake|Cupcake|Idle|Cupcake|Idle
+  - first:
+      74: -7011416186072062163
+    second: Cupcake|Cupcake|Cupcake|JumpContinue|Cupcake|JumpContinue
+  - first:
+      74: 5249713446509173223
+    second: Cupcake|Cupcake|Cupcake|Jump|Cupcake|Jump
+  - first:
+      74: 6143829267504683474
+    second: Cupcake|Cupcake|Cupcake|LeftCaress|Cupcake|LeftCaress
+  - first:
+      74: -5877006478277463263
+    second: Cupcake|Cupcake|Cupcake|OneJump|Cupcake|OneJump
+  - first:
+      74: 5889741749806661057
+    second: Cupcake|Cupcake|Cupcake|RigthCaress|Cupcake|RigthCaress
+  - first:
+      74: 7713008902535403786
+    second: Cupcake|Face_1|Face_1|CreamAction|Face_1|CreamAction
+  - first:
+      74: -2770317309330546402
+    second: Cupcake|Face_1|Face_1|Face_1Action|Face_1|Face_1Action
+  - first:
+      74: -953253878012908264
+    second: Cupcake|Face_1|Face_1|Jump|Face_1|Jump
+  - first:
+      74: -3929901071011862390
+    second: Face_1|Face_1|Face_1|CreamAction|Face_1|CreamAction
+  - first:
+      74: 9115457095283996995
+    second: Face_1|Face_1|Face_1|Face_1Action|Face_1|Face_1Action
+  - first:
+      74: 85617720678906898
+    second: Face_1|Face_1|Face_1|Jump|Face_1|Jump
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cream
+    second: {fileID: 2100000, guid: b2ba1aadd21575745b46d185bfb13ad3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Face
+    second: {fileID: 2100000, guid: 7f9fa9d8f6c3253439d9ceadce83d4e5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
