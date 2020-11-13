@@ -1,4 +1,5 @@
 ﻿using Modules.Actor.Scripts.Infrastructure;
+using Modules.Common;
 
 namespace Modules.Actor.Scripts.Core.Domain.Action
 {
@@ -11,7 +12,7 @@ namespace Modules.Actor.Scripts.Core.Domain.Action
         {
             this.humorStateRepository = humorStateRepository;
         }
-        public virtual HumorState Execute()
+        public virtual Maybe<HumorState> Execute()
         {
             return humorStateRepository.Get();
         }

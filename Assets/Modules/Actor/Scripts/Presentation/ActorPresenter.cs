@@ -70,10 +70,13 @@ public class ActorPresenter
 
     private void HandleHumorChange()
     {
-        var humorState = retrieveHumor.Execute();
-        if (Humor.Normal.Equals(humorState.humor)) view.ShowNormalIdle();
-        if (Humor.Happy.Equals(humorState.humor)) view.ShowHappyIdle();
-        if (Humor.NotHappy.Equals(humorState.humor)) view.ShowNotHappyIdle();
+        retrieveHumor.Execute()
+            .Do(humorState =>
+            {
+                if (Humor.Normal.Equals(humorState.humor)) view.ShowNormalIdle();
+                if (Humor.Happy.Equals(humorState.humor)) view.ShowHappyIdle();
+                if (Humor.NotHappy.Equals(humorState.humor)) view.ShowNotHappyIdle();
+            });
     }
 
     void Remove()

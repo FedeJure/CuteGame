@@ -47,7 +47,7 @@ namespace Modules.Actor.Scripts
 
         private static HumorStateRepository ProvideHumorStateRepository()
         {
-            return DependencyProvider.GetOrInstanciate(() => new InMemoryHumorStateRepository());
+            return DependencyProvider.GetOrInstanciate(() => new DiskHumorStateRepository());
         }
 
         public static HitTargetRepository ProvideHitTargetRepository()

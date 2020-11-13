@@ -1,18 +1,19 @@
 ﻿using Modules.Actor.Scripts.Core.Domain;
+using Modules.Common;
 
 namespace Modules.Actor.Scripts.Infrastructure
 {
     public class InMemoryHumorStateRepository: HumorStateRepository
     {
         HumorState state;
-        public virtual void Save(HumorState state)
+        public void Save(HumorState state)
         {
             this.state = state;
         }
 
-        public virtual HumorState Get()
+        public Maybe<HumorState> Get()
         {
-            return state;
+            return state == null ? Maybe<HumorState>.Nothing : new Maybe<HumorState>(state);
         }
     }
 }

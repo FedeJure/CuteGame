@@ -5,6 +5,7 @@ using Modules.Actor.Scripts.Core.Domain.Events;
 using Modules.Actor.Scripts.Infrastructure;
 using Modules.Actor.Scripts.Presentation.Events;
 using NSubstitute;
+using Modules.Common;
 using NUnit.Framework;
 
 namespace Modules.Actor.Tests.Core.Domain.Action
@@ -24,7 +25,7 @@ namespace Modules.Actor.Tests.Core.Domain.Action
             humorStateRepository = Substitute.For<HumorStateRepository>();
             humorStateService = Substitute.For<HumorStateService>();
 
-            humorStateRepository.Get().Returns(new HumorState(50, 0, Humor.Normal, MAX_HUMOR));
+            humorStateRepository.Get().Returns(new Maybe<HumorState>(new HumorState(50, 0, Humor.Normal, MAX_HUMOR)));
             action = new ProcessInteraction(eventBus, humorStateRepository, humorStateService);
         }
         

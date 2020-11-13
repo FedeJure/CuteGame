@@ -32,16 +32,21 @@ namespace Modules.Actor.Scripts.Presentation
 
         private void PrepareView()
         {
-            var actualHumor = retrieveHumor.Execute();
-            view.InitView(actualHumor.humorLevel, actualHumor.maxHumor);
-            actorEventBus.OnEvent<HumorChangesEvent>()
-                .Do(humorState =>
+            retrieveHumor.Execute()
+                .Do(actualHumor =>
                 {
-                    var humor = retrieveHumor.Execute();
-                    view.HumorChange(humor.humorLevel, humor.lastHumorChange, humor.maxHumor);
-                })
-                .Subscribe()
-                .AddTo(disposer);
+                    view.InitView(actualHumor.humorLevel, actualHumor.maxHumor);
+                    actorEventBus.OnEvent<HumorChangesEvent>().Do(humorState =>
+                            {
+                                retrieveHumor.Execute().Do(humor =>
+                                    {
+                                        view.HumorChange(humor.humorLevel, humor.lastHumorChange, humor.maxHumor);
+                                    });
+                            })
+                        .Subscribe()
+                        .AddTo(disposer);
+                });
+
         }
     }
 }

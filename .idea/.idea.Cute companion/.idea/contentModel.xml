@@ -6,6 +6,7 @@
     <e p="F:\Users\Fede\Documents\Proyectos\Proyectos Unity 3d\Cute companion" t="IncludeRecursive">
       <e p="Actor.csproj" t="IncludeRecursive" />
       <e p="Actor.Test.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Models" t="Include">
@@ -43,6 +44,7 @@
                 </e>
               </e>
               <e p="Infrastructure" t="Include">
+                <e p="DiskHumorStateRepository.cs" t="Include" />
                 <e p="HumorStateRepository.cs" t="Include" />
                 <e p="InMemoryHumorStateRepository.cs" t="Include" />
               </e>
@@ -80,6 +82,10 @@
               </e>
             </e>
           </e>
+          <e p="Common" t="Include">
+            <e p="LocalStorage.cs" t="Include" />
+            <e p="Maybe.cs" t="Include" />
+          </e>
           <e p="DependencyProvider" t="Include">
             <e p="DependencyProvider.cs" t="Include" />
           </e>
@@ -93,6 +99,17 @@
           <e p="InputWrapper" t="Include">
             <e p="InputWrapper.cs" t="Include" />
           </e>
+        </e>
+        <e p="PlayerPrefsEditor" t="Include">
+          <e p="Editor" t="Include">
+            <e p="Mac" t="Include">
+              <e p="Plist.cs" t="Include" />
+            </e>
+            <e p="PlayerPrefsEditor.cs" t="Include" />
+          </e>
+          <e p="PlayerPrefsUtility.cs" t="Include" />
+          <e p="Readme.txt" t="Include" />
+          <e p="SimpleEncryption.cs" t="Include" />
         </e>
         <e p="Plugins" t="Include">
           <e p="UniRx" t="Include">
@@ -398,6 +415,7 @@
           </e>
         </e>
       </e>
+      <e p="Common.csproj" t="IncludeRecursive" />
       <e p="Cute companion.sln" t="IncludeFlat" />
       <e p="DependencyProviderASM.csproj" t="IncludeRecursive" />
       <e p="DonutASM.csproj" t="IncludeRecursive" />
