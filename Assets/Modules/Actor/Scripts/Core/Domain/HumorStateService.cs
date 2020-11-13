@@ -12,7 +12,7 @@ namespace Modules.Actor.Scripts.Core.Domain
         private readonly HumorStateRepository humorRepository;
         private int MAX_HUMOR => 100;
         private int currentHumor;
-        private ImmutableList<List<HumorTransitionConfig>> humorTransitionConfig;
+        private List<List<HumorTransitionConfig>> humorTransitionConfig;
         private int currentHumorIndex;
         public HumorStateService() { }
         public HumorStateService(HumorStateRepository humorRepository)
@@ -23,46 +23,7 @@ namespace Modules.Actor.Scripts.Core.Domain
             humorRepository.Save(new HumorState(currentHumor, 0, Humor.Normal, MAX_HUMOR));
             
             //Todo configuracion diferente en cada nacimiento.
-            humorTransitionConfig = new ImmutableList<List<HumorTransitionConfig>>(new []
-            {
-                new List<HumorTransitionConfig>(new []
-                {
-                    new HumorTransitionConfig(ActorInteraction.LeftCaress, 1),
-                    new HumorTransitionConfig(ActorInteraction.RigthCaress, -1),
-                    new HumorTransitionConfig(ActorInteraction.Consent, -1),
-                    new HumorTransitionConfig(ActorInteraction.RigthTickle, 1),
-                    new HumorTransitionConfig(ActorInteraction.LeftTickle, 1),
-                }),
-                new List<HumorTransitionConfig>(new []
-                {
-                    new HumorTransitionConfig(ActorInteraction.LeftCaress, -1),
-                    new HumorTransitionConfig(ActorInteraction.RigthCaress, 1),
-                    new HumorTransitionConfig(ActorInteraction.Consent, 1),
-                    new HumorTransitionConfig(ActorInteraction.RigthTickle, -1),
-                    new HumorTransitionConfig(ActorInteraction.LeftTickle, -1),
-                }),
-                new List<HumorTransitionConfig>(new []
-                {
-                    new HumorTransitionConfig(ActorInteraction.LeftCaress, 1),
-                    new HumorTransitionConfig(ActorInteraction.RigthCaress, -1),
-                    new HumorTransitionConfig(ActorInteraction.Consent, -1),
-                    new HumorTransitionConfig(ActorInteraction.RigthTickle, 1),
-                    new HumorTransitionConfig(ActorInteraction.LeftTickle, 1),
-                }),
-                new List<HumorTransitionConfig>(new []
-                {
-                    new HumorTransitionConfig(ActorInteraction.LeftCaress, -1),
-                    new HumorTransitionConfig(ActorInteraction.RigthCaress, 1),
-                    new HumorTransitionConfig(ActorInteraction.Consent, -1),
-                    new HumorTransitionConfig(ActorInteraction.RigthTickle, 1),
-                }),
-                new List<HumorTransitionConfig>(new []
-                {
-                    new HumorTransitionConfig(ActorInteraction.LeftCaress, 1),
-                    new HumorTransitionConfig(ActorInteraction.RigthCaress, -1),
-                }),
-
-            });
+            humorTransitionConfig = HumorStateGenerator.GetRandomConfigurationOfLength(MAX_HUMOR);
         }
         public virtual HumorState ReceiveInteraction(ActorInteraction interaction)
         {
@@ -82,9 +43,9 @@ namespace Modules.Actor.Scripts.Core.Domain
 
         private HumorTransitionConfig GetNextTransition(ActorInteraction interaction)
         {
-            var nextTransitions = humorTransitionConfig.Data[currentHumorIndex];
+            var nextTransitions = humorTransitionConfig[currentHumorIndex];
             nextTransitions.Add(new HumorTransitionConfig(interaction, 0));
-            currentHumorIndex = currentHumorIndex == humorTransitionConfig.Data.Length - 1 ? 0 : currentHumorIndex + 1;
+            currentHumorIndex = currentHumorIndex == humorTransitionConfig.Count - 1 ? 0 : currentHumorIndex + 1;
             return nextTransitions.First(transition => transition.interaction.Equals(interaction));  
         }
     }

@@ -36,6 +36,7 @@
                     <e p="RightTickleInteractionEvent.cs" t="Include" />
                     <e p="RigthCaressInteractionEvent.cs" t="Include" />
                   </e>
+                  <e p="HumorStateGenerator.cs" t="Include" />
                   <e p="HumorStateService.cs" t="Include" />
                   <e p="InteractionEvent.cs" t="Include" />
                   <e p="ReactionEvent.cs" t="Include" />
