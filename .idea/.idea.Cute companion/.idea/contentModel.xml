@@ -4,8 +4,8 @@
     <e p="C:\Users\Fede\.Rider2019.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Fede\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Cute companion.651084698.00" t="ExcludeRecursive" />
     <e p="F:\Users\Fede\Documents\Proyectos\Proyectos Unity 3d\Cute companion" t="IncludeRecursive">
-      <e p="ActorASM.csproj" t="IncludeRecursive" />
-      <e p="ActorASMTest.csproj" t="IncludeRecursive" />
+      <e p="Actor.csproj" t="IncludeRecursive" />
+      <e p="Actor.Test.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Models" t="Include">
@@ -18,12 +18,14 @@
         <e p="Modules" t="Include">
           <e p="Actor" t="Include">
             <e p="Scripts" t="Include">
+              <e p="ActorModuleProvider.cs" t="Include" />
               <e p="Core" t="Include">
                 <e p="Domain" t="Include">
                   <e p="Action" t="Include">
                     <e p="ProcessInteraction.cs" t="Include" />
                     <e p="RetrieveActorHumor.cs" t="Include" />
                   </e>
+                  <e p="EventBus.cs" t="Include" />
                   <e p="Events" t="Include">
                     <e p="HappyEvent.cs" t="Include" />
                     <e p="HumorChangesEvent.cs" t="Include" />
@@ -38,13 +40,11 @@
                   <e p="InteractionEvent.cs" t="Include" />
                   <e p="ReactionEvent.cs" t="Include" />
                 </e>
-                <e p="EventBus.cs" t="Include" />
               </e>
               <e p="Infrastructure" t="Include">
                 <e p="HumorStateRepository.cs" t="Include" />
                 <e p="InMemoryHumorStateRepository.cs" t="Include" />
               </e>
-              <e p="ModuleProvider.cs" t="Include" />
               <e p="Presentation" t="Include">
                 <e p="ActorPresenter.cs" t="Include" />
                 <e p="ActorView.cs" t="Include" />
@@ -84,6 +84,16 @@
               <e p="UnityDonutDestructor.cs" t="Include" />
               <e p="UnityDonutGenerator.cs" t="Include" />
               <e p="UnityDonutView.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Humor" t="Include">
+            <e p="HumorModuleProvider.cs" t="Include" />
+            <e p="Presentation" t="Include">
+              <e p="HumorBarPresenter.cs" t="Include" />
+              <e p="HumorBarView.cs" t="Include" />
+            </e>
+            <e p="UnityDelivery" t="Include">
+              <e p="UnityHumorBarView.cs" t="Include" />
             </e>
           </e>
           <e p="InputWrapper" t="Include">
@@ -397,6 +407,7 @@
       <e p="Cute companion.sln" t="IncludeFlat" />
       <e p="DependencyProviderASM.csproj" t="IncludeRecursive" />
       <e p="DonutASM.csproj" t="IncludeRecursive" />
+      <e p="HumorASM.csproj" t="IncludeRecursive" />
       <e p="InputWrapperASM.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />

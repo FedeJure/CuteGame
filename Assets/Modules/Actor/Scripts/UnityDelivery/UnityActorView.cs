@@ -24,7 +24,7 @@ namespace Modules.Actor.Scripts.UnityDelivery
 
         private void Awake()
         {
-            ModuleProvider.ProvidePresenterFor(this);
+            ActorModuleProvider.ProvidePresenterFor(this);
         }
 
         private void OnEnable()

@@ -8,19 +8,19 @@ using Modules.Actor.Scripts.UnityDelivery;
 
 namespace Modules.Actor.Scripts
 {
-    public static class ModuleProvider
+    public static class ActorModuleProvider
     {
         public static void ProvidePresenterFor(ActorView view)
         {
             new ActorPresenter(view, ProvideEventBus(), ProvideRetrieveHumorAction());
         }
 
-        private static RetrieveActorHumor ProvideRetrieveHumorAction()
+        public static RetrieveActorHumor ProvideRetrieveHumorAction()
         {
             return DependencyProvider.GetOrInstanciate(() => new RetrieveActorHumor(ProvideHumorStateRepository()));
         }
 
-        private static EventBus ProvideEventBus()
+        public static EventBus ProvideEventBus()
         {
             return DependencyProvider.GetOrInstanciate(() => new EventBus());
         }
