@@ -14,6 +14,11 @@ namespace Modules.Actor.Scripts
         {
             new ActorPresenter(view, ProvideEventBus(), ProvideRetrieveHumorAction());
         }
+        
+        public static void ProvidePresenterFor(HumorBarView view)
+        {
+            new HumorBarPresenter(view, ProvideEventBus(), ProvideRetrieveHumorAction());
+        }
 
         public static RetrieveActorHumor ProvideRetrieveHumorAction()
         {

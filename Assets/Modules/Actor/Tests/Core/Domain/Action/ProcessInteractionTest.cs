@@ -12,6 +12,7 @@ namespace Modules.Actor.Tests.Core.Domain.Action
 {
     public class ProcessInteractionTest
     {
+        private int MAX_HUMOR = 100;
         ProcessInteraction action;
         private EventBus eventBus;
         private HumorStateRepository humorStateRepository;
@@ -24,7 +25,7 @@ namespace Modules.Actor.Tests.Core.Domain.Action
             humorStateRepository = Substitute.For<HumorStateRepository>();
             humorStateService = Substitute.For<HumorStateService>();
 
-            humorStateRepository.Get().Returns(new HumorState(50, 0, Humor.Normal));
+            humorStateRepository.Get().Returns(new HumorState(50, 0, Humor.Normal, MAX_HUMOR));
             action = new ProcessInteraction(eventBus, humorStateRepository, humorStateService);
         }
         
@@ -75,7 +76,7 @@ namespace Modules.Actor.Tests.Core.Domain.Action
 
         private void GivenInteractionNoChangeHumor()
         {
-            humorStateService.ReceiveInteraction(Arg.Any<ActorInteraction>()).Returns(new HumorState(100, 0, Humor.Normal));
+            humorStateService.ReceiveInteraction(Arg.Any<ActorInteraction>()).Returns(new HumorState(100, 0, Humor.Normal,MAX_HUMOR));
         }
 
         private void ThenNoEventEmited()
@@ -85,7 +86,7 @@ namespace Modules.Actor.Tests.Core.Domain.Action
 
         private void GivenInteractionDecreaseHumor()
         {
-            humorStateService.ReceiveInteraction(Arg.Any<ActorInteraction>()).Returns(new HumorState(100, -1, Humor.Normal));
+            humorStateService.ReceiveInteraction(Arg.Any<ActorInteraction>()).Returns(new HumorState(100, -1, Humor.Normal,MAX_HUMOR));
         }
 
         private void ThenNotHappyEventEmited()
@@ -95,7 +96,7 @@ namespace Modules.Actor.Tests.Core.Domain.Action
 
         private void GivenInteractionIncreaseHumor()
         {
-            humorStateService.ReceiveInteraction(Arg.Any<ActorInteraction>()).Returns(new HumorState(100, 1, Humor.Normal));
+            humorStateService.ReceiveInteraction(Arg.Any<ActorInteraction>()).Returns(new HumorState(100, 1, Humor.Normal,MAX_HUMOR));
         }
 
         private void WhenActionCalled()

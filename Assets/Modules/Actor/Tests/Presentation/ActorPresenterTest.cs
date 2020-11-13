@@ -12,6 +12,7 @@ namespace Modules.Actor.Tests.Presentation
 {
     public class ActorPresenterTest
     {
+        private const int MAX_HUMOR = 100;
         private ActorView view;
         private EventBus eventBus;
         private RetrieveActorHumor retrieveActorHumor;
@@ -28,7 +29,7 @@ namespace Modules.Actor.Tests.Presentation
             eventBus = Substitute.For<EventBus>();
             retrieveActorHumor = Substitute.For<RetrieveActorHumor>();
 
-            retrieveActorHumor.Execute().Returns(new HumorState(50, 1, Humor.Happy));
+            retrieveActorHumor.Execute().Returns(new HumorState(50, 1, Humor.Happy, MAX_HUMOR));
             eventBus.OnEvent<LeftCaressInteractionEvent>().Returns(leftCaressEvent);
             eventBus.OnEvent<RigthCaressInteractionEvent>().Returns(rigthCaressEvent);
             eventBus.OnEvent<NotHappyEvent>().Returns(notHappyEvent);

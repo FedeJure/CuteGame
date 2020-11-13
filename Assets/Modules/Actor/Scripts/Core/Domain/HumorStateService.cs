@@ -10,7 +10,7 @@ namespace Modules.Actor.Scripts.Core.Domain
     public class HumorStateService
     {
         private readonly HumorStateRepository humorRepository;
-        const int maxHumor = 100;
+        private int MAX_HUMOR => 100;
         private int currentHumor;
         private ImmutableList<List<HumorTransitionConfig>> humorTransitionConfig;
         private int currentHumorIndex;
@@ -20,7 +20,7 @@ namespace Modules.Actor.Scripts.Core.Domain
             this.humorRepository = humorRepository;
             currentHumor = 50;
             
-            humorRepository.Save(new HumorState(currentHumor, 0, Humor.Normal));
+            humorRepository.Save(new HumorState(currentHumor, 0, Humor.Normal, MAX_HUMOR));
             
             //Todo configuracion diferente en cada nacimiento.
             humorTransitionConfig = new ImmutableList<List<HumorTransitionConfig>>(new []
@@ -69,14 +69,14 @@ namespace Modules.Actor.Scripts.Core.Domain
             var savedHumor = humorRepository.Get();
             var nextTransitions = GetNextTransition(interaction);
             var humor = GetNextHumor(savedHumor.humorLevel, nextTransitions.humorReaction);
-            return new HumorState(savedHumor.humorLevel + nextTransitions.humorReaction, nextTransitions.humorReaction, humor);
+            return new HumorState(savedHumor.humorLevel + nextTransitions.humorReaction, nextTransitions.humorReaction, humor, MAX_HUMOR);
         }
 
         private Humor GetNextHumor(int humorLevel, int humorVariation)
         {
             var newHumorLevel = humorLevel + humorVariation;
-            if (newHumorLevel < (int) Math.Floor((double) (maxHumor / 3))) return Humor.NotHappy;
-            if (newHumorLevel > (int) Math.Floor((double) (maxHumor / 3)) && newHumorLevel < (int) Math.Floor((double) (2 * maxHumor / 3))) return Humor.Normal;
+            if (newHumorLevel < (int) Math.Floor((double) (MAX_HUMOR / 3))) return Humor.NotHappy;
+            if (newHumorLevel > (int) Math.Floor((double) (MAX_HUMOR / 3)) && newHumorLevel < (int) Math.Floor((double) (2 * MAX_HUMOR / 3))) return Humor.Normal;
             return Humor.Happy;
         }
 
@@ -102,15 +102,17 @@ namespace Modules.Actor.Scripts.Core.Domain
 
     public class HumorState
     {
-        public HumorState(int humorLevel, int lastHumorChange, Humor humor)
+        public HumorState(int humorLevel, int lastHumorChange, Humor humor, int maxHumor)
         {
             this.humorLevel = humorLevel;
             this.lastHumorChange = lastHumorChange;
             this.humor = humor;
+            this.maxHumor = maxHumor;
         }
         public int humorLevel { get; }
         public int lastHumorChange { get; }
         public Humor humor { get; }
+        public int maxHumor { get; }
     }
 
     public enum Humor

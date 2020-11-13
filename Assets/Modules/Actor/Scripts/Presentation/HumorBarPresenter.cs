@@ -5,14 +5,14 @@ using Modules.Actor.Scripts.Core.Domain.Action;
 using Modules.Actor.Scripts.Core.Domain.Events;
 using UniRx;
 
-namespace Modules.Humor.Presentation
+namespace Modules.Actor.Scripts.Presentation
 {
     public class HumorBarPresenter
     {
         private readonly HumorBarView view;
         private readonly EventBus actorEventBus;
         private readonly RetrieveActorHumor retrieveHumor;
-        
+
         private List<IDisposable> disposer = new List<IDisposable>();
 
         public HumorBarPresenter(HumorBarView view, EventBus actorEventBus, RetrieveActorHumor retrieveHumor)
@@ -36,7 +36,7 @@ namespace Modules.Humor.Presentation
                 .Do(humorState =>
                 {
                     var humor = retrieveHumor.Execute();
-                    view.HumorChange(humor.humorLevel, humor.lastHumorChange);
+                    view.HumorChange(humor.humorLevel, humor.lastHumorChange, humor.maxHumor);
                 })
                 .Subscribe()
                 .AddTo(disposer);

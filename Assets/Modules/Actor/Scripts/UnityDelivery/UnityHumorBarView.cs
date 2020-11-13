@@ -1,9 +1,9 @@
 ﻿using System;
-using Modules.Humor.Presentation;
+using Modules.Actor.Scripts.Presentation;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Modules.Humor.UnityDelivery
+namespace Modules.Actor.Scripts.UnityDelivery
 {
     public class UnityHumorBarView : MonoBehaviour, HumorBarView
     {
@@ -12,16 +12,15 @@ namespace Modules.Humor.UnityDelivery
 
         [SerializeField] private Slider bar;
 
-        public void HumorChange(int HumorLevel, int LastHumorChange)
+        public void HumorChange(int HumorLevel, int LastHumorChange, int maxHumor)
         {
-            var maxHumor = 100; //TODO: Sacar esto de alguna configuracion.
             float actualValue = (float)HumorLevel / maxHumor;
             bar.value = actualValue;
         }
 
         private void Awake()
         {
-            HumorModuleProvider.ProvidePresenterFor(this);
+            ActorModuleProvider.ProvidePresenterFor(this);
         }
 
         private void OnEnable()

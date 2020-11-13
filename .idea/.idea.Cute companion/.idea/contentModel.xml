@@ -52,6 +52,8 @@
                   <e p="ActorInteraction.cs" t="Include" />
                   <e p="SwipeAction.cs" t="Include" />
                 </e>
+                <e p="HumorBarPresenter.cs" t="Include" />
+                <e p="HumorBarView.cs" t="Include" />
                 <e p="TouchHelperPresenter.cs" t="Include" />
                 <e p="TouchHelperView.cs" t="Include" />
               </e>
@@ -59,6 +61,7 @@
                 <e p="HitTargetRepository.cs" t="Include" />
                 <e p="TouchAction.cs" t="Include" />
                 <e p="UnityActorView.cs" t="Include" />
+                <e p="UnityHumorBarView.cs" t="Include" />
                 <e p="UnityTouchHelperView.cs" t="Include" />
               </e>
             </e>
@@ -84,16 +87,6 @@
               <e p="UnityDonutDestructor.cs" t="Include" />
               <e p="UnityDonutGenerator.cs" t="Include" />
               <e p="UnityDonutView.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Humor" t="Include">
-            <e p="HumorModuleProvider.cs" t="Include" />
-            <e p="Presentation" t="Include">
-              <e p="HumorBarPresenter.cs" t="Include" />
-              <e p="HumorBarView.cs" t="Include" />
-            </e>
-            <e p="UnityDelivery" t="Include">
-              <e p="UnityHumorBarView.cs" t="Include" />
             </e>
           </e>
           <e p="InputWrapper" t="Include">
@@ -407,7 +400,6 @@
       <e p="Cute companion.sln" t="IncludeFlat" />
       <e p="DependencyProviderASM.csproj" t="IncludeRecursive" />
       <e p="DonutASM.csproj" t="IncludeRecursive" />
-      <e p="HumorASM.csproj" t="IncludeRecursive" />
       <e p="InputWrapperASM.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />

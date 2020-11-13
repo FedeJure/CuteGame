@@ -1,9 +1,8 @@
 {
     "name": "Actor.Test",
     "references": [
-        "GUID:c0866cb2abf9741458fb87211c991772",
         "GUID:560b04d1a97f54a4e82edc0cbbb69285",
-        "GUID:71ba2a1a8e40c804d8640d70ae22d115"
+        "GUID:c0866cb2abf9741458fb87211c991772"
     ],
     "includePlatforms": [
         "Editor"
