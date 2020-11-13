@@ -1,5 +1,4 @@
-﻿using System;
-using Modules.Actor.Scripts.Core;
+﻿using Modules.Actor.Scripts.Core;
 using Modules.Actor.Scripts.Core.Domain;
 using Modules.Actor.Scripts.Core.Domain.Action;
 using Modules.Actor.Scripts.Core.Domain.Events;

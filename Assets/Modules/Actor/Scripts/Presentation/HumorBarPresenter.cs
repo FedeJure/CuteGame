@@ -32,6 +32,8 @@ namespace Modules.Actor.Scripts.Presentation
 
         private void PrepareView()
         {
+            var actualHumor = retrieveHumor.Execute();
+            view.InitView(actualHumor.humorLevel, actualHumor.maxHumor);
             actorEventBus.OnEvent<HumorChangesEvent>()
                 .Do(humorState =>
                 {

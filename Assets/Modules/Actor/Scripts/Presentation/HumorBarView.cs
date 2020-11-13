@@ -7,5 +7,6 @@ namespace Modules.Actor.Scripts.Presentation
         event Action OnViewEnable;
         event Action OnViewDisable;
         void HumorChange(int humorLevel, int lastHumorChange, int maxHumor);
+        void InitView(int humor, int maxHumor);
     }
 }

@@ -19,7 +19,7 @@ namespace Modules.Actor.Scripts.UnityDelivery
         private Vector2 fingerDown;
         private Vector2 fingerUp;
         private bool canProcess;
-        [SerializeField] Camera camera;
+        [SerializeField] Camera selectedCamera;
         [SerializeField] List<TouchAction> touchAction;
         
         HitTargetRepository hitTargetRepository;
@@ -29,7 +29,6 @@ namespace Modules.Actor.Scripts.UnityDelivery
         {
             ActorModuleProvider.ProvidePresenterFor(this);
         }
-        
 
         private void OnEnable()
         {
@@ -40,7 +39,6 @@ namespace Modules.Actor.Scripts.UnityDelivery
 
         void Update()
         {
-           
             foreach (Touch touch in Input.touches)
             {
                 switch (touch.phase)
@@ -69,7 +67,7 @@ namespace Modules.Actor.Scripts.UnityDelivery
         void CheckRaycasting(Touch touch)
         {
             if (hitTargetRepository.TargetHitted()) return;
-            Ray raycast = camera.ScreenPointToRay(touch.position);
+            Ray raycast = selectedCamera.ScreenPointToRay(touch.position);
             RaycastHit raycastHit;
             if (Physics.Raycast(raycast, out raycastHit) && raycastHit.collider.gameObject.GetInstanceID().Equals(gameObject.GetInstanceID()))
             {
