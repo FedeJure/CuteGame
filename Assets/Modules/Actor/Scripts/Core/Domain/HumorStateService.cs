@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Modules.Actor.Scripts.Core.Domain.Repositories;
 using Modules.Actor.Scripts.Infrastructure;
 using Modules.Actor.Scripts.Presentation.Events;
 using UniRx.InternalUtil;
@@ -35,9 +36,10 @@ namespace Modules.Actor.Scripts.Core.Domain
             return humorRepository.Get()
                 .ReturnOrDefault(state =>
                 {
+                    currentHumor = state.humorLevel;
                     var nextTransitions = GetNextTransition(interaction);
                     var humor = GetNextHumor(state.humorLevel, nextTransitions.humorReaction);
-                    return new HumorState(state.humorLevel + nextTransitions.humorReaction,
+                    return new HumorState(Math.Max(state.humorLevel + nextTransitions.humorReaction, 0),
                         nextTransitions.humorReaction, humor, MAX_HUMOR);
                 },new HumorState(0,0, Humor.Normal, MAX_HUMOR));
 

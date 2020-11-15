@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0e0d372c9048709b68ce634683fbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  selectedCamera: {fileID: 0}
   touchAction:
   - {fileID: 11400000, guid: 80132557e2aafcd43a298a3da93c701d, type: 2}
 --- !u!1 &5410556850456177609
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0e0d372c9048709b68ce634683fbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  selectedCamera: {fileID: 0}
   touchAction:
   - {fileID: 11400000, guid: 577f5705239e0e54a810aff025aa0927, type: 2}
   - {fileID: 11400000, guid: a2639dbfadede2543ba3368b8e64e841, type: 2}
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0e0d372c9048709b68ce634683fbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  selectedCamera: {fileID: 0}
   touchAction:
   - {fileID: 11400000, guid: a3577944055899e4aa318c5a94507d3b, type: 2}
 --- !u!1 &5410556851038089745
@@ -344,6 +344,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5410556851038089746}
   - component: {fileID: 5410556851038089747}
+  - component: {fileID: 6255692204497982044}
+  - component: {fileID: 442015482508548980}
   m_Layer: 0
   m_Name: Actor
   m_TagString: Untagged
@@ -384,6 +386,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6982443941816798880}
+--- !u!114 &6255692204497982044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5410556851038089745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830eff99eb0590f4eb2cb4a2d2036358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 442015482508548980}
+--- !u!95 &442015482508548980
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5410556851038089745}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7b1274180a7b9184aa295719ce6cab04, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5410556851761415949
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0e0d372c9048709b68ce634683fbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  selectedCamera: {fileID: 0}
   touchAction:
   - {fileID: 11400000, guid: acad4ec564b032e43ad7a5c792f0cfee, type: 2}
   - {fileID: 11400000, guid: 05cbadd4d017e5b44bd00b1c8c75a368, type: 2}
@@ -604,7 +638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0e0d372c9048709b68ce634683fbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  selectedCamera: {fileID: 0}
   touchAction:
   - {fileID: 11400000, guid: 0e788a15d01848f41957fbec7433dfc4, type: 2}
 --- !u!1001 &5410556852253264064

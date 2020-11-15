@@ -1,4 +1,5 @@
 ﻿using Modules.Actor.Scripts.Core.Domain;
+using Modules.Actor.Scripts.Core.Domain.Repositories;
 using Modules.Common;
 
 namespace Modules.Actor.Scripts.Infrastructure

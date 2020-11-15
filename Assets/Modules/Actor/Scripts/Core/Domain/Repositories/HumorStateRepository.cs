@@ -1,7 +1,6 @@
-﻿using Modules.Actor.Scripts.Core.Domain;
-using Modules.Common;
+﻿using Modules.Common;
 
-namespace Modules.Actor.Scripts.Infrastructure
+namespace Modules.Actor.Scripts.Core.Domain.Repositories
 {
     public interface HumorStateRepository
     {

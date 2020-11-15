@@ -23,9 +23,12 @@
               <e p="Core" t="Include">
                 <e p="Domain" t="Include">
                   <e p="Action" t="Include">
+                    <e p="CreateNewActor.cs" t="Include" />
                     <e p="ProcessInteraction.cs" t="Include" />
                     <e p="RetrieveActorHumor.cs" t="Include" />
                   </e>
+                  <e p="Actor.cs" t="Include" />
+                  <e p="ActorSkin.cs" t="Include" />
                   <e p="EventBus.cs" t="Include" />
                   <e p="Events" t="Include">
                     <e p="HappyEvent.cs" t="Include" />
@@ -40,12 +43,17 @@
                   <e p="HumorStateGenerator.cs" t="Include" />
                   <e p="HumorStateService.cs" t="Include" />
                   <e p="InteractionEvent.cs" t="Include" />
+                  <e p="Player.cs" t="Include" />
                   <e p="ReactionEvent.cs" t="Include" />
+                  <e p="Repositories" t="Include">
+                    <e p="ActorRepository.cs" t="Include" />
+                    <e p="HumorStateRepository.cs" t="Include" />
+                    <e p="PlayerRepository.cs" t="Include" />
+                  </e>
                 </e>
               </e>
               <e p="Infrastructure" t="Include">
                 <e p="DiskHumorStateRepository.cs" t="Include" />
-                <e p="HumorStateRepository.cs" t="Include" />
                 <e p="InMemoryHumorStateRepository.cs" t="Include" />
               </e>
               <e p="Presentation" t="Include">
@@ -63,6 +71,8 @@
               <e p="UnityDelivery" t="Include">
                 <e p="HitTargetRepository.cs" t="Include" />
                 <e p="TouchAction.cs" t="Include" />
+                <e p="UnityActorCameraView.cs" t="Include" />
+                <e p="UnityActorMovementView.cs" t="Include" />
                 <e p="UnityActorView.cs" t="Include" />
                 <e p="UnityHumorBarView.cs" t="Include" />
                 <e p="UnityTouchHelperView.cs" t="Include" />
@@ -72,6 +82,7 @@
               <e p="Core" t="Include">
                 <e p="Domain" t="Include">
                   <e p="Action" t="Include">
+                    <e p="CreateNewActorTest.cs" t="Include" />
                     <e p="ProcessInteractionTest.cs" t="Include" />
                   </e>
                 </e>
@@ -83,6 +94,7 @@
             </e>
           </e>
           <e p="Common" t="Include">
+            <e p="ExtensionMethods.cs" t="Include" />
             <e p="LocalStorage.cs" t="Include" />
             <e p="Maybe.cs" t="Include" />
           </e>

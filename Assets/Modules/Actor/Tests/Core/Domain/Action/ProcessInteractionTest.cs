@@ -2,6 +2,7 @@
 using Modules.Actor.Scripts.Core.Domain;
 using Modules.Actor.Scripts.Core.Domain.Action;
 using Modules.Actor.Scripts.Core.Domain.Events;
+using Modules.Actor.Scripts.Core.Domain.Repositories;
 using Modules.Actor.Scripts.Infrastructure;
 using Modules.Actor.Scripts.Presentation.Events;
 using NSubstitute;
