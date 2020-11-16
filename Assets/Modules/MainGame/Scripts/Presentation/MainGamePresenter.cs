@@ -60,6 +60,7 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private void ProcessLogin(LoginData data)
         {
+            view.ShowLoading();
             requestLogin.Execute(data)
                 .Do(ProcesLoginResponse)
                 .Subscribe()
@@ -68,10 +69,9 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private void ProcesLoginResponse(LoginResponse response)
         {
-            if (!response.success)
-            {
-                view.ShowFailedLoginFeedback(response.message);
-            }
+            view.HideLoading();
+            if (!response.success) view.ShowFailedLoginFeedback(response.message);
+            else view.ShowSuccessLoginFeedback();
             
             loginDisposer.DisposeAll();
         }

@@ -31,6 +31,7 @@ namespace Modules.MainGame.Tests.Presentation
             actorRepository = Substitute.For<ActorRepository>();
             requestLogin = Substitute.For<RequestLogin>();
             
+            requestLogin.Execute(Arg.Any<LoginData>()).Returns(loginReponse);
             new MainGamePresenter(view, playerRepository, actorRepository, requestLogin);
         }
 
@@ -61,6 +62,14 @@ namespace Modules.MainGame.Tests.Presentation
         }
 
         [Test]
+        public void request_login_show_loading_screen()
+        {
+            GivenNoPlayerLogged();
+            WhenLoginButtonClicked();
+            ThenShowLoadingPaneScreen();
+        }
+
+        [Test]
         public void request_login_on_login_clicked()
         {
             GivenNoPlayerLogged();
@@ -72,10 +81,47 @@ namespace Modules.MainGame.Tests.Presentation
         public void request_login_receive_failed_response()
         {
             GivenNoPlayerLogged();
-            GivenLoginResponseFailed();
             GivenLoginButtonClicked();
             WhenFailedLoginResponseArrived();
-            ThenReceivedFailedResponse();
+            ThenShowFailedFeedback();
+        }
+
+        [Test]
+        public void request_login_receive_success_response()
+        {
+            GivenNoPlayerLogged();
+            GivenLoginButtonClicked();
+            WhenSuccessLoginResponseArrived();
+            ThenShowSuccessFeedback();
+        }
+
+        [Test]
+        public void dispose_loading_on_receive_loading_response()
+        {
+            GivenNoPlayerLogged();
+            GivenLoginButtonClicked();
+            WhenSuccessLoginResponseArrived();
+            ThenHideLoadingView();
+        }
+
+        private void ThenHideLoadingView()
+        {
+            view.Received(1).HideLoading();
+        }
+
+        private void ThenShowLoadingPaneScreen()
+        {
+            view.Received(1).ShowLoading();
+        }
+
+        private void ThenShowSuccessFeedback()
+        {
+            view.Received(1).ShowSuccessLoginFeedback();
+        }
+
+        private void WhenSuccessLoginResponseArrived()
+        {
+            loginReponse.OnNext(new LoginResponse(true, ""));
         }
 
         private void GivenLoginButtonClicked()
@@ -88,15 +134,12 @@ namespace Modules.MainGame.Tests.Presentation
             loginReponse.OnNext(new LoginResponse(false, ""));
         }
 
-        private void ThenReceivedFailedResponse()
+        private void ThenShowFailedFeedback()
         {
             view.Received(1).ShowFailedLoginFeedback(Arg.Any<string>());
         }
 
-        private void GivenLoginResponseFailed()
-        {
-            requestLogin.Execute(Arg.Any<LoginData>()).Returns(loginReponse);
-        }
+
         
         private void WhenLoginButtonClicked()
         {

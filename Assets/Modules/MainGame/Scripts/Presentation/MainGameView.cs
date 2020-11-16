@@ -12,6 +12,9 @@ namespace Modules.MainGame.Scripts.Presentation
         void StartMainGame();
         void InitView();
         void ShowFailedLoginFeedback(string message);
+        void ShowSuccessLoginFeedback();
+        void ShowLoading();
+        void HideLoading();
     }
 
     public struct LoginData
