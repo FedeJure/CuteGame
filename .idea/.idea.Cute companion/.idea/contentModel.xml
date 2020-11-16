@@ -4,8 +4,8 @@
     <e p="C:\Users\Fede\.Rider2019.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Fede\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Cute companion.651084698.00" t="ExcludeRecursive" />
     <e p="F:\Users\Fede\Documents\Proyectos\Proyectos Unity 3d\Cute companion" t="IncludeRecursive">
-      <e p="Actor.csproj" t="IncludeRecursive" />
-      <e p="Actor.Test.csproj" t="IncludeRecursive" />
+      <e p="ActorModule.csproj" t="IncludeRecursive" />
+      <e p="ActorModule.Test.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -32,7 +32,7 @@
           </e>
         </e>
         <e p="Modules" t="Include">
-          <e p="Actor" t="Include">
+          <e p="ActorModule" t="Include">
             <e p="Scripts" t="Include">
               <e p="ActorModuleProvider.cs" t="Include" />
               <e p="Core" t="Include">
@@ -58,16 +58,15 @@
                   <e p="HumorStateGenerator.cs" t="Include" />
                   <e p="HumorStateService.cs" t="Include" />
                   <e p="InteractionEvent.cs" t="Include" />
-                  <e p="Player.cs" t="Include" />
                   <e p="ReactionEvent.cs" t="Include" />
                   <e p="Repositories" t="Include">
                     <e p="ActorRepository.cs" t="Include" />
                     <e p="HumorStateRepository.cs" t="Include" />
-                    <e p="PlayerRepository.cs" t="Include" />
                   </e>
                 </e>
               </e>
               <e p="Infrastructure" t="Include">
+                <e p="DiskActorRepository.cs" t="Include" />
                 <e p="DiskHumorStateRepository.cs" t="Include" />
                 <e p="InMemoryHumorStateRepository.cs" t="Include" />
               </e>
@@ -125,6 +124,48 @@
           </e>
           <e p="InputWrapper" t="Include">
             <e p="InputWrapper.cs" t="Include" />
+          </e>
+          <e p="MainGame" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="Core" t="Include">
+                <e p="Actions" t="Include">
+                  <e p="RequestLogin.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Infrastructure" t="Include">
+                <e p="MainGameGateway.cs" t="Include" />
+                <e p="MockMainGameGateway.cs" t="Include" />
+              </e>
+              <e p="MainGameModuleProvider.cs" t="Include" />
+              <e p="Presentation" t="Include">
+                <e p="MainGamePresenter.cs" t="Include" />
+                <e p="MainGameView.cs" t="Include" />
+              </e>
+              <e p="UnityDelivery" t="Include">
+                <e p="UnityMainGameView.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Tests" t="Include">
+              <e p="Presentation" t="Include">
+                <e p="MainGamePresenterTest.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="PlayerModule" t="Include">
+            <e p="PlayerModuleProvider.cs" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="Core" t="Include">
+                <e p="Domain" t="Include">
+                  <e p="Player.cs" t="Include" />
+                  <e p="Repositories" t="Include">
+                    <e p="PlayerRepository.cs" t="Include" />
+                  </e>
+                </e>
+              </e>
+              <e p="Infrastructure" t="Include">
+                <e p="DiskPlayerRepository.cs" t="Include" />
+              </e>
+            </e>
           </e>
         </e>
         <e p="PlayerPrefsEditor" t="Include">
@@ -444,11 +485,14 @@
       </e>
       <e p="Common.csproj" t="IncludeRecursive" />
       <e p="Cute companion.sln" t="IncludeFlat" />
-      <e p="DependencyProviderASM.csproj" t="IncludeRecursive" />
+      <e p="DependencyProviderModule.csproj" t="IncludeRecursive" />
       <e p="DonutASM.csproj" t="IncludeRecursive" />
       <e p="InputWrapperASM.csproj" t="IncludeRecursive" />
+      <e p="MainGame.csproj" t="IncludeRecursive" />
+      <e p="MainGame.Tests.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
+      <e p="PlayerModule.csproj" t="IncludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
       <e p="UniRx.csproj" t="IncludeRecursive" />
     </e>

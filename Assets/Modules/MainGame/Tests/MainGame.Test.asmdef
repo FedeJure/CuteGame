@@ -1,0 +1,21 @@
+{
+    "name": "MainGame.Tests",
+    "references": [
+        "GUID:fba87c5d5817c3b429d0189a1f317cd8",
+        "GUID:c0866cb2abf9741458fb87211c991772",
+        "GUID:ded34ba29ec42bb499774d9c62bcb759",
+        "GUID:a9ae14719f952fb4bacb76ef5682717b",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

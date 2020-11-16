@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UniRx;
 
 namespace Modules.Common
@@ -14,6 +15,11 @@ namespace Modules.Common
         public static Maybe<T> ToMaybe<T>(this T self)
         {
             return new Maybe<T>(self);
+        }
+
+        public static void DisposeAll(this List<IDisposable> disposables)
+        {
+            disposables.ForEach(d => d.Dispose());
         }
     }
 }

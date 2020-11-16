@@ -1,0 +1,20 @@
+{
+    "name": "ActorModule",
+    "references": [
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:63c8eb923771fba4c8975bb081400aab",
+        "GUID:ed8ec50716454514786b251ef55f9a6e",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:a9ae14719f952fb4bacb76ef5682717b",
+        "GUID:ded34ba29ec42bb499774d9c62bcb759"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

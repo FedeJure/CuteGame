@@ -1,0 +1,16 @@
+{
+    "name": "PlayerModule",
+    "references": [
+        "GUID:a9ae14719f952fb4bacb76ef5682717b",
+        "GUID:63c8eb923771fba4c8975bb081400aab"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

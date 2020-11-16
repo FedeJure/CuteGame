@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Modules.Common;
 using UniRx;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -43,7 +44,7 @@ namespace Modules.Donut.UnityDelivery
 
         private void OnDisable()
         {
-            disposables.ForEach(d => d.Dispose());
+            disposables.DisposeAll();
         }
 
         private void SpawnDonut()

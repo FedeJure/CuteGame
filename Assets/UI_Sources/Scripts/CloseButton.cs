@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Modules.Common;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -33,7 +34,7 @@ namespace UI_Sources.Scripts
 
         private void OnDisable()
         {
-            disposer.ForEach(d => d.Dispose());
+            disposer.DisposeAll();
         }
 
         private void OnClick()
