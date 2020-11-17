@@ -143,6 +143,7 @@
                 <e p="MainGameView.cs" t="Include" />
               </e>
               <e p="UnityDelivery" t="Include">
+                <e p="MainGameCamera.cs" t="Include" />
                 <e p="UnityMainGameView.cs" t="Include" />
               </e>
             </e>

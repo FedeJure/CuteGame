@@ -12,13 +12,14 @@ namespace Modules.MainGame.Scripts.UnityDelivery
         public event Action OnViewDisable = () => {};
         public event Action<LoginData> OnLoginClicked = data => {};
 
-        [SerializeField] GameObject loginScreen;
-        [SerializeField] GameObject uiCamera;
         [SerializeField] Button loginButton;
         [SerializeField] TMP_InputField emailInput;
         [SerializeField] TMP_InputField passwordInput;
-        
+        [SerializeField] MainGameCamera gameCamera;
+
         [SerializeField] LoadingScreen loadingScreen;
+        [SerializeField] GameObject loginScreen;
+        [SerializeField] GameObject gui;
 
         private void Awake()
         {
@@ -44,12 +45,13 @@ namespace Modules.MainGame.Scripts.UnityDelivery
 
         public void InitView()
         {
-            uiCamera.SetActive(false);
+            gui.SetActive(false);
+            loginScreen.SetActive(false);
         }
 
         public void ShowFailedLoginFeedback(string message)
         {
-            throw new NotImplementedException();
+            Debug.LogWarning("Failed successful");
         }
 
         public void ShowSuccessLoginFeedback()
@@ -74,12 +76,16 @@ namespace Modules.MainGame.Scripts.UnityDelivery
 
         public void ShowActorCreationScreen()
         {
-            throw new NotImplementedException();
+            Debug.LogWarning("Show actor creation screen");
         }
 
         public void StartMainGame()
         {
-            throw new NotImplementedException();
+            Debug.LogWarning("Start main game");
+            loginScreen.SetActive(false);
+            gameCamera.ShowMainGame();
+            gui.SetActive(true);
+            
         }
     }
 }

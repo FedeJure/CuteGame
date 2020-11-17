@@ -10,7 +10,8 @@ namespace Modules.ActorModule.Scripts.Core.Domain
         public long id;
         public ActorSkin skin;
         public Player owner;
-
+        
+        public Actor() { }
         public Actor(long id, string name, ActorSkin skin, Player owner)
         {
             this.name = name;

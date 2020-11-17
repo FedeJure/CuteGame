@@ -14,7 +14,7 @@ public class LoadingScreen : MonoBehaviour
     {
         screen.SetActive(true);
         LeanTween.rotate(loadingIcon, 1000f, 1f)
-            .setEaseInCubic()
+            .setEaseInQuad()
             .setLoopPingPong(0);
     }
 

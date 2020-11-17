@@ -17,7 +17,7 @@ namespace Modules.MainGame.Scripts
         public static RequestLogin ProvideRequestLoginAction()
         {
             return DependencyProvider.GetOrInstanciate<RequestLogin>(() =>
-                new RequestLogin(ProvideMainGameGateway()));
+                new RequestLogin(ProvideMainGameGateway(), PlayerModuleProvider.ProvidePlayerRepository(), ActorModuleProvider.ProvideActorRepository()));
         }
 
         public static MainGameGateway ProvideMainGameGateway()

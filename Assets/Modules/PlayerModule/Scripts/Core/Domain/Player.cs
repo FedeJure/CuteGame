@@ -5,6 +5,8 @@ namespace Modules.PlayerModule.Scripts.Core.Domain
     public class Player
     {
         public long id;
+        
+        public Player() { }
 
         public Player(long id)
         {

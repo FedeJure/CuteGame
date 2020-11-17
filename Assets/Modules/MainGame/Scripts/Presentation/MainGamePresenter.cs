@@ -62,16 +62,20 @@ namespace Modules.MainGame.Scripts.Presentation
         {
             view.ShowLoading();
             requestLogin.Execute(data)
-                .Do(ProcesLoginResponse)
+                .Do(ProcessLoginResponse)
                 .Subscribe()
                 .AddTo(loginDisposer);
         }
 
-        private void ProcesLoginResponse(LoginResponse response)
+        private void ProcessLoginResponse(LoginResponse response)
         {
             view.HideLoading();
             if (!response.success) view.ShowFailedLoginFeedback(response.message);
-            else view.ShowSuccessLoginFeedback();
+            else
+            {
+                view.ShowSuccessLoginFeedback();
+                PresentView();
+            }
             
             loginDisposer.DisposeAll();
         }
