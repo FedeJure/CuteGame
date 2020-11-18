@@ -11,13 +11,14 @@ namespace Modules.ActorModule.Scripts.Core.Domain.Action
         private readonly ActorRepository actorRepository;
         private readonly PlayerRepository playerRepository;
 
+        public CreateNewActor() { }
         public CreateNewActor(ActorRepository actorRepository, PlayerRepository playerRepository)
         {
             this.actorRepository = actorRepository;
             this.playerRepository = playerRepository;
         }
 
-        public IObservable<Actor> Execute(string name, string bodySkinId, string headSkinId)
+        public virtual IObservable<Actor> Execute(string name, string bodySkinId, string headSkinId)
         {
             return playerRepository.Get()
                 .ReturnOrDefault(player =>

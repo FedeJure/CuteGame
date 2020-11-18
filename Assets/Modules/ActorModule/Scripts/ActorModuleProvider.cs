@@ -5,6 +5,7 @@ using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.ActorModule.Scripts.Infrastructure;
 using Modules.ActorModule.Scripts.Presentation;
 using Modules.ActorModule.Scripts.UnityDelivery;
+using Modules.PlayerModule;
 
 namespace Modules.ActorModule.Scripts
 {
@@ -58,6 +59,12 @@ namespace Modules.ActorModule.Scripts
         public static ActorRepository ProvideActorRepository()
         {
             return DependencyProvider.GetOrInstanciate(() => new DiskActorRepository());
+        }
+
+        public static CreateNewActor ProvideCreateActorAction()
+        {
+            return DependencyProvider.GetOrInstanciate(() =>
+                new CreateNewActor(ProvideActorRepository(), PlayerModuleProvider.ProvidePlayerRepository()));
         }
     }
 }

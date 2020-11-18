@@ -77,6 +77,11 @@ namespace Modules.MainGame.Scripts.UnityDelivery
             loadingScreen.StopLoading();
         }
 
+        public IObservable<Unit> MoveCameraToGame()
+        {
+            return gameCamera.ShowMainGame();
+        }
+
         public void ShowLoginScreen()
         {
             loginScreen.SetActive(true);
@@ -91,9 +96,8 @@ namespace Modules.MainGame.Scripts.UnityDelivery
         {
             Debug.LogWarning("Start main game");
             loginScreen.SetActive(false);
-            gameCamera.ShowMainGame();
+            creationView.gameObject.SetActive(false);
             gui.SetActive(true);
-            
         }
     }
 }

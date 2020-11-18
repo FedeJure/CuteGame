@@ -13,9 +13,10 @@ public class UnityActorCreationView : MonoBehaviour
     [SerializeField] SkinnedMeshRenderer mesh;
     [SerializeField] ActorSkinData bodySkin;
     [SerializeField] ActorSkinData headSkin;
-    [SerializeField] private Button creationButton;
-    [SerializeField] private List<UnitySelectableSkinView> bodySkins;
-    [SerializeField] private List<UnitySelectableSkinView> headSkins;
+    [SerializeField] Button creationButton;
+    [SerializeField] List<UnitySelectableSkinView> bodySkins;
+    [SerializeField] List<UnitySelectableSkinView> headSkins;
+    [SerializeField] RectTransform content;
 
 
     private void Start()
@@ -25,6 +26,13 @@ public class UnityActorCreationView : MonoBehaviour
         headSkins.ForEach(skinView => skinView.OnClick += HandleHeadSkinChange);
         HandleBodySkinChange(bodySkin);
         HandleHeadSkinChange(headSkin);
+    }
+
+    private void OnEnable()
+    {
+        content.localPosition = new Vector3(0, -300, 0);
+        LeanTween.moveLocal(content.gameObject, new Vector3(0, 0, 0), 1)
+            .setEaseOutQuad();
     }
 
 

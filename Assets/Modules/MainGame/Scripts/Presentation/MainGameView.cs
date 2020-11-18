@@ -1,5 +1,6 @@
 ﻿using System;
 using Modules.ActorModule.Scripts.UnityDelivery.Skin;
+using UniRx;
 
 namespace Modules.MainGame.Scripts.Presentation
 {
@@ -17,6 +18,7 @@ namespace Modules.MainGame.Scripts.Presentation
         void ShowSuccessLoginFeedback();
         void ShowLoading();
         void HideLoading();
+        IObservable<Unit> MoveCameraToGame();
     }
 
     public struct LoginData

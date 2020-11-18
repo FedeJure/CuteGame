@@ -1,5 +1,6 @@
 ﻿using System;
 using Modules.ActorModule.Scripts.Core.Domain;
+using Modules.ActorModule.Scripts.Core.Domain.Action;
 using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.Common;
 using Modules.MainGame.Scripts.Core.Actions;
@@ -22,6 +23,7 @@ namespace Modules.MainGame.Tests.Presentation
         private RequestLogin requestLogin;
 
         private ISubject<LoginResponse> loginReponse = new Subject<LoginResponse>();
+        private CreateNewActor createActor;
 
         [SetUp]
         public void SetUp()
@@ -30,9 +32,10 @@ namespace Modules.MainGame.Tests.Presentation
             playerRepository = Substitute.For<PlayerRepository>();
             actorRepository = Substitute.For<ActorRepository>();
             requestLogin = Substitute.For<RequestLogin>();
+            createActor = Substitute.For<CreateNewActor>();
             
             requestLogin.Execute(Arg.Any<LoginData>()).Returns(loginReponse);
-            new MainGamePresenter(view, playerRepository, actorRepository, requestLogin);
+            new MainGamePresenter(view, playerRepository, actorRepository, requestLogin, createActor);
         }
 
         [Test]

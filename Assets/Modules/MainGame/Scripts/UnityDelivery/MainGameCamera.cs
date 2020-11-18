@@ -1,20 +1,20 @@
 ﻿
+using System;
+using Modules.Common;
+using UniRx;
 using UnityEngine;
 
 public class MainGameCamera : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera uiCamera;
-
-    readonly int startMainGameKey = Animator.StringToHash("startGame");
-
-    private void Start()
+    
+    public IObservable<Unit> ShowMainGame()
     {
+        var endRotation = new Vector3(20, 0, 0);
+        return LeanTween.rotate(mainCamera.gameObject, endRotation, 1.5f)
+            .setEaseInQuad()
+            .OnCompleteAsObservable();
     }
-
-    public void ShowMainGame()
-    {
-        animator.SetTrigger(startMainGameKey);
-    }
+    
 }

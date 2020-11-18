@@ -21,5 +21,13 @@ namespace Modules.Common
         {
             disposables.ForEach(d => d.Dispose());
         }
+
+        public static IObservable<Unit> OnCompleteAsObservable(this LTDescr evnt)
+        {
+            var observable = new ReplaySubject<Unit>();
+            observable.OnNext(Unit.Default);
+            evnt.setOnComplete(() => observable.OnCompleted());
+            return observable;
+        }
     }
 }

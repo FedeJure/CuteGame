@@ -11,7 +11,11 @@ namespace Modules.MainGame.Scripts
     {
         public static void ProvidePresenterFor(MainGameView view)
         {
-            new MainGamePresenter(view, PlayerModuleProvider.ProvidePlayerRepository(), ActorModuleProvider.ProvideActorRepository(), ProvideRequestLoginAction());
+            new MainGamePresenter(view,
+                PlayerModuleProvider.ProvidePlayerRepository(),
+                ActorModuleProvider.ProvideActorRepository(),
+                ProvideRequestLoginAction(),
+                ActorModuleProvider.ProvideCreateActorAction());
         }
 
         public static RequestLogin ProvideRequestLoginAction()
