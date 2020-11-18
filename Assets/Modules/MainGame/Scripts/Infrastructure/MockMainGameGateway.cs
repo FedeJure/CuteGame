@@ -12,7 +12,7 @@ namespace Modules.MainGame.Scripts.Infrastructure
         public IObservable<LoginResponse> RequestLogin(string email, string password)
         {
             var player = new Player(1);
-            return new LoginResponse(true, "Mock success message",player, new Actor(1, "Mock Actor", new ActorSkin("",""), player )).ToObservableDummy()
+            return new LoginResponse(true, "Mock success message",player, null).ToObservableDummy()
                 .Delay(TimeSpan.FromSeconds(3));
         }
     }

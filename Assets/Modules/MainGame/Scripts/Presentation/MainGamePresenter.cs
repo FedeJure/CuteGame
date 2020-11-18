@@ -6,6 +6,7 @@ using Modules.Common;
 using Modules.MainGame.Scripts.Core.Actions;
 using Modules.PlayerModule.Scripts.Core.Domain.Repositories;
 using UniRx;
+using UnityEngine;
 
 namespace Modules.MainGame.Scripts.Presentation
 {
@@ -31,6 +32,13 @@ namespace Modules.MainGame.Scripts.Presentation
             view.OnViewEnable += PresentView;
             view.OnViewDisable += DisposeView;
             view.OnLoginClicked += ProcessLogin;
+            view.OnCreationCompleted += CreateActor;
+        }
+
+        private void CreateActor(CreationData data)
+        {
+            view.ShowLoading();
+            Debug.LogWarning("Creating acctor:" + data);
         }
 
         private void PresentView()

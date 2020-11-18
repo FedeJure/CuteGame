@@ -5,15 +5,16 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField] private GameObject screen;
     [SerializeField] private RectTransform loadingIcon;
 
-    private void Start()
+    private void Awake()
     {
+        gameObject.SetActive(true);
         screen.SetActive(false);
     }
 
     public void StartLoading()
     {
         screen.SetActive(true);
-        LeanTween.rotate(loadingIcon, 1000f, 1f)
+        LeanTween.rotateZ(loadingIcon.gameObject, 2000f, 1f)
             .setEaseInQuad()
             .setLoopPingPong(0);
     }

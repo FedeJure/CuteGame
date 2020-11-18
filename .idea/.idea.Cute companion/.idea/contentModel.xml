@@ -84,6 +84,10 @@
               </e>
               <e p="UnityDelivery" t="Include">
                 <e p="HitTargetRepository.cs" t="Include" />
+                <e p="Skin" t="Include">
+                  <e p="ActorSkinConfig.cs" t="Include" />
+                  <e p="ActorSkinData.cs" t="Include" />
+                </e>
                 <e p="TouchAction.cs" t="Include" />
                 <e p="UnityActorCameraView.cs" t="Include" />
                 <e p="UnityActorMovementView.cs" t="Include" />
@@ -144,7 +148,9 @@
               </e>
               <e p="UnityDelivery" t="Include">
                 <e p="MainGameCamera.cs" t="Include" />
+                <e p="UnityActorCreationView.cs" t="Include" />
                 <e p="UnityMainGameView.cs" t="Include" />
+                <e p="UnitySelectableSkinView.cs" t="Include" />
               </e>
             </e>
             <e p="Tests" t="Include">

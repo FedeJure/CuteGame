@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Modules.MainGame.Scripts.Presentation;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +13,7 @@ namespace Modules.MainGame.Scripts.UnityDelivery
         public event Action OnViewEnable = () => {};
         public event Action OnViewDisable = () => {};
         public event Action<LoginData> OnLoginClicked = data => {};
+        public event Action<CreationData> OnCreationCompleted = data => { };
 
         [SerializeField] Button loginButton;
         [SerializeField] TMP_InputField emailInput;
@@ -21,11 +24,22 @@ namespace Modules.MainGame.Scripts.UnityDelivery
         [SerializeField] GameObject loginScreen;
         [SerializeField] GameObject gui;
 
+        [SerializeField] UnityActorCreationView creationView;
+        
         private void Awake()
         {
             MainGameModuleProvider.ProvidePresenterFor(this);
 
             loginButton.onClick.AddListener(SetOnLoginClicked);
+            creationView.OnCreate += OnCreationCompleted;
+        }
+        
+
+        public void InitView()
+        {
+            gui.SetActive(false);
+            loginScreen.SetActive(false);
+            creationView.gameObject.SetActive(false);
         }
 
         private void SetOnLoginClicked()
@@ -41,12 +55,6 @@ namespace Modules.MainGame.Scripts.UnityDelivery
         private void OnDisable()
         {
             OnViewDisable();
-        }
-
-        public void InitView()
-        {
-            gui.SetActive(false);
-            loginScreen.SetActive(false);
         }
 
         public void ShowFailedLoginFeedback(string message)
@@ -76,7 +84,7 @@ namespace Modules.MainGame.Scripts.UnityDelivery
 
         public void ShowActorCreationScreen()
         {
-            Debug.LogWarning("Show actor creation screen");
+            creationView.gameObject.SetActive(true);
         }
 
         public void StartMainGame()

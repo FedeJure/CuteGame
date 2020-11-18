@@ -1,4 +1,5 @@
 ﻿using System;
+using Modules.ActorModule.Scripts.UnityDelivery.Skin;
 
 namespace Modules.MainGame.Scripts.Presentation
 {
@@ -7,6 +8,7 @@ namespace Modules.MainGame.Scripts.Presentation
         event Action OnViewEnable;
         event Action OnViewDisable;
         event Action<LoginData> OnLoginClicked;
+        event Action<CreationData> OnCreationCompleted;
         void ShowLoginScreen();
         void ShowActorCreationScreen();
         void StartMainGame();
@@ -26,6 +28,20 @@ namespace Modules.MainGame.Scripts.Presentation
         {
             this.email = email;
             this.password = password;
+        }
+    }
+
+    public struct CreationData
+    {
+        public string name;
+        public ActorSkinData bodySkin;
+        public ActorSkinData headSkin;
+
+        public CreationData(string name, ActorSkinData bodySkin, ActorSkinData headSkin)
+        {
+            this.name = name;
+            this.bodySkin = bodySkin;
+            this.headSkin = headSkin;
         }
     }
 }
