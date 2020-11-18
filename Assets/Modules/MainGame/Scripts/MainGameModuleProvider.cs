@@ -1,5 +1,6 @@
 ﻿using DependencyProviderNamespace;
 using Modules.ActorModule.Scripts;
+using Modules.Common;
 using Modules.MainGame.Scripts.Core.Actions;
 using Modules.MainGame.Scripts.Infrastructure;
 using Modules.MainGame.Scripts.Presentation;
@@ -15,7 +16,8 @@ namespace Modules.MainGame.Scripts
                 PlayerModuleProvider.ProvidePlayerRepository(),
                 ActorModuleProvider.ProvideActorRepository(),
                 ProvideRequestLoginAction(),
-                ActorModuleProvider.ProvideCreateActorAction());
+                ActorModuleProvider.ProvideCreateActorAction(),
+                CommonModuleProvider.ProvideGlobalEventBus());
         }
 
         public static RequestLogin ProvideRequestLoginAction()

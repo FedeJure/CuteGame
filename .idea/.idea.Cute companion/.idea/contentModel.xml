@@ -112,7 +112,9 @@
             </e>
           </e>
           <e p="Common" t="Include">
+            <e p="CommonModuleProvider.cs" t="Include" />
             <e p="ExtensionMethods.cs" t="Include" />
+            <e p="GlobalEventBus.cs" t="Include" />
             <e p="LoadingScreen.cs" t="Include" />
             <e p="LocalStorage.cs" t="Include" />
             <e p="Maybe.cs" t="Include" />

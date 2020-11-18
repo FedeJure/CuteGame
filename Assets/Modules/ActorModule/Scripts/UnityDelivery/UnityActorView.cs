@@ -10,6 +10,7 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
         public event Action OnViewDisable = () => { };
 
         [SerializeField] Animator animator;
+        [SerializeField] private GameObject interactables;
 
         readonly int leftCaredKey = Animator.StringToHash("leftCaress");
         readonly int rigthCaredKey = Animator.StringToHash("rigthCaress");
@@ -86,6 +87,11 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
         public void ShowMiddleConsentEvent()
         {
             animator.SetTrigger(middleConsentKey);
+        }
+
+        public void SetActorInteractable(bool interactable)
+        {
+            interactables.SetActive(interactable);
         }
     }
 }

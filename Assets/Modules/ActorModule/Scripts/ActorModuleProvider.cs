@@ -5,6 +5,7 @@ using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.ActorModule.Scripts.Infrastructure;
 using Modules.ActorModule.Scripts.Presentation;
 using Modules.ActorModule.Scripts.UnityDelivery;
+using Modules.Common;
 using Modules.PlayerModule;
 
 namespace Modules.ActorModule.Scripts
@@ -13,7 +14,7 @@ namespace Modules.ActorModule.Scripts
     {
         public static void ProvidePresenterFor(ActorView view)
         {
-            new ActorPresenter(view, ProvideEventBus(), ProvideRetrieveHumorAction());
+            new ActorPresenter(view, ProvideEventBus(), CommonModuleProvider.ProvideGlobalEventBus(), ProvideRetrieveHumorAction());
         }
         
         public static void ProvidePresenterFor(HumorBarView view)

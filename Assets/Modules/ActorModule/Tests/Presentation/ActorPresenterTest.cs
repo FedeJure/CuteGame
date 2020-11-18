@@ -21,6 +21,7 @@ namespace Modules.ActorModule.Tests.Presentation
         private ISubject<Unit> rigthCaressEvent = new Subject<Unit>();
         private ISubject<Unit> notHappyEvent = new Subject<Unit>();
         private ISubject<Unit> happyEvent = new Subject<Unit>();
+        private GlobalEventBus globalEventBus;
 
         [SetUp]
         public void SetUp()
@@ -28,13 +29,14 @@ namespace Modules.ActorModule.Tests.Presentation
             view = Substitute.For<ActorView>();
             eventBus = Substitute.For<EventBus>();
             retrieveActorHumor = Substitute.For<RetrieveActorHumor>();
+            globalEventBus = Substitute.For<GlobalEventBus>();
 
             retrieveActorHumor.Execute().Returns(new Maybe<HumorState>(new HumorState(50, 1, Humor.Happy, MAX_HUMOR)));
             eventBus.OnEvent<LeftCaressInteractionEvent>().Returns(leftCaressEvent);
             eventBus.OnEvent<RigthCaressInteractionEvent>().Returns(rigthCaressEvent);
             eventBus.OnEvent<NotHappyEvent>().Returns(notHappyEvent);
             eventBus.OnEvent<HappyEvent>().Returns(happyEvent);
-            new ActorPresenter(view, eventBus, retrieveActorHumor);
+            new ActorPresenter(view, eventBus, globalEventBus, retrieveActorHumor);
         }
 
         [Test]

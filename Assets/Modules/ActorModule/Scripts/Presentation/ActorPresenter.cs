@@ -12,13 +12,15 @@ namespace Modules.ActorModule.Scripts.Presentation
     { 
         readonly ActorView view;
         readonly EventBus eventBus;
+        private readonly GlobalEventBus globalEventBus;
         private readonly RetrieveActorHumor retrieveHumor;
         private readonly List<IDisposable> disposables = new List<IDisposable>();
 
-        public ActorPresenter(ActorView view, EventBus eventBus, RetrieveActorHumor retrieveHumor)
+        public ActorPresenter(ActorView view, EventBus eventBus, GlobalEventBus globalEventBus, RetrieveActorHumor retrieveHumor)
         {
             this.view = view;
             this.eventBus = eventBus;
+            this.globalEventBus = globalEventBus;
             this.retrieveHumor = retrieveHumor;
 
             view.OnViewEnable += Present;
@@ -27,6 +29,13 @@ namespace Modules.ActorModule.Scripts.Presentation
 
         void Present()
         {
+            view.SetActorInteractable(false);
+
+            globalEventBus.OnMainGameStarted()
+                .Do(_ => view.SetActorInteractable(true))
+                .Subscribe()
+                .AddTo(disposables);
+            
             eventBus.OnEvent<LeftCaressInteractionEvent>()
                 .Do(_ => view.ShowLeftCaredFeedback())
                 .Subscribe()

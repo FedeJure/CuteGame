@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Modules.ActorModule.Scripts.UnityDelivery.Skin;
+using Modules.Common;
 using Modules.MainGame.Scripts.Presentation;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,7 +34,10 @@ public class UnityActorCreationView : MonoBehaviour
     {
         content.localPosition = new Vector3(0, -300, 0);
         LeanTween.moveLocal(content.gameObject, new Vector3(0, 0, 0), 1)
-            .setEaseOutQuad();
+            .setEaseOutQuad()
+            .OnCompleteAsObservable()
+            .DoOnCompleted(() => Debug.LogWarning(content.transform.localPosition))
+            .Subscribe();
     }
 
 

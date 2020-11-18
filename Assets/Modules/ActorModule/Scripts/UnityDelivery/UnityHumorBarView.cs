@@ -31,8 +31,8 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
 
         private void Start()
         {
-            textPosition = text.transform.position;
-            textScale = text.transform.localScale;
+            textPosition = text.rectTransform.position;
+            textScale = text.rectTransform.localScale;
         }
 
         private void OnEnable()
@@ -62,19 +62,19 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
 
         private void TextAnimation()
         {
-            var scale = text.transform.localScale;
-            var position = text.transform.position;
-            text.transform.localScale = Vector3.zero;
+            var scale = text.rectTransform.localScale;
+            var position = text.rectTransform.position;
+            text.rectTransform.localScale = Vector3.zero;
             text.gameObject.SetActive(true);
             LeanTween.scale(text.gameObject, textScale * 3f, 0.4f)
                 .setLoopPingPong(1)
                 .setOnComplete(() =>
                 {
-                    text.transform.localScale = textScale;
+                    text.rectTransform.localScale = textScale;
                     text.gameObject.SetActive(false);
                 });
 
-            LeanTween.move(text.gameObject, textPosition + Vector3.forward / 5, 0.4f)
+            LeanTween.move(text.gameObject, textPosition + Vector3.up / 5, 0.4f)
                 .setOnComplete(() =>
                 {
                     text.transform.position = textPosition;

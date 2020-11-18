@@ -17,6 +17,7 @@ namespace Modules.MainGame.Scripts.Presentation
         private readonly ActorRepository actorRepository;
         private readonly RequestLogin requestLogin;
         private readonly CreateNewActor createNewActor;
+        private readonly GlobalEventBus eventBus;
 
         List<IDisposable> loginDisposer = new List<IDisposable>();
         List<IDisposable> creationDisposer = new List<IDisposable>();
@@ -25,13 +26,15 @@ namespace Modules.MainGame.Scripts.Presentation
             PlayerRepository playerRepository,
             ActorRepository actorRepository,
             RequestLogin requestLogin,
-            CreateNewActor createNewActor)
+            CreateNewActor createNewActor,
+            GlobalEventBus eventBus)
         {
             this.view = view;
             this.playerRepository = playerRepository;
             this.actorRepository = actorRepository;
             this.requestLogin = requestLogin;
             this.createNewActor = createNewActor;
+            this.eventBus = eventBus;
 
             view.OnViewEnable += PresentView;
             view.OnViewDisable += DisposeView;
@@ -61,7 +64,16 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private void PresentMainGame(Actor actor)
         {
-            view.StartMainGame();
+            view.MoveCameraToGame()
+                .Last()
+                .Do(_ =>
+                {
+                    view.StartMainGame();
+                    eventBus.EmitOnMainGameStarted();
+                })
+                .Subscribe()
+                .AddTo(loginDisposer);
+            
         }
 
         private void PresentLoginScreen()

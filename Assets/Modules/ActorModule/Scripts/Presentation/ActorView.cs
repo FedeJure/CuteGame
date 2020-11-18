@@ -16,5 +16,6 @@ namespace Modules.ActorModule.Scripts.Presentation
         void ShowLeftTickleFeedback();
         void ShowRightTickleFeedback();
         void ShowMiddleConsentEvent();
+        void SetActorInteractable(bool interactable);
     }
 }
