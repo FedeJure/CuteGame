@@ -77,7 +77,12 @@ namespace Modules.MainGame.Scripts.UnityDelivery
             loadingScreen.StopLoading();
         }
 
-        public IObservable<Unit> MoveCameraToGame()
+        public IObservable<Unit> MoveCameraToCreationView()
+        {
+            return gameCamera.ShowCreationView();
+        }
+
+        public IObservable<Unit> MoveCameraToMainGame()
         {
             return gameCamera.ShowMainGame();
         }

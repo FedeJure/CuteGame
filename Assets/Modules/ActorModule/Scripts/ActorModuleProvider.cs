@@ -14,9 +14,14 @@ namespace Modules.ActorModule.Scripts
     {
         public static void ProvidePresenterFor(ActorView view)
         {
-            new ActorPresenter(view, ProvideEventBus(), CommonModuleProvider.ProvideGlobalEventBus(), ProvideRetrieveHumorAction());
+            new ActorPresenter(view, ProvideEventBus(), CommonModuleProvider.ProvideGlobalEventBus(), ProvideRetrieveHumorAction(), ProvideRetrieveActorAction());
         }
-        
+
+        private static RetrieveActor ProvideRetrieveActorAction()
+        {
+            return DependencyProvider.GetOrInstanciate(() => new RetrieveActor(ProvideActorRepository(), CommonModuleProvider.ProvideSessionRepository()));
+        }
+
         public static void ProvidePresenterFor(HumorBarView view)
         {
             new HumorBarPresenter(view, ProvideEventBus(), ProvideRetrieveHumorAction());
@@ -24,7 +29,7 @@ namespace Modules.ActorModule.Scripts
 
         public static RetrieveActorHumor ProvideRetrieveHumorAction()
         {
-            return DependencyProvider.GetOrInstanciate(() => new RetrieveActorHumor(ProvideHumorStateRepository()));
+            return DependencyProvider.GetOrInstanciate(() => new RetrieveActorHumor(ProvideHumorStateRepository(), CommonModuleProvider.ProvideSessionRepository()));
         }
 
         public static EventBus ProvideEventBus()
@@ -39,12 +44,12 @@ namespace Modules.ActorModule.Scripts
 
         private static ProcessInteraction ProvideProcessDirectionAction()
         {
-            return DependencyProvider.GetOrInstanciate(() => new ProcessInteraction(ProvideEventBus(), ProvideHumorStateRepository(), ProvideHumorStateService()));
+            return DependencyProvider.GetOrInstanciate(() => new ProcessInteraction(ProvideEventBus(), ProvideHumorStateRepository(), ProvideHumorStateService(), CommonModuleProvider.ProvideSessionRepository()));
         }
 
         private static HumorStateService ProvideHumorStateService()
         {
-            return DependencyProvider.GetOrInstanciate(() => new HumorStateService(ProvideHumorStateRepository()));
+            return DependencyProvider.GetOrInstanciate(() => new HumorStateService(ProvideHumorStateRepository(), CommonModuleProvider.ProvideSessionRepository()));
         }
 
         private static HumorStateRepository ProvideHumorStateRepository()
@@ -65,7 +70,7 @@ namespace Modules.ActorModule.Scripts
         public static CreateNewActor ProvideCreateActorAction()
         {
             return DependencyProvider.GetOrInstanciate(() =>
-                new CreateNewActor(ProvideActorRepository(), PlayerModuleProvider.ProvidePlayerRepository()));
+                new CreateNewActor(ProvideActorRepository(), PlayerModuleProvider.ProvidePlayerRepository(), CommonModuleProvider.ProvideSessionRepository()));
         }
     }
 }

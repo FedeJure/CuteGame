@@ -2,6 +2,7 @@
 using Modules.ActorModule.Scripts.Core.Domain.Action;
 using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.Common;
+using Modules.MainGame.Scripts.Core.Domain;
 using Modules.PlayerModule.Scripts.Core.Domain;
 using Modules.PlayerModule.Scripts.Core.Domain.Repositories;
 using NSubstitute;
@@ -16,13 +17,15 @@ namespace Modules.ActorModule.Tests.Core.Domain.Action
         private ActorRepository actorRepository;
         private PlayerRepository playerRepository;
         private CreateNewActor action;
+        private SessionRepository sessionRepository;
 
         [SetUp]
         public void SetUp()
         {
             actorRepository = Substitute.For<ActorRepository>();
             playerRepository = Substitute.For<PlayerRepository>();
-            action = new CreateNewActor(actorRepository, playerRepository);   
+            sessionRepository = Substitute.For<SessionRepository>();
+            action = new CreateNewActor(actorRepository, playerRepository, sessionRepository);   
         }
     
         [Test]

@@ -1,5 +1,8 @@
-﻿namespace Modules.ActorModule.Scripts.Core.Domain
+﻿using System;
+
+namespace Modules.ActorModule.Scripts.Core.Domain
 {
+    [Serializable]
     public class ActorSkin
     {
         public string bodySkinId;

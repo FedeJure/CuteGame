@@ -2,6 +2,8 @@
 using Modules.ActorModule.Scripts.Core.Domain.Events;
 using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.ActorModule.Scripts.Presentation.Events;
+using Modules.Common;
+using Modules.PlayerModule.Scripts.Core.Domain.Repositories;
 
 namespace Modules.ActorModule.Scripts.Core.Domain.Action
 {
@@ -12,16 +14,19 @@ namespace Modules.ActorModule.Scripts.Core.Domain.Action
         readonly EventBus eventBus;
         private readonly HumorStateRepository humorStateRepository;
         private readonly HumorStateService humorStateService;
+        private readonly SessionRepository sessionRepository;
         readonly Dictionary<ActorInteraction, SimpleAction> eventMapper = new Dictionary<ActorInteraction, SimpleAction>();
 
         public ProcessInteraction() { }
         public ProcessInteraction(EventBus eventBus,
                                 HumorStateRepository humorStateRepository,
-                                HumorStateService humorStateService)
+                                HumorStateService humorStateService,
+                                SessionRepository sessionRepository)
         {
             this.eventBus = eventBus;
             this.humorStateRepository = humorStateRepository;
             this.humorStateService = humorStateService;
+            this.sessionRepository = sessionRepository;
 
             eventMapper[ActorInteraction.LeftCaress] = eventBus.EmitEvent<LeftCaressInteractionEvent>;
             eventMapper[ActorInteraction.RigthCaress] = eventBus.EmitEvent<RigthCaressInteractionEvent>;
@@ -39,21 +44,24 @@ namespace Modules.ActorModule.Scripts.Core.Domain.Action
 
         private void UpdateState(ActorInteraction interaction)
         {
-            var nextHumor = humorStateService.ReceiveInteraction(interaction);
-            humorStateRepository.Save(nextHumor);
+            sessionRepository.Get()
+                .Do(session =>
+                {
+                    var nextHumor = humorStateService.ReceiveInteraction(interaction);
+                    humorStateRepository.Save(nextHumor, session.actorId);
             
-            if (nextHumor.lastHumorChange == 0) return;
-            eventBus.EmitEvent<HumorChangesEvent>();
+                    if (nextHumor.lastHumorChange == 0) return;
+                    eventBus.EmitEvent<HumorChangesEvent>();
 
-            if (nextHumor.lastHumorChange > 0)
-            {
-                eventBus.EmitEvent<HappyEvent>();
-            }
-            else
-            {
-                eventBus.EmitEvent<NotHappyEvent>();
-            }
-            
+                    if (nextHumor.lastHumorChange > 0)
+                    {
+                        eventBus.EmitEvent<HappyEvent>();
+                    }
+                    else
+                    {
+                        eventBus.EmitEvent<NotHappyEvent>();
+                    }        
+                });
         }
     }
 }

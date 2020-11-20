@@ -41,6 +41,12 @@ namespace Modules.Common
             return hasValue ? callback(value) : defaultObject;
         }
 
+        public U ReturnOrException<U>(Func<T, U> callback, Exception exeption)
+        {
+            if (!hasValue) throw exeption;
+            return callback(value);
+        }
+
         public static Maybe<T> Nothing
         {
             get { return default(Maybe<T>); }

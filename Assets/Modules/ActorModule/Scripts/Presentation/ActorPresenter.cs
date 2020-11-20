@@ -14,14 +14,20 @@ namespace Modules.ActorModule.Scripts.Presentation
         readonly EventBus eventBus;
         private readonly GlobalEventBus globalEventBus;
         private readonly RetrieveActorHumor retrieveHumor;
+        private readonly RetrieveActor retrieveActor;
         private readonly List<IDisposable> disposables = new List<IDisposable>();
 
-        public ActorPresenter(ActorView view, EventBus eventBus, GlobalEventBus globalEventBus, RetrieveActorHumor retrieveHumor)
+        public ActorPresenter(ActorView view,
+            EventBus eventBus,
+            GlobalEventBus globalEventBus,
+            RetrieveActorHumor retrieveHumor,
+            RetrieveActor retrieveActor)
         {
             this.view = view;
             this.eventBus = eventBus;
             this.globalEventBus = globalEventBus;
             this.retrieveHumor = retrieveHumor;
+            this.retrieveActor = retrieveActor;
 
             view.OnViewEnable += Present;
             view.OnViewDisable += Remove;
@@ -32,7 +38,7 @@ namespace Modules.ActorModule.Scripts.Presentation
             view.SetActorInteractable(false);
 
             globalEventBus.OnMainGameStarted()
-                .Do(_ => view.SetActorInteractable(true))
+                .Do(_ => InitForMainGame())
                 .Subscribe()
                 .AddTo(disposables);
             
@@ -75,6 +81,13 @@ namespace Modules.ActorModule.Scripts.Presentation
                 .Do(_ => view.ShowMiddleConsentEvent())
                 .Subscribe()
                 .AddTo(disposables);
+        }
+
+        private void InitForMainGame()
+        {
+            retrieveActor.Execute()
+                .Do(actor => view.InitActor(actor.name, actor.skin.bodySkinId, actor.skin.headSkinId));
+            view.SetActorInteractable(true);
         }
 
         private void HandleHumorChange()

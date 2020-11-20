@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: head_simple_chocolate
   m_EditorClassIdentifier: 
   type: 0
-  key: head_simple_white
+  key: head_chocolate
   material: {fileID: 2100000, guid: 6ba60fe368da0fe4f8e7f2b7b83f14dd, type: 2}

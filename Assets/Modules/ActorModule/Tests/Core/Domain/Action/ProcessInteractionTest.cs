@@ -4,6 +4,7 @@ using Modules.ActorModule.Scripts.Core.Domain.Events;
 using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.ActorModule.Scripts.Presentation.Events;
 using Modules.Common;
+using Modules.MainGame.Scripts.Core.Domain;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -12,10 +13,12 @@ namespace Modules.ActorModule.Tests.Core.Domain.Action
     public class ProcessInteractionTest
     {
         private int MAX_HUMOR = 100;
+        private long ACTOR_ID = 1;
         ProcessInteraction action;
         private EventBus eventBus;
         private HumorStateRepository humorStateRepository;
         private HumorStateService humorStateService;
+        private SessionRepository sessionRepository;
 
         [SetUp]
         public void SetUp()
@@ -23,9 +26,11 @@ namespace Modules.ActorModule.Tests.Core.Domain.Action
             eventBus = Substitute.For<EventBus>();
             humorStateRepository = Substitute.For<HumorStateRepository>();
             humorStateService = Substitute.For<HumorStateService>();
+            sessionRepository = Substitute.For<SessionRepository>();
 
-            humorStateRepository.Get().Returns(new Maybe<HumorState>(new HumorState(50, 0, Humor.Normal, MAX_HUMOR)));
-            action = new ProcessInteraction(eventBus, humorStateRepository, humorStateService);
+            sessionRepository.Get().Returns(new Session(0, ACTOR_ID).ToMaybe());
+            humorStateRepository.Get(ACTOR_ID).Returns(new Maybe<HumorState>(new HumorState(50, 0, Humor.Normal, MAX_HUMOR)));
+            action = new ProcessInteraction(eventBus, humorStateRepository, humorStateService, sessionRepository);
         }
         
         [Test]
@@ -110,7 +115,7 @@ namespace Modules.ActorModule.Tests.Core.Domain.Action
 
         private void ThenNewStateSaved()
         {
-            humorStateRepository.Received(1).Save(Arg.Any<HumorState>());
+            humorStateRepository.Received(1).Save(Arg.Any<HumorState>(), ACTOR_ID);
         }
     }
 }

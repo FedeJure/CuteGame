@@ -32,15 +32,12 @@ public class UnityActorCreationView : MonoBehaviour
 
     private void OnEnable()
     {
-        content.localPosition = new Vector3(0, -300, 0);
-        LeanTween.moveLocal(content.gameObject, new Vector3(0, 0, 0), 1)
+        content.localPosition = new Vector3(0, -1500, 0);
+        LeanTween.moveLocal(content.gameObject, new Vector3(0, -500, 0), 1)
             .setEaseOutQuad()
             .OnCompleteAsObservable()
-            .DoOnCompleted(() => Debug.LogWarning(content.transform.localPosition))
             .Subscribe();
     }
-
-
     private void OnCreationButtonClicked()
     {
         if (nameInput.text.Length > 0)

@@ -29,19 +29,15 @@ namespace Modules.Donut.UnityDelivery
             height = currentScale.z * normalPlaneSize;
             width = currentScale.x * normalPlaneSize;
             
-            for (int i = 0; i < maxDonutGeneration / 2 ; i++)
+            for (int i = 0; i < maxDonutGeneration; i++)
             {
                 CreateDonut(GetStartLocationRandom());
             }
-        }
-        private void OnEnable()
-        {
             Observable.Interval(TimeSpan.FromMilliseconds(500))
                 .Do(_ => SpawnDonut())
                 .Subscribe()
                 .AddTo(disposables);
         }
-
         private void OnDisable()
         {
             disposables.DisposeAll();

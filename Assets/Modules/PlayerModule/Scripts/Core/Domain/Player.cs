@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Modules.PlayerModule.Scripts.Core.Domain
 {
+    [Serializable]
     public class Player
     {
         public long id;

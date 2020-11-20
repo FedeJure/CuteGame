@@ -12,18 +12,6 @@
         <e p="Editor" t="Include">
           <e p="ModuleCreator.cs" t="Include" />
         </e>
-        <e p="LeanTween" t="Include">
-          <e p="Framework" t="Include">
-            <e p="LeanAudio.cs" t="Include" />
-            <e p="LeanSmooth.cs" t="Include" />
-            <e p="LeanTest.cs" t="Include" />
-            <e p="LeanTween.cs" t="Include" />
-            <e p="LeanTweenExt.cs" t="Include" />
-            <e p="LTDescr.cs" t="Include" />
-            <e p="LTDescrOptional.cs" t="Include" />
-            <e p="LTSeq.cs" t="Include" />
-          </e>
-        </e>
         <e p="Models" t="Include">
           <e p="Donut" t="Include">
             <e p="UIDonut" t="Include">
@@ -40,6 +28,7 @@
                   <e p="Action" t="Include">
                     <e p="CreateNewActor.cs" t="Include" />
                     <e p="ProcessInteraction.cs" t="Include" />
+                    <e p="RetrieveActor.cs" t="Include" />
                     <e p="RetrieveActorHumor.cs" t="Include" />
                   </e>
                   <e p="Actor.cs" t="Include" />
@@ -68,7 +57,6 @@
               <e p="Infrastructure" t="Include">
                 <e p="DiskActorRepository.cs" t="Include" />
                 <e p="DiskHumorStateRepository.cs" t="Include" />
-                <e p="InMemoryHumorStateRepository.cs" t="Include" />
               </e>
               <e p="Presentation" t="Include">
                 <e p="ActorPresenter.cs" t="Include" />
@@ -118,6 +106,8 @@
             <e p="LoadingScreen.cs" t="Include" />
             <e p="LocalStorage.cs" t="Include" />
             <e p="Maybe.cs" t="Include" />
+            <e p="Session.cs" t="Include" />
+            <e p="SessionRepository.cs" t="Include" />
           </e>
           <e p="DependencyProvider" t="Include">
             <e p="DependencyProvider.cs" t="Include" />

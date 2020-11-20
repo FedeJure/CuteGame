@@ -1,5 +1,6 @@
 ﻿using System;
 using Modules.ActorModule.Scripts.Presentation;
+using Modules.ActorModule.Scripts.UnityDelivery.Skin;
 using UnityEngine;
 
 namespace Modules.ActorModule.Scripts.UnityDelivery
@@ -11,6 +12,8 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
 
         [SerializeField] Animator animator;
         [SerializeField] private GameObject interactables;
+        [SerializeField] private SkinnedMeshRenderer meshRenderer;
+        [SerializeField] private ActorSkinConfig skinConfig;
 
         readonly int leftCaredKey = Animator.StringToHash("leftCaress");
         readonly int rigthCaredKey = Animator.StringToHash("rigthCaress");
@@ -92,6 +95,23 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
         public void SetActorInteractable(bool interactable)
         {
             interactables.SetActive(interactable);
+        }
+
+        public void InitActor(string actorName, string skinBodySkinId, string skinHeadSkinId)
+        {
+            var mats = new Material[2];
+            skinConfig.skins.ForEach(skin =>
+            {
+                if (skin.key == skinHeadSkinId)
+                {
+                    mats[0] = skin.material;
+                }
+                if (skin.key == skinBodySkinId)
+                {
+                    mats[1] = skin.material;
+                }
+            });
+            meshRenderer.materials = mats;
         }
     }
 }

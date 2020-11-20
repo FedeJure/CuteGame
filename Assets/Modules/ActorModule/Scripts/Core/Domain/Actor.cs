@@ -1,9 +1,11 @@
 ﻿
+using System;
 using Modules.PlayerModule.Scripts.Core.Domain;
 using UnityEngine;
 
 namespace Modules.ActorModule.Scripts.Core.Domain
 {
+    [Serializable]
     public class Actor
     {
         public string name;

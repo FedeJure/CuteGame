@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.ActorModule.Scripts.Presentation.Events;
+using Modules.Common;
 using UnityEngine;
 
 namespace Modules.ActorModule.Scripts.Core.Domain
@@ -10,36 +11,41 @@ namespace Modules.ActorModule.Scripts.Core.Domain
     public class HumorStateService
     {
         private readonly HumorStateRepository humorRepository;
+        private readonly SessionRepository sessionRepository;
         private int MAX_HUMOR => 100;
         private int currentHumor;
         private List<List<HumorTransitionConfig>> humorTransitionConfig;
         public HumorStateService() { }
-        public HumorStateService(HumorStateRepository humorRepository)
+        public HumorStateService(HumorStateRepository humorRepository, SessionRepository sessionRepository)
         {
             this.humorRepository = humorRepository;
+            this.sessionRepository = sessionRepository;
+            sessionRepository.Get()
+                .Do(session =>
+                    humorRepository.Get(session.actorId)
+                        .Do(state => { currentHumor = state.humorLevel; })
+                        .DoWhenAbsent(() =>
+                        {
+                            var state = new HumorState(MAX_HUMOR / 2, 0, Humor.Normal, MAX_HUMOR);
+                            currentHumor = state.humorLevel;
+                            humorRepository.Save(state, session.actorId);
+                        }));
 
-            humorRepository.Get()
-                .Do(state => { currentHumor = state.humorLevel; })
-                .DoWhenAbsent(() =>
-                {
-                    var state = new HumorState(MAX_HUMOR / 2, 0, Humor.Normal, MAX_HUMOR);
-                    currentHumor = state.humorLevel;
-                    humorRepository.Save(state);
-                });
-            
             humorTransitionConfig = HumorStateGenerator.GetRandomConfigurationOfLength(MAX_HUMOR);
         }
         public virtual HumorState ReceiveInteraction(ActorInteraction interaction)
         {
-            return humorRepository.Get()
-                .ReturnOrDefault(state =>
-                {
-                    currentHumor = state.humorLevel;
-                    var nextTransitions = GetNextTransition(interaction);
-                    var humor = GetNextHumor(state.humorLevel, nextTransitions.humorReaction);
-                    return new HumorState(Math.Max(state.humorLevel + nextTransitions.humorReaction, 0),
-                        nextTransitions.humorReaction, humor, MAX_HUMOR);
-                },new HumorState(0,0, Humor.Normal, MAX_HUMOR));
+            return sessionRepository.Get().ReturnOrDefault(session =>
+                    humorRepository.Get(session.actorId)
+                        .ReturnOrDefault(state =>
+                        {
+                            currentHumor = state.humorLevel;
+                            var nextTransitions = GetNextTransition(interaction);
+                            var humor = GetNextHumor(state.humorLevel, nextTransitions.humorReaction);
+                            return new HumorState(Math.Max(state.humorLevel + nextTransitions.humorReaction, 0),
+                                nextTransitions.humorReaction, humor, MAX_HUMOR);
+                        }, new HumorState(0, 0, Humor.Normal, MAX_HUMOR)),
+                new HumorState(0, 0, Humor.Normal, MAX_HUMOR));
 
         }
 
@@ -70,6 +76,7 @@ namespace Modules.ActorModule.Scripts.Core.Domain
         public int humorReaction { get; }
     }
 
+    [Serializable]
     public class HumorState
     {
         public int humorLevel;

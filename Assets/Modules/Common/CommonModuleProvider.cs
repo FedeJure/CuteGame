@@ -6,7 +6,12 @@ namespace Modules.Common
     {
         public static GlobalEventBus ProvideGlobalEventBus()
         {
-            return DependencyProvider.GetOrInstanciate<GlobalEventBus>(() => new GlobalEventBus());
+            return DependencyProvider.GetOrInstanciate(() => new GlobalEventBus());
+        }
+
+        public static SessionRepository ProvideSessionRepository()
+        {
+            return DependencyProvider.GetOrInstanciate(() => new SessionRepository());
         }
     }
 }

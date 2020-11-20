@@ -55,7 +55,7 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private void PresentActorCreationScreen()
         {
-            view.MoveCameraToGame()
+            view.MoveCameraToCreationView()
                 .Last()
                 .Do(_ => view.ShowActorCreationScreen())
                 .Subscribe()
@@ -64,12 +64,13 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private void PresentMainGame(Actor actor)
         {
-            view.MoveCameraToGame()
+            eventBus.EmitOnMainGameStarted();
+            view.MoveCameraToMainGame()
                 .Last()
                 .Do(_ =>
                 {
                     view.StartMainGame();
-                    eventBus.EmitOnMainGameStarted();
+                    DisposeView();
                 })
                 .Subscribe()
                 .AddTo(loginDisposer);
@@ -105,6 +106,7 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private void CreateActor(CreationData data)
         {
+            
             createNewActor.Execute(data.name, data.bodySkin.key, data.headSkin.key)
                 .Do(_ => PresentView())
                 .Subscribe()

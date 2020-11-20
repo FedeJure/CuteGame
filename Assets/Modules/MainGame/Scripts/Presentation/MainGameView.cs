@@ -18,7 +18,8 @@ namespace Modules.MainGame.Scripts.Presentation
         void ShowSuccessLoginFeedback();
         void ShowLoading();
         void HideLoading();
-        IObservable<Unit> MoveCameraToGame();
+        IObservable<Unit> MoveCameraToCreationView();
+        IObservable<Unit> MoveCameraToMainGame();
     }
 
     public struct LoginData
