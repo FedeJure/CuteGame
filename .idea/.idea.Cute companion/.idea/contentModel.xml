@@ -101,6 +101,7 @@
           </e>
           <e p="Common" t="Include">
             <e p="CommonModuleProvider.cs" t="Include" />
+            <e p="DependencyProvider.cs" t="Include" />
             <e p="ExtensionMethods.cs" t="Include" />
             <e p="GlobalEventBus.cs" t="Include" />
             <e p="LoadingScreen.cs" t="Include" />
@@ -109,12 +110,8 @@
             <e p="Session.cs" t="Include" />
             <e p="SessionRepository.cs" t="Include" />
           </e>
-          <e p="DependencyProvider" t="Include">
-            <e p="DependencyProvider.cs" t="Include" />
-          </e>
           <e p="Donut" t="Include">
             <e p="UnityDelivery" t="Include">
-              <e p="UnityDonutDestructor.cs" t="Include" />
               <e p="UnityDonutGenerator.cs" t="Include" />
               <e p="UnityDonutView.cs" t="Include" />
             </e>
@@ -485,7 +482,6 @@
       </e>
       <e p="Common.csproj" t="IncludeRecursive" />
       <e p="Cute companion.sln" t="IncludeFlat" />
-      <e p="DependencyProviderModule.csproj" t="IncludeRecursive" />
       <e p="DonutASM.csproj" t="IncludeRecursive" />
       <e p="InputWrapperASM.csproj" t="IncludeRecursive" />
       <e p="MainGame.csproj" t="IncludeRecursive" />

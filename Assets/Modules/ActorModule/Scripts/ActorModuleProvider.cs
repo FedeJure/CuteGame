@@ -1,5 +1,4 @@
-﻿using DependencyProviderNamespace;
-using Modules.ActorModule.Scripts.Core.Domain;
+﻿using Modules.ActorModule.Scripts.Core.Domain;
 using Modules.ActorModule.Scripts.Core.Domain.Action;
 using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.ActorModule.Scripts.Infrastructure;

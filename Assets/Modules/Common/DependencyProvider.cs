@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DependencyProviderNamespace
+namespace Modules.Common
 {
     public static class DependencyProvider
     {

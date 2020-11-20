@@ -1,5 +1,4 @@
-﻿using DependencyProviderNamespace;
-using Modules.ActorModule.Scripts;
+﻿using Modules.ActorModule.Scripts;
 using Modules.Common;
 using Modules.MainGame.Scripts.Core.Actions;
 using Modules.MainGame.Scripts.Infrastructure;

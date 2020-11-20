@@ -1,6 +1,4 @@
-﻿using DependencyProviderNamespace;
-
-namespace Modules.Common
+﻿namespace Modules.Common
 {
     public static class CommonModuleProvider
     {

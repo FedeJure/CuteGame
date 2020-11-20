@@ -1,4 +1,4 @@
-﻿using DependencyProviderNamespace;
+﻿using Modules.Common;
 using Modules.PlayerModule.Scripts.Core.Domain.Repositories;
 using Modules.PlayerModule.Scripts.Infrastructure;
 
