@@ -59,6 +59,8 @@
                 <e p="DiskHumorStateRepository.cs" t="Include" />
               </e>
               <e p="Presentation" t="Include">
+                <e p="ActorAvatarPresenter.cs" t="Include" />
+                <e p="ActorAvatarView.cs" t="Include" />
                 <e p="ActorPresenter.cs" t="Include" />
                 <e p="ActorView.cs" t="Include" />
                 <e p="Events" t="Include">
@@ -77,6 +79,7 @@
                   <e p="ActorSkinData.cs" t="Include" />
                 </e>
                 <e p="TouchAction.cs" t="Include" />
+                <e p="UnityActorAvatarView.cs" t="Include" />
                 <e p="UnityActorCameraView.cs" t="Include" />
                 <e p="UnityActorMovementView.cs" t="Include" />
                 <e p="UnityActorView.cs" t="Include" />
@@ -112,6 +115,7 @@
           </e>
           <e p="Donut" t="Include">
             <e p="UnityDelivery" t="Include">
+              <e p="DonutMaterials.cs" t="Include" />
               <e p="UnityDonutGenerator.cs" t="Include" />
               <e p="UnityDonutView.cs" t="Include" />
             </e>
@@ -474,6 +478,9 @@
           </e>
         </e>
         <e p="UI_Sources" t="Include">
+          <e p="Prefabs" t="Include">
+            <e p="Rotate.cs" t="Include" />
+          </e>
           <e p="Scripts" t="Include">
             <e p="CloseButton.cs" t="Include" />
             <e p="SimpleMenuButton.cs" t="Include" />

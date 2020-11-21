@@ -81,6 +81,8 @@ MonoBehaviour:
   minRotationVelocity: 50
   maxfallVelocity: 50
   maxRotationVelocity: 100
+  donutMesh: {fileID: 3873326675589401594}
+  glassMesh: {fileID: 1783456324252098533}
 --- !u!1 &6349037763531756352
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,8 +141,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: aea9c052bf379f5478b0c03450ab30b0, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -178,7 +179,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &9214210582260954736
 Transform:
@@ -211,8 +212,8 @@ MeshRenderer:
   m_GameObject: {fileID: 8576203228845859350}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -220,8 +221,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: e46c0b67c71d45143988c72b0dea940b, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -16,6 +16,11 @@ namespace Modules.ActorModule.Scripts
             new ActorPresenter(view, ProvideEventBus(), CommonModuleProvider.ProvideGlobalEventBus(), ProvideRetrieveHumorAction(), ProvideRetrieveActorAction());
         }
 
+        public static void ProvidePresenterFor(ActorAvatarView view)
+        {
+            new ActorAvatarPresenter(view, ProvideRetrieveActorAction(), ProvideRetrieveHumorAction(), ProvideEventBus());
+        }
+
         private static RetrieveActor ProvideRetrieveActorAction()
         {
             return DependencyProvider.GetOrInstanciate(() => new RetrieveActor(ProvideActorRepository(), CommonModuleProvider.ProvideSessionRepository()));

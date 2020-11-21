@@ -13,6 +13,8 @@ namespace Modules.Donut.UnityDelivery
         [SerializeField] UnityDonutView donutModel;
         [SerializeField] Transform planeTransformFromGenerate;
         [SerializeField] private int maxDonutGeneration = 50;
+        [SerializeField] private Material donutMaterial;
+        [SerializeField] private Material glassMaterial;
         private int generatedDonuts;
         Queue<UnityDonutView> availableDonut = new Queue<UnityDonutView>();
 
@@ -61,6 +63,7 @@ namespace Modules.Donut.UnityDelivery
         private void CreateDonut(Vector3 location)
         {
             UnityDonutView donut = Instantiate(donutModel, location, Quaternion.identity, transform);
+            donut.Init(donutMaterial,glassMaterial);
             generatedDonuts++;
             donut.OnDonutRecicle
                 .Do(_ =>
