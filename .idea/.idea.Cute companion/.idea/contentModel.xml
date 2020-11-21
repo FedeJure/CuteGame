@@ -112,6 +112,7 @@
             <e p="Maybe.cs" t="Include" />
             <e p="Session.cs" t="Include" />
             <e p="SessionRepository.cs" t="Include" />
+            <e p="UnitySimpleOpenButton.cs" t="Include" />
           </e>
           <e p="Donut" t="Include">
             <e p="UnityDelivery" t="Include">
@@ -167,6 +168,18 @@
                 <e p="DiskPlayerRepository.cs" t="Include" />
               </e>
             </e>
+          </e>
+          <e p="Shop" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="Presentation" t="Include">
+                <e p="ShopPresenter.cs" t="Include" />
+                <e p="ShopView.cs" t="Include" />
+              </e>
+              <e p="UnityDelivery" t="Include">
+                <e p="UnityShopView.cs" t="Include" />
+              </e>
+            </e>
+            <e p="ShopModuleProvider].cs" t="Include" />
           </e>
         </e>
         <e p="PlayerPrefsEditor" t="Include">
@@ -496,6 +509,7 @@
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="PlayerModule.csproj" t="IncludeRecursive" />
+      <e p="Shop.csproj" t="IncludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
       <e p="UniRx.csproj" t="IncludeRecursive" />
     </e>

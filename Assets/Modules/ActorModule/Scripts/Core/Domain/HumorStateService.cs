@@ -52,8 +52,9 @@ namespace Modules.ActorModule.Scripts.Core.Domain
         private Humor GetNextHumor(int humorLevel, int humorVariation)
         {
             var newHumorLevel = humorLevel + humorVariation;
-            if (newHumorLevel < (int) Math.Floor((double) (MAX_HUMOR / 3))) return Humor.NotHappy;
-            if (newHumorLevel > (int) Math.Floor((double) (MAX_HUMOR / 3)) && newHumorLevel < (int) Math.Floor((double) (2 * MAX_HUMOR / 3))) return Humor.Normal;
+            var criticNumber = Math.Floor((double) (MAX_HUMOR / 3));
+            if (newHumorLevel <= criticNumber) return Humor.NotHappy;
+            if (newHumorLevel >= criticNumber && newHumorLevel <= criticNumber * 2) return Humor.Normal;
             return Humor.Happy;
         }
 
