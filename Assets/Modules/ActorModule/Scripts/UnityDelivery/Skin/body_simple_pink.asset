@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedef63dfd978bb43a7f50443a69474d, type: 3}
   m_Name: body_simple_pink
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   key: body_simple_pink
   material: {fileID: 2100000, guid: 6077a8b8959e56a45829f329ef5f8598, type: 2}

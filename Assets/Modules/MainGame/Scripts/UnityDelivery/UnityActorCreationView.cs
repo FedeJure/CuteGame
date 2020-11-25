@@ -26,8 +26,8 @@ public class UnityActorCreationView : MonoBehaviour
         creationButton.onClick.AddListener(OnCreationButtonClicked);
         bodySkins.ForEach(skinView => skinView.OnClick += HandleBodySkinChange);
         headSkins.ForEach(skinView => skinView.OnClick += HandleHeadSkinChange);
-        HandleBodySkinChange(bodySkin);
-        HandleHeadSkinChange(headSkin);
+        // HandleBodySkinChange(bodySkin);
+        // HandleHeadSkinChange(headSkin);
     }
 
     private void OnEnable()
@@ -46,13 +46,13 @@ public class UnityActorCreationView : MonoBehaviour
         }
     }
 
-    private void HandleBodySkinChange(ActorSkinData data)
+    private void HandleHeadSkinChange(ActorSkinData data)
     {
         bodySkin = data;
         mesh.materials = new []{ mesh.materials[0], data.material};
     }
     
-    private void HandleHeadSkinChange(ActorSkinData data)
+    private void HandleBodySkinChange(ActorSkinData data)
     {
         headSkin = data;
         mesh.materials = new []{ data.material, mesh.materials[1]};

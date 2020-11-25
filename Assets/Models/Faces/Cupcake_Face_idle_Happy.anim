@@ -48,7 +48,7 @@ AnimationClip:
     - time: 4.5333333
       value: {fileID: 2100000, guid: 9c8155a6897d17741baa4e1bab36d862, type: 2}
     attribute: m_Materials.Array.data[0]
-    path: Cream/Face_1
+    path: Cupcake/Face_1
     classID: 23
     script: {fileID: 0}
   m_SampleRate: 60
@@ -59,7 +59,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3800713626
+      path: 2433230113
       attribute: 0
       script: {fileID: 0}
       typeID: 23

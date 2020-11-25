@@ -111,7 +111,7 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
                     mats[1] = skin.material;
                 }
             });
-            meshRenderer.materials = mats;
+            meshRenderer.sharedMaterials = mats;
         }
     }
 }
