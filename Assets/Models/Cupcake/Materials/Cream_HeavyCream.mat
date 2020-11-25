@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cream_HeavyCream
-  m_Shader: {fileID: 4800000, guid: ccfc7d68845db8341944b3091b59be55, type: 3}
-  m_ShaderKeywords: TCP2_DISABLE_WRAPPED_LIGHT TCP2_RAMPTEXT _EMISSION
+  m_Shader: {fileID: 4800000, guid: dd496457a855aa341b0d7b7b475a7a3a, type: 3}
+  m_ShaderKeywords: OUTLINES TCP2_DISABLE_WRAPPED_LIGHT TCP2_RAMPTEXT _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -114,7 +114,7 @@ Material:
     - _OcclusionStrength: 0
     - _Offset1: 0
     - _Offset2: 0
-    - _Outline: 0.05
+    - _Outline: 13
     - _OutlineWidth: 0.02
     - _Parallax: 0.0213
     - _RampSmooth: 0.1

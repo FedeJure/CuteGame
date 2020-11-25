@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Body_Blue
-  m_Shader: {fileID: 4800000, guid: 24a666c4cf4f5194ba2cdff51c1dc2f0, type: 3}
-  m_ShaderKeywords: OUTLINE_BLENDING _EMISSION
+  m_Shader: {fileID: 4800000, guid: ccfc7d68845db8341944b3091b59be55, type: 3}
+  m_ShaderKeywords: TCP2_COLORS_AS_NORMALS TCP2_ZSMOOTH_ON _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -84,9 +84,9 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Offset1: 0
+    - _Offset1: -3.03
     - _Offset2: 0
-    - _Outline: 0.1
+    - _Outline: 17.91
     - _OutlineWidth: 0.02
     - _Parallax: 0.02
     - _RampSmooth: 0.44
@@ -111,7 +111,7 @@ Material:
     - _SrcBlendOutline: 5
     - _TexLod: 5
     - _UVSec: 0
-    - _ZSmooth: -0.5
+    - _ZSmooth: -3
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.11743506, g: 0.8584906, b: 0.71271944, a: 1}
