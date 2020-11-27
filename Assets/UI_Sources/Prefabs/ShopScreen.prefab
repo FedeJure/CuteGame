@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.032348633, y: -0.44641113}
-  m_SizeDelta: {x: 723.27246, y: 1286.7332}
+  m_AnchoredPosition: {x: 0, y: -0.008972168}
+  m_SizeDelta: {x: 2190.1135, y: 3889.401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7990348325734195820
 CanvasRenderer:
@@ -88,8 +88,9 @@ GameObject:
   - component: {fileID: 54263910091517550}
   - component: {fileID: 1035123432491306118}
   - component: {fileID: 2270711430645127208}
+  - component: {fileID: 1116683683637256746}
   m_Layer: 0
-  m_Name: Shop
+  m_Name: ShopScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,8 +189,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae852b7efe5d2848961d85c3835bd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: {fileID: 8826100113897935659}
   closeButton: {fileID: 7003681742957292121}
+--- !u!114 &1116683683637256746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697284564917099327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a84c880a1aa44daa0d725843dd68521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 7003681742957292121}
+  animationType: 1
+  content: {fileID: 9146694694369399096}
 --- !u!1 &8826100113897935659
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,8 +240,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00018310547, y: -0.0007324219}
-  m_SizeDelta: {x: -0.00030517578, y: 0.0015869141}
+  m_AnchoredPosition: {x: 0, y: -0.009094238}
+  m_SizeDelta: {x: -175.54944, y: -801.8319}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6948741292746213070
 CanvasRenderer:

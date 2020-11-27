@@ -1,0 +1,15 @@
+{
+    "name": "UlaGame",
+    "references": [
+        "GUID:a9ae14719f952fb4bacb76ef5682717b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

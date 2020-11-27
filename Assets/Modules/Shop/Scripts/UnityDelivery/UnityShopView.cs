@@ -13,7 +13,6 @@ namespace Modules.Shop.Scripts.UnityDelivery
         public event Action OnViewEnable = () => { };
         public event Action OnCloseClicked = () => { };
 
-        [SerializeField] private GameObject content;
         [SerializeField] private Button closeButton;
         
         List<IDisposable> disposer = new List<IDisposable>();
@@ -37,19 +36,10 @@ namespace Modules.Shop.Scripts.UnityDelivery
 
         public void ShowOpenAnimation()
         {
-            content.transform.localScale = Vector3.zero;
-            LeanTween.scale(content, new Vector3(1, 1, 1), 0.2f)
-                .setEaseInQuad();
         }
 
         public void Close()
         {
-            LeanTween.scale(content, Vector3.zero, 0.2f)
-                .setEaseOutQuad()
-                .OnCompleteAsObservable()
-                .DoOnCompleted(() => gameObject.SetActive(false))
-                .Subscribe()
-                .AddTo(disposer);
         }
     }
 }

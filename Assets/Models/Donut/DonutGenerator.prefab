@@ -24,8 +24,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630362779294077924}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.066006, y: -11.478489, z: 104.81858}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 114.5, y: 600, z: 382.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 630362779797084303}
@@ -47,6 +47,9 @@ MonoBehaviour:
   donutModel: {fileID: 8858768916441246257, guid: c6a81d0fa35ec0248ba8d1798d680068,
     type: 3}
   planeTransformFromGenerate: {fileID: 630362779797084303}
+  maxDonutGeneration: 30
+  donutMaterial: {fileID: 2100000, guid: 85080b794fd739f4ebff70959b5f6b70, type: 2}
+  glassMaterial: {fileID: 2100000, guid: 6c3c729b5d3ff7f40b353f099eda05a0, type: 2}
 --- !u!1 &630362779797084302
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,8 +77,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630362779797084302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.11, y: 11.29, z: 40.38}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -127.55, y: 40, z: 62.84}
+  m_LocalScale: {x: 41.36699, y: 0.9999989, z: 63.605762}
   m_Children: []
   m_Father: {fileID: 630362779294077925}
   m_RootOrder: 0

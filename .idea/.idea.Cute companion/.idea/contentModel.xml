@@ -252,6 +252,9 @@
             </e>
           </e>
           <e p="Common" t="Include">
+            <e p="ActorGateway.cs" t="Include" />
+            <e p="AddressableLocationLoader.cs" t="Include" />
+            <e p="AssetCreator.cs" t="Include" />
             <e p="CommonModuleProvider.cs" t="Include" />
             <e p="DependencyProvider.cs" t="Include" />
             <e p="ExtensionMethods.cs" t="Include" />
@@ -261,6 +264,7 @@
             <e p="Maybe.cs" t="Include" />
             <e p="Session.cs" t="Include" />
             <e p="SessionRepository.cs" t="Include" />
+            <e p="UnitySimpleClosableView.cs" t="Include" />
             <e p="UnitySimpleOpenButton.cs" t="Include" />
           </e>
           <e p="Donut" t="Include">
@@ -299,6 +303,18 @@
             <e p="Tests" t="Include">
               <e p="Presentation" t="Include">
                 <e p="MainGamePresenterTest.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="MiniGame" t="Include">
+            <e p="MiniGameModuleProvider.cs" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="Presentation" t="Include">
+                <e p="MiniGameWidgetPresenter.cs" t="Include" />
+                <e p="MiniGameWidgetView.cs" t="Include" />
+              </e>
+              <e p="UnityDelivery" t="Include">
+                <e p="UnityMiniGameWidgetView.cs" t="Include" />
               </e>
             </e>
           </e>
@@ -655,6 +671,7 @@
       <e p="InputWrapperASM.csproj" t="IncludeRecursive" />
       <e p="MainGame.csproj" t="IncludeRecursive" />
       <e p="MainGame.Tests.csproj" t="IncludeRecursive" />
+      <e p="MiniGame.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="PlayerModule.csproj" t="IncludeRecursive" />

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: MiniGames
+  m_EditorClassIdentifier: 
+  m_GroupName: MiniGames
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 51d14012d55475a4183259c0f379b180
+  m_SerializeEntries:
+  - m_GUID: 5591f8e4df203114db97b5193a685adb
+    m_Address: Assets/Models/MiniGames/Ula/UlaGame.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - mini_game_ula
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 013dc0878d380204db16708007184463, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8172908a4a8b70948b6d3b318ea8dc7a, type: 2}
+    - {fileID: 11400000, guid: 4230803efc654b243ad4e8d9b7c9cc45, type: 2}

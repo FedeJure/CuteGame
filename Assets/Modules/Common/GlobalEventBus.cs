@@ -6,6 +6,7 @@ namespace Modules.Common
     public class GlobalEventBus
     {
         private ISubject<Unit> onMainGameStarted = new Subject<Unit>();
+        private ISubject<Unit> onMiniGameStarted = new Subject<Unit>();
         
         public void EmitOnMainGameStarted()
         {
@@ -15,6 +16,11 @@ namespace Modules.Common
         public IObservable<Unit> OnMainGameStarted()
         {
             return onMainGameStarted;
+        }
+
+        public void EmitOnMiniGameStarted()
+        {
+            onMiniGameStarted.OnNext(Unit.Default);
         }
     }
 }

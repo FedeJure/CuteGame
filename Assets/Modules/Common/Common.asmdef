@@ -2,7 +2,9 @@
     "name": "Common",
     "references": [
         "GUID:560b04d1a97f54a4e82edc0cbbb69285",
-        "GUID:63c8eb923771fba4c8975bb081400aab"
+        "GUID:63c8eb923771fba4c8975bb081400aab",
+        "GUID:9e24947de15b9834991c9d8411ea37cf",
+        "GUID:84651a3751eca9349aac36a66bba901b"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
