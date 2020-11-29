@@ -11,10 +11,12 @@ namespace Modules.UlaGame.Scripts.UnityDelivery
         public event Action OnViewDisabled = () => { };
         public event Action<TouchDirection> OnSwipeReceived = action => { };
 
+        [SerializeField] private UnitySwipeInput swipeInput;
 
         private void Awake()
         {
             UlaGameModuleProvider.ProvidePresenterFor(this);
+            swipeInput.OnSwipeDetected += sw => { Debug.Log(sw);};
         }
 
         private void OnEnable()
@@ -29,17 +31,17 @@ namespace Modules.UlaGame.Scripts.UnityDelivery
 
         public void SetStability(float currentStability)
         {
-            Debug.Log($"stability: {currentStability}");
+            // Debug.Log($"stability: {currentStability}");
         }
 
         public void SetStage(int stage)
         {
-            Debug.Log($"Current stage: {stage}");
+            // Debug.Log($"Current stage: {stage}");
         }
 
         public void EndGame()
         {
-            Debug.Log("GameEnded");
+            // Debug.Log("GameEnded");
         }
     }
 }

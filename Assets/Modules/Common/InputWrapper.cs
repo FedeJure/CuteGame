@@ -1,8 +1,7 @@
-﻿ using UnityEngine;
- using UnityEngine.Assertions;
- 
- 
- namespace InputWrapper {
+﻿using UnityEngine;
+using UnityEngine.Assertions;
+
+namespace Modules.Common {
      public static class Input {
          static bool touchSupported => UnityEngine.Input.touchSupported;
          static Touch? fakeTouch => SimulateTouchWithMouse.Instance.FakeTouch;

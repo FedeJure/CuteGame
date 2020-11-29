@@ -17,13 +17,15 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 51d14012d55475a4183259c0f379b180
   m_SerializeEntries:
-  - m_GUID: 5591f8e4df203114db97b5193a685adb
-    m_Address: Assets/Models/MiniGames/Ula/UlaGame.prefab
+  - m_GUID: b3414478968602d4e8b4312f5fb41790
+    m_Address: Assets/Models/Games/Ula/ula.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - mini_game_ula
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 8670474881931594839, guid: b3414478968602d4e8b4312f5fb41790,
+      type: 3}
+    m_TargetAsset: {fileID: 8670474881931594839, guid: b3414478968602d4e8b4312f5fb41790,
+      type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 013dc0878d380204db16708007184463, type: 2}
   m_SchemaSet:

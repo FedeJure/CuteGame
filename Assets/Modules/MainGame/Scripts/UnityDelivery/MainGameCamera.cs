@@ -8,7 +8,12 @@ public class MainGameCamera : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera uiCamera;
-    
+
+    private void Awake()
+    {
+        CameraRepository.SetGameCurrentCamera(mainCamera);
+    }
+
     public IObservable<Unit> ShowCreationView()
     {
         var endRotation = new Vector3(20, 0, 0);

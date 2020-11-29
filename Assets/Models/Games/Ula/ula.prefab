@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6441229283617514166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 24659137244655261}
+  - component: {fileID: 8207763552761496210}
+  - component: {fileID: 6920315612160203792}
+  m_Layer: 0
+  m_Name: SwipeHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &24659137244655261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6441229283617514166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8293491255129315053}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8207763552761496210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6441229283617514166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4efda2360661242a08ccf95bf6641e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &6920315612160203792
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6441229283617514166}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.459426, y: 2.4495318, z: 0.4787768}
+  m_Center: {x: -0.06254646, y: 0.119270734, z: 0.010424682}
 --- !u!1 &8670474881931594839
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +87,8 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 6.9, y: 1.74, z: 82.93}
   m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
-  m_Children: []
+  m_Children:
+  - {fileID: 24659137244655261}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -114,3 +172,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f230cb8b3115b7d419eec6e34a83e8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swipeInput: {fileID: 8207763552761496210}

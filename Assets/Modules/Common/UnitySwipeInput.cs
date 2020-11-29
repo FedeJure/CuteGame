@@ -1,39 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using Modules.ActorModule.Scripts.Presentation;
-using Modules.ActorModule.Scripts.Presentation.Events;
 using Modules.Common;
 using UnityEngine;
+
 #if UNITY_EDITOR
 using Input = Modules.Common.Input;
 #endif
 
-
-namespace Modules.ActorModule.Scripts.UnityDelivery
+public class UnitySwipeInput : MonoBehaviour
 {
-    public class UnityTouchHelperView: MonoBehaviour, TouchHelperView
-    {
-        public event Action OnViewEnabled = () => { };
-        public event Action<ActorInteraction> OnActorInteraction = interaction => { };
+        public event Action<TouchDirection> OnSwipeDetected = swipe => { };
 
         private Vector2 fingerDown;
         private Vector2 fingerUp;
         private bool canProcess;
-        [SerializeField] Camera selectedCamera;
-        [SerializeField] List<TouchAction> touchAction;
+        private Camera selectedCamera;
         
         HitTargetRepository hitTargetRepository;
         float SWIPE_THRESHOLD = 5f;
 
-        private void Awake()
-        {
-            ActorModuleProvider.ProvidePresenterFor(this);
-        }
-
         private void OnEnable()
         {
-            OnViewEnabled();
-            hitTargetRepository = ActorModuleProvider.ProvideHitTargetRepository();
+            selectedCamera = CameraRepository.GetGameCurrentCamera();
+            hitTargetRepository = new HitTargetRepository();
             canProcess = true;
         }
 
@@ -87,51 +75,51 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
             var right = fingerDown.x - fingerUp.x > 0;
             
             // Debug.LogWarning($"isVertical: {isVertical}, isHorizontal:{isHorizontal}, isDiagonal:{isDiagonal}, up:{up}, down:{down}, left:{left}, rigth:{right}");
-            if (IsDirection(TouchDirection.UpLeft) && isDiagonal && up && left)
+            if (isDiagonal && up && left)
             {
-                SendInteraction(GetAction(TouchDirection.UpLeft));
+                OnSwipeDetected(TouchDirection.UpLeft);
                 return;
             }
 
-            if (IsDirection(TouchDirection.UpRight) && isDiagonal && up && right)
+            if (isDiagonal && up && right)
             {
-                SendInteraction(GetAction(TouchDirection.UpRight));
+                OnSwipeDetected(TouchDirection.UpRight);
                 return;
             }
 
-            if (IsDirection(TouchDirection.DownLeft) && isDiagonal && down && left)
+            if (isDiagonal && down && left)
             {
-                SendInteraction(GetAction(TouchDirection.DownLeft));
+                OnSwipeDetected(TouchDirection.DownLeft);
                 return;
             }
 
-            if (IsDirection(TouchDirection.DownRight) && isDiagonal && down && right)
+            if (isDiagonal && down && right)
             {
-                SendInteraction(GetAction(TouchDirection.DownRight));
+                OnSwipeDetected(TouchDirection.DownRight);
                 return;
             }
 
-            if (IsDirection(TouchDirection.Up) && !isDiagonal && isVertical && up)
+            if (!isDiagonal && isVertical && up)
             {
-                SendInteraction(GetAction(TouchDirection.Up));
+                OnSwipeDetected(TouchDirection.Up);
                 return;
             }
 
-            if (IsDirection(TouchDirection.Down) && !isDiagonal && isVertical && down)
+            if (!isDiagonal && isVertical && down)
             {
-                SendInteraction(GetAction(TouchDirection.Down));
+                OnSwipeDetected(TouchDirection.Down);
                 return;
             }
 
-            if (IsDirection(TouchDirection.Right) && !isDiagonal && isHorizontal && right)
+            if (!isDiagonal && isHorizontal && right)
             {
-                SendInteraction(GetAction(TouchDirection.Right));
+                OnSwipeDetected(TouchDirection.Right);
                 return;
             }
 
-            if (IsDirection(TouchDirection.Left) && !isDiagonal && isHorizontal && left)
+            if (!isDiagonal && isHorizontal && left)
             {
-                SendInteraction(GetAction(TouchDirection.Left));
+                OnSwipeDetected(TouchDirection.Left);
                 return;
             }
             
@@ -147,21 +135,32 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
         {
             return Mathf.Abs(fingerDown.x - fingerUp.x);
         }
+}
 
-        bool IsDirection(TouchDirection direction)
-        {
-            return touchAction.Exists(action => action.workOnDirections.Contains(direction));
-        }
-        
-        ActorInteraction GetAction(TouchDirection direction)
-        {
-            return touchAction.Find(action => action.workOnDirections.Contains(direction)).interactionResult;
-        }
+internal class HitTargetRepository
+{
+    private bool targetHitted;
+    private int ownerId = 0;
+    public bool TargetHitted()
+    {
+        return targetHitted;
+    }
 
-        void SendInteraction(ActorInteraction interaction)
-        {
-            OnActorInteraction(interaction);
-            canProcess = false;
-        }
+    public bool ImOwner(int ownerId)
+    {
+        return ownerId == this.ownerId;
+    }
+    public void HitTarget(int ownerId)
+    {
+        if (this.ownerId != 0) return;
+        this.ownerId = ownerId;
+        targetHitted = true;
+    }
+
+    public void ClearHit(int ownerId)
+    {
+        if (ownerId != this.ownerId) return;
+        targetHitted = false;
+        this.ownerId = 0;
     }
 }

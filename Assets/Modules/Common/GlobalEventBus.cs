@@ -24,6 +24,16 @@ namespace Modules.Common
             onMiniGameStarted.OnNext(Unit.Default);
         }
 
+        public virtual IObservable<Unit> OnMiniGameStarted()
+        {
+            return onMiniGameStarted;
+        }
+
+        public virtual IObservable<Unit> OnMiniGameEnded()
+        {
+            return onMiniGameEnded;
+        }
+        
         public virtual void EmitOnMiniGameEnded()
         {
             onMiniGameEnded.OnNext(Unit.Default);

@@ -254,10 +254,12 @@
             <e p="ActorGateway.cs" t="Include" />
             <e p="AddressableLocationLoader.cs" t="Include" />
             <e p="AssetCreator.cs" t="Include" />
+            <e p="CameraRepository.cs" t="Include" />
             <e p="CommonModuleProvider.cs" t="Include" />
             <e p="DependencyProvider.cs" t="Include" />
             <e p="ExtensionMethods.cs" t="Include" />
             <e p="GlobalEventBus.cs" t="Include" />
+            <e p="InputWrapper.cs" t="Include" />
             <e p="LoadingScreen.cs" t="Include" />
             <e p="LocalStorage.cs" t="Include" />
             <e p="Maybe.cs" t="Include" />
@@ -266,6 +268,7 @@
             <e p="SwipeAction.cs" t="Include" />
             <e p="UnitySimpleClosableView.cs" t="Include" />
             <e p="UnitySimpleOpenButton.cs" t="Include" />
+            <e p="UnitySwipeInput.cs" t="Include" />
           </e>
           <e p="Donut" t="Include">
             <e p="UnityDelivery" t="Include">
@@ -273,9 +276,6 @@
               <e p="UnityDonutGenerator.cs" t="Include" />
               <e p="UnityDonutView.cs" t="Include" />
             </e>
-          </e>
-          <e p="InputWrapper" t="Include">
-            <e p="InputWrapper.cs" t="Include" />
           </e>
           <e p="MainGame" t="Include">
             <e p="Scripts" t="Include">
@@ -706,7 +706,6 @@
       <e p="Common.csproj" t="IncludeRecursive" />
       <e p="Cute companion.sln" t="IncludeFlat" />
       <e p="DonutASM.csproj" t="IncludeRecursive" />
-      <e p="InputWrapperASM.csproj" t="IncludeRecursive" />
       <e p="MainGame.csproj" t="IncludeRecursive" />
       <e p="MainGame.Tests.csproj" t="IncludeRecursive" />
       <e p="MiniGame.csproj" t="IncludeRecursive" />

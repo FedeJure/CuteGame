@@ -81,6 +81,16 @@ namespace Modules.ActorModule.Scripts.Presentation
                 .Do(_ => view.ShowMiddleConsentEvent())
                 .Subscribe()
                 .AddTo(disposables);
+            
+            globalEventBus.OnMiniGameStarted()
+                .Do(_ => view.SetActorInteractable(false))
+                .Subscribe()
+                .AddTo(disposables);
+
+            globalEventBus.OnMiniGameEnded()
+                .Do(_ => view.SetActorInteractable(true))
+                .Subscribe()
+                .AddTo(disposables);
         }
 
         private void InitForMainGame()
