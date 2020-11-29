@@ -7,6 +7,8 @@ namespace Modules.UlaGame.Scripts.Core.Domain
     {
         ISubject<int> onNewStage = new Subject<int>();
         ISubject<float> onStabilityAffected = new Subject<float>();
+        ISubject<Unit> onGameEnded = new Subject<Unit>();
+
         public UlaGameEventBus() {}
         public virtual void EmitNewStage(int stage)
         {
@@ -26,6 +28,16 @@ namespace Modules.UlaGame.Scripts.Core.Domain
         public virtual IObservable<float> OnStabilityAffected()
         {
             return onStabilityAffected;
+        }
+
+        public virtual void EmitGameEnded()
+        {
+            onGameEnded.OnNext(Unit.Default);
+        }
+
+        public virtual IObservable<Unit> OnGameEnded()
+        {
+            return onGameEnded;
         }
     }
 }

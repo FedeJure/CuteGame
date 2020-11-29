@@ -16,7 +16,9 @@ namespace Modules.UlaGame.Scripts.Core.Actions
         {
             new Domain.UlaGame(eventBus,
                 Observable.Interval(TimeSpan.FromSeconds(10)),
-                Observable.Interval(TimeSpan.FromSeconds(1)));
+                Observable.Interval(TimeSpan.FromSeconds(1)),
+                0.5f,
+                30f);
         }
     }
 }

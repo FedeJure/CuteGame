@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Modules.Common;
 using UniRx;
 
 namespace Modules.UlaGame.Scripts.Core.Domain
@@ -13,18 +14,22 @@ namespace Modules.UlaGame.Scripts.Core.Domain
         public int stage { get; private set; } = 1;
         
         public float stability { get; private set; }
-        private float absoluteStabilityLimit = 30;
-        private float baseStabilityChange = 0.5f;
+        private float absoluteStabilityLimit;
+        private float baseStabilityChange;
 
         private readonly List<IDisposable> disposer = new List<IDisposable>();
         
         public UlaGame(UlaGameEventBus eventBus,
             IObservable<long> stageIncreasePeriod,
-            IObservable<long> affectStabilityPeriod)
+            IObservable<long> affectStabilityPeriod,
+            float baseStabilityChange,
+            float absoluteStabilityLimit)
         {
             this.eventBus = eventBus;
             this.stageIncreasePeriod = stageIncreasePeriod;
             this.affectStabilityPeriod = affectStabilityPeriod;
+            this.baseStabilityChange = baseStabilityChange;
+            this.absoluteStabilityLimit = absoluteStabilityLimit;
 
             Init();
         }
@@ -47,7 +52,7 @@ namespace Modules.UlaGame.Scripts.Core.Domain
         private void AffectStability()
         {
             var signFactor = stability == 0 ? 1 : (int)( Math.Abs(stability) / stability);
-            stability += signFactor * baseStabilityChange * stage;
+            EditStability (stability + signFactor * baseStabilityChange * stage);
             eventBus.EmitStabilityAffected(stability);
         }
 
@@ -55,6 +60,18 @@ namespace Modules.UlaGame.Scripts.Core.Domain
         {
             stage += 1;
             eventBus.EmitNewStage(stage);
+        }
+
+        private void EditStability(float newValue)
+        {
+            stability = newValue;
+            if (Math.Abs(stability) >= absoluteStabilityLimit) EndGame();
+        }
+
+        private void EndGame()
+        {
+            eventBus.EmitGameEnded();
+            disposer.DisposeAll();
         }
     }
 }

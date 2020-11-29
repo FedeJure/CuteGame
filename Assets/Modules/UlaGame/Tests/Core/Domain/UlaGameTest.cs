@@ -11,6 +11,8 @@ namespace Modules.UlaGame.Tests.Core.Domain
         private Subject<long> affectInterval;
         private UlaGameEventBus eventBus;
         private Scripts.Core.Domain.UlaGame game;
+        private float baseAffect = 0.5f;
+        private float limitAffect = 10f;
 
         [SetUp]
         public void SetUp()
@@ -20,7 +22,9 @@ namespace Modules.UlaGame.Tests.Core.Domain
             eventBus = Substitute.For<UlaGameEventBus>();
             game = new Scripts.Core.Domain.UlaGame(eventBus, 
                 stageIncreaseInterval,
-                affectInterval);
+                affectInterval,
+                baseAffect,
+                limitAffect);
         }
 
         [Test]
@@ -35,6 +39,28 @@ namespace Modules.UlaGame.Tests.Core.Domain
         {
             WhenNewStageEmitted();
             ThenNewStageEventRaised(1);
+        }
+
+        [Test]
+        public void emit_end_game_on_stability_limit_reached()
+        {
+            GivenAlmostEndedGame();
+            WhenAffectIntervalEmitted();
+            ThenGameEndedEmitted();
+        }
+
+        private void GivenAlmostEndedGame()
+        {
+            game = new Scripts.Core.Domain.UlaGame(eventBus, 
+                stageIncreaseInterval,
+                affectInterval,
+                baseAffect,
+                baseAffect);
+        }
+
+        private void ThenGameEndedEmitted()
+        {
+            eventBus.Received(1).EmitGameEnded();
         }
 
         private void WhenNewStageEmitted()

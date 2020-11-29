@@ -6,5 +6,6 @@ namespace Modules.UlaGame.Scripts.Presentation
     {
         void SetStability(float currentStability);
         void SetStage(int stage);
+        void EndGame();
     }
 }

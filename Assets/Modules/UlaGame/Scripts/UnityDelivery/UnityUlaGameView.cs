@@ -33,5 +33,10 @@ namespace Modules.UlaGame.Scripts.UnityDelivery
         {
             Debug.Log($"Current stage: {stage}");
         }
+
+        public void EndGame()
+        {
+            Debug.Log("GameEnded");
+        }
     }
 }

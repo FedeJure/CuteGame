@@ -37,6 +37,11 @@ namespace Modules.UlaGame.Scripts.Presentation
                 .Do(stage => view.SetStage(stage))
                 .Subscribe()
                 .AddTo(disposer);
+
+            eventBus.OnGameEnded()
+                .Do(_ => view.EndGame())
+                .Subscribe()
+                .AddTo(disposer);
             
             startUlaGame.Execute();
         }
