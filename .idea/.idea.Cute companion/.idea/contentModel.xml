@@ -310,11 +310,18 @@
             <e p="MiniGameModuleProvider.cs" t="Include" />
             <e p="Scripts" t="Include">
               <e p="Presentation" t="Include">
+                <e p="MiniGamePresenter.cs" t="Include" />
+                <e p="MiniGameView.cs" t="Include" />
                 <e p="MiniGameWidgetPresenter.cs" t="Include" />
                 <e p="MiniGameWidgetView.cs" t="Include" />
               </e>
               <e p="UnityDelivery" t="Include">
                 <e p="UnityMiniGameWidgetView.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Tests" t="Include">
+              <e p="Presentation" t="Include">
+                <e p="MiniGamePresenterTest.cs" t="Include" />
               </e>
             </e>
           </e>
@@ -345,6 +352,34 @@
               </e>
             </e>
             <e p="ShopModuleProvider].cs" t="Include" />
+          </e>
+          <e p="UlaGame" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="Core" t="Include">
+                <e p="Actions" t="Include">
+                  <e p="StartUlaGameAction.cs" t="Include" />
+                </e>
+                <e p="Domain" t="Include">
+                  <e p="UlaGame.cs" t="Include" />
+                  <e p="UlaGameEventBus.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Presentation" t="Include">
+                <e p="UlaGamePresenter.cs" t="Include" />
+                <e p="UlaGameView.cs" t="Include" />
+              </e>
+              <e p="UnityDelivery" t="Include">
+                <e p="UnityUlaGameView.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Tests" t="Include">
+              <e p="Core" t="Include">
+                <e p="Domain" t="Include">
+                  <e p="UlaGameTest.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="UlaGameModuleProvider.cs" t="Include" />
           </e>
         </e>
         <e p="PlayerPrefsEditor" t="Include">
@@ -672,6 +707,7 @@
       <e p="MainGame.csproj" t="IncludeRecursive" />
       <e p="MainGame.Tests.csproj" t="IncludeRecursive" />
       <e p="MiniGame.csproj" t="IncludeRecursive" />
+      <e p="MiniGame.Tests.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="PlayerModule.csproj" t="IncludeRecursive" />
@@ -679,6 +715,8 @@
       <e p="Temp\bin" t="ExcludeRecursive" />
       <e p="ToonyColorsPro.Editor.csproj" t="IncludeRecursive" />
       <e p="ToonyColorsPro.Runtime.csproj" t="IncludeRecursive" />
+      <e p="UlaGame.csproj" t="IncludeRecursive" />
+      <e p="UlaGame.Tests.csproj" t="IncludeRecursive" />
       <e p="UniRx.csproj" t="IncludeRecursive" />
     </e>
   </component>

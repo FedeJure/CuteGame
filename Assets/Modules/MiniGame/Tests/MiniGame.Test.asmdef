@@ -1,1 +1,18 @@
-{"name": "MiniGame.Tests", "references": [], "includePlatforms": ["Editor"], "excludePlatforms": [], "allowUnsafeCode": false, "overrideReferences": false, "precompiledReferences": [], "autoReferenced": true, "defineConstraints": [], "versionDefines": [], "noEngineReferences": false}
+{
+    "name": "MiniGame.Tests",
+    "references": [
+        "GUID:0f117352eb13b2f4e84855deab3e5f20",
+        "GUID:a9ae14719f952fb4bacb76ef5682717b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

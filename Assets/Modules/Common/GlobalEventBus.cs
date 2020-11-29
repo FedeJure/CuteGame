@@ -7,6 +7,7 @@ namespace Modules.Common
     {
         private ISubject<Unit> onMainGameStarted = new Subject<Unit>();
         private ISubject<Unit> onMiniGameStarted = new Subject<Unit>();
+        private ISubject<Unit> onMiniGameEnded = new Subject<Unit>();
         
         public void EmitOnMainGameStarted()
         {
@@ -18,9 +19,14 @@ namespace Modules.Common
             return onMainGameStarted;
         }
 
-        public void EmitOnMiniGameStarted()
+        public virtual void EmitOnMiniGameStarted()
         {
             onMiniGameStarted.OnNext(Unit.Default);
+        }
+
+        public virtual void EmitOnMiniGameEnded()
+        {
+            onMiniGameEnded.OnNext(Unit.Default);
         }
     }
 }

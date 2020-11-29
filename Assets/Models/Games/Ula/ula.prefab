@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4951635009250629960}
   - component: {fileID: 7157146179687771522}
   - component: {fileID: 8266095108015759965}
+  - component: {fileID: 3808575869631866959}
   m_Layer: 0
   m_Name: ula
   m_TagString: Untagged
@@ -101,3 +102,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3808575869631866959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8670474881931594839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f230cb8b3115b7d419eec6e34a83e8c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

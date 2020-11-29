@@ -1,1 +1,18 @@
-{"name": "UlaGame.Tests", "references": [], "includePlatforms": ["Editor"], "excludePlatforms": [], "allowUnsafeCode": false, "overrideReferences": false, "precompiledReferences": [], "autoReferenced": true, "defineConstraints": [], "versionDefines": [], "noEngineReferences": false}
+{
+    "name": "UlaGame.Tests",
+    "references": [
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:00a3ffd82d5cb0b428b89885ec8fa250"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
