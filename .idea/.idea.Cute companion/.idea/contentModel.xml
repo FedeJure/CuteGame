@@ -214,7 +214,6 @@
                 <e p="ActorView.cs" t="Include" />
                 <e p="Events" t="Include">
                   <e p="ActorInteraction.cs" t="Include" />
-                  <e p="SwipeAction.cs" t="Include" />
                 </e>
                 <e p="HumorBarPresenter.cs" t="Include" />
                 <e p="HumorBarView.cs" t="Include" />
@@ -264,6 +263,7 @@
             <e p="Maybe.cs" t="Include" />
             <e p="Session.cs" t="Include" />
             <e p="SessionRepository.cs" t="Include" />
+            <e p="SwipeAction.cs" t="Include" />
             <e p="UnitySimpleClosableView.cs" t="Include" />
             <e p="UnitySimpleOpenButton.cs" t="Include" />
           </e>

@@ -1,4 +1,5 @@
 ﻿using System;
+using Modules.Common;
 using Modules.UlaGame.Scripts.Presentation;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ namespace Modules.UlaGame.Scripts.UnityDelivery
     {
         public event Action OnViewEnabled = () => { };
         public event Action OnViewDisabled = () => { };
+        public event Action<TouchDirection> OnSwipeReceived = action => { };
+
 
         private void Awake()
         {

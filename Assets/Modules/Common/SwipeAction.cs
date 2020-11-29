@@ -1,4 +1,4 @@
-﻿namespace Modules.ActorModule.Scripts.Presentation.Events
+﻿namespace Modules.Common
 {
     public enum TouchDirection
     {

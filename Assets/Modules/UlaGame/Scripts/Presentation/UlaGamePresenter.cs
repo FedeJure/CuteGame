@@ -24,6 +24,8 @@ namespace Modules.UlaGame.Scripts.Presentation
             this.view = view;
             this.startUlaGame = startUlaGame;
             this.eventBus = eventBus;
+
+            view.OnSwipeReceived += ReceiveSwipe;
         }
 
         protected override void PresentView()
@@ -44,6 +46,20 @@ namespace Modules.UlaGame.Scripts.Presentation
                 .AddTo(disposer);
             
             startUlaGame.Execute();
+        }
+
+
+        void ReceiveSwipe(TouchDirection action)
+        {
+            switch (action)
+            {
+                case TouchDirection.Left:
+                    eventBus.EmitNewSwipe(-1);
+                    break;
+                case TouchDirection.Right:
+                    eventBus.EmitNewSwipe(1);
+                    break;
+            }
         }
 
         protected override void DisposeView()

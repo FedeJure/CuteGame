@@ -58,6 +58,32 @@ namespace Modules.UlaGame.Tests.Presentation
             ThenViewStabilityAffectedCalled();
         }
 
+        [Test]
+        public void call_view_on_stage_changes()
+        {
+            GivenGameWasPresented();
+            WhenStageChangesArrived();
+            ThenStageChangeCalled();
+        }
+
+        [Test]
+        public void emit_swipe_on_receive_from_view()
+        {
+            GivenGameWasPresented();
+            WhenReceiveNewSwipe();
+            ThenEmitNewSwipe();
+        }
+
+        private void WhenReceiveNewSwipe()
+        {
+            view.OnSwipeReceived += Raise.Event<Action<TouchDirection>>(TouchDirection.Left);
+        }
+
+        private void ThenEmitNewSwipe()
+        {
+            eventBus.Received(1).EmitNewSwipe(-1);
+        }
+
         private void WhenStabilityAffectedEventArrived()
         {
             stabilitySubject.OnNext(1f);
@@ -66,14 +92,6 @@ namespace Modules.UlaGame.Tests.Presentation
         private void ThenViewStabilityAffectedCalled()
         {
             view.Received(1).SetStability(1f);
-        }
-
-        [Test]
-        public void call_view_on_stage_changes()
-        {
-            GivenGameWasPresented();
-            WhenStageChangesArrived();
-            ThenStageChangeCalled();
         }
 
         private void WhenStageChangesArrived()
