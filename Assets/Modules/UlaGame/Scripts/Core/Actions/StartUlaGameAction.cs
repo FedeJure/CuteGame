@@ -7,12 +7,14 @@ namespace Modules.UlaGame.Scripts.Core.Actions
     public class StartUlaGameAction
     {
         private readonly UlaGameEventBus eventBus;
+        
+        public StartUlaGameAction() { }
 
         public StartUlaGameAction(UlaGameEventBus eventBus)
         {
             this.eventBus = eventBus;
         }
-        public void Execute()
+        public virtual void Execute()
         {
             new Domain.UlaGame(eventBus,
                 Observable.Interval(TimeSpan.FromSeconds(10)),

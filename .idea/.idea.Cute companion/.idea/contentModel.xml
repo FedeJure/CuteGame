@@ -378,6 +378,9 @@
                   <e p="UlaGameTest.cs" t="Include" />
                 </e>
               </e>
+              <e p="Presentation" t="Include">
+                <e p="UlaGamePresenterTest.cs" t="Include" />
+              </e>
             </e>
             <e p="UlaGameModuleProvider.cs" t="Include" />
           </e>
