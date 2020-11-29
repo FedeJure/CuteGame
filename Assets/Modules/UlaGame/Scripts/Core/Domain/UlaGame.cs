@@ -47,13 +47,22 @@ namespace Modules.UlaGame.Scripts.Core.Domain
                 .Do(_ => AffectStability())
                 .Subscribe()
                 .AddTo(disposer);
+
+            eventBus.OnNewSwipe()
+                .Do(ReceiveSwipe)
+                .Subscribe()
+                .AddTo(disposer);
+        }
+
+        private void ReceiveSwipe(int swipe)
+        {
+            EditStability(stability + swipe);
         }
 
         private void AffectStability()
         {
             var signFactor = stability == 0 ? 1 : (int)( Math.Abs(stability) / stability);
             EditStability (stability + signFactor * baseStabilityChange * stage);
-            eventBus.EmitStabilityAffected(stability);
         }
 
         private void IncreaseStage()
@@ -65,6 +74,7 @@ namespace Modules.UlaGame.Scripts.Core.Domain
         private void EditStability(float newValue)
         {
             stability = newValue;
+            eventBus.EmitStabilityAffected(stability);
             if (Math.Abs(stability) >= absoluteStabilityLimit) EndGame();
         }
 

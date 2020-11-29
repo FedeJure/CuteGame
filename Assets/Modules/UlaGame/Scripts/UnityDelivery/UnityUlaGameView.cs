@@ -16,7 +16,7 @@ namespace Modules.UlaGame.Scripts.UnityDelivery
         private void Awake()
         {
             UlaGameModuleProvider.ProvidePresenterFor(this);
-            swipeInput.OnSwipeDetected += sw => { Debug.Log(sw);};
+            swipeInput.OnSwipeDetected += OnSwipeReceived.Invoke;
         }
 
         private void OnEnable()
@@ -31,7 +31,7 @@ namespace Modules.UlaGame.Scripts.UnityDelivery
 
         public void SetStability(float currentStability)
         {
-            // Debug.Log($"stability: {currentStability}");
+            Debug.Log($"stability: {currentStability}");
         }
 
         public void SetStage(int stage)
