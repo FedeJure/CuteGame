@@ -21,6 +21,8 @@ namespace Modules.ActorModule.Tests.Presentation
         private ISubject<Unit> rigthCaressEvent = new Subject<Unit>();
         private ISubject<Unit> notHappyEvent = new Subject<Unit>();
         private ISubject<Unit> happyEvent = new Subject<Unit>();
+        private ISubject<Unit> miniGameStarted = new Subject<Unit>();
+        private ISubject<Unit> miniGameEnded = new Subject<Unit>();
         private GlobalEventBus globalEventBus;
         private RetrieveActor retrieveActor;
 
@@ -38,6 +40,8 @@ namespace Modules.ActorModule.Tests.Presentation
             eventBus.OnEvent<RigthCaressInteractionEvent>().Returns(rigthCaressEvent);
             eventBus.OnEvent<NotHappyEvent>().Returns(notHappyEvent);
             eventBus.OnEvent<HappyEvent>().Returns(happyEvent);
+            globalEventBus.OnMiniGameStarted().Returns(miniGameStarted);
+            globalEventBus.OnMiniGameEnded().Returns(miniGameEnded);
             new ActorPresenter(view, eventBus, globalEventBus, retrieveActorHumor, retrieveActor);
         }
 
@@ -71,6 +75,37 @@ namespace Modules.ActorModule.Tests.Presentation
             GivenViewIsPresented();
             WhenHappyEventRaised();
             ThenHappyFeedbackShowed();
+        }
+
+        [Test]
+        public void OnMiniGameStartedDisableInteractions()
+        {
+            GivenViewIsPresented();
+            WhenMiniGameStarted();
+            ThenInteractionsSwitchedTo(false);
+        }
+        
+        [Test]
+        public void OnMiniGameEndedDisableInteractions()
+        {
+            GivenViewIsPresented();
+            WhenMiniGameEnded();
+            ThenInteractionsSwitchedTo(true);
+        }
+
+        private void WhenMiniGameEnded()
+        {
+            miniGameEnded.OnNext(Unit.Default);
+        }
+
+        private void WhenMiniGameStarted()
+        {
+            miniGameStarted.OnNext(Unit.Default);
+        }
+
+        private void ThenInteractionsSwitchedTo(bool enable)
+        {
+            view.Received().SetActorInteractable(enable);
         }
 
         private void GivenViewIsPresented()
