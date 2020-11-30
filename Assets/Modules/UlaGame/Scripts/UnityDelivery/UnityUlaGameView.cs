@@ -1,6 +1,7 @@
 ﻿using System;
 using Modules.Common;
 using Modules.UlaGame.Scripts.Presentation;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Modules.UlaGame.Scripts.UnityDelivery
@@ -11,12 +12,32 @@ namespace Modules.UlaGame.Scripts.UnityDelivery
         public event Action OnViewDisabled = () => { };
         public event Action<TouchDirection> OnSwipeReceived = action => { };
 
+        [SerializeField] private Animator ulaAnimator;
+        [SerializeField] private RuntimeAnimatorController actorAnimatorController;
         [SerializeField] private UnitySwipeInput swipeInput;
+
+        private Animator actorAnimator;
+        private int rotationVelocityKey = Animator.StringToHash("rotationVelocity");
+        private int stabilityFactorKey = Animator.StringToHash("stabilityFactor");
+        private int actorVelocityKey = Animator.StringToHash("velocity");
+        private int actorNormalKey = Animator.StringToHash("normal");
+        private int actorHappyKey = Animator.StringToHash("happy");
+        private int actorScaredKey = Animator.StringToHash("scared");
+
+        private int[] facesKey = new int[3];
+        
+        private float stabilityLimit;
 
         private void Awake()
         {
             UlaGameModuleProvider.ProvidePresenterFor(this);
             swipeInput.OnSwipeDetected += OnSwipeReceived.Invoke;
+            actorAnimator = ActorComponentsRepository.GetAnimator();
+            actorAnimator.runtimeAnimatorController = actorAnimatorController;
+
+            facesKey[0] = actorHappyKey;
+            facesKey[1] = actorNormalKey;
+            facesKey[2] = actorScaredKey;
         }
 
         private void OnEnable()
@@ -32,6 +53,20 @@ namespace Modules.UlaGame.Scripts.UnityDelivery
         public void SetStability(float currentStability)
         {
             Debug.Log($"stability: {currentStability}");
+            var velocity = (-1 / stabilityLimit) * Math.Abs(currentStability) + 2;
+            ulaAnimator.SetFloat(rotationVelocityKey, velocity);
+            actorAnimator.SetFloat(actorVelocityKey, velocity);
+            ulaAnimator.SetLayerWeight(1, Math.Abs(currentStability / stabilityLimit));
+
+            UpdateFace(currentStability);
+        }
+
+        private void UpdateFace(float currentStability)
+        {
+            var normalizedStability = (int)((currentStability / stabilityLimit) * facesKey.Length);
+            Debug.Log($"{normalizedStability} , {(currentStability / stabilityLimit) * facesKey.Length}");
+            actorAnimator.SetTrigger(facesKey[normalizedStability]);
+            
         }
 
         public void SetStage(int stage)
@@ -42,6 +77,12 @@ namespace Modules.UlaGame.Scripts.UnityDelivery
         public void EndGame()
         {
             // Debug.Log("GameEnded");
+        }
+
+        public void Init(float stabilityLimit)
+        {
+            this.stabilityLimit = stabilityLimit;
+            
         }
     }
 }

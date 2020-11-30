@@ -251,6 +251,7 @@
             </e>
           </e>
           <e p="Common" t="Include">
+            <e p="ActorComponentsRepository.cs" t="Include" />
             <e p="ActorGateway.cs" t="Include" />
             <e p="AddressableLocationLoader.cs" t="Include" />
             <e p="AssetCreator.cs" t="Include" />

@@ -18,5 +18,6 @@ namespace Modules.ActorModule.Scripts.Presentation
         void ShowMiddleConsentEvent();
         void SetActorInteractable(bool interactable);
         void InitActor(string actorName, string skinBodySkinId, string skinHeadSkinId);
+        void RestoreAnimator();
     }
 }

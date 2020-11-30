@@ -1,6 +1,7 @@
 ﻿using System;
 using Modules.ActorModule.Scripts.Presentation;
 using Modules.ActorModule.Scripts.UnityDelivery.Skin;
+using Modules.Common;
 using UnityEngine;
 
 namespace Modules.ActorModule.Scripts.UnityDelivery
@@ -14,6 +15,7 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
         [SerializeField] private GameObject interactables;
         [SerializeField] private SkinnedMeshRenderer meshRenderer;
         [SerializeField] private ActorSkinConfig skinConfig;
+        [SerializeField] private RuntimeAnimatorController animatorController;
 
         readonly int leftCaredKey = Animator.StringToHash("leftCaress");
         readonly int rigthCaredKey = Animator.StringToHash("rigthCaress");
@@ -29,6 +31,8 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
         private void Awake()
         {
             ActorModuleProvider.ProvidePresenterFor(this);
+            
+            ActorComponentsRepository.SetAnimator(animator);
         }
 
         private void OnEnable()
@@ -112,6 +116,11 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
                 }
             });
             meshRenderer.sharedMaterials = mats;
+        }
+
+        public void RestoreAnimator()
+        {
+            animator.runtimeAnimatorController = animatorController;
         }
     }
 }

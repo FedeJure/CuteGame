@@ -10,11 +10,11 @@ namespace Modules.UlaGame.Scripts.Core.Domain
         private readonly UlaGameEventBus eventBus;
         private readonly IObservable<long> stageIncreasePeriod;
         private readonly IObservable<long> affectStabilityPeriod;
-        private int currentPoints { get; } = 0;
+        public int currentPoints { get; private set; } = 0;
         public int stage { get; private set; } = 1;
         
         public float stability { get; private set; }
-        private float absoluteStabilityLimit;
+        public float absoluteStabilityLimit { get; private set; }
         private float baseStabilityChange;
 
         private readonly List<IDisposable> disposer = new List<IDisposable>();
@@ -52,6 +52,8 @@ namespace Modules.UlaGame.Scripts.Core.Domain
                 .Do(ReceiveSwipe)
                 .Subscribe()
                 .AddTo(disposer);
+
+            eventBus.EmitUlaGameStared(this);
         }
 
         private void ReceiveSwipe(int swipe)

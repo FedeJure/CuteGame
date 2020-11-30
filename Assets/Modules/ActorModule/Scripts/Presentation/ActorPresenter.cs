@@ -88,9 +88,15 @@ namespace Modules.ActorModule.Scripts.Presentation
                 .AddTo(disposables);
 
             globalEventBus.OnMiniGameEnded()
-                .Do(_ => view.SetActorInteractable(true))
+                .Do(_ => HandleMiniGameEnd())
                 .Subscribe()
                 .AddTo(disposables);
+        }
+
+        private void HandleMiniGameEnd()
+        {
+            view.SetActorInteractable(true);
+            view.RestoreAnimator();
         }
 
         private void InitForMainGame()

@@ -44,8 +44,18 @@ namespace Modules.UlaGame.Scripts.Presentation
                 .Do(_ => view.EndGame())
                 .Subscribe()
                 .AddTo(disposer);
+
+            eventBus.OnUlaGameStarted()
+                .Do(InitView)
+                .Subscribe()
+                .AddTo(disposer);
             
             startUlaGame.Execute();
+        }
+
+        private void InitView(Core.Domain.UlaGame game)
+        {
+            view.Init(game.absoluteStabilityLimit);
         }
 
 

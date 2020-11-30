@@ -9,6 +9,7 @@ namespace Modules.UlaGame.Scripts.Core.Domain
         ISubject<float> onStabilityAffected = new Subject<float>();
         ISubject<Unit> onGameEnded = new Subject<Unit>();
         ISubject<int> onNewSwipe = new Subject<int>();
+        ISubject<UlaGame> onUlaGameStarted = new Subject<UlaGame>();
 
         public UlaGameEventBus() {}
         public virtual void EmitNewStage(int stage)
@@ -49,6 +50,16 @@ namespace Modules.UlaGame.Scripts.Core.Domain
         public virtual IObservable<int> OnNewSwipe()
         {
             return onNewSwipe;
+        }
+
+        public void EmitUlaGameStared(UlaGame ulaGame)
+        {
+            onUlaGameStarted.OnNext(ulaGame);
+        }
+
+        public IObservable<UlaGame> OnUlaGameStarted()
+        {
+            return onUlaGameStarted;
         }
     }
 }
