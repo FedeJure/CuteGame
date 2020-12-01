@@ -3,7 +3,7 @@ using Modules.Common;
 using UnityEngine;
 
 #if UNITY_EDITOR
-using Input = Modules.Common.Input;
+using Input = Modules.Common.FakeInput;
 #endif
 
 public class UnitySwipeInput : MonoBehaviour

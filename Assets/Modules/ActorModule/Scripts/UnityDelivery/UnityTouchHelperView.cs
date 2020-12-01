@@ -5,7 +5,7 @@ using Modules.ActorModule.Scripts.Presentation.Events;
 using Modules.Common;
 using UnityEngine;
 #if UNITY_EDITOR
-using Input = Modules.Common.Input;
+
 #endif
 
 
@@ -39,7 +39,7 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
 
         void Update()
         {
-            foreach (Touch touch in Input.touches)
+            foreach (Touch touch in FakeInput.touches)
             {
                 switch (touch.phase)
                 {

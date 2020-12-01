@@ -1,7 +1,6 @@
 ﻿using System;
 using Modules.Common;
 using Modules.UlaGame.Scripts.Presentation;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Modules.UlaGame.Scripts.UnityDelivery
@@ -53,20 +52,23 @@ namespace Modules.UlaGame.Scripts.UnityDelivery
         public void SetStability(float currentStability)
         {
             Debug.Log($"stability: {currentStability}");
-            var velocity = (-1 / stabilityLimit) * Math.Abs(currentStability) + 2;
+            ulaAnimator.SetLayerWeight(1, Math.Abs(currentStability / stabilityLimit));
+            UpdateVelocity(currentStability);
+            UpdateFace(currentStability);
+        }
+
+        private void UpdateVelocity(float currentStability)
+        {
+            var velocity = (-1 / stabilityLimit) * Math.Abs(currentStability) + 3;
             ulaAnimator.SetFloat(rotationVelocityKey, velocity);
             actorAnimator.SetFloat(actorVelocityKey, velocity);
-            ulaAnimator.SetLayerWeight(1, Math.Abs(currentStability / stabilityLimit));
-
-            UpdateFace(currentStability);
         }
 
         private void UpdateFace(float currentStability)
         {
-            var normalizedStability = (int)((currentStability / stabilityLimit) * facesKey.Length);
-            Debug.Log($"{normalizedStability} , {(currentStability / stabilityLimit) * facesKey.Length}");
+            var normalizedStability = Math.Abs((int)((currentStability / stabilityLimit) * facesKey.Length));
+            if (normalizedStability >= facesKey.Length) return;
             actorAnimator.SetTrigger(facesKey[normalizedStability]);
-            
         }
 
         public void SetStage(int stage)

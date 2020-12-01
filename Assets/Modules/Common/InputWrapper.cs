@@ -2,7 +2,7 @@
 using UnityEngine.Assertions;
 
 namespace Modules.Common {
-     public static class Input {
+     public static class FakeInput {
          static bool touchSupported => UnityEngine.Input.touchSupported;
          static Touch? fakeTouch => SimulateTouchWithMouse.Instance.FakeTouch;
  
@@ -57,6 +57,7 @@ namespace Modules.Common {
                  }
              }
          }
+         
      }
  
      internal class SimulateTouchWithMouse {
