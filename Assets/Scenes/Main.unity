@@ -2996,6 +2996,11 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 7044377221802291548, guid: 66a79c32294aefa47bf4a7c71313cf10,
+        type: 3}
+      propertyPath: resource
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66a79c32294aefa47bf4a7c71313cf10, type: 3}
 --- !u!224 &7044377221222803220 stripped

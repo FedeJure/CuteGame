@@ -1,13 +1,13 @@
 ﻿using System;
-using Modules.Common;
 using UnityEngine;
 
 #if UNITY_EDITOR
-using Input = Modules.Common.FakeInput;
+    using Input = Modules.Common.FakeInput;
 #endif
-
-public class UnitySwipeInput : MonoBehaviour
+namespace Modules.Common
 {
+    public class UnitySwipeInput : MonoBehaviour
+    {
         public event Action<TouchDirection> OnSwipeDetected = swipe => { };
 
         private Vector2 fingerDown;
@@ -135,32 +135,33 @@ public class UnitySwipeInput : MonoBehaviour
         {
             return Mathf.Abs(fingerDown.x - fingerUp.x);
         }
-}
-
-internal class HitTargetRepository
-{
-    private bool targetHitted;
-    private int ownerId = 0;
-    public bool TargetHitted()
-    {
-        return targetHitted;
     }
 
-    public bool ImOwner(int ownerId)
+    internal class HitTargetRepository
     {
-        return ownerId == this.ownerId;
-    }
-    public void HitTarget(int ownerId)
-    {
-        if (this.ownerId != 0) return;
-        this.ownerId = ownerId;
-        targetHitted = true;
-    }
+        private bool targetHitted;
+        private int ownerId = 0;
+        public bool TargetHitted()
+        {
+            return targetHitted;
+        }
 
-    public void ClearHit(int ownerId)
-    {
-        if (ownerId != this.ownerId) return;
-        targetHitted = false;
-        this.ownerId = 0;
+        public bool ImOwner(int ownerId)
+        {
+            return ownerId == this.ownerId;
+        }
+        public void HitTarget(int ownerId)
+        {
+            if (this.ownerId != 0) return;
+            this.ownerId = ownerId;
+            targetHitted = true;
+        }
+
+        public void ClearHit(int ownerId)
+        {
+            if (ownerId != this.ownerId) return;
+            targetHitted = false;
+            this.ownerId = 0;
+        }
     }
 }

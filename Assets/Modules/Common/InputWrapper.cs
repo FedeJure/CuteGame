@@ -3,37 +3,37 @@ using UnityEngine.Assertions;
 
 namespace Modules.Common {
      public static class FakeInput {
-         static bool touchSupported => UnityEngine.Input.touchSupported;
+         static bool touchSupported => Input.touchSupported;
          static Touch? fakeTouch => SimulateTouchWithMouse.Instance.FakeTouch;
  
          public static bool GetButton(string buttonName) {
-             return UnityEngine.Input.GetButton(buttonName);
+             return Input.GetButton(buttonName);
          }
  
          public static bool GetButtonDown(string buttonName) {
-             return UnityEngine.Input.GetButtonDown(buttonName);
+             return Input.GetButtonDown(buttonName);
          }
  
          public static bool GetButtonUp(string buttonName) {
-             return UnityEngine.Input.GetButtonUp(buttonName);
+             return Input.GetButtonUp(buttonName);
          }
  
          public static bool GetMouseButton(int button) {
-             return UnityEngine.Input.GetMouseButton(button);
+             return Input.GetMouseButton(button);
          }
  
          public static bool GetMouseButtonDown(int button) {
-             return UnityEngine.Input.GetMouseButtonDown(button);
+             return Input.GetMouseButtonDown(button);
          }
  
          public static bool GetMouseButtonUp(int button) {
-             return UnityEngine.Input.GetMouseButtonUp(button);
+             return Input.GetMouseButtonUp(button);
          }
  
          public static int touchCount {
              get {
                  if (touchSupported) {
-                     return UnityEngine.Input.touchCount;
+                     return Input.touchCount;
                  }
                  return fakeTouch.HasValue ? 1 : 0;
              }
@@ -41,7 +41,7 @@ namespace Modules.Common {
  
          public static Touch GetTouch(int index) {
              if (touchSupported) {
-                 return UnityEngine.Input.GetTouch(index);
+                 return Input.GetTouch(index);
              } else {
                  Assert.IsTrue(fakeTouch.HasValue && index == 0);
                  return fakeTouch.Value;
@@ -51,7 +51,7 @@ namespace Modules.Common {
          public static Touch[] touches {
              get {
                  if (touchSupported) {
-                     return UnityEngine.Input.touches;
+                     return Input.touches;
                  } else {
                      return fakeTouch.HasValue ? new[] {fakeTouch.Value} : new Touch[0];
                  }
@@ -88,7 +88,7 @@ namespace Modules.Common {
              if (Time.time != lastUpdateTime) {
                  lastUpdateTime = Time.time;
                  
-                 var curMousePos = UnityEngine.Input.mousePosition;
+                 var curMousePos = Input.mousePosition;
                  var delta = curMousePos - prevMousePos;
                  prevMousePos = curMousePos;
  
@@ -97,11 +97,11 @@ namespace Modules.Common {
          }
  
          static TouchPhase? getPhase(Vector3 delta) {
-             if (UnityEngine.Input.GetMouseButtonDown(0)) {
+             if (Input.GetMouseButtonDown(0)) {
                  return TouchPhase.Began;
-             } else if (UnityEngine.Input.GetMouseButton(0)) {
+             } else if (Input.GetMouseButton(0)) {
                  return delta.sqrMagnitude < 0.01f ? TouchPhase.Stationary : TouchPhase.Moved;
-             } else if (UnityEngine.Input.GetMouseButtonUp(0)) {
+             } else if (Input.GetMouseButtonUp(0)) {
                  return TouchPhase.Ended;
              } else {
                  return null;
@@ -113,7 +113,7 @@ namespace Modules.Common {
                  return null;
              }
              
-             var curMousePos = UnityEngine.Input.mousePosition;
+             var curMousePos = Input.mousePosition;
              return new Touch {
                  phase = phase.Value,
                  type = TouchType.Indirect,

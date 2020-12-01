@@ -253,7 +253,7 @@
           <e p="Common" t="Include">
             <e p="ActorComponentsRepository.cs" t="Include" />
             <e p="ActorGateway.cs" t="Include" />
-            <e p="AddressableLocationLoader.cs" t="Include" />
+            <e p="AddressableService.cs" t="Include" />
             <e p="AssetCreator.cs" t="Include" />
             <e p="CameraRepository.cs" t="Include" />
             <e p="CommonModuleProvider.cs" t="Include" />
@@ -662,6 +662,13 @@
         </e>
         <e p="Skybox" t="Include">
           <e p="Readme.txt" t="Include" />
+        </e>
+        <e p="StreamingAssets" t="Include">
+          <e p="aa" t="Include">
+            <e p="Android" t="Include">
+              <e p="link.xml" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">

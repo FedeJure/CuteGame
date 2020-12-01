@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
 using Modules.Common;
 using Modules.MiniGame.Scripts.Presentation;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
+using Task = System.Threading.Tasks.Task;
 
 namespace Modules.MiniGame.Scripts.UnityDelivery
 {
@@ -13,6 +13,7 @@ namespace Modules.MiniGame.Scripts.UnityDelivery
         public event Action OnPlayButtonClicked = () => { };
         [SerializeField] private string addressableAssetLabel;
         [SerializeField] Button playButton;
+        [SerializeField] private AssetReference mainPrefabLocation;
 
         private void Awake()
         {
@@ -21,11 +22,11 @@ namespace Modules.MiniGame.Scripts.UnityDelivery
             playButton.onClick.AddListener(OnPlayButtonClicked.Invoke);
         }
 
-        public void InitGameView()
+        public async Task InitGameView()
         {
             playButton.enabled = false;
-            List<GameObject> gameObjects = new List<GameObject>();
-            AddressableLocationLoader.GetAll(addressableAssetLabel, gameObjects);
+            await AddressableService.DownloadAssetsOfLabel(addressableAssetLabel);
+            await AddressableService.InstantiateAsyncFrom(mainPrefabLocation);
         }
     }
 }

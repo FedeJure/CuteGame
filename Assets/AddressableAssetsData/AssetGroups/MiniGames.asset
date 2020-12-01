@@ -17,53 +17,11 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 51d14012d55475a4183259c0f379b180
   m_SerializeEntries:
-  - m_GUID: 0a7575ed32ca02a488e7e0d5da040e0b
-    m_Address: Assets/Models/MiniGames/Ula/Actor_Ula_Game_Face.anim
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 89f8892ff817d2640adb5f7575d1fd98
-    m_Address: Assets/Models/MiniGames/Ula/Ula.controller
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 99396a6bd892c034d95a3d8b92bfc54c
-    m_Address: Assets/Models/MiniGames/Ula/Ula_Shake.anim
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: a2e4e8197695bb04aac2e34ac7101324
-    m_Address: Assets/Models/MiniGames/Ula/Actor_Ula_Game.controller
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: a926f36554500724db10728eaafb9920
-    m_Address: Assets/Models/MiniGames/Ula/Ula_Rotate.anim
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: b3414478968602d4e8b4312f5fb41790
-    m_Address: Assets/Models/Games/Ula/ula.prefab
+  - m_GUID: e246b542fae66984cbcdc0ad27ec6e5c
+    m_Address: Assets/Models/MiniGames/Ula
     m_ReadOnly: 0
     m_SerializedLabels:
     - mini_game_ula
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: f6001c93b8d77a14e9f47a1bbcf5cf68
-    m_Address: Assets/Models/MiniGames/Ula/Actor_Ula_Game_Move.anim
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: f878816ceba59a74187d9c6e1b8bc1a0
-    m_Address: Assets/Models/MiniGames/Ula/ula.blend
-    m_ReadOnly: 0
-    m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0

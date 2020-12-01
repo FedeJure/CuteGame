@@ -420,6 +420,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   addressableAssetLabel: mini_game_ula
   playButton: {fileID: 7044377222648322747}
+  mainPrefabLocation:
+    m_AssetGUID: b3414478968602d4e8b4312f5fb41790
+    m_SubObjectName: 
 --- !u!1 &7044377222125093381
 GameObject:
   m_ObjectHideFlags: 0
