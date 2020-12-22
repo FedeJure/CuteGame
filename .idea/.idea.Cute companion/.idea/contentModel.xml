@@ -310,13 +310,24 @@
           <e p="MiniGame" t="Include">
             <e p="MiniGameModuleProvider.cs" t="Include" />
             <e p="Scripts" t="Include">
+              <e p="Core" t="Include">
+                <e p="Domain" t="Include">
+                  <e p="MiniGameEventBus.cs" t="Include" />
+                </e>
+              </e>
               <e p="Presentation" t="Include">
                 <e p="MiniGamePresenter.cs" t="Include" />
+                <e p="MiniGameUiFeature.cs" t="Include" />
+                <e p="MiniGameUiPresenter.cs" t="Include" />
+                <e p="MiniGameUiView.cs" t="Include" />
                 <e p="MiniGameView.cs" t="Include" />
                 <e p="MiniGameWidgetPresenter.cs" t="Include" />
                 <e p="MiniGameWidgetView.cs" t="Include" />
               </e>
               <e p="UnityDelivery" t="Include">
+                <e p="UnityMiniGameScoreComponentView.cs" t="Include" />
+                <e p="UnityMiniGameStabilityComponentView.cs" t="Include" />
+                <e p="UnityMiniGameUiView.cs" t="Include" />
                 <e p="UnityMiniGameWidgetView.cs" t="Include" />
               </e>
             </e>
@@ -358,6 +369,7 @@
             <e p="Scripts" t="Include">
               <e p="Core" t="Include">
                 <e p="Actions" t="Include">
+                  <e p="RetrieveMaxStability.cs" t="Include" />
                   <e p="StartUlaGameAction.cs" t="Include" />
                 </e>
                 <e p="Domain" t="Include">
@@ -662,13 +674,6 @@
         </e>
         <e p="Skybox" t="Include">
           <e p="Readme.txt" t="Include" />
-        </e>
-        <e p="StreamingAssets" t="Include">
-          <e p="aa" t="Include">
-            <e p="Android" t="Include">
-              <e p="link.xml" t="Include" />
-            </e>
-          </e>
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">

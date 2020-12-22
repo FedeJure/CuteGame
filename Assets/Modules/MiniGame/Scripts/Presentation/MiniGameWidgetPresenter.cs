@@ -19,6 +19,7 @@ namespace Modules.MiniGame.Scripts.Presentation
         {
             eventBus.EmitOnMiniGameStarted();
             widgetView.InitGameView();
+            widgetView.Close();
         }
     }
 }

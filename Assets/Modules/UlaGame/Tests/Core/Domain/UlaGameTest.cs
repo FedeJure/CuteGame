@@ -81,7 +81,7 @@ namespace Modules.UlaGame.Tests.Core.Domain
 
         private void ThenAffectStabilityEventRaised()
         {
-            eventBus.Received(1).EmitStabilityAffected(Arg.Any<float>());
+            eventBus.Received(2).EmitStabilityAffected(Arg.Any<float>());
         }
     }
 }

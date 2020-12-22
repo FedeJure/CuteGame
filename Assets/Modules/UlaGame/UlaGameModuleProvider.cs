@@ -1,4 +1,5 @@
 ﻿using Modules.Common;
+using Modules.MiniGame;
 using Modules.UlaGame.Scripts.Core.Actions;
 using Modules.UlaGame.Scripts.Core.Domain;
 using Modules.UlaGame.Scripts.Presentation;
@@ -12,7 +13,8 @@ namespace Modules.UlaGame
             new UlaGamePresenter(view,
                 CommonModuleProvider.ProvideGlobalEventBus(),
                 ProvideStartUlaGameAction(),
-                ProvideUlaGameEventBus());
+                ProvideUlaGameEventBus(),
+                MiniGameModuleProvider.ProvideEventBus());
         }
 
         private static StartUlaGameAction ProvideStartUlaGameAction()

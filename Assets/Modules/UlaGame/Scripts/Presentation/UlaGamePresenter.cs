@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Modules.Common;
+using Modules.MiniGame.Scripts.Core.Domain;
 using Modules.MiniGame.Scripts.Presentation;
 using Modules.UlaGame.Scripts.Core.Actions;
 using Modules.UlaGame.Scripts.Core.Domain;
@@ -13,17 +14,20 @@ namespace Modules.UlaGame.Scripts.Presentation
         private readonly UlaGameView view;
         private readonly StartUlaGameAction startUlaGame;
         private readonly UlaGameEventBus eventBus;
-        
+        private readonly MiniGameEventBus miniGameEventBus;
+
         private List<IDisposable> disposer = new List<IDisposable>();
 
         public UlaGamePresenter(UlaGameView view,
             GlobalEventBus globalEventBus,
             StartUlaGameAction startUlaGame,
-            UlaGameEventBus eventBus) : base(view, globalEventBus)
+            UlaGameEventBus eventBus, 
+            MiniGameEventBus miniGameEventBus) : base(view, globalEventBus)
         {
             this.view = view;
             this.startUlaGame = startUlaGame;
             this.eventBus = eventBus;
+            this.miniGameEventBus = miniGameEventBus;
 
             view.OnSwipeReceived += ReceiveSwipe;
         }
@@ -31,7 +35,11 @@ namespace Modules.UlaGame.Scripts.Presentation
         protected override void PresentView()
         {
             eventBus.OnStabilityAffected()
-                .Do(currentStability => view.SetStability(currentStability))
+                .Do(currentStability =>
+                {
+                    view.SetStability(currentStability);
+                    miniGameEventBus.EmitOnStabilityChange(currentStability);
+                })
                 .Subscribe()
                 .AddTo(disposer);
 
@@ -50,6 +58,13 @@ namespace Modules.UlaGame.Scripts.Presentation
                 .Subscribe()
                 .AddTo(disposer);
             
+            miniGameEventBus.EmitOnNewGameStarted(
+                new List<MiniGameUiFeature>
+                {
+                    MiniGameUiFeature.SCORE, 
+                    MiniGameUiFeature.STABILITY
+                });
+
             startUlaGame.Execute();
         }
 

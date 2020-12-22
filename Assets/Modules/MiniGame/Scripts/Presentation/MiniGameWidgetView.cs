@@ -7,5 +7,6 @@ namespace Modules.MiniGame.Scripts.Presentation
     {
         event Action OnPlayButtonClicked;
         Task InitGameView();
+        void Close();
     }
 }

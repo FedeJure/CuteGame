@@ -1,5 +1,6 @@
 ﻿using System;
 using Modules.Common;
+using Modules.MiniGame.Scripts.Core.Domain;
 using Modules.UlaGame.Scripts.Core.Actions;
 using Modules.UlaGame.Scripts.Core.Domain;
 using Modules.UlaGame.Scripts.Presentation;
@@ -19,6 +20,7 @@ namespace Modules.UlaGame.Tests.Presentation
         private ISubject<float> stabilitySubject = new Subject<float>();
         private ISubject<int> stageSubject = new Subject<int>();
         private ISubject<Unit> gameEndSubject = new Subject<Unit>();
+        private MiniGameEventBus miniGameEventBus;
 
         [SetUp]
         public void SetUp()
@@ -27,12 +29,13 @@ namespace Modules.UlaGame.Tests.Presentation
             globalEventBus = Substitute.For<GlobalEventBus>();
             startGame = Substitute.For<StartUlaGameAction>();
             eventBus = Substitute.For<UlaGameEventBus>();
+            miniGameEventBus = Substitute.For<MiniGameEventBus>();
 
             eventBus.OnGameEnded().Returns(gameEndSubject);
             eventBus.OnNewStage().Returns(stageSubject);
             eventBus.OnStabilityAffected().Returns(stabilitySubject);
             
-            new UlaGamePresenter(view, globalEventBus, startGame, eventBus);
+            new UlaGamePresenter(view, globalEventBus, startGame, eventBus, miniGameEventBus);
         }
 
         [Test]

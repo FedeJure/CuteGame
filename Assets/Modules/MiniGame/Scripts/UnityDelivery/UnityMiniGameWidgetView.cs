@@ -14,6 +14,7 @@ namespace Modules.MiniGame.Scripts.UnityDelivery
         [SerializeField] private string addressableAssetLabel;
         [SerializeField] Button playButton;
         [SerializeField] private AssetReference mainPrefabLocation;
+        [SerializeField] private Button closeButton;
 
         private void Awake()
         {
@@ -27,6 +28,11 @@ namespace Modules.MiniGame.Scripts.UnityDelivery
             playButton.enabled = false;
             await AddressableService.DownloadAssetsOfLabel(addressableAssetLabel);
             await AddressableService.InstantiateAsyncFrom(mainPrefabLocation);
+        }
+
+        public void Close()
+        {
+            closeButton.onClick.Invoke();
         }
     }
 }
