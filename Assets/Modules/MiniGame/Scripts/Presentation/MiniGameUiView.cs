@@ -9,6 +9,8 @@ namespace Modules.MiniGame.Scripts.Presentation
         void UpdateStability(float stability, float maxStability);
         void InitScoreFeature();
         void InitStability();
+        void DisposeScoreFeature();
+        void DisposeStability();
         void InitView();
     }
 }

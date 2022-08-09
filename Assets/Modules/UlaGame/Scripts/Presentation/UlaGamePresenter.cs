@@ -50,6 +50,7 @@ namespace Modules.UlaGame.Scripts.Presentation
 
             eventBus.OnGameEnded()
                 .Do(_ => view.EndGame())
+                .Do(_ => miniGameEventBus.EmitGameEnded())
                 .Subscribe()
                 .AddTo(disposer);
 

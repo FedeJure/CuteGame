@@ -16,7 +16,7 @@ public class MainGameCamera : MonoBehaviour
 
     public IObservable<Unit> ShowCreationView()
     {
-        var endRotation = new Vector3(20, 0, 0);
+        var endRotation = new Vector3(3, -15, 0);
         return LeanTween.rotate(mainCamera.gameObject, endRotation, 1.5f)
             .setEaseInQuad()
             .OnCompleteAsObservable();

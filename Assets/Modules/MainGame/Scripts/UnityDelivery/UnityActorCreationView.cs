@@ -32,8 +32,8 @@ public class UnityActorCreationView : MonoBehaviour
 
     private void OnEnable()
     {
-        content.localPosition = new Vector3(0, -1500, 0);
-        LeanTween.moveLocal(content.gameObject, new Vector3(0, -500, 0), 1)
+        content.localPosition = new Vector3(-400, -1000, 0);
+        LeanTween.moveLocal(content.gameObject, new Vector3(-431, 0, 0), 1)
             .setEaseOutQuad()
             .OnCompleteAsObservable()
             .Subscribe();

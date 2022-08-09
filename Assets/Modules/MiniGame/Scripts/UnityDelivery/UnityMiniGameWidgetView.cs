@@ -23,6 +23,10 @@ namespace Modules.MiniGame.Scripts.UnityDelivery
             playButton.onClick.AddListener(OnPlayButtonClicked.Invoke);
         }
 
+        public void OnEnable() {
+            playButton.enabled = true;
+        }
+
         public async Task InitGameView()
         {
             playButton.enabled = false;

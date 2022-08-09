@@ -78,13 +78,13 @@ namespace Modules.UlaGame.Scripts.UnityDelivery
 
         public void EndGame()
         {
-            // Debug.Log("GameEnded");
+            Debug.Log("GameEnded");
+            Destroy(gameObject);
         }
 
         public void Init(float stabilityLimit)
         {
             this.stabilityLimit = stabilityLimit;
-            
         }
     }
 }

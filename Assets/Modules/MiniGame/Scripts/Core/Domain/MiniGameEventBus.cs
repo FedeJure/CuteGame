@@ -10,6 +10,7 @@ namespace Modules.MiniGame.Scripts.Core.Domain
         private ISubject<int> onScoreChange = new Subject<int>();
         private ISubject<float> onStabilityChange = new Subject<float>();
         private ISubject<List<MiniGameUiFeature>> onNewGameStarted = new Subject<List<MiniGameUiFeature>>();
+        private ISubject<Unit> onGameEnded = new Subject<Unit>();
         
         public IObservable<int> OnScoreChange()
         {
@@ -24,6 +25,14 @@ namespace Modules.MiniGame.Scripts.Core.Domain
         public IObservable<List<MiniGameUiFeature>> OnNewGameStarted()
         {
             return onNewGameStarted;
+        }
+
+        public IObservable<Unit> OnGameEnded() {
+            return onGameEnded;
+        }
+
+        public void EmitGameEnded() {
+            onGameEnded.OnNext(Unit.Default);
         }
 
         public void EmitOnNewGameStarted(List<MiniGameUiFeature> features)

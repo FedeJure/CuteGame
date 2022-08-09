@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Modules.Common;
 using UniRx;
+using UnityEngine;
 
 namespace Modules.UlaGame.Scripts.Core.Domain
 {

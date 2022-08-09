@@ -35,6 +35,16 @@ namespace Modules.MiniGame.Scripts.UnityDelivery
             scoreComponent.gameObject.SetActive(true);
         }
 
+        public void DisposeStability()
+        {
+            stabilityComponent.gameObject.SetActive(false);
+        }
+
+        public void DisposeScoreFeature()
+        {
+            scoreComponent.gameObject.SetActive(false);
+        }
+
         public void InitStability()
         {
             stabilityComponent.gameObject.SetActive(true);
