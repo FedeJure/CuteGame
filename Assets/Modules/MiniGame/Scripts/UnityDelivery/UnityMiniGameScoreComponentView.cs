@@ -8,7 +8,7 @@ namespace Modules.MiniGame.Scripts.UnityDelivery
         [SerializeField] private TextMeshProUGUI scoreText;
 
 
-        public void UpdateScore(int score)
+        public void UpdateScore(float score)
         {
             scoreText.text = score.ToString();
         }

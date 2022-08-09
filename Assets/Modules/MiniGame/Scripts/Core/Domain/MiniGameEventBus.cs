@@ -7,17 +7,17 @@ namespace Modules.MiniGame.Scripts.Core.Domain
 {
     public class MiniGameEventBus
     {
-        private ISubject<int> onScoreChange = new Subject<int>();
+        private ISubject<float> onScoreChange = new Subject<float>();
         private ISubject<float> onStabilityChange = new Subject<float>();
         private ISubject<List<MiniGameUiFeature>> onNewGameStarted = new Subject<List<MiniGameUiFeature>>();
         private ISubject<Unit> onGameEnded = new Subject<Unit>();
         
-        public IObservable<int> OnScoreChange()
+        public IObservable<float> OnScoreChange()
         {
             return onScoreChange;
         }
 
-        public void EmitOnScoreChange(int score)
+        public void EmitOnScoreChange(float score)
         {
             onScoreChange.OnNext(score);
         }

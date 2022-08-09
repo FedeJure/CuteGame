@@ -54,6 +54,11 @@ namespace Modules.UlaGame.Scripts.Core.Domain
                 .Subscribe()
                 .AddTo(disposer);
 
+            Observable.Interval(TimeSpan.FromSeconds(1))
+                .Do(_ => UpdateScore())
+                .Subscribe()
+                .AddTo(disposer);
+
             eventBus.EmitUlaGameStared(this);
         }
 
@@ -85,6 +90,11 @@ namespace Modules.UlaGame.Scripts.Core.Domain
         {
             eventBus.EmitGameEnded();
             disposer.DisposeAll();
+        }
+
+        private void UpdateScore() {
+            currentPoints += (stability >= -absoluteStabilityLimit / 2 && stability <= absoluteStabilityLimit / 2) ? 2 : 1;
+            eventBus.EmitScoreChange(currentPoints);
         }
     }
 }

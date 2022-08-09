@@ -20,7 +20,7 @@ namespace Modules.MiniGame.Scripts.UnityDelivery
             OnViewEnabled();
         }
 
-        public void UpdateScore(int score)
+        public void UpdateScore(float score)
         {
             scoreComponent.UpdateScore(score);
         }
@@ -33,6 +33,7 @@ namespace Modules.MiniGame.Scripts.UnityDelivery
         public void InitScoreFeature()
         {
             scoreComponent.gameObject.SetActive(true);
+            scoreComponent.UpdateScore(0);
         }
 
         public void DisposeStability()
@@ -48,6 +49,7 @@ namespace Modules.MiniGame.Scripts.UnityDelivery
         public void InitStability()
         {
             stabilityComponent.gameObject.SetActive(true);
+            stabilityComponent.UpdateStability(0f,10f);
         }
 
         public void InitView()

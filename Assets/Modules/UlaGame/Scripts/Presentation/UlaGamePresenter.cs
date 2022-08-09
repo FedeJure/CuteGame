@@ -58,6 +58,11 @@ namespace Modules.UlaGame.Scripts.Presentation
                 .Do(InitView)
                 .Subscribe()
                 .AddTo(disposer);
+
+            eventBus.OnScoreChange()
+                .Do(UpdateScore)
+                .Subscribe()
+                .AddTo(disposer);
             
             miniGameEventBus.EmitOnNewGameStarted(
                 new List<MiniGameUiFeature>
@@ -91,6 +96,10 @@ namespace Modules.UlaGame.Scripts.Presentation
         protected override void DisposeView()
         {
             disposer.DisposeAll();
+        }
+
+        private void UpdateScore(float score) {
+            miniGameEventBus.EmitOnScoreChange(score);
         }
     }
 }

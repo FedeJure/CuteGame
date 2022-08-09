@@ -10,6 +10,7 @@ namespace Modules.UlaGame.Scripts.Core.Domain
         ISubject<Unit> onGameEnded = new Subject<Unit>();
         ISubject<int> onNewSwipe = new Subject<int>();
         ISubject<UlaGame> onUlaGameStarted = new Subject<UlaGame>();
+        ISubject<float> onScoreChange = new Subject<float>();
 
         public UlaGameEventBus() {}
         public virtual void EmitNewStage(int stage)
@@ -60,6 +61,14 @@ namespace Modules.UlaGame.Scripts.Core.Domain
         public IObservable<UlaGame> OnUlaGameStarted()
         {
             return onUlaGameStarted;
+        }
+
+        public void EmitScoreChange(float score) {
+            onScoreChange.OnNext(score);
+        }
+
+        public IObservable<float> OnScoreChange() {
+            return onScoreChange;
         }
     }
 }

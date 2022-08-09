@@ -87,7 +87,7 @@ namespace Modules.MiniGame.Scripts.Presentation
             visibleFeatures.Clear();
         }
 
-        private void UpdateScore(int score)
+        private void UpdateScore(float score)
         {
             view.UpdateScore(score);
         }
