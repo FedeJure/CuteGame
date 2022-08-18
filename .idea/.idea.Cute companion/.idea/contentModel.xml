@@ -61,6 +61,7 @@
               <e p="TCP2_Menu.cs" t="Include" />
               <e p="TCP2_RampGenerator.cs" t="Include" />
               <e p="TCP2_SmoothedNormalsUtility.cs" t="Include" />
+              <e p="ToonyColorsPro.Editor.asmdef" t="Include" />
               <e p="Utils" t="Include">
                 <e p="TCP2_ExpressionParser.cs" t="Include" />
                 <e p="TCP2_GUI.cs" t="Include" />
@@ -73,6 +74,7 @@
               <e p="TCP2_PlanarReflection.cs" t="Include" />
               <e p="TCP2_RuntimeUtils.cs" t="Include" />
               <e p="TCP2_ShaderUpdateUnityTime.cs" t="Include" />
+              <e p="ToonyColorsPro.Runtime.asmdef" t="Include" />
             </e>
             <e p="Shader Templates" t="Include">
               <e p="TCP2_ShaderTemplate_Default.txt" t="Include" />
@@ -170,6 +172,7 @@
         </e>
         <e p="Modules" t="Include">
           <e p="ActorModule" t="Include">
+            <e p="ActorModule.asmdef" t="Include" />
             <e p="Scripts" t="Include">
               <e p="ActorModuleProvider.cs" t="Include" />
               <e p="Core" t="Include">
@@ -236,6 +239,7 @@
               </e>
             </e>
             <e p="Tests" t="Include">
+              <e p="ActorModule.Test.asmdef" t="Include" />
               <e p="Core" t="Include">
                 <e p="Domain" t="Include">
                   <e p="Action" t="Include">
@@ -256,6 +260,7 @@
             <e p="AddressableService.cs" t="Include" />
             <e p="AssetCreator.cs" t="Include" />
             <e p="CameraRepository.cs" t="Include" />
+            <e p="Common.asmdef" t="Include" />
             <e p="CommonModuleProvider.cs" t="Include" />
             <e p="DependencyProvider.cs" t="Include" />
             <e p="ExtensionMethods.cs" t="Include" />
@@ -272,13 +277,24 @@
             <e p="UnitySwipeInput.cs" t="Include" />
           </e>
           <e p="Donut" t="Include">
+            <e p="DonutASM.asmdef" t="Include" />
             <e p="UnityDelivery" t="Include">
               <e p="DonutMaterials.cs" t="Include" />
               <e p="UnityDonutGenerator.cs" t="Include" />
               <e p="UnityDonutView.cs" t="Include" />
             </e>
           </e>
+          <e p="InputWrapper" t="Include">
+            <e p="InputWrapperASM.asmdef" t="Include" />
+          </e>
+          <e p="Lobby" t="Include">
+            <e p="Lobby.asmdef" t="Include" />
+            <e p="Tests" t="Include">
+              <e p="Lobby.Test.asmdef" t="Include" />
+            </e>
+          </e>
           <e p="MainGame" t="Include">
+            <e p="MainGame.asmdef" t="Include" />
             <e p="Scripts" t="Include">
               <e p="Core" t="Include">
                 <e p="Actions" t="Include">
@@ -302,12 +318,14 @@
               </e>
             </e>
             <e p="Tests" t="Include">
+              <e p="MainGame.Test.asmdef" t="Include" />
               <e p="Presentation" t="Include">
                 <e p="MainGamePresenterTest.cs" t="Include" />
               </e>
             </e>
           </e>
           <e p="MiniGame" t="Include">
+            <e p="MiniGame.asmdef" t="Include" />
             <e p="MiniGameModuleProvider.cs" t="Include" />
             <e p="Scripts" t="Include">
               <e p="Core" t="Include">
@@ -332,12 +350,14 @@
               </e>
             </e>
             <e p="Tests" t="Include">
+              <e p="MiniGame.Test.asmdef" t="Include" />
               <e p="Presentation" t="Include">
                 <e p="MiniGamePresenterTest.cs" t="Include" />
               </e>
             </e>
           </e>
           <e p="PlayerModule" t="Include">
+            <e p="PlayerModule.asmdef" t="Include" />
             <e p="PlayerModuleProvider.cs" t="Include" />
             <e p="Scripts" t="Include">
               <e p="Core" t="Include">
@@ -352,6 +372,9 @@
                 <e p="DiskPlayerRepository.cs" t="Include" />
               </e>
             </e>
+            <e p="Tests" t="Include">
+              <e p="PlayerModule.Test.asmdef" t="Include" />
+            </e>
           </e>
           <e p="Shop" t="Include">
             <e p="Scripts" t="Include">
@@ -363,7 +386,11 @@
                 <e p="UnityShopView.cs" t="Include" />
               </e>
             </e>
+            <e p="Shop.asmdef" t="Include" />
             <e p="ShopModuleProvider].cs" t="Include" />
+            <e p="Tests" t="Include">
+              <e p="Shop.Test.asmdef" t="Include" />
+            </e>
           </e>
           <e p="UlaGame" t="Include">
             <e p="Scripts" t="Include">
@@ -394,7 +421,9 @@
               <e p="Presentation" t="Include">
                 <e p="UlaGamePresenterTest.cs" t="Include" />
               </e>
+              <e p="UlaGame.Test.asmdef" t="Include" />
             </e>
+            <e p="UlaGame.asmdef" t="Include" />
             <e p="UlaGameModuleProvider.cs" t="Include" />
           </e>
         </e>
@@ -576,6 +605,7 @@
               </e>
               <e p="TimeInterval.cs" t="Include" />
               <e p="Timestamped.cs" t="Include" />
+              <e p="UniRx.asmdef" t="Include" />
               <e p="UnityEngineBridge" t="Include">
                 <e p="AsyncOperationExtensions.cs" t="Include" />
                 <e p="CancellationToken.cs" t="Include" />
@@ -704,6 +734,7 @@
           </e>
           <e p="Sprites" t="Include">
             <e p="EmojiOne Attribution.txt" t="Include" />
+            <e p="EmojiOne.json" t="Include" />
           </e>
         </e>
         <e p="UI_Sources" t="Include">
@@ -719,6 +750,9 @@
       <e p="Common.csproj" t="IncludeRecursive" />
       <e p="Cute companion.sln" t="IncludeFlat" />
       <e p="DonutASM.csproj" t="IncludeRecursive" />
+      <e p="InputWrapperASM.csproj" t="IncludeRecursive" />
+      <e p="Lobby.csproj" t="IncludeRecursive" />
+      <e p="Lobby.Tests.csproj" t="IncludeRecursive" />
       <e p="MainGame.csproj" t="IncludeRecursive" />
       <e p="MainGame.Tests.csproj" t="IncludeRecursive" />
       <e p="MiniGame.csproj" t="IncludeRecursive" />
@@ -726,7 +760,9 @@
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="PlayerModule.csproj" t="IncludeRecursive" />
+      <e p="PlayerModule.Tests.csproj" t="IncludeRecursive" />
       <e p="Shop.csproj" t="IncludeRecursive" />
+      <e p="Shop.Tests.csproj" t="IncludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
       <e p="ToonyColorsPro.Editor.csproj" t="IncludeRecursive" />
       <e p="ToonyColorsPro.Runtime.csproj" t="IncludeRecursive" />
