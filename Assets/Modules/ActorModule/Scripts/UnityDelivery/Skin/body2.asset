@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fedef63dfd978bb43a7f50443a69474d, type: 3}
-  m_Name: body_simple_yellow
+  m_Name: body2
   m_EditorClassIdentifier: 
   type: 1
-  key: body_simple_yellow
-  material: {fileID: 2100000, guid: e89f54a8546ee3945862a344d2a58def, type: 2}
+  key: body2
+  material: {fileID: 2100000, guid: 89e5dc31b55482e4da094fc781469e74, type: 2}

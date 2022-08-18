@@ -7,11 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Body_1
-  m_Shader: {fileID: 4800000, guid: ccfc7d68845db8341944b3091b59be55, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_Name: body6
+  m_Shader: {fileID: 4800000, guid: 24a666c4cf4f5194ba2cdff51c1dc2f0, type: 3}
+  m_ShaderKeywords: OUTLINE_BLENDING _EMISSION
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ramp:
-        m_Texture: {fileID: 2800000, guid: ccad9b0732473ee4e95de81e50e9050f, type: 3}
+        m_Texture: {fileID: 2800000, guid: abc83c21d57d4a74cabe12065fa1a8b2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RampTex:
@@ -89,19 +89,18 @@ Material:
     - _Outline: 0.1
     - _OutlineWidth: 0.02
     - _Parallax: 0.02
-    - _RampSmooth: 0.406
-    - _RampThreshold: 0.559
+    - _RampSmooth: 0.44
+    - _RampThreshold: 0.5
     - _RimMax: 1
     - _RimMin: 0.5
-    - _Shininess: 0.271
     - _SmoothnessTextureChannel: 0
     - _SpecPower: 128
-    - _SpecSmooth: 1
+    - _SpecSmooth: 0.1
     - _SpecularHighlights: 1
     - _SpecularRotationX: 0
     - _SpecularRotationY: 0
     - _SpecularRotationZ: 0
-    - _SpecularScale: 0
+    - _SpecularScale: 0.01
     - _SpecularScaleX: 0
     - _SpecularScaleY: 0
     - _SpecularSplitX: 0
@@ -112,17 +111,16 @@ Material:
     - _SrcBlendOutline: 5
     - _TexLod: 5
     - _UVSec: 0
-    - _ZSmooth: 3
+    - _ZSmooth: -0.5
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.936, g: 0.3403636, b: 0.5329376, a: 1}
-    - _DarkColor: {r: 0.624, g: 0.2496, b: 0.3230117, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 1, g: 0.36401677, b: 0.5690378, a: 1}
-    - _HighlitColor: {r: 1, g: 0.4009434, b: 0.51683515, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0.78039217}
+    - _Color: {r: 0.8584906, g: 0.56727016, b: 0.0040494935, a: 1}
+    - _DarkColor: {r: 0.582, g: 0.582, b: 0, a: 1}
+    - _EmissionColor: {r: 0.24117647, g: 0.23333333, b: 0.1392157, a: 1}
+    - _HColor: {r: 0.785, g: 0.785, b: 0.785, a: 1}
+    - _HighlitColor: {r: 1, g: 1, b: 0, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0.7019608}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
-    - _SColor: {r: 0.41099998, g: 0.14989413, b: 0.2337059, a: 1}
-    - _SpecColor: {r: 1, g: 0.2216981, b: 0.768994, a: 1}
+    - _SColor: {r: 0.195, g: 0.195, b: 0.195, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -7,11 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cream3
-  m_Shader: {fileID: 4800000, guid: 74e6a0629ff62134ab27b220e3a687f9, type: 3}
-  m_ShaderKeywords: OUTLINES TCP2_DISABLE_WRAPPED_LIGHT _EMISSION
-  m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_Name: body1
+  m_Shader: {fileID: 4800000, guid: ccfc7d68845db8341944b3091b59be55, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -19,10 +19,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -43,16 +39,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _DetailTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: df12c7ae9d3026543be0257576cb555a, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -68,14 +60,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ramp:
-        m_Texture: {fileID: 2800000, guid: abc83c21d57d4a74cabe12065fa1a8b2, type: 3}
+        m_Texture: {fileID: 2800000, guid: ccad9b0732473ee4e95de81e50e9050f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RampTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -84,57 +72,36 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - PixelSnap: 0
-    - _BlendOp: 0
     - _BumpScale: 1
-    - _CameraFadingEnabled: 0
-    - _CameraFarFadeDistance: 2
-    - _CameraNearFadeDistance: 1
-    - _ColorMask: 15
-    - _ColorMode: 0
-    - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DistortionBlend: 0.5
-    - _DistortionEnabled: 0
-    - _DistortionStrength: 1
-    - _DistortionStrengthScaled: 0
     - _DstBlend: 0
     - _DstBlendOutline: 10
-    - _EmissionEnabled: 0
-    - _EnableExternalAlpha: 0
     - _ExpandFactor: 0
-    - _FlipbookMode: 0
     - _GlossMapScale: 1
-    - _Glossiness: 1
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LightingEnabled: 0
     - _Metallic: 0
     - _Mode: 0
-    - _OcclusionStrength: 0
+    - _OcclusionStrength: 1
     - _Offset1: 0
     - _Offset2: 0
-    - _Outline: 13
+    - _Outline: 0.1
     - _OutlineWidth: 0.02
-    - _Parallax: 0.0213
-    - _RampSmooth: 0.1
-    - _RampSmoothAdd: 0.2
-    - _RampThreshold: 0.5
+    - _Parallax: 0.02
+    - _RampSmooth: 0.406
+    - _RampThreshold: 0.559
     - _RimMax: 1
     - _RimMin: 0.5
-    - _RimStrength: 0.5
+    - _Shininess: 0.271
     - _SmoothnessTextureChannel: 0
-    - _SoftParticlesEnabled: 0
-    - _SoftParticlesFarFadeDistance: 1
-    - _SoftParticlesNearFadeDistance: 0
-    - _SpecBlend: 1
-    - _SpecPower: 1000000
-    - _SpecSmooth: 0
+    - _SpecPower: 128
+    - _SpecSmooth: 1
     - _SpecularHighlights: 1
     - _SpecularRotationX: 0
     - _SpecularRotationY: 0
     - _SpecularRotationZ: 0
-    - _SpecularScale: 0.01
+    - _SpecularScale: 0
     - _SpecularScaleX: 0
     - _SpecularScaleY: 0
     - _SpecularSplitX: 0
@@ -143,38 +110,19 @@ Material:
     - _SpecularTranslationY: 0
     - _SrcBlend: 1
     - _SrcBlendOutline: 5
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _Strength: 0.2
-    - _TCP2_DISABLE_WRAPPED_LIGHT: 1
-    - _TCP2_OUTLINE_CONST_SIZE: 0
-    - _TCP2_OUTLINE_TEXTURED: 0
-    - _TCP2_RAMPTEXT: 0
-    - _TCP2_SPEC_TOON: 0
-    - _TCP2_STYLIZED_FRESNEL: 0
-    - _TCP2_ZSMOOTH_ON: 0
     - _TexLod: 5
     - _UVSec: 0
-    - _UseUIAlphaClip: 0
-    - _ZSmooth: -0.5
+    - _ZSmooth: 3
     - _ZWrite: 1
     m_Colors:
-    - _CameraFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0.99380183, b: 0.8254717, a: 1}
-    - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
-    - _DarkColor: {r: 0.78, g: 0.78, b: 0.78, a: 1}
-    - _EmissionColor: {r: 0.15389305, g: 0.15389305, b: 0.15389305, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _HColor: {r: 0.98823535, g: 1, b: 0.9215687, a: 1}
-    - _HighlitColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0.6039216}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.936, g: 0.3403636, b: 0.5329376, a: 1}
+    - _DarkColor: {r: 0.624, g: 0.2496, b: 0.3230117, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HColor: {r: 1, g: 0.36401677, b: 0.5690378, a: 1}
+    - _HighlitColor: {r: 1, g: 0.4009434, b: 0.51683515, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0.78039217}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
-    - _SColor: {r: 1, g: 0.86666673, b: 0.5254902, a: 1}
-    - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _SColor: {r: 0.41099998, g: 0.14989413, b: 0.2337059, a: 1}
+    - _SpecColor: {r: 1, g: 0.2216981, b: 0.768994, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

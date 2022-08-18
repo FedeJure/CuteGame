@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cream3
-  m_Shader: {fileID: 4800000, guid: 74e6a0629ff62134ab27b220e3a687f9, type: 3}
-  m_ShaderKeywords: OUTLINES TCP2_DISABLE_WRAPPED_LIGHT _EMISSION
+  m_Name: Cream5
+  m_Shader: {fileID: 4800000, guid: dd496457a855aa341b0d7b7b475a7a3a, type: 3}
+  m_ShaderKeywords: OUTLINES TCP2_DISABLE_WRAPPED_LIGHT TCP2_RAMPTEXT _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: df12c7ae9d3026543be0257576cb555a, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -106,7 +106,7 @@ Material:
     - _ExpandFactor: 0
     - _FlipbookMode: 0
     - _GlossMapScale: 1
-    - _Glossiness: 1
+    - _Glossiness: 0.272
     - _GlossyReflections: 1
     - _LightingEnabled: 0
     - _Metallic: 0
@@ -118,16 +118,13 @@ Material:
     - _OutlineWidth: 0.02
     - _Parallax: 0.0213
     - _RampSmooth: 0.1
-    - _RampSmoothAdd: 0.2
     - _RampThreshold: 0.5
     - _RimMax: 1
     - _RimMin: 0.5
-    - _RimStrength: 0.5
     - _SmoothnessTextureChannel: 0
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0
-    - _SpecBlend: 1
     - _SpecPower: 1000000
     - _SpecSmooth: 0
     - _SpecularHighlights: 1
@@ -149,13 +146,6 @@ Material:
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
     - _Strength: 0.2
-    - _TCP2_DISABLE_WRAPPED_LIGHT: 1
-    - _TCP2_OUTLINE_CONST_SIZE: 0
-    - _TCP2_OUTLINE_TEXTURED: 0
-    - _TCP2_RAMPTEXT: 0
-    - _TCP2_SPEC_TOON: 0
-    - _TCP2_STYLIZED_FRESNEL: 0
-    - _TCP2_ZSMOOTH_ON: 0
     - _TexLod: 5
     - _UVSec: 0
     - _UseUIAlphaClip: 0
@@ -163,7 +153,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _CameraFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0.99380183, b: 0.8254717, a: 1}
+    - _Color: {r: 0.98938954, g: 1, b: 0.9198113, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _DarkColor: {r: 0.78, g: 0.78, b: 0.78, a: 1}
     - _EmissionColor: {r: 0.15389305, g: 0.15389305, b: 0.15389305, a: 1}
@@ -173,8 +163,7 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0.6039216}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
-    - _SColor: {r: 1, g: 0.86666673, b: 0.5254902, a: 1}
+    - _SColor: {r: 0.41362587, g: 0.6132076, b: 0.5940696, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Body_Yelow
+  m_Name: body5
   m_Shader: {fileID: 4800000, guid: 24a666c4cf4f5194ba2cdff51c1dc2f0, type: 3}
   m_ShaderKeywords: OUTLINE_BLENDING _EMISSION
   m_LightmapFlags: 2
@@ -114,7 +114,7 @@ Material:
     - _ZSmooth: -0.5
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.894, g: 0.83988327, b: 0.08224795, a: 1}
+    - _Color: {r: 0.754717, g: 0.33107865, b: 0.67776304, a: 1}
     - _DarkColor: {r: 0.582, g: 0.582, b: 0, a: 1}
     - _EmissionColor: {r: 0.24117647, g: 0.23333333, b: 0.1392157, a: 1}
     - _HColor: {r: 0.785, g: 0.785, b: 0.785, a: 1}
