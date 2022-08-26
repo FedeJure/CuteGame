@@ -1,4 +1,5 @@
 using System;
+using GooglePlayGames;
 using UniRx;
 using UnityEngine;
 
@@ -9,26 +10,25 @@ namespace Modules.MainGame
     {
         private void Start()
         {
-            Init();
+            InitializePlayGamesLogin();
         }
-
-        static void Init()
-        {
-            // PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
-            // PlayGamesPlatform.InitializeInstance(config);
-        }
-
         public static IObservable<bool> Login()
         {
+            #if UNITY_EDITOR
+            return Observable.Return(true);       
+            #endif
             
-            return Observable.Return(false);
-            // var subject = new Subject<bool>();
-            // PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptAlways, (status) =>
-            // {
-            //     Debug.Log(status);
-            //     subject.OnNext(SignInStatus.Success.Equals(status));
-            // });
-            // return subject;
+            var subject = new Subject<bool>();
+            Social.localUser.Authenticate((success, authCode) =>
+            {
+                subject.OnNext(success);
+            });
+            return subject;
+        }
+        
+        void InitializePlayGamesLogin()
+        {
+            PlayGamesPlatform.Activate();
         }
 
     }
