@@ -24,6 +24,7 @@ public class LoadingScreen : MonoBehaviour
 
     public void StopLoading()
     {
+        Debug.Log("Stop spinner");
         screen.SetActive(false);
         rotating.pause();
     }

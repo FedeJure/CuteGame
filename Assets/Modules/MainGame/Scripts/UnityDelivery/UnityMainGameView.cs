@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Modules.MainGame.Scripts.Presentation;
 using TMPro;
 using UniRx;
@@ -64,7 +63,7 @@ namespace Modules.MainGame.Scripts.UnityDelivery
 
         public void ShowSuccessLoginFeedback()
         {
-            Debug.LogWarning("Loging successful");
+            Debug.LogWarning("Login successful");
         }
 
         public void ShowLoading()

@@ -7,12 +7,19 @@
       <e p="ActorModule.csproj" t="IncludeRecursive" />
       <e p="ActorModule.Test.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Editor" t="Include">
           <e p="ModuleCreator.cs" t="Include" />
           <e p="RotateMesh.cs" t="Include" />
         </e>
+        <e p="ExternalDependencyManager" t="Include">
+          <e p="Editor" t="Include">
+            <e p="external-dependency-manager_version-1.2.169_manifest.txt" t="Include" />
+          </e>
+        </e>
+        <e p="GPGSIds.cs" t="Include" />
         <e p="JMO Assets" t="Include">
           <e p="Toony Colors Pro" t="Include">
             <e p="!ToonyColorsPro Readme.txt" t="Include" />
@@ -294,6 +301,7 @@
             </e>
           </e>
           <e p="MainGame" t="Include">
+            <e p="GooglePlayServicesManager.cs" t="Include" />
             <e p="MainGame.asmdef" t="Include" />
             <e p="Scripts" t="Include">
               <e p="Core" t="Include">
@@ -439,6 +447,11 @@
           <e p="SimpleEncryption.cs" t="Include" />
         </e>
         <e p="Plugins" t="Include">
+          <e p="Android" t="Include">
+            <e p="GooglePlayGamesManifest.androidlib" t="Include">
+              <e p="AndroidManifest.xml" t="Include" />
+            </e>
+          </e>
           <e p="UniRx" t="Include">
             <e p="Scripts" t="Include">
               <e p="Asynchronous" t="Include">

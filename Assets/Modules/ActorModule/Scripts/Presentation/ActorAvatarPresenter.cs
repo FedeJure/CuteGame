@@ -37,7 +37,7 @@ namespace Modules.ActorModule.Scripts.Presentation
                 .Do(_ => HandleHumorChange())
                 .Subscribe()
                 .AddTo(disposer);
-            
+
             retrieveActor.Execute()
                 .Do(actor => view.SetName(actor.name));
 
