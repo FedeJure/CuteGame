@@ -31,7 +31,7 @@ namespace Modules.ActorModule.Scripts.Core.Domain.Action
                         sessionRepository.Save(new Session(player.id, actor.id));
                         return actor.ToObservableDummy();
                     },
-                    new Actor(0,"", new ActorSkin("",""), new Player(0)).ToObservableDummy());
+                    new Actor("Default id","", new ActorSkin("",""), new Player("Default player")).ToObservableDummy());
         }
     }
 }

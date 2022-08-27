@@ -13,14 +13,14 @@ namespace Modules.ActorModule.Scripts.Infrastructure
             LocalStorage.Save(GetKey(actor.owner.id), actor.ToString());
         }
 
-        public Maybe<Actor> Get(long playerId)
+        public Maybe<Actor> Get(string playerId)
         {
             return LocalStorage.Get(GetKey(playerId))
                 .ReturnOrDefault(actor => JsonUtility.FromJson<Actor>(actor).ToMaybe(),
                     Maybe<Actor>.Nothing);
         }
 
-        private static string GetKey(long ownerId)
+        private static string GetKey(string ownerId)
         {
             return $"{key}:id:{ownerId}";
         }

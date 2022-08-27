@@ -86,39 +86,10 @@ namespace Modules.MainGame.Scripts.Presentation
         private void ProcessLogin(LoginData data)
         {
             view.ShowLoading();
-            // requestLogin.Execute(data)
-            //     .Do(ProcessLoginResponse)
-            //     .Subscribe()
-            //     .AddTo(loginDisposer);
-            try
-            {
-                GooglePlayServicesManager.Login()
-                    .Do(response =>
-                    {
-                        Debug.Log(response);
-                        view.HideLoading();
-                        if (!response) view.ShowFailedLoginFeedback("Failed to login");
-                        else
-                        {
-                            view.ShowSuccessLoginFeedback();
-                            loginDisposer.DisposeAll();
-                            PresentView();
-                        }
-                    })
-                    .DoOnError((response) =>
-                    {
-                        view.HideLoading();
-                        view.ShowFailedLoginFeedback("Failed to login");
-                    })
-                    .Subscribe()
-                    .AddTo(loginDisposer);
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e.StackTrace);
-                view.HideLoading();
-                view.ShowFailedLoginFeedback("Failed to login");
-            }
+            requestLogin.Execute(data)
+                .Do(ProcessLoginResponse)
+                .Subscribe()
+                .AddTo(loginDisposer);
 
         }
 

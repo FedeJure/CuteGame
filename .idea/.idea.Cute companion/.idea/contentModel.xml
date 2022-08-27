@@ -414,6 +414,7 @@
                 </e>
               </e>
               <e p="Infrastructure" t="Include">
+                <e p="GPSMainGameGateway.cs" t="Include" />
                 <e p="MainGameGateway.cs" t="Include" />
                 <e p="MockMainGameGateway.cs" t="Include" />
               </e>

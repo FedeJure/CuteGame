@@ -4,10 +4,10 @@ namespace Modules.MainGame.Scripts.Core.Domain
 {
     public struct Session
     {
-        public long playerId;
-        public long actorId;
+        public string playerId;
+        public string actorId;
 
-        public Session(long playerId, long actorId)
+        public Session(string playerId, string actorId)
         {
             this.playerId = playerId;
             this.actorId = actorId;

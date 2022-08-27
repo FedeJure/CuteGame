@@ -28,7 +28,7 @@ namespace Modules.MainGame.Scripts
         public static MainGameGateway ProvideMainGameGateway()
         {
             return DependencyProvider.GetOrInstanciate<MainGameGateway>(() =>
-                new MockMainGameGateway());
+                new GPSMainGameGateway());
         }
     }
 }

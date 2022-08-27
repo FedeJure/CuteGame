@@ -11,7 +11,7 @@ namespace Modules.MainGame.Scripts.Infrastructure
     {
         public IObservable<LoginResponse> RequestLogin(string email, string password)
         {
-            var player = new Player(1);
+            var player = new Player("mock user");
             return new LoginResponse(true, "Mock success message",player, null).ToObservableDummy()
                 .Delay(TimeSpan.FromSeconds(3));
         }

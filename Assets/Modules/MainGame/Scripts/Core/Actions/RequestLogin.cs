@@ -8,6 +8,7 @@ using Modules.MainGame.Scripts.Presentation;
 using Modules.PlayerModule.Scripts.Core.Domain;
 using Modules.PlayerModule.Scripts.Core.Domain.Repositories;
 using UniRx;
+using UnityEngine;
 
 namespace Modules.MainGame.Scripts.Core.Actions
 {

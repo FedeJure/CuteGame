@@ -13,7 +13,7 @@ namespace Modules.ActorModule.Tests.Core.Domain.Action
     public class ProcessInteractionTest
     {
         private int MAX_HUMOR = 100;
-        private long ACTOR_ID = 1;
+        private string ACTOR_ID = "ID";
         ProcessInteraction action;
         private EventBus eventBus;
         private HumorStateRepository humorStateRepository;
@@ -28,7 +28,7 @@ namespace Modules.ActorModule.Tests.Core.Domain.Action
             humorStateService = Substitute.For<HumorStateService>();
             sessionRepository = Substitute.For<SessionRepository>();
 
-            sessionRepository.Get().Returns(new Session(0, ACTOR_ID).ToMaybe());
+            sessionRepository.Get().Returns(new Session("player id", ACTOR_ID).ToMaybe());
             humorStateRepository.Get(ACTOR_ID).Returns(new Maybe<HumorState>(new HumorState(50, 0, Humor.Normal, MAX_HUMOR)));
             action = new ProcessInteraction(eventBus, humorStateRepository, humorStateService, sessionRepository);
         }

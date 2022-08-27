@@ -15,8 +15,8 @@ namespace Modules.MainGame.Tests.Presentation
 {
     public class MainGamePresenterTest
     {
-        long ACTOR_ID = 1;
-        long PLAYER_ID = 1;
+        string ACTOR_ID = "ACTOR ID";
+        string PLAYER_ID = "PLAYER ID";
         private MainGameView view;
         private PlayerRepository playerRepository;
         private ActorRepository actorRepository;

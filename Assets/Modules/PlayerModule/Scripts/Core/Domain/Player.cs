@@ -6,11 +6,11 @@ namespace Modules.PlayerModule.Scripts.Core.Domain
     [Serializable]
     public class Player
     {
-        public long id;
+        public string id;
         
         public Player() { }
 
-        public Player(long id)
+        public Player(string id)
         {
             this.id = id;
         }

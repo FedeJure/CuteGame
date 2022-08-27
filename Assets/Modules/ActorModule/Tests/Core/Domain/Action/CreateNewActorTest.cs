@@ -39,7 +39,7 @@ namespace Modules.ActorModule.Tests.Core.Domain.Action
 
         private void GivenPlayerAvailable()
         {
-            playerRepository.Get().Returns(new Player(1).ToMaybe());
+            playerRepository.Get().Returns(new Player("Test id").ToMaybe());
         }
 
         private IObservable<ActorModule.Scripts.Core.Domain.Actor> WhenCallAction()
