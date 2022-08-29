@@ -1,6 +1,6 @@
 ﻿using System;
 using Modules.MainGame.Scripts.Core.Actions;
-using Modules.PlayerModule.Scripts.Core.Domain;
+using Modules.Services;
 using UniRx;
 
 namespace Modules.MainGame.Scripts.Infrastructure
@@ -12,8 +12,7 @@ namespace Modules.MainGame.Scripts.Infrastructure
             return GooglePlayServicesManager.Login().Select((success) =>
             {
                 var localUser = GooglePlayServicesManager.GetLocalUser();
-                var player = new Player(localUser.id);
-                return new LoginResponse(success, success ? "Login Successful" : "Login Failed", player, null);
+                return new LoginResponse(success, success ? "Login Successful" : "Login Failed", localUser.id);
             });
         }
     }

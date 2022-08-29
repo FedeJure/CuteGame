@@ -126,7 +126,7 @@ namespace Modules.MainGame.Tests.Presentation
 
         private void WhenSuccessLoginResponseArrived()
         {
-            loginReponse.OnNext(new LoginResponse(true, "",Substitute.For<Player>(), Substitute.For<Actor>()));
+            loginReponse.OnNext(new LoginResponse(true, "","playerId"));
         }
 
         private void GivenLoginButtonClicked()
@@ -136,7 +136,7 @@ namespace Modules.MainGame.Tests.Presentation
 
         private void WhenFailedLoginResponseArrived()
         {
-            loginReponse.OnNext(new LoginResponse(false, "",Substitute.For<Player>(), Substitute.For<Actor>()));
+            loginReponse.OnNext(new LoginResponse(false, "","playerId"));
         }
 
         private void ThenShowFailedFeedback()

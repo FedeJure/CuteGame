@@ -320,6 +320,7 @@
               <e p="Infrastructure" t="Include">
                 <e p="DiskActorRepository.cs" t="Include" />
                 <e p="DiskHumorStateRepository.cs" t="Include" />
+                <e p="RemoteActorRepository.cs" t="Include" />
               </e>
               <e p="Presentation" t="Include">
                 <e p="ActorAvatarPresenter.cs" t="Include" />
@@ -405,7 +406,6 @@
             </e>
           </e>
           <e p="MainGame" t="Include">
-            <e p="GooglePlayServicesManager.cs" t="Include" />
             <e p="MainGame.asmdef" t="Include" />
             <e p="Scripts" t="Include">
               <e p="Core" t="Include">
@@ -488,6 +488,11 @@
             <e p="Tests" t="Include">
               <e p="PlayerModule.Test.asmdef" t="Include" />
             </e>
+          </e>
+          <e p="Services" t="Include">
+            <e p="GooglePlayServicesManager.cs" t="Include" />
+            <e p="Services.asmdef" t="Include" />
+            <e p="UnityServicesManager.cs" t="Include" />
           </e>
           <e p="Shop" t="Include">
             <e p="Scripts" t="Include">
@@ -884,6 +889,7 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="PlayerModule.csproj" t="IncludeRecursive" />
       <e p="PlayerModule.Tests.csproj" t="IncludeRecursive" />
+      <e p="Services.csproj" t="IncludeRecursive" />
       <e p="Shop.csproj" t="IncludeRecursive" />
       <e p="Shop.Tests.csproj" t="IncludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />

@@ -58,12 +58,12 @@ namespace Modules.MainGame.Scripts.UnityDelivery
 
         public void ShowFailedLoginFeedback(string message)
         {
-            Debug.LogWarning("Failed successful");
+            Debug.Log("Failed successful");
         }
 
         public void ShowSuccessLoginFeedback()
         {
-            Debug.LogWarning("Login successful");
+            Debug.Log("Login successful");
         }
 
         public void ShowLoading()

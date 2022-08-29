@@ -6,6 +6,7 @@ using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.Common;
 using Modules.MainGame.Scripts.Core.Actions;
 using Modules.PlayerModule.Scripts.Core.Domain.Repositories;
+using Modules.Services;
 using UniRx;
 using UnityEngine;
 
@@ -56,6 +57,7 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private void PresentActorCreationScreen()
         {
+            Debug.Log("ACTOR SCREEN PRESENT");
             view.MoveCameraToCreationView()
                 .Last()
                 .Do(_ => view.ShowActorCreationScreen())
@@ -65,6 +67,8 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private void PresentMainGame(Actor actor)
         {
+            Debug.Log(actor);
+            Debug.Log("MAIN GAME PORESENTED");
             eventBus.EmitOnMainGameStarted();
             view.MoveCameraToMainGame()
                 .Last()
@@ -80,6 +84,7 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private void PresentLoginScreen()
         {
+            Debug.Log("PRESENT LOGIN SCREEN");
             view.ShowLoginScreen();
         }
 

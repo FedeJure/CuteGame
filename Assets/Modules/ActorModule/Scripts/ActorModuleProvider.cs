@@ -68,7 +68,7 @@ namespace Modules.ActorModule.Scripts
 
         public static ActorRepository ProvideActorRepository()
         {
-            return DependencyProvider.GetOrInstanciate(() => new DiskActorRepository());
+            return DependencyProvider.GetOrInstanciate(() => new RemoteActorRepository());
         }
 
         public static CreateNewActor ProvideCreateActorAction()
