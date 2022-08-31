@@ -1,0 +1,18 @@
+{
+    "name": "Google.Play.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5188873016b9eb04a850b37015e0d8e3"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

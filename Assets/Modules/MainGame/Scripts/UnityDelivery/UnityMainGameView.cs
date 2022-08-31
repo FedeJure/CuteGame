@@ -11,7 +11,7 @@ namespace Modules.MainGame.Scripts.UnityDelivery
     {
         public event Action OnViewEnable = () => {};
         public event Action OnViewDisable = () => {};
-        public event Action<LoginData> OnLoginClicked = data => {};
+        public event Action OnLoginClicked = () => {};
         public event Action<CreationData> OnCreationCompleted = data => { };
 
         [SerializeField] Button loginButton;
@@ -43,7 +43,7 @@ namespace Modules.MainGame.Scripts.UnityDelivery
 
         private void SetOnLoginClicked()
         {
-            OnLoginClicked(new LoginData(emailInput.text, passwordInput.text));
+            OnLoginClicked();
         }
 
         private void OnEnable()

@@ -8,7 +8,7 @@ namespace Modules.MainGame.Scripts.Presentation
     {
         event Action OnViewEnable;
         event Action OnViewDisable;
-        event Action<LoginData> OnLoginClicked;
+        event Action OnLoginClicked;
         event Action<CreationData> OnCreationCompleted;
         void ShowLoginScreen();
         void ShowActorCreationScreen();

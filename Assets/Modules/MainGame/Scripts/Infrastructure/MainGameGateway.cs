@@ -5,6 +5,6 @@ namespace Modules.MainGame.Scripts.Infrastructure
 {
     public interface MainGameGateway
     {
-        IObservable<LoginResponse> RequestLogin(string email, string password);
+        IObservable<LoginResponse> RequestLogin();
     }
 }

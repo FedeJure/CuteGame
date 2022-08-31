@@ -84,14 +84,14 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private void PresentLoginScreen()
         {
-            Debug.Log("PRESENT LOGIN SCREEN");
             view.ShowLoginScreen();
+            // ProcessLogin();
         }
 
-        private void ProcessLogin(LoginData data)
+        private void ProcessLogin()
         {
             view.ShowLoading();
-            requestLogin.Execute(data)
+            requestLogin.Execute()
                 .Do(ProcessLoginResponse)
                 .Subscribe()
                 .AddTo(loginDisposer);

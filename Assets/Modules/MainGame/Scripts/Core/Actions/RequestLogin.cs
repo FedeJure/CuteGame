@@ -34,9 +34,9 @@ namespace Modules.MainGame.Scripts.Core.Actions
             this.sessionRepository = sessionRepository;
         }
 
-        public IObservable<LoginResponse> Execute(LoginData data)
+        public IObservable<LoginResponse> Execute()
         {
-            return gameGateway.RequestLogin(data.email, data.password)
+            return gameGateway.RequestLogin()
                 .Where(response => response.success)
                 .SelectMany(response => InitServices(response).ToObservable())
                 .Do(ProcessResponse);

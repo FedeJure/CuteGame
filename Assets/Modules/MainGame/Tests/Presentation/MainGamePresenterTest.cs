@@ -36,7 +36,7 @@ namespace Modules.MainGame.Tests.Presentation
             createActor = Substitute.For<CreateNewActor>();
             eventBus = Substitute.For<GlobalEventBus>();
             
-            requestLogin.Execute(Arg.Any<LoginData>()).Returns(loginReponse);
+            requestLogin.Execute().Returns(loginReponse);
             new MainGamePresenter(view, playerRepository, actorRepository, requestLogin, createActor, eventBus);
         }
 
@@ -131,7 +131,7 @@ namespace Modules.MainGame.Tests.Presentation
 
         private void GivenLoginButtonClicked()
         {
-            view.OnLoginClicked += Raise.Event<Action<LoginData>>(new LoginData("",""));
+            view.OnLoginClicked += Raise.Event<Action>();
         }
 
         private void WhenFailedLoginResponseArrived()
@@ -148,12 +148,12 @@ namespace Modules.MainGame.Tests.Presentation
         
         private void WhenLoginButtonClicked()
         {
-            view.OnLoginClicked += Raise.Event<Action<LoginData>>(new LoginData("",""));
+            view.OnLoginClicked += Raise.Event<Action>();
         }
 
         private void ThenApiLoginRequested()
         {
-            requestLogin.Received(1).Execute(Arg.Any<LoginData>());
+            requestLogin.Received(1).Execute();
         }
 
         private void GivenActorCreated()

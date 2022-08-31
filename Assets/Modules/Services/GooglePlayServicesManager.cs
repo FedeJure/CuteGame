@@ -1,5 +1,6 @@
 using System;
 using GooglePlayGames;
+using GooglePlayGames.BasicApi;
 using UniRx;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
@@ -21,26 +22,16 @@ namespace Modules.Services
             // return Observable.Return(true);       
             // #endif
             
-            
             var subject = new Subject<bool>();
             
             try
             {
-                Social.Active.Authenticate(Social.localUser,async (success, authCode) =>
+                PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptOnce, async (result) =>
                 {
-                    await UnityServices.InitializeAsync();
-
-                    await AuthenticationService.Instance.SignInAnonymouslyAsync();
-                    // await AuthenticationService.Instance.SignInWithGooglePlayGamesAsync(authCode);
-                        
-                    subject.OnNext(success);
-                    // await AuthenticationService.Instance.SignInWithGooglePlayGamesAsync("B7:AC:7A:81:84:7F:1F:95:9C:B8:3A:EE:0C:4E:DA:22:92:55:0F:84");
+                    Debug.Log("TOKEN: "+((PlayGamesLocalUser)Social.localUser).GetIdToken() + "ID: " + Social.localUser.id);
+                    await AuthenticationService.Instance.SignInWithGoogleAsync(((PlayGamesLocalUser)Social.localUser).GetIdToken());
+                    subject.OnNext(SignInStatus.Success.Equals(result));
                 });
-
-                // PlayGamesPlatform.Instance.ManuallyAuthenticate((status) =>
-                // {
-                //     subject.OnNext(SignInStatus.Success.Equals(status));
-                // });
             }
             catch (Exception e)
             {
@@ -56,10 +47,16 @@ namespace Modules.Services
             return Social.localUser;
         }
         
-        void InitializePlayGamesLogin()
+        async void InitializePlayGamesLogin()
         {
+            var config = new PlayGamesClientConfiguration.Builder()
+                .RequestServerAuthCode(false)
+                .RequestIdToken()
+                .Build();
+            PlayGamesPlatform.InitializeInstance(config);
             PlayGamesPlatform.DebugLogEnabled = true;
             PlayGamesPlatform.Activate();
+            await UnityServices.InitializeAsync();
         }
 
     }

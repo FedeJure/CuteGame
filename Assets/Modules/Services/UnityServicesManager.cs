@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Modules.Common;
+using Unity.Services.Authentication;
 using Unity.Services.CloudSave;
 using UnityEngine;
 

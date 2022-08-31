@@ -7,7 +7,7 @@ namespace Modules.MainGame.Scripts.Infrastructure
 {
     public class GPSMainGameGateway: MainGameGateway
     {
-        public IObservable<LoginResponse> RequestLogin(string email, string password)
+        public IObservable<LoginResponse> RequestLogin()
         {
             return GooglePlayServicesManager.Login().Select((success) =>
             {

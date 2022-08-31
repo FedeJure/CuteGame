@@ -9,7 +9,7 @@ namespace Modules.MainGame.Scripts.Infrastructure
 {
     public class MockMainGameGateway : MainGameGateway
     {
-        public IObservable<LoginResponse> RequestLogin(string email, string password)
+        public IObservable<LoginResponse> RequestLogin()
         {
             return new LoginResponse(true, "Mock success message","id").ToObservableDummy()
                 .Delay(TimeSpan.FromSeconds(3));
