@@ -4,6 +4,7 @@ using Modules.Common;
 using Modules.MainGame.Scripts.Core.Domain;
 using Modules.PlayerModule.Scripts.Core.Domain;
 using Modules.PlayerModule.Scripts.Core.Domain.Repositories;
+using UniRx;
 
 namespace Modules.ActorModule.Scripts.Core.Domain.Action
 {
@@ -27,9 +28,8 @@ namespace Modules.ActorModule.Scripts.Core.Domain.Action
                 .ReturnOrDefault(player =>
                     {
                         var actor = new Actor(player.id, name, new ActorSkin(bodySkinId, headSkinId), player);
-                        actorRepository.Save(actor);
                         sessionRepository.Save(new Session(player.id, actor.id));
-                        return actor.ToObservableDummy();
+                        return actorRepository.Save(actor).Select(_ => actor);
                     },
                     new Actor("Default id","", new ActorSkin("",""), new Player("Default player")).ToObservableDummy());
         }

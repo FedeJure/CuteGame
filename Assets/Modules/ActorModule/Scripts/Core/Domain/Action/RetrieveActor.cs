@@ -17,7 +17,7 @@ namespace Modules.ActorModule.Scripts.Core.Domain.Action
             this.sessionRepository = sessionRepository;
         }
 
-        public Maybe<Actor> Execute()
+        public IObservable<Maybe<Actor>> Execute()
         {
             return sessionRepository.Get().ReturnOrException(
                 session => actorRepository.Get(session.actorId),

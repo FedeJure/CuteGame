@@ -158,7 +158,7 @@ namespace Modules.MainGame.Tests.Presentation
 
         private void GivenActorCreated()
         {
-            actorRepository.Get(PLAYER_ID).Returns(new Actor(ACTOR_ID, "name", new ActorSkin("", ""), new Player(PLAYER_ID)).ToMaybe());
+            actorRepository.Get(PLAYER_ID).Returns(Observable.Return(new Actor(ACTOR_ID, "name", new ActorSkin("", ""), new Player(PLAYER_ID)).ToMaybe()));
         }
 
         private void ThenStartMainGame()
@@ -168,7 +168,7 @@ namespace Modules.MainGame.Tests.Presentation
 
         private void GivenNoActorCreated()
         {
-            actorRepository.Get(PLAYER_ID).Returns(Maybe<Actor>.Nothing);
+            actorRepository.Get(PLAYER_ID).Returns(Observable.Return(Maybe<Actor>.Nothing));
         }
 
         private void GivenNoPlayerLogged()

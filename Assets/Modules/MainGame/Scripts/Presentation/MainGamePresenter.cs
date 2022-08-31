@@ -6,9 +6,7 @@ using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.Common;
 using Modules.MainGame.Scripts.Core.Actions;
 using Modules.PlayerModule.Scripts.Core.Domain.Repositories;
-using Modules.Services;
 using UniRx;
-using UnityEngine;
 
 namespace Modules.MainGame.Scripts.Presentation
 {
@@ -49,15 +47,18 @@ namespace Modules.MainGame.Scripts.Presentation
             DisposeView();
             view.InitView();
             playerRepository.Get()
-                .Do(player => actorRepository.Get(player.id)
-                    .Do(PresentMainGame)
-                    .DoWhenAbsent(PresentActorCreationScreen))
+                .Do(player => 
+                    actorRepository.Get(player.id).Do(actorMaybe =>
+                        {
+                            actorMaybe.Do(PresentMainGame)
+                                .DoWhenAbsent(PresentActorCreationScreen);
+                        })
+                        .Subscribe())
                 .DoWhenAbsent(PresentLoginScreen);
         }
 
         private void PresentActorCreationScreen()
         {
-            Debug.Log("ACTOR SCREEN PRESENT");
             view.MoveCameraToCreationView()
                 .Last()
                 .Do(_ => view.ShowActorCreationScreen())
@@ -67,8 +68,6 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private void PresentMainGame(Actor actor)
         {
-            Debug.Log(actor);
-            Debug.Log("MAIN GAME PORESENTED");
             eventBus.EmitOnMainGameStarted();
             view.MoveCameraToMainGame()
                 .Last()

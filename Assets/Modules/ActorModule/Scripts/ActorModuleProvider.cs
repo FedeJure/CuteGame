@@ -68,7 +68,13 @@ namespace Modules.ActorModule.Scripts
 
         public static ActorRepository ProvideActorRepository()
         {
-            return DependencyProvider.GetOrInstanciate(() => new RemoteActorRepository());
+            return DependencyProvider.GetOrInstanciate<ActorRepository>(() =>
+            {
+                #if UNITY_EDITOR
+                return new DiskActorRepository();
+                #endif
+                return new RemoteActorRepository();
+            });
         }
 
         public static CreateNewActor ProvideCreateActorAction()

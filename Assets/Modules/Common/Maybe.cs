@@ -5,7 +5,7 @@ namespace Modules.Common
 {
     public struct Maybe<T>
     {
-        private bool hasValue;
+        public bool hasValue { get; private set; }
         private T value;
 
         public Maybe(T value)
@@ -39,6 +39,11 @@ namespace Modules.Common
         public U ReturnOrDefault<U>(Func<T, U> callback, U defaultObject)
         {
             return hasValue ? callback(value) : defaultObject;
+        }
+        
+        public Maybe<U> Select<U>(Func<T, U> callback)
+        {
+            return hasValue ? new Maybe<U>(callback(value)) : Maybe<U>.Nothing;
         }
 
         public U ReturnOrException<U>(Func<T, U> callback, Exception exeption)

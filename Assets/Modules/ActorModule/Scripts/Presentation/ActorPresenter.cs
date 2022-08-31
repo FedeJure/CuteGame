@@ -102,7 +102,10 @@ namespace Modules.ActorModule.Scripts.Presentation
         private void InitForMainGame()
         {
             retrieveActor.Execute()
-                .Do(actor => view.InitActor(actor.name, actor.skin.bodySkinId, actor.skin.headSkinId));
+                .Where(actor => actor.Value != null)
+                .Select(actor => actor.Value)
+                .Do(actor => view.InitActor(actor.name, actor.skin.bodySkinId, actor.skin.headSkinId))
+                .Subscribe();
             view.SetActorInteractable(true);
         }
 

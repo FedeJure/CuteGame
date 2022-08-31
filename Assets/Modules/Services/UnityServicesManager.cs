@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Modules.Common;
-using Unity.Services.Authentication;
+using UniRx;
 using Unity.Services.CloudSave;
 using UnityEngine;
 
@@ -22,19 +23,23 @@ namespace Modules.Services
             return false;
         }
 
-        public static async void Save(string key, object value)
+        public static IObservable<Unit> Save(string key, object value)
         {
             var data = new Dictionary<string, object>{ { key, value } };
-            await CloudSaveService.Instance.Data.ForceSaveAsync(data);
-            var newData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> {key});
-            Debug.Log(value);
-            Debug.Log(newData[key]);
-            userData[key] = newData[key];
+            return CloudSaveService.Instance.Data.ForceSaveAsync(data)
+                .ToObservable()
+                .SelectMany(_ =>
+                    CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> {key})
+                        .ToObservable<Dictionary<string, string>>())
+                .Do(newData =>
+                {
+                    userData[key] = newData[key];
+                }).AsUnitObservable();
         }
         
-        public static Maybe<string> Get(string key)
+        public static IObservable<Maybe<string>> Get(string key)
         {
-            return new Maybe<string>(userData.ContainsKey(key) ? userData[key] : null);
+            return Observable.Return(userData.ContainsKey(key) ? new Maybe<string>(userData[key]) : Maybe<string>.Nothing);
         }
     }
 }

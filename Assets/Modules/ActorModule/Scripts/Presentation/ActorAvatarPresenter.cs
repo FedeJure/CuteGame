@@ -39,7 +39,10 @@ namespace Modules.ActorModule.Scripts.Presentation
                 .AddTo(disposer);
 
             retrieveActor.Execute()
-                .Do(actor => view.SetName(actor.name));
+                .Where(actor => actor.Value != null)
+                .Select(actor => actor.Value)
+                .Do(actor => view.SetName(actor.name))
+                .Subscribe();
 
             retrieveHumor.Execute()
                 .Do(humor => view.SetHumor(humor.humor));

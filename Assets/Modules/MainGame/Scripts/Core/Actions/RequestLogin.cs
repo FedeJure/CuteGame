@@ -5,12 +5,10 @@ using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.Common;
 using Modules.MainGame.Scripts.Core.Domain;
 using Modules.MainGame.Scripts.Infrastructure;
-using Modules.MainGame.Scripts.Presentation;
 using Modules.PlayerModule.Scripts.Core.Domain;
 using Modules.PlayerModule.Scripts.Core.Domain.Repositories;
 using Modules.Services;
 using UniRx;
-using UnityEngine;
 
 namespace Modules.MainGame.Scripts.Core.Actions
 {
@@ -34,30 +32,34 @@ namespace Modules.MainGame.Scripts.Core.Actions
             this.sessionRepository = sessionRepository;
         }
 
-        public IObservable<LoginResponse> Execute()
+        public virtual IObservable<LoginResponse> Execute()
         {
+            #if UNITY_EDITOR
+            return Observable.Return(new LoginResponse(true, "Success", "playerId"))
+                .SelectMany(ProcessResponse);
+            #endif
             return gameGateway.RequestLogin()
                 .Where(response => response.success)
-                .SelectMany(response => InitServices(response).ToObservable())
-                .Do(ProcessResponse);
+                .SelectMany(InitServices)
+                .SelectMany(ProcessResponse);
         }
 
-        private async Task<LoginResponse> InitServices(LoginResponse data)
+        private IObservable<LoginResponse> InitServices(LoginResponse data)
         {
-            await UnityServicesManager.Init();
-            await UnityServicesManager.LoadData();
-            return data;
+            return UnityServicesManager.Init().ToObservable()
+                .SelectMany(_ => UnityServicesManager.LoadData().ToObservable())
+                .Select(_ => data);
         }
 
-        private void ProcessResponse(LoginResponse response)
+        private IObservable<LoginResponse> ProcessResponse(LoginResponse response)
         {
           
             playerRepository.Save(new Player(response.playerId));
-            Debug.Log("Saving on player repository");
-            var actor = actorRepository.Get(response.playerId);
-            if (actor.Value == null) return;
-            sessionRepository.Save(new Session(response.playerId, actor.Value.id));
-            
+            return actorRepository.Get(response.playerId)
+                .Where(actor => actor.hasValue)
+                .Select(actor => actor.Value)
+                .Do(actor => sessionRepository.Save(new Session(response.playerId, actor.id)))
+                .Select(_ => response);
         }
     }
 
