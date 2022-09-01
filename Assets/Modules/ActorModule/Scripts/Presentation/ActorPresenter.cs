@@ -102,7 +102,7 @@ namespace Modules.ActorModule.Scripts.Presentation
         private void InitForMainGame()
         {
             retrieveActor.Execute()
-                .Where(actor => actor.Value != null)
+                .Where(actor => actor.hasValue)
                 .Select(actor => actor.Value)
                 .Do(actor => view.InitActor(actor.name, actor.skin.bodySkinId, actor.skin.headSkinId))
                 .Subscribe();

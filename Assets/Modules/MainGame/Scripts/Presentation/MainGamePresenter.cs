@@ -16,28 +16,28 @@ namespace Modules.MainGame.Scripts.Presentation
     {
         private readonly MainGameView view;
         private readonly PlayerRepository playerRepository;
-        private readonly ActorRepository actorRepository;
         private readonly RequestLogin requestLogin;
         private readonly CreateNewActor createNewActor;
         private readonly GlobalEventBus eventBus;
-        private bool servicesInitted = false;
+        private readonly RetrieveActor retrieveActor;
+        private bool servicesInitted;
 
         List<IDisposable> loginDisposer = new List<IDisposable>();
         List<IDisposable> creationDisposer = new List<IDisposable>();
 
         public MainGamePresenter(MainGameView view,
             PlayerRepository playerRepository,
-            ActorRepository actorRepository,
             RequestLogin requestLogin,
             CreateNewActor createNewActor,
-            GlobalEventBus eventBus)
+            GlobalEventBus eventBus,
+            RetrieveActor retrieveActor)
         {
             this.view = view;
             this.playerRepository = playerRepository;
-            this.actorRepository = actorRepository;
             this.requestLogin = requestLogin;
             this.createNewActor = createNewActor;
             this.eventBus = eventBus;
+            this.retrieveActor = retrieveActor;
 
             view.OnViewEnable += PresentView;
             view.OnViewDisable += DisposeView;
@@ -54,26 +54,31 @@ namespace Modules.MainGame.Scripts.Presentation
             }
             DisposeView();
             view.InitView();
-            playerRepository.Get()
-                .Do(player =>
+            var player = playerRepository.Get();
+            if (!player.hasValue) PresentLoginScreen();
+            else
+            {
+                
+                var loginFlow = GooglePlayServicesManager.ExistSession()
+                    ? requestLogin.Execute().AsUnitObservable()
+                    : LoginFlow().AsUnitObservable();
+                        
+                loginFlow
+                    .DoOnSubscribe(() => view.ShowLoading())
+                    .SelectMany(_ =>
                     {
-                        
-                        var loginFlow = GooglePlayServicesManager.ExistSession()
-                            ? requestLogin.Execute().AsUnitObservable()
-                            : LoginFlow().AsUnitObservable();
-                        
-                        loginFlow.SelectMany(_ => actorRepository.Get(player.id))
-                            .Do(actorMaybe =>
-                            {
-                                view.HideLoading();
-                                actorMaybe.Do(PresentMainGame)
-                                    .DoWhenAbsent(PresentActorCreationScreen);
-                            })
-                            .DoOnSubscribe(() => view.ShowLoading())
-                            .Subscribe().AddTo(loginDisposer);
-                    }
-                    )
-                .DoWhenAbsent(PresentLoginScreen); 
+                        return retrieveActor.Execute();
+                    })
+                    .Select(actorMaybe =>
+                    {
+                        view.HideLoading();
+                        actorMaybe.Do(PresentMainGame)
+                            .DoWhenAbsent(PresentActorCreationScreen);
+                        return Unit.Default;
+                    })
+                    .Subscribe()
+                    .AddTo(loginDisposer);
+            }
         }
 
         private void PresentActorCreationScreen()

@@ -13,16 +13,16 @@ namespace Modules.MainGame.Scripts
         {
             new MainGamePresenter(view,
                 PlayerModuleProvider.ProvidePlayerRepository(),
-                ActorModuleProvider.ProvideActorRepository(),
                 ProvideRequestLoginAction(),
                 ActorModuleProvider.ProvideCreateActorAction(),
-                CommonModuleProvider.ProvideGlobalEventBus());
+                CommonModuleProvider.ProvideGlobalEventBus(),
+                ActorModuleProvider.ProvideRetrieveActorAction());
         }
 
         public static RequestLogin ProvideRequestLoginAction()
         {
             return DependencyProvider.GetOrInstanciate<RequestLogin>(() =>
-                new RequestLogin(ProvideMainGameGateway(), PlayerModuleProvider.ProvidePlayerRepository(), ActorModuleProvider.ProvideActorRepository(), CommonModuleProvider.ProvideSessionRepository()));
+                new RequestLogin(ProvideMainGameGateway(), PlayerModuleProvider.ProvidePlayerRepository(), CommonModuleProvider.ProvideSessionRepository(), ActorModuleProvider.ProvideRetrieveActorAction()));
         }
 
         public static MainGameGateway ProvideMainGameGateway()

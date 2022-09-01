@@ -21,6 +21,7 @@ namespace Modules.MainGame.Tests.Presentation
         private PlayerRepository playerRepository;
         private ActorRepository actorRepository;
         private RequestLogin requestLogin;
+        private RetrieveActor retrieveActor;
 
         private ISubject<LoginResponse> loginReponse = new Subject<LoginResponse>();
         private CreateNewActor createActor;
@@ -35,9 +36,10 @@ namespace Modules.MainGame.Tests.Presentation
             requestLogin = Substitute.For<RequestLogin>();
             createActor = Substitute.For<CreateNewActor>();
             eventBus = Substitute.For<GlobalEventBus>();
+            retrieveActor = Substitute.For<RetrieveActor>();
             
             requestLogin.Execute().Returns(loginReponse);
-            new MainGamePresenter(view, playerRepository, actorRepository, requestLogin, createActor, eventBus);
+            new MainGamePresenter(view, playerRepository, requestLogin, createActor, eventBus, retrieveActor);
         }
 
         [Test]

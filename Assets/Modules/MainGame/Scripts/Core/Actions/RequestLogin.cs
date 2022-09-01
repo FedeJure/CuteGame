@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Modules.ActorModule.Scripts.Core.Domain;
+using Modules.ActorModule.Scripts.Core.Domain.Action;
 using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.Common;
 using Modules.MainGame.Scripts.Core.Domain;
@@ -16,20 +17,20 @@ namespace Modules.MainGame.Scripts.Core.Actions
     {
         private readonly MainGameGateway gameGateway;
         private readonly PlayerRepository playerRepository;
-        private readonly ActorRepository actorRepository;
         private readonly SessionRepository sessionRepository;
+        private readonly RetrieveActor retrieveActor;
 
         public RequestLogin() { }
 
         public RequestLogin(MainGameGateway gameGateway,
             PlayerRepository playerRepository,
-            ActorRepository actorRepository,
-            SessionRepository sessionRepository)
+            SessionRepository sessionRepository,
+            RetrieveActor retrieveActor)
         {
             this.gameGateway = gameGateway;
             this.playerRepository = playerRepository;
-            this.actorRepository = actorRepository;
             this.sessionRepository = sessionRepository;
+            this.retrieveActor = retrieveActor;
         }
 
         public virtual IObservable<LoginResponse> Execute()
@@ -55,10 +56,11 @@ namespace Modules.MainGame.Scripts.Core.Actions
         {
           
             playerRepository.Save(new Player(response.playerId));
-            return actorRepository.Get(response.playerId)
-                .Where(actor => actor.hasValue)
-                .Select(actor => actor.Value)
-                .Do(actor => sessionRepository.Save(new Session(response.playerId, actor.id)))
+            return retrieveActor.Execute()
+                .Do(actor =>
+                {
+                    if (actor.hasValue) sessionRepository.Save(new Session(response.playerId, actor.Value.id));
+                })
                 .Select(_ => response);
         }
     }

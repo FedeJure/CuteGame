@@ -2,6 +2,7 @@
 using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.Common;
 using UniRx;
+using UnityEngine;
 
 namespace Modules.ActorModule.Scripts.Core.Domain.Action
 {

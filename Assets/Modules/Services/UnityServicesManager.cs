@@ -17,10 +17,10 @@ namespace Modules.Services
             userData = await CloudSaveService.Instance.Data.LoadAllAsync();
         }
 
-        public static async Task<bool> LoadData()
+        public static async Task LoadData()
         {
             userData = await CloudSaveService.Instance.Data.LoadAllAsync();
-            return false;
+            Debug.Log("[hola] LOAD INITIAL DATAAAAAAAAAAAAA");
         }
 
         public static IObservable<Unit> Save(string key, object value)
@@ -30,10 +30,12 @@ namespace Modules.Services
                 .ToObservable()
                 .SelectMany(_ =>
                     CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> {key})
-                        .ToObservable<Dictionary<string, string>>())
-                .Do(newData =>
+                        .ToObservable())
+                .Select(newData =>
                 {
                     userData[key] = newData[key];
+                    Debug.Log("NUEVA DATAAAA "+userData[key] );
+                    return Unit.Default;
                 }).AsUnitObservable();
         }
         
