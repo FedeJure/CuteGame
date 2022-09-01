@@ -6,7 +6,9 @@ using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.Common;
 using Modules.MainGame.Scripts.Core.Actions;
 using Modules.PlayerModule.Scripts.Core.Domain.Repositories;
+using Modules.Services;
 using UniRx;
+using UnityEngine;
 
 namespace Modules.MainGame.Scripts.Presentation
 {
@@ -18,6 +20,7 @@ namespace Modules.MainGame.Scripts.Presentation
         private readonly RequestLogin requestLogin;
         private readonly CreateNewActor createNewActor;
         private readonly GlobalEventBus eventBus;
+        private bool servicesInitted = false;
 
         List<IDisposable> loginDisposer = new List<IDisposable>();
         List<IDisposable> creationDisposer = new List<IDisposable>();
@@ -42,19 +45,35 @@ namespace Modules.MainGame.Scripts.Presentation
             view.OnCreationCompleted += CreateActor;
         }
 
-        private void PresentView()
+        private async void PresentView()
         {
+            if (!servicesInitted)
+            {
+                await GooglePlayServicesManager.InitializePlayGamesLogin();
+                servicesInitted = true;
+            }
             DisposeView();
             view.InitView();
             playerRepository.Get()
-                .Do(player => 
-                    actorRepository.Get(player.id).Do(actorMaybe =>
-                        {
-                            actorMaybe.Do(PresentMainGame)
-                                .DoWhenAbsent(PresentActorCreationScreen);
-                        })
-                        .Subscribe())
-                .DoWhenAbsent(PresentLoginScreen);
+                .Do(player =>
+                    {
+                        
+                        var loginFlow = GooglePlayServicesManager.ExistSession()
+                            ? requestLogin.Execute().AsUnitObservable()
+                            : LoginFlow().AsUnitObservable();
+                        
+                        loginFlow.SelectMany(_ => actorRepository.Get(player.id))
+                            .Do(actorMaybe =>
+                            {
+                                view.HideLoading();
+                                actorMaybe.Do(PresentMainGame)
+                                    .DoWhenAbsent(PresentActorCreationScreen);
+                            })
+                            .DoOnSubscribe(() => view.ShowLoading())
+                            .Subscribe().AddTo(loginDisposer);
+                    }
+                    )
+                .DoWhenAbsent(PresentLoginScreen); 
         }
 
         private void PresentActorCreationScreen()
@@ -69,6 +88,7 @@ namespace Modules.MainGame.Scripts.Presentation
         private void PresentMainGame(Actor actor)
         {
             eventBus.EmitOnMainGameStarted();
+            view.StartMainGame();
             view.MoveCameraToMainGame()
                 .Last()
                 .Do(_ =>
@@ -84,30 +104,35 @@ namespace Modules.MainGame.Scripts.Presentation
         private void PresentLoginScreen()
         {
             view.ShowLoginScreen();
-            // ProcessLogin();
+        }
+
+        private IObservable<LoginResponse> LoginFlow()
+        {
+           return requestLogin.Execute()
+               .DoOnSubscribe(() => view.ShowLoading())
+               .Do(ProcessLoginResponse);
         }
 
         private void ProcessLogin()
         {
-            view.ShowLoading();
-            requestLogin.Execute()
-                .Do(ProcessLoginResponse)
+            LoginFlow()
                 .Subscribe()
                 .AddTo(loginDisposer);
-
         }
-
         private void ProcessLoginResponse(LoginResponse response)
         {
             view.HideLoading();
-            if (!response.success) view.ShowFailedLoginFeedback(response.message);
+            if (!response.success)
+            {
+                view.ShowFailedLoginFeedback(response.message);
+                GooglePlayServicesManager.LogOut();
+                PresentView();
+            }
             else
             {
                 view.ShowSuccessLoginFeedback();
                 PresentView();
             }
-            
-            loginDisposer.DisposeAll();
         }
 
         private void CreateActor(CreationData data)

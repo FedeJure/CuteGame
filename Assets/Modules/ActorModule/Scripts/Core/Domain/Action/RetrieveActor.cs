@@ -1,6 +1,7 @@
 ﻿using System;
 using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.Common;
+using UniRx;
 
 namespace Modules.ActorModule.Scripts.Core.Domain.Action
 {
@@ -19,9 +20,9 @@ namespace Modules.ActorModule.Scripts.Core.Domain.Action
 
         public IObservable<Maybe<Actor>> Execute()
         {
-            return sessionRepository.Get().ReturnOrException(
+            return sessionRepository.Get().ReturnOrDefault(
                 session => actorRepository.Get(session.actorId),
-                new Exception("No session founded"));
+                Observable.Return(Maybe<Actor>.Nothing));
         }
     }
 }

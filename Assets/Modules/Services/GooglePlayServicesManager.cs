@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UniRx;
@@ -12,25 +13,32 @@ namespace Modules.Services
     
     public class GooglePlayServicesManager : MonoBehaviour
     {
-        private void Start()
-        {
-            InitializePlayGamesLogin();
-        }
         public static IObservable<bool> Login()
         {
             // #if UNITY_EDITOR
             // return Observable.Return(true);       
             // #endif
-            
             var subject = new Subject<bool>();
             
             try
             {
+                if (PlayGamesPlatform.Instance.IsAuthenticated())
+                {
+                    return  Observable.Return(true);
+                }
                 PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptOnce, async (result) =>
                 {
-                    Debug.Log("TOKEN: "+((PlayGamesLocalUser)Social.localUser).GetIdToken() + "ID: " + Social.localUser.id);
-                    await AuthenticationService.Instance.SignInWithGoogleAsync(((PlayGamesLocalUser)Social.localUser).GetIdToken());
-                    subject.OnNext(SignInStatus.Success.Equals(result));
+                    try
+                    {
+                        Debug.Log("TOKEN: "+((PlayGamesLocalUser)Social.localUser).GetIdToken() + "ID: " + Social.localUser.id);
+                        await AuthenticationService.Instance.SignInWithGoogleAsync(((PlayGamesLocalUser)Social.localUser).GetIdToken());
+                        subject.OnNext(SignInStatus.Success.Equals(result));
+                    }
+                    catch (Exception e)
+                    {
+                        subject.OnNext(false);
+                    }
+                    
                 });
             }
             catch (Exception e)
@@ -47,7 +55,7 @@ namespace Modules.Services
             return Social.localUser;
         }
         
-        async void InitializePlayGamesLogin()
+        public static async Task InitializePlayGamesLogin()
         {
             var config = new PlayGamesClientConfiguration.Builder()
                 .RequestServerAuthCode(false)
@@ -57,6 +65,17 @@ namespace Modules.Services
             PlayGamesPlatform.DebugLogEnabled = true;
             PlayGamesPlatform.Activate();
             await UnityServices.InitializeAsync();
+        }
+
+        public static bool ExistSession()
+        {
+            return AuthenticationService.Instance.SessionTokenExists;
+        }
+
+        public static void LogOut()
+        {
+            AuthenticationService.Instance.SignOut();
+            PlayGamesPlatform.Instance.SignOut();
         }
 
     }
