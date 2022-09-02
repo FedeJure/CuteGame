@@ -2,7 +2,6 @@
     "name": "Services",
     "rootNamespace": "",
     "references": [
-        "GUID:1ed07ff861e5f468287b0baef844706d",
         "GUID:be0d2672886cc45b2bcea5a5053a5347",
         "GUID:fe25561d224ed4743af4c60938a59d0b",
         "GUID:560b04d1a97f54a4e82edc0cbbb69285",
