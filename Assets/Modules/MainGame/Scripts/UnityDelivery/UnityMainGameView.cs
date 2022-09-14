@@ -98,7 +98,6 @@ namespace Modules.MainGame.Scripts.UnityDelivery
 
         public void StartMainGame()
         {
-            Debug.LogWarning("Start main game");
             loginScreen.SetActive(false);
             creationView.gameObject.SetActive(false);
             gui.SetActive(true);

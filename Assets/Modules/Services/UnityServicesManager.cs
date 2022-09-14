@@ -20,7 +20,6 @@ namespace Modules.Services
         public static async Task LoadData()
         {
             userData = await CloudSaveService.Instance.Data.LoadAllAsync();
-            Debug.Log("[hola] LOAD INITIAL DATAAAAAAAAAAAAA");
         }
 
         public static IObservable<Unit> Save(string key, object value)
@@ -34,7 +33,6 @@ namespace Modules.Services
                 .Select(newData =>
                 {
                     userData[key] = newData[key];
-                    Debug.Log("NUEVA DATAAAA "+userData[key] );
                     return Unit.Default;
                 }).AsUnitObservable();
         }
