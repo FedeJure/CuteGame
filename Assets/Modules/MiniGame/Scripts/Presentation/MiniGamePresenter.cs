@@ -1,4 +1,5 @@
 ﻿using Modules.Common;
+using UniRx;
 
 namespace Modules.MiniGame.Scripts.Presentation
 {
@@ -9,7 +10,11 @@ namespace Modules.MiniGame.Scripts.Presentation
         public MiniGamePresenter(MiniGameView view, GlobalEventBus globalEventBus)
         {
             this.globalEventBus = globalEventBus;
-
+            this.globalEventBus.OnMiniGameEnded()
+                .Do((_) =>
+                {
+                    Interstitial.ShowInterstitial();
+                }).Subscribe();
             view.OnViewEnabled += _PresentView;
             view.OnViewDisabled += _DisposeView;
         }
