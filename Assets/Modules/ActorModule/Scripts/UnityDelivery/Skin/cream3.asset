@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: cream3
   m_EditorClassIdentifier: 
   type: 0
-  key: cream3
+  key: cream_candies
   material: {fileID: 2100000, guid: 2ac737253b219244ca7ade627dccfc34, type: 2}
+  acceptColor: 0

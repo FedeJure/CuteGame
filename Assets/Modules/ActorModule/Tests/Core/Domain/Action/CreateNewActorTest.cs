@@ -1,4 +1,5 @@
 ﻿using System;
+using Modules.ActorModule.Scripts.Core.Domain;
 using Modules.ActorModule.Scripts.Core.Domain.Action;
 using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.Common;
@@ -42,17 +43,17 @@ namespace Modules.ActorModule.Tests.Core.Domain.Action
             playerRepository.Get().Returns(new Player("Test id").ToMaybe());
         }
 
-        private IObservable<ActorModule.Scripts.Core.Domain.Actor> WhenCallAction()
+        private IObservable<Actor> WhenCallAction()
         {
-            return action.Execute(ACTOR_NAME, "skin1", "skin1");
+            return action.Execute(ACTOR_NAME, new Skin("skin1"), new Skin("skin1"));
         }
 
         private void ThenActorSavedOnRepository()
         {
-            actorRepository.Received(1).Save(Arg.Any<ActorModule.Scripts.Core.Domain.Actor>());
+            actorRepository.Received(1).Save(Arg.Any<Actor>());
         }
 
-        private void ThenActorReturned(IObservable<ActorModule.Scripts.Core.Domain.Actor> result)
+        private void ThenActorReturned(IObservable<Actor> result)
         {
             result.Do(actor => Assert.AreEqual(actor.name, ACTOR_NAME)).Subscribe();
         }

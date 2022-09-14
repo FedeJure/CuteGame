@@ -104,7 +104,11 @@ namespace Modules.ActorModule.Scripts.Presentation
             retrieveActor.Execute()
                 .Where(actor => actor.hasValue)
                 .Select(actor => actor.Value)
-                .Do(actor => view.InitActor(actor.name, actor.skin.bodySkinId, actor.skin.headSkinId))
+                .Do(actor =>
+                {
+                    view.SetHeadSkin(actor.skin.headSkin);
+                    view.SetBodySkin(actor.skin.bodySkin);
+                })
                 .Subscribe();
             view.SetActorInteractable(true);
         }

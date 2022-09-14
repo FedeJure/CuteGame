@@ -1,8 +1,10 @@
 ﻿using System;
+using Modules.ActorModule.Scripts.Core.Domain;
 using Modules.ActorModule.Scripts.Presentation;
 using Modules.ActorModule.Scripts.UnityDelivery.Skin;
 using Modules.Common;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Modules.ActorModule.Scripts.UnityDelivery
 {
@@ -13,7 +15,8 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
 
         [SerializeField] Animator animator;
         [SerializeField] private GameObject interactables;
-        [SerializeField] private SkinnedMeshRenderer meshRenderer;
+        [SerializeField] private Renderer bodyMesh;
+        [SerializeField] private Renderer creamMesh;
         [SerializeField] private ActorSkinConfig skinConfig;
         [SerializeField] private RuntimeAnimatorController animatorController;
 
@@ -101,21 +104,31 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
             interactables.SetActive(interactable);
         }
 
-        public void InitActor(string actorName, string skinBodySkinId, string skinHeadSkinId)
+        public void SetHeadSkin(Core.Domain.Skin headSkin)
         {
-            var mats = new Material[2];
             skinConfig.skins.ForEach(skin =>
             {
-                if (skin.key == skinHeadSkinId)
-                {
-                    mats[0] = skin.material;
-                }
-                if (skin.key == skinBodySkinId)
-                {
-                    mats[1] = skin.material;
-                }
+                if (skin.key != headSkin.key || skin.type != SkinType.Head) return;
+                creamMesh.sharedMaterial = skin.material;
+                SetColor(headSkin.color, creamMesh);
             });
-            meshRenderer.sharedMaterials = mats;
+        }
+        public void SetBodySkin(Core.Domain.Skin bodySkin)
+        {
+            skinConfig.skins.ForEach(skin =>
+            {
+                if (skin.key != bodySkin.key || skin.type != SkinType.Body) return;
+                bodyMesh.material = skin.material;
+                SetColor(bodySkin.color, bodyMesh);
+            });
+        }
+
+        private void SetColor(Color? color, Renderer mesh)
+        {
+            if (!color.HasValue) return;
+            mesh.material.SetColor("_Color", color.Value);
+            mesh.material.SetColor("_HColor", new Color(color.Value.r + 0.1f, color.Value.g + 0.1f, color.Value.b + 0.1f));
+            mesh.material.SetColor("_SColor", new Color(color.Value.r - 0.25f, color.Value.g - 0.25f, color.Value.b - 0.25f));
         }
 
         public void RestoreAnimator()

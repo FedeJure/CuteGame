@@ -24,6 +24,7 @@ namespace Modules.ActorModule.Scripts.Core.Domain
 
         public override string ToString()
         {
+            Debug.LogWarning(JsonUtility.ToJson(this));
             return JsonUtility.ToJson(this);
         }
     }

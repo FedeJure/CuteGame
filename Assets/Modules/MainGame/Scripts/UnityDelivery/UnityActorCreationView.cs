@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Modules.ActorModule.Scripts.Core.Domain;
+using Modules.ActorModule.Scripts.Presentation;
+using Modules.ActorModule.Scripts.UnityDelivery;
 using Modules.ActorModule.Scripts.UnityDelivery.Skin;
 using Modules.Common;
 using Modules.MainGame.Scripts.Presentation;
@@ -13,9 +16,9 @@ public class UnityActorCreationView : MonoBehaviour
 {
     public event Action<CreationData> OnCreate = data => { };
     [SerializeField] TMP_InputField nameInput;
-    [SerializeField] SkinnedMeshRenderer mesh;
-    [SerializeField] ActorSkinData bodySkin;
-    [SerializeField] ActorSkinData headSkin;
+    [SerializeField] private UnityActorView actorView;
+    [SerializeField] Skin bodySkin;
+    [SerializeField] Skin headSkin;
     [SerializeField] Button creationButton;
     private List<UnitySelectableSkinView> bodySkins = new List<UnitySelectableSkinView>();
     private List<UnitySelectableSkinView> headSkins = new List<UnitySelectableSkinView>();
@@ -24,12 +27,58 @@ public class UnityActorCreationView : MonoBehaviour
     [SerializeField] private UnitySelectableSkinView skinViewTemplate;
     [SerializeField] private GameObject bodySkinsContainer;
     [SerializeField] private GameObject creamSkinsContainer;
+    [SerializeField] private MyColorPicker colorPicker;
+    [SerializeField] private Button openColorPicker;
+    
 
+    private UnitySelectableSkinView selectedSkinView;
+    private Color? lastColor = null;
+    private ActorSkinData selectedSkin;
 
     private void Start()
     {
         InitSkinSelectables();
         creationButton.onClick.AddListener(OnCreationButtonClicked);
+        openColorPicker.onClick.AddListener(OnOpenColorPicker);
+    }
+
+    private void OnOpenColorPicker()
+    {
+        colorPicker.Open()
+            .Do(response =>
+            {
+                UpdateSkinColor(response.color);
+            })
+            .Last()
+            .Do(response =>
+            {
+                if (response.ok)
+                {
+                    UpdateSkinColor(response.color);
+                    lastColor = response.color;
+                }
+                else
+                {
+                   UpdateSkinColor(lastColor);
+                }
+            })
+            .Subscribe();
+    }
+
+    private void UpdateSkinColor(Color? color)
+    {
+        if (!color.HasValue) return;
+        switch (selectedSkin.type)
+        {
+            case SkinType.Body:
+                bodySkin = new Skin(selectedSkin.key, color.Value);
+                actorView.SetBodySkin(bodySkin);
+                break;
+            case SkinType.Head:
+                headSkin = new Skin(selectedSkin.key, color.Value);
+                actorView.SetHeadSkin(headSkin);
+                break;
+        }
     }
 
     private void InitSkinSelectables()
@@ -46,9 +95,16 @@ public class UnityActorCreationView : MonoBehaviour
             skinView.Init(skin);
             headSkins.Add(skinView);
         });
-        
-        bodySkins.ForEach(skinView => skinView.OnClick += HandleBodySkinChange);
-        headSkins.ForEach(skinView => skinView.OnClick += HandleHeadSkinChange);
+        bodySkins.ForEach(skinView => skinView.OnClick += skin =>
+        {
+            HandleSkinClick(skin,skinView);
+            HandleBodySkinChange(skin);
+        });
+        headSkins.ForEach(skinView => skinView.OnClick += skin =>
+        {
+            HandleSkinClick(skin, skinView);
+            HandleHeadSkinChange(skin);
+        });
     }
 
     private void OnEnable()
@@ -67,15 +123,24 @@ public class UnityActorCreationView : MonoBehaviour
         }
     }
 
-    private void HandleHeadSkinChange(ActorSkinData data)
-    {
-        bodySkin = data;
-        mesh.materials = new []{ mesh.materials[0], data.material};
-    }
-    
     private void HandleBodySkinChange(ActorSkinData data)
     {
-        headSkin = data;
-        mesh.materials = new []{ data.material, mesh.materials[1]};
+        bodySkin = new Skin(data.key);
+        actorView.SetBodySkin(bodySkin);
+    }
+    
+    private void HandleHeadSkinChange(ActorSkinData data)
+    {
+        headSkin = new Skin(data.key);
+        actorView.SetHeadSkin(headSkin);
+    }
+
+    private void HandleSkinClick(ActorSkinData skin,UnitySelectableSkinView view)
+    {
+        openColorPicker.gameObject.SetActive(skin.acceptColor);
+        selectedSkin = skin;
+        if (selectedSkinView) selectedSkinView.SetSelected(false);
+        view.SetSelected(true);
+        selectedSkinView = view;
     }
 }

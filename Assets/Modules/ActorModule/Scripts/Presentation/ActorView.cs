@@ -1,4 +1,6 @@
 ﻿using System;
+using Modules.ActorModule.Scripts.Core.Domain;
+using UnityEngine;
 
 namespace Modules.ActorModule.Scripts.Presentation
 {
@@ -17,7 +19,8 @@ namespace Modules.ActorModule.Scripts.Presentation
         void ShowRightTickleFeedback();
         void ShowMiddleConsentEvent();
         void SetActorInteractable(bool interactable);
-        void InitActor(string actorName, string skinBodySkinId, string skinHeadSkinId);
+        void SetHeadSkin(Skin headSkin);
+        void SetBodySkin(Skin bodySkin);
         void RestoreAnimator();
     }
 }

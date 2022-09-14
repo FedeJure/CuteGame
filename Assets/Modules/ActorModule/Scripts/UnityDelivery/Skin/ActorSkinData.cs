@@ -9,6 +9,7 @@ namespace Modules.ActorModule.Scripts.UnityDelivery.Skin
         [SerializeField] public SkinType type;
         [SerializeField] public string key;
         [SerializeField] public Material material;
+        [SerializeField] public bool acceptColor;
     }
 
     public enum SkinType

@@ -39,7 +39,7 @@ namespace Modules.ActorModule.Scripts.Presentation
                 .AddTo(disposer);
 
             retrieveActor.Execute()
-                .Where(actor => actor.Value != null)
+                .Where(actor => actor.hasValue)
                 .Select(actor => actor.Value)
                 .Do(actor => view.SetName(actor.name))
                 .Subscribe();

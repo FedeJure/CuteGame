@@ -1,4 +1,5 @@
 ﻿using System;
+using Modules.ActorModule.Scripts.Core.Domain;
 using Modules.ActorModule.Scripts.UnityDelivery.Skin;
 using UniRx;
 
@@ -37,10 +38,10 @@ namespace Modules.MainGame.Scripts.Presentation
     public struct CreationData
     {
         public string name;
-        public ActorSkinData bodySkin;
-        public ActorSkinData headSkin;
+        public Skin bodySkin;
+        public Skin headSkin;
 
-        public CreationData(string name, ActorSkinData bodySkin, ActorSkinData headSkin)
+        public CreationData(string name, Skin bodySkin, Skin headSkin)
         {
             this.name = name;
             this.bodySkin = bodySkin;

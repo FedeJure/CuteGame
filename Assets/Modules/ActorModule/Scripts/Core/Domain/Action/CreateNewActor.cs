@@ -2,7 +2,6 @@
 using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.Common;
 using Modules.MainGame.Scripts.Core.Domain;
-using Modules.PlayerModule.Scripts.Core.Domain;
 using Modules.PlayerModule.Scripts.Core.Domain.Repositories;
 using UniRx;
 
@@ -22,16 +21,16 @@ namespace Modules.ActorModule.Scripts.Core.Domain.Action
             this.sessionRepository = sessionRepository;
         }
 
-        public virtual IObservable<Actor> Execute(string name, string bodySkinId, string headSkinId)
+        public virtual IObservable<Actor> Execute(string name, Skin bodySkin, Skin headSkin)
         {
             return playerRepository.Get()
                 .ReturnOrDefault(player =>
                     {
-                        var actor = new Actor(player.id, name, new ActorSkin(bodySkinId, headSkinId), player);
+                        var actor = new Actor(player.id, name, new ActorSkin(bodySkin, headSkin), player);
                         sessionRepository.Save(new Session(player.id, actor.id));
                         return actorRepository.Save(actor).Select(_ => actor);
                     },
-                    new Actor("Default id","", new ActorSkin("",""), new Player("Default player")).ToObservableDummy());
+                    new Actor().ToObservableDummy());
         }
     }
 }

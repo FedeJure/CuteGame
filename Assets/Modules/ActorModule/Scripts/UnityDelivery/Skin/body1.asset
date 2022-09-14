@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: body1
   m_EditorClassIdentifier: 
   type: 1
-  key: body1
+  key: body_plain_color
   material: {fileID: 2100000, guid: 6077a8b8959e56a45829f329ef5f8598, type: 2}
+  acceptColor: 1

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Modules.ActorModule.Scripts.Core.Domain;
 using Modules.ActorModule.Scripts.Core.Domain.Action;
-using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.Common;
 using Modules.MainGame.Scripts.Core.Actions;
 using Modules.PlayerModule.Scripts.Core.Domain.Repositories;
@@ -47,38 +46,46 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private async void PresentView()
         {
-            if (!servicesInitted)
+            try
             {
-                await GooglePlayServicesManager.InitializePlayGamesLogin();
-                servicesInitted = true;
-            }
-            DisposeView();
-            view.InitView();
-            var player = playerRepository.Get();
-            if (!player.hasValue) PresentLoginScreen();
-            else
-            {
+                if (!servicesInitted)
+                {
+                    await GooglePlayServicesManager.InitializePlayGamesLogin();
+                    servicesInitted = true;
+                }
+                DisposeView();
+                view.InitView();
+                var player = playerRepository.Get();
+                if (!player.hasValue) PresentLoginScreen();
+                else
+                {
                 
-                var loginFlow = GooglePlayServicesManager.ExistSession()
-                    ? requestLogin.Execute().AsUnitObservable()
-                    : LoginFlow().AsUnitObservable();
+                    var loginFlow = GooglePlayServicesManager.ExistSession()
+                        ? requestLogin.Execute().AsUnitObservable()
+                        : LoginFlow().AsUnitObservable();
                         
-                loginFlow
-                    .DoOnSubscribe(() => view.ShowLoading())
-                    .SelectMany(_ =>
-                    {
-                        return retrieveActor.Execute();
-                    })
-                    .Select(actorMaybe =>
-                    {
-                        view.HideLoading();
-                        actorMaybe.Do(PresentMainGame)
-                            .DoWhenAbsent(PresentActorCreationScreen);
-                        return Unit.Default;
-                    })
-                    .Subscribe()
-                    .AddTo(loginDisposer);
+                    loginFlow
+                        .DoOnSubscribe(() => view.ShowLoading())
+                        .SelectMany(_ =>
+                        {
+                            return retrieveActor.Execute();
+                        })
+                        .Select(actorMaybe =>
+                        {
+                            view.HideLoading();
+                            actorMaybe.Do(PresentMainGame)
+                                .DoWhenAbsent(PresentActorCreationScreen);
+                            return Unit.Default;
+                        })
+                        .Subscribe()
+                        .AddTo(loginDisposer);
+                }
             }
+            catch (Exception e)
+            {
+                Debug.LogError(e.StackTrace);
+            }
+            
         }
 
         private void PresentActorCreationScreen()
@@ -113,9 +120,9 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private IObservable<LoginResponse> LoginFlow()
         {
-           return requestLogin.Execute()
-               .DoOnSubscribe(() => view.ShowLoading())
-               .Do(ProcessLoginResponse);
+            return requestLogin.Execute()
+                .DoOnSubscribe(() => view.ShowLoading())
+                .Do(ProcessLoginResponse);
         }
 
         private void ProcessLogin()
@@ -126,6 +133,7 @@ namespace Modules.MainGame.Scripts.Presentation
         }
         private void ProcessLoginResponse(LoginResponse response)
         {
+            Debug.LogWarning(response.success);
             view.HideLoading();
             if (!response.success)
             {
@@ -142,8 +150,7 @@ namespace Modules.MainGame.Scripts.Presentation
 
         private void CreateActor(CreationData data)
         {
-            
-            createNewActor.Execute(data.name, data.bodySkin.key, data.headSkin.key)
+            createNewActor.Execute(data.name, data.bodySkin, data.headSkin)
                 .Do(_ => PresentView())
                 .Subscribe()
                 .AddTo(creationDisposer);
