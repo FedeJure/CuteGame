@@ -110,7 +110,7 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
             {
                 if (skin.key != headSkin.key || skin.type != SkinType.Head) return;
                 creamMesh.sharedMaterial = skin.material;
-                SetColor(headSkin.color, creamMesh);
+                SetColor(headSkin, creamMesh);
             });
         }
         public void SetBodySkin(Core.Domain.Skin bodySkin)
@@ -119,16 +119,17 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
             {
                 if (skin.key != bodySkin.key || skin.type != SkinType.Body) return;
                 bodyMesh.material = skin.material;
-                SetColor(bodySkin.color, bodyMesh);
+                SetColor(bodySkin, bodyMesh);
             });
         }
 
-        private void SetColor(Color? color, Renderer mesh)
+        private void SetColor(Core.Domain.Skin skin, Renderer mesh)
         {
-            if (!color.HasValue) return;
-            mesh.material.SetColor("_Color", color.Value);
-            mesh.material.SetColor("_HColor", new Color(color.Value.r + 0.1f, color.Value.g + 0.1f, color.Value.b + 0.1f));
-            mesh.material.SetColor("_SColor", new Color(color.Value.r - 0.25f, color.Value.g - 0.25f, color.Value.b - 0.25f));
+            if (!skin.colorOverrided) return;
+            var color = skin.color;
+            mesh.material.SetColor("_Color", color);
+            mesh.material.SetColor("_HColor", new Color(color.r + 0.1f, color.g + 0.1f, color.b + 0.1f));
+            mesh.material.SetColor("_SColor", new Color(color.r - 0.25f, color.g - 0.25f, color.b - 0.25f));
         }
 
         public void RestoreAnimator()

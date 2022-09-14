@@ -21,6 +21,7 @@ namespace Modules.ActorModule.Scripts.Core.Domain
     {
         public string key;
         public float[] _color = new []{0f,0f,0f,0f};
+        public bool colorOverrided = false;
 
         public Color color
         {
@@ -38,6 +39,7 @@ namespace Modules.ActorModule.Scripts.Core.Domain
         {
             this.key = key;
             this.color = color;
+            colorOverrided = true;
         }
         
     }
