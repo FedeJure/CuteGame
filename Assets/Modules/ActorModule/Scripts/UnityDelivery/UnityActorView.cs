@@ -129,7 +129,7 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
             var color = skin.color;
             mesh.material.SetColor("_Color", color);
             mesh.material.SetColor("_HColor", new Color(color.r + 0.1f, color.g + 0.1f, color.b + 0.1f));
-            mesh.material.SetColor("_SColor", new Color(color.r - 0.25f, color.g - 0.25f, color.b - 0.25f));
+            mesh.material.SetColor("_SColor", new Color(0, 0, 0, 0.5f));
         }
 
         public void RestoreAnimator()
