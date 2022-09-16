@@ -19,5 +19,11 @@ namespace Modules.PlayerModule.Scripts.Infrastructure
         {
             LocalStorage.Save(key, player.ToString());
         }
+
+        public void Clear()
+        {
+            if (!Get().hasValue) return;
+            LocalStorage.Clear(key);
+        }
     }
 }

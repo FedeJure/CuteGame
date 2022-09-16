@@ -2,7 +2,6 @@
 using Modules.ActorModule.Scripts.Core.Domain;
 using Modules.ActorModule.Scripts.Core.Domain.Repositories;
 using Modules.Common;
-using Modules.PlayerModule.Scripts.Core.Domain;
 using Modules.Services;
 using UniRx;
 using UnityEngine;
@@ -22,6 +21,11 @@ namespace Modules.ActorModule.Scripts.Infrastructure
             // return Observable.Return(Maybe<Actor>.Nothing);
             return UnityServicesManager.Get(KEY)
                 .Select(value => value.Select(JsonUtility.FromJson<Actor>));
+        }
+
+        public IObservable<Unit> Delete(string playerId)
+        {
+            return UnityServicesManager.Save(KEY, null);
         }
     }
 }

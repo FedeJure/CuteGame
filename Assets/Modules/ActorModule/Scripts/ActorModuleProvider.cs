@@ -6,6 +6,7 @@ using Modules.ActorModule.Scripts.Presentation;
 using Modules.ActorModule.Scripts.UnityDelivery;
 using Modules.Common;
 using Modules.PlayerModule;
+using HitTargetRepository = Modules.ActorModule.Scripts.UnityDelivery.HitTargetRepository;
 
 namespace Modules.ActorModule.Scripts
 {

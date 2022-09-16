@@ -7,5 +7,6 @@ namespace Modules.PlayerModule.Scripts.Core.Domain.Repositories
     {
         Maybe<Player> Get();
         void Save(Player player);
+        void Clear();
     }
 }

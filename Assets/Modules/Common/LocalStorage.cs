@@ -15,6 +15,13 @@ namespace Modules.Common
             var indexKey = GetKey(key);
             return PlayerPrefs.HasKey(indexKey) ? new Maybe<string>(PlayerPrefs.GetString(indexKey)) : Maybe<string>.Nothing;
         }
+        
+        public static void Clear(string key)
+        {
+            var indexKey = GetKey(key);
+            if (!PlayerPrefs.HasKey(indexKey)) return;
+            PlayerPrefs.DeleteKey(indexKey);
+        }
 
         private static string GetKey(string key)
         {

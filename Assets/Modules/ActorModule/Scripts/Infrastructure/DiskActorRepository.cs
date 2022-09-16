@@ -23,6 +23,12 @@ namespace Modules.ActorModule.Scripts.Infrastructure
                     Maybe<Actor>.Nothing));
         }
 
+        public IObservable<Unit> Delete(string playerId)
+        {
+            LocalStorage.Clear(GetKey(playerId));
+            return Observable.ReturnUnit();
+        }
+
         private static string GetKey(string ownerId)
         {
             return $"{key}:id:{ownerId}";

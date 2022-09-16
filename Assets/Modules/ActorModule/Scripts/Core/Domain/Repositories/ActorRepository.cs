@@ -8,5 +8,6 @@ namespace Modules.ActorModule.Scripts.Core.Domain.Repositories
     {
         IObservable<Unit> Save(Actor actor);
         IObservable<Maybe<Actor>> Get(string playerId);
+        IObservable<Unit> Delete(string playerId);
     }
 }
