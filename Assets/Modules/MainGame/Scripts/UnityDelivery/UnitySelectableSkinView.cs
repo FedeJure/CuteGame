@@ -20,8 +20,13 @@ public class UnitySelectableSkinView : MonoBehaviour
     public void Init(ActorSkinData data)
     {
         skinData = data;
-        image.material = skinData.material;
+        image.material = Instantiate(skinData.material);
         button.onClick.AddListener(() => OnClick(skinData));
+    }
+
+    public void SetColor(Color color)
+    {
+        image.material.color = color;
     }
 
     public void SetSelected(bool selected)

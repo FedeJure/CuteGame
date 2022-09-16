@@ -32,7 +32,7 @@ public class UnityActorCreationView : MonoBehaviour
     
 
     private UnitySelectableSkinView selectedSkinView;
-    private Color? lastColor = null;
+    private Dictionary<string, Color?> lastColor = new Dictionary<string, Color?>();
     private ActorSkinData selectedSkin;
 
     private void Start()
@@ -55,11 +55,11 @@ public class UnityActorCreationView : MonoBehaviour
                 if (response.ok)
                 {
                     UpdateSkinColor(response.color);
-                    lastColor = response.color;
+                    lastColor.Add(selectedSkin.key, response.color);
                 }
                 else
                 {
-                   UpdateSkinColor(lastColor);
+                   UpdateSkinColor(lastColor[selectedSkin.key]);
                 }
             })
             .Subscribe();
@@ -68,6 +68,7 @@ public class UnityActorCreationView : MonoBehaviour
     private void UpdateSkinColor(Color? color)
     {
         if (!color.HasValue) return;
+        selectedSkinView.SetColor(color.Value);
         switch (selectedSkin.type)
         {
             case SkinType.Body:
