@@ -27,6 +27,7 @@ namespace Modules.MainGame.Scripts.UnityDelivery
         
         private void Awake()
         {
+            InitView();
             MainGameModuleProvider.ProvidePresenterFor(this);
 
             loginButton.onClick.AddListener(SetOnLoginClicked);

@@ -25,7 +25,7 @@ namespace Modules.ActorModule.Scripts.Infrastructure
 
         public IObservable<Unit> Delete(string playerId)
         {
-            return UnityServicesManager.Save(KEY, null);
+            return UnityServicesManager.Delete(KEY);
         }
     }
 }

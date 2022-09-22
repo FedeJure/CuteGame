@@ -19,8 +19,8 @@ namespace Modules.ActorModule.Scripts.Presentation
         void ShowRightTickleFeedback();
         void ShowMiddleConsentEvent();
         void SetActorInteractable(bool interactable);
-        void SetHeadSkin(Skin headSkin);
-        void SetBodySkin(Skin bodySkin);
+        void SetHeadSkin(Skin headSkin, Color? overridedColor = null);
+        void SetBodySkin(Skin bodySkin, Color? overridedColor = null);
         void RestoreAnimator();
     }
 }

@@ -104,29 +104,29 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
             interactables.SetActive(interactable);
         }
 
-        public void SetHeadSkin(Core.Domain.Skin headSkin)
+        public void SetHeadSkin(Core.Domain.Skin headSkin, Color? overridedColor = null)
         {
             skinConfig.skins.ForEach(skin =>
             {
                 if (skin.key != headSkin.key || skin.type != SkinType.Head) return;
                 creamMesh.sharedMaterial = skin.material;
-                SetColor(headSkin, creamMesh);
+                SetColor(headSkin, creamMesh, overridedColor);
             });
         }
-        public void SetBodySkin(Core.Domain.Skin bodySkin)
+        public void SetBodySkin(Core.Domain.Skin bodySkin, Color? overridedColor = null)
         {
             skinConfig.skins.ForEach(skin =>
             {
                 if (skin.key != bodySkin.key || skin.type != SkinType.Body) return;
                 bodyMesh.material = skin.material;
-                SetColor(bodySkin, bodyMesh);
+                SetColor(bodySkin, bodyMesh, overridedColor);
             });
         }
 
-        private void SetColor(Core.Domain.Skin skin, Renderer mesh)
+        private void SetColor(Core.Domain.Skin skin, Renderer mesh, Color? overridedColor)
         {
             if (!skin.colorOverrided) return;
-            var color = skin.color;
+            var color = overridedColor ?? skin.color;
             mesh.material.SetColor("_Color", color);
             mesh.material.SetColor("_HColor", new Color(color.r + 0.1f, color.g + 0.1f, color.b + 0.1f));
             mesh.material.SetColor("_SColor", new Color(0, 0, 0, 0.5f));

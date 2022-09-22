@@ -48,8 +48,12 @@ public class MyColorPicker : MonoBehaviour
         content.SetActive(false);
     }
 
-    public IObservable<ColorPickerResponse> Open()
+    public IObservable<ColorPickerResponse> Open(Color? defaultColor)
     {
+        if (defaultColor.HasValue)
+        {
+            colorPicker.AssignColor(defaultColor.Value);
+        }
         content.SetActive(true);
         var response = new Subject<ColorPickerResponse>(); 
         var colorSubscribe = selectedColor.Do(color =>

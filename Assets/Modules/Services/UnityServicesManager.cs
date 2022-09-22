@@ -36,6 +36,13 @@ namespace Modules.Services
                     return Unit.Default;
                 }).AsUnitObservable();
         }
+
+        public static IObservable<Unit> Delete(string key)
+        {
+            return CloudSaveService.Instance.Data.ForceDeleteAsync(key)
+                .ToObservable()
+                .Do(_ =>  userData.Remove(key));
+        }
         
         public static IObservable<Maybe<string>> Get(string key)
         {

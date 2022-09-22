@@ -133,7 +133,6 @@ namespace Modules.MainGame.Scripts.Presentation
         }
         private void ProcessLoginResponse(LoginResponse response)
         {
-            Debug.LogWarning(response.success);
             view.HideLoading();
             if (!response.success)
             {

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: body7
   m_EditorClassIdentifier: 
   type: 1
-  key: body1
+  key: body7
   material: {fileID: 2100000, guid: 2be68ddeab0c7b947969ff89e4b425a2, type: 2}
   acceptColor: 0

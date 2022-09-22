@@ -289,7 +289,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1015.4192, y: 1759.0321}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &39965704
 MonoBehaviour:
@@ -1717,10 +1717,10 @@ RectTransform:
   m_Father: {fileID: 1937489638}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &961746966
 MonoBehaviour:
@@ -2172,6 +2172,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135607198623243912, guid: 734cccb5ddd45fe4d99ea5582455e491,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8135607198623243915, guid: 734cccb5ddd45fe4d99ea5582455e491,
         type: 3}
@@ -5191,6 +5196,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8874672115416412154, guid: 62b415af53ef94241840e84b24467268,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2ac737253b219244ca7ade627dccfc34, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62b415af53ef94241840e84b24467268, type: 3}
 --- !u!1001 &5742070136498272582

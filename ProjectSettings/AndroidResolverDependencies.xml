@@ -1,5 +1,7 @@
 <dependencies>
   <packages>
+    <package>com.google.android.play:asset-delivery:2.0.0</package>
+    <package>com.google.android.play:core-common:2.0.0</package>
     <package>com.google.games:gpgs-plugin-support:0.10.14</package>
     <package>com.unity3d.mediation:admob-adapter:[0.5,0.6[</package>
     <package>com.unity3d.mediation:mediation-sdk:[0.5,0.6[</package>
@@ -58,6 +60,8 @@
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-measurement-sdk-api-18.0.3.aar</file>
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-nearby-18.0.0.aar</file>
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-tasks-17.2.1.aar</file>
+    <file>Assets/Plugins/Android/com.google.android.play.asset-delivery-2.0.0.aar</file>
+    <file>Assets/Plugins/Android/com.google.android.play.core-common-2.0.0.aar</file>
     <file>Assets/Plugins/Android/com.google.android.ump.user-messaging-platform-1.0.0.aar</file>
     <file>Assets/Plugins/Android/com.google.games.gpgs-plugin-support-0.10.14.aar</file>
     <file>Assets/Plugins/Android/com.google.guava.listenablefuture-1.0.jar</file>
@@ -75,7 +79,7 @@
     <file>Assets/Plugins/Android/org.jetbrains.kotlin.kotlin-stdlib-common-1.5.21.jar</file>
   </files>
   <settings>
-    <setting name="androidAbis" value="arm64-v8a,armeabi-v7a,x86,x86_64" />
+    <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
     <setting name="bundleId" value="com.SetaIo.CuteCupcake" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />

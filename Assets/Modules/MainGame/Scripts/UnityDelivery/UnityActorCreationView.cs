@@ -44,7 +44,7 @@ public class UnityActorCreationView : MonoBehaviour
 
     private void OnOpenColorPicker()
     {
-        colorPicker.Open()
+        colorPicker.Open(lastColor.ContainsKey(selectedSkin.key) ? lastColor[selectedSkin.key] : null)
             .Do(response =>
             {
                 UpdateSkinColor(response.color);
@@ -55,7 +55,10 @@ public class UnityActorCreationView : MonoBehaviour
                 if (response.ok)
                 {
                     UpdateSkinColor(response.color);
-                    lastColor.Add(selectedSkin.key, response.color);
+                    if (lastColor.ContainsKey(selectedSkin.key))
+                        lastColor[selectedSkin.key] = response.color;
+                    else
+                        lastColor.Add(selectedSkin.key, response.color);
                 }
                 else
                 {
@@ -127,13 +130,13 @@ public class UnityActorCreationView : MonoBehaviour
     private void HandleBodySkinChange(ActorSkinData data)
     {
         bodySkin = new Skin(data.key);
-        actorView.SetBodySkin(bodySkin);
+        actorView.SetBodySkin(bodySkin, lastColor.ContainsKey(data.key) ? lastColor[data.key] : null);
     }
     
     private void HandleHeadSkinChange(ActorSkinData data)
     {
         headSkin = new Skin(data.key);
-        actorView.SetHeadSkin(headSkin);
+        actorView.SetHeadSkin(headSkin, lastColor.ContainsKey(data.key) ? lastColor[data.key] : null);
     }
 
     private void HandleSkinClick(ActorSkinData skin,UnitySelectableSkinView view)

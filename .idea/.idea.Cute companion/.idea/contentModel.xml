@@ -4,8 +4,6 @@
     <e p="C:\Users\Fede\.Rider2019.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Fede\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Cute companion.651084698.00" t="ExcludeRecursive" />
     <e p="F:\Users\Fede\Documents\Proyectos\Proyectos Unity 3d\Cute companion" t="IncludeRecursive">
-      <e p="ActorModule.csproj" t="IncludeRecursive" />
-      <e p="ActorModule.Test.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -19,7 +17,7 @@
         </e>
         <e p="ExternalDependencyManager" t="Include">
           <e p="Editor" t="Include">
-            <e p="external-dependency-manager_version-1.2.167_manifest.txt" t="Include" />
+            <e p="external-dependency-manager_version-1.2.172_manifest.txt" t="Include" />
           </e>
         </e>
         <e p="GooglePlayGames" t="Include">
@@ -126,6 +124,237 @@
             <e p="TokenClient.cs" t="Include" />
           </e>
           <e p="PluginVersion.cs" t="Include" />
+        </e>
+        <e p="GooglePlayPlugins" t="Include">
+          <e p="com.google.android.appbundle" t="Include">
+            <e p="Editor" t="Include">
+              <e p="Google.Android.AppBundle.Editor.asmdef" t="Include" />
+              <e p="Scripts" t="Include">
+                <e p="AndroidAppBundle.cs" t="Include" />
+                <e p="AndroidBuildException.cs" t="Include" />
+                <e p="AndroidBuildHelper.cs" t="Include" />
+                <e p="AndroidBuildOptions.cs" t="Include" />
+                <e p="AndroidBuildReport.cs" t="Include" />
+                <e p="AssetBundleBuilder.cs" t="Include" />
+                <e p="AssetPack.cs" t="Include" />
+                <e p="AssetPackConfig.cs" t="Include" />
+                <e p="AssetPackConfigSerializer.cs" t="Include" />
+                <e p="AssetPackDeliveryMode.cs" t="Include" />
+                <e p="Bundletool.cs" t="Include" />
+                <e p="BundletoolBuildMode.cs" t="Include" />
+                <e p="CompressionOptions.cs" t="Include" />
+                <e p="Internal" t="Include">
+                  <e p="AndroidArchitectureHelper.cs" t="Include" />
+                  <e p="AndroidManifest" t="Include">
+                    <e p="AssetPackManifestHelper.cs" t="Include" />
+                    <e p="IAssetPackManifestTransformer.cs" t="Include" />
+                    <e p="ManifestConstants.cs" t="Include" />
+                  </e>
+                  <e p="AppBundleEditorMenu.cs" t="Include" />
+                  <e p="AppBundlePublisher.cs" t="Include" />
+                  <e p="AssetPackManifestTransformerRegistry.cs" t="Include" />
+                  <e p="AssetPacks" t="Include">
+                    <e p="AssetBundleFolder.cs" t="Include" />
+                    <e p="AssetBundlePack.cs" t="Include" />
+                    <e p="AssetBundleVariant.cs" t="Include" />
+                    <e p="AssetDeliveryConfig.cs" t="Include" />
+                    <e p="AssetDeliveryConfigSerializer.cs" t="Include" />
+                    <e p="AssetDeliveryWindow.cs" t="Include" />
+                    <e p="AssetPackError.cs" t="Include" />
+                    <e p="AssetPackFolderState.cs" t="Include" />
+                    <e p="AssetPackValidatorRegistry.cs" t="Include" />
+                    <e p="IAssetPackValidator.cs" t="Include" />
+                    <e p="TextureTargetingTools.cs" t="Include" />
+                  </e>
+                  <e p="BuildAndRunner.cs" t="Include" />
+                  <e p="BuildSettingsWindow.cs" t="Include" />
+                  <e p="BuildTools" t="Include">
+                    <e p="AndroidAssetPackagingTool.cs" t="Include" />
+                    <e p="AndroidBuilder.cs" t="Include" />
+                    <e p="AndroidBuildTools.cs" t="Include" />
+                    <e p="AndroidDebugBridge.cs" t="Include" />
+                    <e p="AndroidSdk.cs" t="Include" />
+                    <e p="AndroidSdkPlatform.cs" t="Include" />
+                    <e p="ApkSigner.cs" t="Include" />
+                    <e p="AppBundleBuilder.cs" t="Include" />
+                    <e p="AppBundleRunner.cs" t="Include" />
+                    <e p="BuildToolLogger.cs" t="Include" />
+                    <e p="BuildToolNotInitializedException.cs" t="Include" />
+                    <e p="BundletoolConfig.cs" t="Include" />
+                    <e p="BundletoolExtensions.cs" t="Include" />
+                    <e p="BundletoolHelper.cs" t="Include" />
+                    <e p="IBuildTool.cs" t="Include" />
+                    <e p="JarSigner.cs" t="Include" />
+                    <e p="JavaUtils.cs" t="Include" />
+                    <e p="PostBuildRunner.cs" t="Include" />
+                    <e p="PostBuildTask.cs" t="Include" />
+                    <e p="ReleaseBuildHelper.cs" t="Include" />
+                    <e p="ZipUtils.cs" t="Include" />
+                  </e>
+                  <e p="BuiltInPadHelper.cs" t="Include" />
+                  <e p="Config" t="Include">
+                    <e p="AndroidBuildConfiguration.cs" t="Include" />
+                    <e p="SerializableAssetBundle.cs" t="Include" />
+                    <e p="SerializableAssetPack.cs" t="Include" />
+                    <e p="SerializableAssetPackConfig.cs" t="Include" />
+                    <e p="SerializableMultiTargetingAssetBundle.cs" t="Include" />
+                    <e p="SerializableMultiTargetingAssetPack.cs" t="Include" />
+                    <e p="SerializableTargetedDirectoryPath.cs" t="Include" />
+                    <e p="SerializationHelper.cs" t="Include" />
+                  </e>
+                  <e p="CreateBundleOptions.cs" t="Include" />
+                  <e p="DeprecatedAarDetector.cs" t="Include" />
+                  <e p="GoogleMenuItems.cs" t="Include" />
+                  <e p="IBuildAndRunExtension.cs" t="Include" />
+                  <e p="IBuildModeProvider.cs" t="Include" />
+                  <e p="PlayCoreConflictDetector.cs" t="Include" />
+                  <e p="PlayServices" t="Include">
+                    <e p="AndroidSdkManager.cs" t="Include" />
+                    <e p="CommandLine.cs" t="Include" />
+                    <e p="CommandLineDialog.cs" t="Include" />
+                    <e p="Logger.cs" t="Include" />
+                    <e p="PlayServicesResolver.cs" t="Include" />
+                    <e p="TextAreaDialog.cs" t="Include" />
+                  </e>
+                  <e p="Registry.cs" t="Include" />
+                  <e p="Utils" t="Include">
+                    <e p="AndroidSdkPackageInstaller.cs" t="Include" />
+                    <e p="CommandLineParameters.cs" t="Include" />
+                    <e p="EmptyCollection.cs" t="Include" />
+                    <e p="EmptyDictionary.cs" t="Include" />
+                    <e p="NameAndDescriptionAttribute.cs" t="Include" />
+                    <e p="PostBuildCommandLineDialog.cs" t="Include" />
+                    <e p="RegexHelper.cs" t="Include" />
+                    <e p="WindowUtils.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="TextureCompressionFormat.cs" t="Include" />
+              </e>
+            </e>
+            <e p="package.json" t="Include" />
+          </e>
+          <e p="com.google.play.assetdelivery" t="Include">
+            <e p="Editor" t="Include">
+              <e p="Dependencies.xml" t="Include" />
+            </e>
+            <e p="package.json" t="Include" />
+            <e p="Proguard" t="Include">
+              <e p="asset_delivery.txt" t="Include" />
+            </e>
+            <e p="Runtime" t="Include">
+              <e p="Google.Play.AssetDelivery.asmdef" t="Include" />
+              <e p="Scripts" t="Include">
+                <e p="AssetDeliveryErrorCode.cs" t="Include" />
+                <e p="AssetDeliveryStatus.cs" t="Include" />
+                <e p="AssetLocation.cs" t="Include" />
+                <e p="ConfirmationDialogResult.cs" t="Include" />
+                <e p="Internal" t="Include">
+                  <e p="AssetDeliveryAsyncOperation.cs" t="Include" />
+                  <e p="AssetDeliveryUpdateHandler.cs" t="Include" />
+                  <e p="AssetLocationImpl.cs" t="Include" />
+                  <e p="AssetPackLocation.cs" t="Include" />
+                  <e p="AssetPackManager.cs" t="Include" />
+                  <e p="AssetPackState.cs" t="Include" />
+                  <e p="AssetPackStates.cs" t="Include" />
+                  <e p="AssetPackStateUpdateListener.cs" t="Include" />
+                  <e p="AssetPackStorageMethod.cs" t="Include" />
+                  <e p="PlayAssetBundleRequestImpl.cs" t="Include" />
+                  <e p="PlayAssetDeliveryInternal.cs" t="Include" />
+                  <e p="PlayAssetPackBatchRequestImpl.cs" t="Include" />
+                  <e p="PlayAssetPackRequestImpl.cs" t="Include" />
+                  <e p="PlayCoreTranslator.cs" t="Include" />
+                  <e p="PlayRequestRepository.cs" t="Include" />
+                </e>
+                <e p="PlayAssetBundleRequest.cs" t="Include" />
+                <e p="PlayAssetDelivery.cs" t="Include" />
+                <e p="PlayAssetPackBatchRequest.cs" t="Include" />
+                <e p="PlayAssetPackRequest.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Samples" t="Include">
+              <e p="AssetDeliveryDemo" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="Google.Play.AssetDelivery.Samples.AssetDeliveryDemo.Editor.asmdef" t="Include" />
+                  <e p="Scripts" t="Include">
+                    <e p="DemoBuilder.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="Effects" t="Include">
+                  <e p="RadialWisps" t="Include">
+                    <e p="RadialWisps.shader" t="Include" />
+                  </e>
+                </e>
+                <e p="Scenes" t="Include">
+                  <e p="UndeliveredFile.txt" t="Include" />
+                </e>
+                <e p="Scripts" t="Include">
+                  <e p="AssetBundleDownloader.cs" t="Include" />
+                  <e p="AssetPackBatchDownloader.cs" t="Include" />
+                  <e p="AssetPackDownloader.cs" t="Include" />
+                  <e p="DemoController.cs" t="Include" />
+                  <e p="DemoPager.cs" t="Include" />
+                  <e p="DownloadDisplay.cs" t="Include" />
+                  <e p="Google.Play.AssetDelivery.Samples.AssetDeliveryDemo.asmdef" t="Include" />
+                  <e p="LookAround.cs" t="Include" />
+                  <e p="RotateInPlace.cs" t="Include" />
+                  <e p="SceneNavigator.cs" t="Include" />
+                  <e p="TextAssetHolder.cs" t="Include" />
+                </e>
+              </e>
+              <e p="TextureTargetingDemo" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="Google.Play.AssetDelivery.Samples.TextureTargetingDemo.asmdef" t="Include" />
+                  <e p="TexturedSceneLoader.cs" t="Include" />
+                  <e p="TextureFormatDisplayer.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+          <e p="com.google.play.common" t="Include">
+            <e p="package.json" t="Include" />
+            <e p="Runtime" t="Include">
+              <e p="Google.Play.Common.asmdef" t="Include" />
+              <e p="Scripts" t="Include">
+                <e p="Internal" t="Include">
+                  <e p="AndroidConstants.cs" t="Include" />
+                  <e p="PlayAsyncOperationImpl.cs" t="Include" />
+                </e>
+                <e p="LoadingScreen" t="Include">
+                  <e p="LoadingBar.cs" t="Include" />
+                  <e p="LoadingScreen.cs" t="Include" />
+                  <e p="ScrollingFillAnimator.cs" t="Include" />
+                </e>
+                <e p="PlayAsyncOperation.cs" t="Include" />
+                <e p="UnityPlayerHelper.cs" t="Include" />
+                <e p="VoidResult.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="com.google.play.core" t="Include">
+            <e p="Editor" t="Include">
+              <e p="Dependencies.xml" t="Include" />
+            </e>
+            <e p="package.json" t="Include" />
+            <e p="Proguard" t="Include">
+              <e p="common.txt" t="Include" />
+            </e>
+            <e p="Runtime" t="Include">
+              <e p="Google.Play.Core.asmdef" t="Include" />
+              <e p="Scripts" t="Include">
+                <e p="Internal" t="Include">
+                  <e p="ActivityResult.cs" t="Include" />
+                  <e p="PlayCoreConstants.cs" t="Include" />
+                  <e p="PlayCoreEventHandler.cs" t="Include" />
+                  <e p="PlayCoreHelper.cs" t="Include" />
+                  <e p="PlayCoreOnFailureListener.cs" t="Include" />
+                  <e p="PlayCoreOnSuccessListener.cs" t="Include" />
+                  <e p="PlayServicesTask.cs" t="Include" />
+                  <e p="TaskOnFailureListener.cs" t="Include" />
+                  <e p="TaskOnSuccessListener.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
         </e>
         <e p="GPGSIds.cs" t="Include" />
         <e p="HeaderPosition.cs" t="Include" />
@@ -325,7 +554,20 @@
         </e>
         <e p="Modules" t="Include">
           <e p="ActorModule" t="Include">
-            <e p="ActorModule.asmdef" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="Core" t="Include">
+                <e p="Domain" t="Include">
+                  <e p="Action" t="Include">
+                    <e p="CreateNewActorTest.cs" t="Include" />
+                    <e p="ProcessInteractionTest.cs" t="Include" />
+                  </e>
+                </e>
+              </e>
+              <e p="Presentation" t="Include">
+                <e p="ActorPresenterTest.cs" t="Include" />
+                <e p="TouchHelperPresenterTest.cs" t="Include" />
+              </e>
+            </e>
             <e p="Scripts" t="Include">
               <e p="ActorModuleProvider.cs" t="Include" />
               <e p="Core" t="Include">
@@ -392,21 +634,6 @@
                 <e p="UnityTouchHelperView.cs" t="Include" />
               </e>
             </e>
-            <e p="Tests" t="Include">
-              <e p="ActorModule.Test.asmdef" t="Include" />
-              <e p="Core" t="Include">
-                <e p="Domain" t="Include">
-                  <e p="Action" t="Include">
-                    <e p="CreateNewActorTest.cs" t="Include" />
-                    <e p="ProcessInteractionTest.cs" t="Include" />
-                  </e>
-                </e>
-              </e>
-              <e p="Presentation" t="Include">
-                <e p="ActorPresenterTest.cs" t="Include" />
-                <e p="TouchHelperPresenterTest.cs" t="Include" />
-              </e>
-            </e>
           </e>
           <e p="Common" t="Include">
             <e p="ActorComponentsRepository.cs" t="Include" />
@@ -414,12 +641,14 @@
             <e p="AddressableService.cs" t="Include" />
             <e p="AssetCreator.cs" t="Include" />
             <e p="CameraRepository.cs" t="Include" />
-            <e p="Common.asmdef" t="Include" />
             <e p="CommonModuleProvider.cs" t="Include" />
+            <e p="ConfigurationModal.cs" t="Include" />
+            <e p="ConfirmationModal.cs" t="Include" />
             <e p="DependencyProvider.cs" t="Include" />
             <e p="ExtensionMethods.cs" t="Include" />
             <e p="GlobalEventBus.cs" t="Include" />
             <e p="InputWrapper.cs" t="Include" />
+            <e p="Interstitial.cs" t="Include" />
             <e p="LoadingScreen.cs" t="Include" />
             <e p="LocalStorage.cs" t="Include" />
             <e p="Maybe.cs" t="Include" />
@@ -432,7 +661,6 @@
             <e p="UnitySwipeInput.cs" t="Include" />
           </e>
           <e p="Donut" t="Include">
-            <e p="DonutASM.asmdef" t="Include" />
             <e p="UnityDelivery" t="Include">
               <e p="DonutMaterials.cs" t="Include" />
               <e p="UnityDonutGenerator.cs" t="Include" />
@@ -442,14 +670,12 @@
           <e p="InputWrapper" t="Include">
             <e p="InputWrapperASM.asmdef" t="Include" />
           </e>
-          <e p="Lobby" t="Include">
-            <e p="Lobby.asmdef" t="Include" />
-            <e p="Tests" t="Include">
-              <e p="Lobby.Test.asmdef" t="Include" />
-            </e>
-          </e>
           <e p="MainGame" t="Include">
-            <e p="MainGame.asmdef" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="Presentation" t="Include">
+                <e p="MainGamePresenterTest.cs" t="Include" />
+              </e>
+            </e>
             <e p="Scripts" t="Include">
               <e p="Core" t="Include">
                 <e p="Actions" t="Include">
@@ -473,15 +699,13 @@
                 <e p="UnitySelectableSkinView.cs" t="Include" />
               </e>
             </e>
-            <e p="Tests" t="Include">
-              <e p="MainGame.Test.asmdef" t="Include" />
-              <e p="Presentation" t="Include">
-                <e p="MainGamePresenterTest.cs" t="Include" />
-              </e>
-            </e>
           </e>
           <e p="MiniGame" t="Include">
-            <e p="MiniGame.asmdef" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="Presentation" t="Include">
+                <e p="MiniGamePresenterTest.cs" t="Include" />
+              </e>
+            </e>
             <e p="MiniGameModuleProvider.cs" t="Include" />
             <e p="Scripts" t="Include">
               <e p="Core" t="Include">
@@ -505,15 +729,8 @@
                 <e p="UnityMiniGameWidgetView.cs" t="Include" />
               </e>
             </e>
-            <e p="Tests" t="Include">
-              <e p="MiniGame.Test.asmdef" t="Include" />
-              <e p="Presentation" t="Include">
-                <e p="MiniGamePresenterTest.cs" t="Include" />
-              </e>
-            </e>
           </e>
           <e p="PlayerModule" t="Include">
-            <e p="PlayerModule.asmdef" t="Include" />
             <e p="PlayerModuleProvider.cs" t="Include" />
             <e p="Scripts" t="Include">
               <e p="Core" t="Include">
@@ -528,13 +745,9 @@
                 <e p="DiskPlayerRepository.cs" t="Include" />
               </e>
             </e>
-            <e p="Tests" t="Include">
-              <e p="PlayerModule.Test.asmdef" t="Include" />
-            </e>
           </e>
           <e p="Services" t="Include">
             <e p="GooglePlayServicesManager.cs" t="Include" />
-            <e p="Services.asmdef" t="Include" />
             <e p="UnityServicesManager.cs" t="Include" />
           </e>
           <e p="Shop" t="Include">
@@ -547,13 +760,19 @@
                 <e p="UnityShopView.cs" t="Include" />
               </e>
             </e>
-            <e p="Shop.asmdef" t="Include" />
             <e p="ShopModuleProvider].cs" t="Include" />
-            <e p="Tests" t="Include">
-              <e p="Shop.Test.asmdef" t="Include" />
-            </e>
           </e>
           <e p="UlaGame" t="Include">
+            <e p="Editor" t="Include">
+              <e p="Core" t="Include">
+                <e p="Domain" t="Include">
+                  <e p="UlaGameTest.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Presentation" t="Include">
+                <e p="UlaGamePresenterTest.cs" t="Include" />
+              </e>
+            </e>
             <e p="Scripts" t="Include">
               <e p="Core" t="Include">
                 <e p="Actions" t="Include">
@@ -573,18 +792,6 @@
                 <e p="UnityUlaGameView.cs" t="Include" />
               </e>
             </e>
-            <e p="Tests" t="Include">
-              <e p="Core" t="Include">
-                <e p="Domain" t="Include">
-                  <e p="UlaGameTest.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Presentation" t="Include">
-                <e p="UlaGamePresenterTest.cs" t="Include" />
-              </e>
-              <e p="UlaGame.Test.asmdef" t="Include" />
-            </e>
-            <e p="UlaGame.asmdef" t="Include" />
             <e p="UlaGameModuleProvider.cs" t="Include" />
           </e>
         </e>
@@ -870,10 +1077,23 @@
             </e>
           </e>
         </e>
+        <e p="Resources" t="Include">
+          <e p="BillingMode.json" t="Include" />
+        </e>
         <e p="Skybox" t="Include">
           <e p="Readme.txt" t="Include" />
         </e>
         <e p="SliderButton.cs" t="Include" />
+        <e p="StreamingAssets" t="Include">
+          <e p="aa" t="Include">
+            <e p="AddressablesLink" t="Include">
+              <e p="link.xml" t="Include" />
+            </e>
+            <e p="catalog.json" t="Include" />
+            <e p="settings.json" t="Include" />
+          </e>
+          <e p="UnityServicesProjectConfiguration.json" t="Include" />
+        </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
             <e p="LiberationSans - OFL.txt" t="Include" />
@@ -916,32 +1136,24 @@
           </e>
         </e>
       </e>
-      <e p="Common.csproj" t="IncludeRecursive" />
       <e p="Cute companion.sln" t="IncludeFlat" />
-      <e p="DonutASM.csproj" t="IncludeRecursive" />
+      <e p="Google.Android.AppBundle.Editor.csproj" t="IncludeRecursive" />
+      <e p="Google.Play.AssetDelivery.csproj" t="IncludeRecursive" />
+      <e p="Google.Play.AssetDelivery.Samples.AssetDeliveryDemo.csproj" t="IncludeRecursive" />
+      <e p="Google.Play.AssetDelivery.Samples.AssetDeliveryDemo.Editor.csproj" t="IncludeRecursive" />
+      <e p="Google.Play.AssetDelivery.Samples.TextureTargetingDemo.csproj" t="IncludeRecursive" />
+      <e p="Google.Play.Common.csproj" t="IncludeRecursive" />
+      <e p="Google.Play.Core.csproj" t="IncludeRecursive" />
       <e p="Google.Play.csproj" t="IncludeRecursive" />
       <e p="Google.Play.Editor.csproj" t="IncludeRecursive" />
       <e p="HSVPicker.csproj" t="IncludeRecursive" />
       <e p="HSVPicker.Editors.csproj" t="IncludeRecursive" />
       <e p="InputWrapperASM.csproj" t="IncludeRecursive" />
-      <e p="Lobby.csproj" t="IncludeRecursive" />
-      <e p="Lobby.Tests.csproj" t="IncludeRecursive" />
-      <e p="MainGame.csproj" t="IncludeRecursive" />
-      <e p="MainGame.Tests.csproj" t="IncludeRecursive" />
-      <e p="MiniGame.csproj" t="IncludeRecursive" />
-      <e p="MiniGame.Tests.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
-      <e p="PlayerModule.csproj" t="IncludeRecursive" />
-      <e p="PlayerModule.Tests.csproj" t="IncludeRecursive" />
-      <e p="Services.csproj" t="IncludeRecursive" />
-      <e p="Shop.csproj" t="IncludeRecursive" />
-      <e p="Shop.Tests.csproj" t="IncludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
       <e p="ToonyColorsPro.Editor.csproj" t="IncludeRecursive" />
       <e p="ToonyColorsPro.Runtime.csproj" t="IncludeRecursive" />
-      <e p="UlaGame.csproj" t="IncludeRecursive" />
-      <e p="UlaGame.Tests.csproj" t="IncludeRecursive" />
       <e p="UniRx.csproj" t="IncludeRecursive" />
     </e>
   </component>
