@@ -19,6 +19,7 @@ namespace Modules.ActorModule.Tests.Core.Domain.Action
         private HumorStateRepository humorStateRepository;
         private HumorStateService humorStateService;
         private SessionRepository sessionRepository;
+        private UpdateHumor updateHumor;
 
         [SetUp]
         public void SetUp()
@@ -27,10 +28,11 @@ namespace Modules.ActorModule.Tests.Core.Domain.Action
             humorStateRepository = Substitute.For<HumorStateRepository>();
             humorStateService = Substitute.For<HumorStateService>();
             sessionRepository = Substitute.For<SessionRepository>();
+            updateHumor = Substitute.For<UpdateHumor>();
 
             sessionRepository.Get().Returns(new Session("player id", ACTOR_ID).ToMaybe());
             humorStateRepository.Get(ACTOR_ID).Returns(new Maybe<HumorState>(new HumorState(50, 0, Humor.Normal, MAX_HUMOR)));
-            action = new ProcessInteraction(eventBus, humorStateRepository, humorStateService, sessionRepository);
+            action = new ProcessInteraction(eventBus, humorStateService, sessionRepository, updateHumor);
         }
         
         [Test]

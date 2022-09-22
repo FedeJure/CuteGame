@@ -92,9 +92,13 @@ namespace Modules.UlaGame.Scripts.Core.Domain
             disposer.DisposeAll();
         }
 
-        private void UpdateScore() {
-            currentPoints += (stability >= -absoluteStabilityLimit / 2 && stability <= absoluteStabilityLimit / 2) ? 2 : 1;
-            eventBus.EmitScoreChange(currentPoints);
+        private void UpdateScore()
+        {
+            var newPoints = (stability >= -absoluteStabilityLimit / 2 && stability <= absoluteStabilityLimit / 2)
+                ? 2
+                : 1;
+            currentPoints += newPoints;
+            eventBus.EmitScoreChange(currentPoints, newPoints);
         }
     }
 }

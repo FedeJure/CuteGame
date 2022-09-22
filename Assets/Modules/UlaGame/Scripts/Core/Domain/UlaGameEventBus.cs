@@ -1,4 +1,5 @@
 ﻿using System;
+using Castle.Core;
 using UniRx;
 
 namespace Modules.UlaGame.Scripts.Core.Domain
@@ -10,7 +11,7 @@ namespace Modules.UlaGame.Scripts.Core.Domain
         ISubject<Unit> onGameEnded = new Subject<Unit>();
         ISubject<int> onNewSwipe = new Subject<int>();
         ISubject<UlaGame> onUlaGameStarted = new Subject<UlaGame>();
-        ISubject<float> onScoreChange = new Subject<float>();
+        ISubject<Pair<float, float>> onScoreChange = new Subject<Pair<float, float>>();
 
         public UlaGameEventBus() {}
         public virtual void EmitNewStage(int stage)
@@ -63,11 +64,11 @@ namespace Modules.UlaGame.Scripts.Core.Domain
             return onUlaGameStarted;
         }
 
-        public void EmitScoreChange(float score) {
-            onScoreChange.OnNext(score);
+        public void EmitScoreChange(float totalScore, float score) {
+            onScoreChange.OnNext(new Pair<float, float>(totalScore, score));
         }
 
-        public IObservable<float> OnScoreChange() {
+        public IObservable<Pair<float, float>> OnScoreChange() {
             return onScoreChange;
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Castle.Core;
 using Modules.Common;
 using Modules.MiniGame.Scripts.Core.Domain;
 using Modules.MiniGame.Scripts.Presentation;
@@ -98,8 +99,8 @@ namespace Modules.UlaGame.Scripts.Presentation
             disposer.DisposeAll();
         }
 
-        private void UpdateScore(float score) {
-            miniGameEventBus.EmitOnScoreChange(score);
+        private void UpdateScore(Pair<float, float> score) {
+            miniGameEventBus.EmitOnScoreChange(score.First, score.Second);
         }
     }
 }

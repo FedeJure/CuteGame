@@ -47,12 +47,24 @@ namespace Modules.ActorModule.Scripts
             new TouchHelperPresenter(view, ProvideProcessDirectionAction());
         }
 
-        private static ProcessInteraction ProvideProcessDirectionAction()
+        public static UpdateHumor ProvideUpdateHumorAction()
         {
-            return DependencyProvider.GetOrInstanciate(() => new ProcessInteraction(ProvideEventBus(), ProvideHumorStateRepository(), ProvideHumorStateService(), CommonModuleProvider.ProvideSessionRepository()));
+            return DependencyProvider.GetOrInstanciate(() =>
+                new UpdateHumor(ProvideEventBus(), ProvideHumorStateRepository()));
         }
 
-        private static HumorStateService ProvideHumorStateService()
+        public static UpdateHumorFromScore ProvideUpdateHumorFromScore()
+        {
+            return DependencyProvider.GetOrInstanciate(() =>
+                new UpdateHumorFromScore(CommonModuleProvider.ProvideSessionRepository(), ProvideUpdateHumorAction(),
+                    ProvideHumorStateService()));
+        }
+        private static ProcessInteraction ProvideProcessDirectionAction()
+        {
+            return DependencyProvider.GetOrInstanciate(() => new ProcessInteraction(ProvideEventBus(), ProvideHumorStateService(), CommonModuleProvider.ProvideSessionRepository(), ProvideUpdateHumorAction()));
+        }
+
+        public static HumorStateService ProvideHumorStateService()
         {
             return DependencyProvider.GetOrInstanciate(() => new HumorStateService(ProvideHumorStateRepository(), CommonModuleProvider.ProvideSessionRepository()));
         }

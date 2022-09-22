@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Castle.Core;
+using Modules.ActorModule.Scripts.Core.Domain;
+using Modules.ActorModule.Scripts.Core.Domain.Action;
 using Modules.MiniGame.Scripts.Core.Domain;
 using UniRx;
 
@@ -8,15 +11,15 @@ namespace Modules.MiniGame.Scripts.Presentation
     public class MiniGameUiPresenter
     {
         private MiniGameUiView view;
-        private MiniGameEventBus eventBus;
+        private UpdateHumorFromScore updateHumorFromScore;
         
         private List<IDisposable> disposer = new List<IDisposable>();
         private List<MiniGameUiFeature> visibleFeatures = new List<MiniGameUiFeature>();
 
-        public MiniGameUiPresenter(MiniGameUiView view, MiniGameEventBus eventBus)
+        public MiniGameUiPresenter(MiniGameUiView view, MiniGameEventBus eventBus, UpdateHumorFromScore updateHumorFromScore)
         {
             this.view = view;
-            this.eventBus = eventBus;
+            this.updateHumorFromScore = updateHumorFromScore;
 
             this.view.OnViewEnabled += PresentView;
 
@@ -87,9 +90,10 @@ namespace Modules.MiniGame.Scripts.Presentation
             visibleFeatures.Clear();
         }
 
-        private void UpdateScore(float score)
+        private void UpdateScore(Pair<float, float> score)
         {
-            view.UpdateScore(score);
+            view.UpdateScore(score.First);
+            updateHumorFromScore.Execute(score.Second / 10);
         }
     }
 }

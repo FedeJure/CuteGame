@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Castle.Core;
 using Modules.MiniGame.Scripts.Presentation;
 using UniRx;
 
@@ -7,19 +8,19 @@ namespace Modules.MiniGame.Scripts.Core.Domain
 {
     public class MiniGameEventBus
     {
-        private ISubject<float> onScoreChange = new Subject<float>();
+        private ISubject<Pair<float, float>> onScoreChange = new Subject<Pair<float, float>>();
         private ISubject<float> onStabilityChange = new Subject<float>();
         private ISubject<List<MiniGameUiFeature>> onNewGameStarted = new Subject<List<MiniGameUiFeature>>();
         private ISubject<Unit> onGameEnded = new Subject<Unit>();
         
-        public IObservable<float> OnScoreChange()
+        public IObservable<Pair<float, float>> OnScoreChange()
         {
             return onScoreChange;
         }
 
-        public void EmitOnScoreChange(float score)
+        public void EmitOnScoreChange(float totalScore, float score)
         {
-            onScoreChange.OnNext(score);
+            onScoreChange.OnNext(new Pair<float, float>(totalScore, score));
         }
 
         public IObservable<List<MiniGameUiFeature>> OnNewGameStarted()

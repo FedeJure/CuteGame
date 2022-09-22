@@ -1,4 +1,5 @@
-﻿using Modules.Common;
+﻿using Modules.ActorModule.Scripts;
+using Modules.Common;
 using Modules.MiniGame.Scripts.Core.Domain;
 using Modules.MiniGame.Scripts.Presentation;
 
@@ -13,7 +14,7 @@ namespace Modules.MiniGame
 
         public static void ProvidePresenterFor(MiniGameUiView view)
         {
-            new MiniGameUiPresenter(view, ProvideEventBus());
+            new MiniGameUiPresenter(view, ProvideEventBus(), ActorModuleProvider.ProvideUpdateHumorFromScore());
         }
 
         public static MiniGameEventBus ProvideEventBus()

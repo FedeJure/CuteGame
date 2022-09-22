@@ -12,8 +12,8 @@ namespace Modules.ActorModule.Scripts.Core.Domain
     {
         private readonly HumorStateRepository humorRepository;
         private readonly SessionRepository sessionRepository;
-        private int MAX_HUMOR => 100;
-        private int currentHumor;
+        private float MAX_HUMOR => 100;
+        private float currentHumor;
         private List<List<HumorTransitionConfig>> humorTransitionConfig;
         public HumorStateService() { }
         public HumorStateService(HumorStateRepository humorRepository, SessionRepository sessionRepository)
@@ -31,7 +31,7 @@ namespace Modules.ActorModule.Scripts.Core.Domain
                             humorRepository.Save(state, session.actorId);
                         }));
 
-            humorTransitionConfig = HumorStateGenerator.GetRandomConfigurationOfLength(MAX_HUMOR);
+            humorTransitionConfig = HumorStateGenerator.GetRandomConfigurationOfLength((int)MAX_HUMOR + 1);
         }
         public virtual HumorState ReceiveInteraction(ActorInteraction interaction)
         {
@@ -49,7 +49,21 @@ namespace Modules.ActorModule.Scripts.Core.Domain
 
         }
 
-        private Humor GetNextHumor(int humorLevel, int humorVariation)
+        public virtual HumorState ProcessPointsFromGames(float points)
+        {
+            return sessionRepository.Get().ReturnOrDefault(session =>
+                    humorRepository.Get(session.actorId)
+                        .ReturnOrDefault(state =>
+                        {
+                            currentHumor = state.humorLevel;
+                            var variation = points;
+                            var humor = GetNextHumor(state.humorLevel, variation);
+                            return new HumorState(state.humorLevel + variation, variation, humor, MAX_HUMOR);
+                        }, new HumorState(0, 0, Humor.Normal, MAX_HUMOR)),
+                new HumorState(0, 0, Humor.Normal, MAX_HUMOR));
+        }
+
+        private Humor GetNextHumor(float humorLevel, float humorVariation)
         {
             var newHumorLevel = humorLevel + humorVariation;
             var criticNumber = Math.Floor((double) (MAX_HUMOR / 3));
@@ -60,7 +74,7 @@ namespace Modules.ActorModule.Scripts.Core.Domain
 
         private HumorTransitionConfig GetNextTransition(ActorInteraction interaction)
         {
-            var nextTransitions = humorTransitionConfig[currentHumor];
+            var nextTransitions = humorTransitionConfig[(int)currentHumor];
             nextTransitions.Add(new HumorTransitionConfig(interaction, 0));
             return nextTransitions.First(transition => transition.interaction.Equals(interaction));  
         }
@@ -80,14 +94,14 @@ namespace Modules.ActorModule.Scripts.Core.Domain
     [Serializable]
     public class HumorState
     {
-        public int humorLevel;
-        public int lastHumorChange;
+        public float humorLevel;
+        public float lastHumorChange;
         public Humor humor;
-        public int maxHumor;
+        public float maxHumor;
 
-        public HumorState(int humorLevel, int lastHumorChange, Humor humor, int maxHumor)
+        public HumorState(float humorLevel, float lastHumorChange, Humor humor, float maxHumor)
         {
-            this.humorLevel = humorLevel;
+            this.humorLevel = Math.Max(0, Math.Min(humorLevel, maxHumor));
             this.lastHumorChange = lastHumorChange;
             this.humor = humor;
             this.maxHumor = maxHumor;

@@ -43,7 +43,7 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
             disposer.DisposeAll();
         }
 
-        public void HumorChange(int HumorLevel, int LastHumorChange, int maxHumor)
+        public void HumorChange(float HumorLevel, float LastHumorChange, float maxHumor)
         {
             SetValue(HumorLevel, maxHumor);
             bar.transform.localScale = new Vector3(1,1,1);
@@ -58,14 +58,14 @@ namespace Modules.ActorModule.Scripts.UnityDelivery
                 .setEaseInOutBounce();
         }
 
-        public void InitView(int humor, int maxHumor)
+        public void InitView(float humor, float maxHumor)
         {
             SetValue(humor, maxHumor);
         }
 
-        void SetValue(int humor, int maxHumor)
+        void SetValue(float humor, float maxHumor)
         {
-            float actualValue = (float)humor / maxHumor;
+            float actualValue = humor / maxHumor;
             bar.value = actualValue;
         }
     }

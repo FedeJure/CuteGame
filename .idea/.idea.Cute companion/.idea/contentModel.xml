@@ -577,6 +577,8 @@
                     <e p="ProcessInteraction.cs" t="Include" />
                     <e p="RetrieveActor.cs" t="Include" />
                     <e p="RetrieveActorHumor.cs" t="Include" />
+                    <e p="UpdateHumor.cs" t="Include" />
+                    <e p="UpdateHumorFromScore.cs" t="Include" />
                   </e>
                   <e p="Actor.cs" t="Include" />
                   <e p="ActorSkin.cs" t="Include" />
@@ -1084,16 +1086,6 @@
           <e p="Readme.txt" t="Include" />
         </e>
         <e p="SliderButton.cs" t="Include" />
-        <e p="StreamingAssets" t="Include">
-          <e p="aa" t="Include">
-            <e p="AddressablesLink" t="Include">
-              <e p="link.xml" t="Include" />
-            </e>
-            <e p="catalog.json" t="Include" />
-            <e p="settings.json" t="Include" />
-          </e>
-          <e p="UnityServicesProjectConfiguration.json" t="Include" />
-        </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
             <e p="LiberationSans - OFL.txt" t="Include" />
